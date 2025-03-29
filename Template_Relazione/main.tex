@@ -20,6 +20,9 @@
 \usepackage{amsfonts}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{url}
+\usepackage{hyperref}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \definecolor{custom_green}{rgb}{0,0.6,0}
@@ -173,11 +176,8 @@
 \newpage
 \chapter{Introduzione}
 \textit{Il capitolo fornisce una panoramica del progetto, descrivendo l'obiettivo principale di sviluppare e simulare la movimentazione di un robot TM-900 con un tessuto, attraverso l'integrazione di ROS2 e Unity. Viene fornita una panoramica delle motivazioni per l'uso di questi software e delle principali fasi del progetto.}
-
-
-\section*{Introduzione}
-
-\textbf Il presente progetto ha come obiettivo lo sviluppo e la simulazione della movimentazione di un robot TM-900 con un tessuto (cloth), utilizzando l'integrazione di software avanzati come ROS2 e Unity. Il contesto applicativo del progetto si colloca nell'ambito industriale e robotico, ponendo particolare attenzione sull'ottimizzazione dei processi di smontaggio di oggetti, come abiti e tessuti, mediante l'interazione con il robot. L'azienda coinvolta utilizza il software Cloth 3D per la modellazione degli abiti, mentre Unity e Gazebo sono impiegati per simulare la movimentazione del robot e l'interazione con gli oggetti.
+\newline 
+Il presente progetto ha come obiettivo lo sviluppo e la simulazione della movimentazione di un robot TM-900 con un tessuto (cloth), utilizzando l'integrazione di software avanzati come ROS2 e Unity. Il contesto applicativo del progetto si colloca nell'ambito industriale e robotico, ponendo particolare attenzione sull'ottimizzazione dei processi di smontaggio di oggetti, come abiti e tessuti, mediante l'interazione con il robot. L'azienda coinvolta utilizza il software Cloth 3D per la modellazione degli abiti, mentre Unity e Gazebo sono impiegati per simulare la movimentazione del robot e l'interazione con gli oggetti.
 Uno degli obiettivi di questo progetto è quello di analizzare in dettaglio l'integrazione tra ROS2 e Unity, scelta motivata dalle potenzialità di questi due strumenti. ROS2 offre una gestione efficiente della comunicazione tra il robot e il sistema di simulazione, mentre Unity fornisce una grafica avanzata che consente di visualizzare e simulare i movimenti del robot in tempo reale, sfruttando ROS2. L'integrazione di questi due software è stata scelta per soddisfare la necessità di creare un ambiente simulativo realistico, utile non solo per eseguire test simulativi, ma anche per implementare successivamente il sistema su un robot reale.
 In questo modo, l'integrazione tra ROS2 e Unity consente di gestire il robot e simularlo in ambiente virtuale, migliorando l'efficienza e la precisione nelle operazioni robotiche. Il progetto affronta diversi task, tra cui la valutazione e la compatibilità dei tessuti con i vari software, la simulazione della movimentazione del robot e dell'oggetto da smontare in un ambiente condiviso, l'acquisizione e la definizione di una sequenza di fasi di smontaggio, l'esecuzione delle fasi in simulazione con il robot e, infine, l'esecuzione delle stesse fasi su un robot reale.
 % Spiegazione dettagliata del task assegnato al gruppo (cosa avete fatto e su quale sistema).\\
@@ -198,8 +198,8 @@ In questo modo, l'integrazione tra ROS2 e Unity consente di gestire il robot e s
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.6\textwidth]{images/ROS2.png}
-    \caption{Logo Unity}
-    \label{fig:UNITY}
+    \caption{Logo ROS2}
+    \label{fig:ROS2}
 \end{figure}
 
 \textbf{ROS 2} (Robot Operating System 2) è un framework open-source per lo sviluppo di applicazioni robotiche. Fornisce una serie di strumenti, librerie e convenzioni per facilitare la comunicazione tra i componenti software di un sistema robotico. ROS 2 è progettato per migliorare la scalabilità, la sicurezza e la compatibilità con i sistemi distribuiti rispetto al suo predecessore, ROS 1. Il suo utilizzo è diffuso in ricerca e industria per il controllo di robot mobili, bracci robotici e veicoli autonomi.
@@ -223,7 +223,8 @@ Per lo sviluppo del progetto, abbiamo utilizzato Unity 6, la versione più recen
 \newpage
 \chapter{Materiali e Metodi}
 \label{Materiali e Metodi}
-Inserire sempre un capitolo "Hardware" dove si descrivono tutti i componenti hardware utilizzati (schede, sensori, attuatori..). Dedicare un paragrafo ad ogni componente. Per ogni componente riportare le seguenti informazioni: modello specifico, riferimento bibliografico con link ad un sito web con la documentazione del componente (es \cite{DCdriver}), immagine, pinout, solo le informazioni rilevanti per lo svolgimento del task.
+\textit{In questo capitolo saranno presentati i materiali(principalmente software) e i metodi, quindi le tecniche utilizzate, inoltre vengono dettagliate le tecnologie impiegate e le procedure seguite, in modo da permettere la riproducibilità del progetto. In particolare la prima sezione \textbf{Integrazione ROS-Unity} approfondisce l'integrazione tra ROS 2 e Unity, analizzando strumenti chiave come ROS-TCP Connector, ROS-TCP Endpoint e URDF Importer (3.1.3). La sezione successiva tratta l'uso di \textbf{MoveIt} per la pianificazione del movimento, mentre la 3.3 descrive l'impiego di \textbf{Gazebo} per la simulazione robotica. Successivamente, la sezione 3.4 introduce \textbf{Cloth di Unity}, utilizzato per la simulazione di tessuti, e la 3.5 approfondisce la gestione della \textbf{Camera} all'interno dell'ambiente simulato.}
+
 % \section{Componente1}
 % \section{Componente2}
 % \section{Schema dei collegamenti}
@@ -248,7 +249,105 @@ Inserire sempre un capitolo "Hardware" dove si descrivono tutti i componenti har
 \section{Gazebo}
 
 \section{Cloth di Unity}
+Il sistema \textbf{Cloth di Unity} offre una soluzione basata sulla fisica per simulare tessuti e materiali flessibili all'interno di ambienti 3D. Sebbene sia stato progettato principalmente per rappresentare abbigliamento su personaggi, può essere utilizzato anche per altri scopi, come bandiere, tende o qualsiasi altro oggetto che richieda una simulazione realistica del comportamento dei tessuti\cite{ManualCloth}.
+In questo progetto, il componente Cloth riveste un ruolo central,poiché il compito finale prevede che l'indumento manipolato dal robot presenti una fisica il più possibile realistica, simulando accuratamente il comportamento del tessuto. A tal fine, sono stati forniti tre file principali relativi a una maglietta: un file \textbf{OBJ}, un file \textbf{FBX} e un fil \textbf{Collada}. 
+L'analisi di questi file ha permesso di ottenere informazioni utili riguardo al formato da utilizzare e alle caratteristiche della mesh per applicare efficacemente il componente Cloth.
+\subsection{Compatibilità dei file con Gazebo e Unity}
+Il formato \textbf{.obj} è stato testato con successo sia in Unity che in Gazebo, consentendo l'importazione corretta del modello della t-shirt in entrambi i software. Tuttavia, durante le simulazioni in Unity, l'applicazione del componente Cloth alla t-shirt ha evidenziato alcune difficoltà: il computer ha riscontrato problemi nel gestire correttamente i comandi impostati e, una volta avviata la simulazione, la t-shirt appariva deformata e non realistica, come è possibile vedere nella figura \ref{fig:cloth_error}.
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/cloth_error.PNG}
+    \caption{Errore nell'applicazione del Cloth di Unity}
+    \label{fig:cloth_error}
+\end{figure}
+
+Per risolvere questo problema, l'oggetto è stato importato nel software Blender, dove è stato utilizzato il modificatore Decimate per ridurre il numero di poligoni della mesh. Diminuendo il parametro "Ratio" a un valore che ha portato la mesh a circa 5000 poligoni, è stato possibile reimportare l'oggetto in Unity e applicare correttamente il componente Cloth, ottenendo una simulazione più realistica.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.3\textwidth]{images/blender_ratio.PNG}
+    \caption{Modifica della Mesh nel software Blender}
+    \label{fig:blender_ratio}
+\end{figure}
+
+Il formato \textbf{.fbx} non è supportato da Gazebo; tuttavia, è compatibile con Unity e può essere convertito in altri formati, come .obj o .dae (Collada), utilizzando Blender. Seguendo lo stesso procedimento adottato per il file .obj, quindi riducendo il numero di poligoni delle mesh tramite il modificatore Decimate in Blender, la simulazione in Unity è stata eseguita correttamente.
+
+Il formato  \textbf{.dae} (Collada) è supportato da Gazebo e risulta essere ampiamente utilizzato in questo contesto. Importando i file .obj della t-shirt e della scarpa, nonché il file .fbx della t-shirt in Blender, è stato possibile esportarli nel formato .dae. Questa operazione ha permesso di caricare correttamente i vari modelli in Gazebo, facilitando la simulazione degli indumenti nel simulatore.
+
+In sintesi, l'utilizzo combinato di Blender per l'ottimizzazione delle mesh e la conversione dei formati, insieme all'applicazione del componente Cloth in Unity, ha consentito di ottenere simulazioni più realistiche del comportamento dei tessuti, migliorando l'interazione tra il robot e gli indumenti nel contesto del progetto.
+
+\subsection{Componente Cloth e relativo Manuale}
+Tra la documentazione di Unity è possibile trovare anche quella relativa al componente Cloth e in seguito verranno riassunti i passaggi fondamentali per utilizzarlo al meglio.
+
+Per implementare una simulazione di tessuto in Unity, è necessario aggiungere il componente Cloth a un oggetto mesh. Ecco i passaggi fondamentali:
+\begin{itemize}
+    \item \textbf{Preparazione della Mesh}: è importante assicurarsi che l'oggetto a cui si desidera applicare il tessuto abbia una mesh adeguata, e quindi, come visto in precedenza, anche un numero adeguato di poligoni della mesh.
+    
+    \item \textbf{Aggiunta del Componente}: una volta importato il file su Unity è sufficiente selezionare l'oggetto nella gerarchia di Unity e, nel pannello Inspector, cliccare su "Add Component", selezionare "Physics" e poi "Cloth" dalla lista dei componenti disponibili.
+
+    \item \textbf{Configurazione}: Una volta aggiunto il componente, sarà possibile modificare vari parametri per ottenere una simulazione personalizzata e accurata.
+\end{itemize}
+\newpage
+Affinchè la maglietta abbia una movimentazione guidata dalla fisica, deve chiaramente avere una parte della maglietta fissata e che quindi non è soggetta alla gravità. Questi su Unity vengono chiamati "Cloth Constraint" e quindi ""vincoli del Cloth".
+Di seguito una descrizione dei passaggi per applicarli correttamente alla maglietta:
+\begin{enumerate}
+    \item sul component Cloth si clicca su "Edit Cloth Constraint" come possiamo vedere dalla figura \ref{fig:cloth_constraints}
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.3\textwidth]{images/cloth_constraints.PNG}
+        \caption{Schermata Unity per l'applicazione dei vincoli}
+        \label{fig:cloth_constraints}
+    \end{figure}
+    \item successivamente si aprirà una schermata che permetterà di selezionare (tramite "Select") oppure colorare (tramite "Paint") le parti che saranno vincolate e quindi rimarranno maggiormente rigide. E' importante specificare una distanza minima nel parametro "Max Distance", in figura \ref{fig:cloth_constraints_2} è stato assegnato il valore 0.2 ed ha permesso un buon risultato.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.5\textwidth]{images/cloth_constraints_2.PNG}
+        \caption{Schermata Unity per la selezione delle parti della mesh a cui applicare i vincoli}
+        \label{fig:cloth_constraints_2}
+    \end{figure}
+\end{enumerate}
+
+
+
+Infine una descrizione delle principali proprietà del componente Cloth e di come sono state utilizzate nell'implementazione del tessuto realistico della maglietta:
+\begin{itemize}
+    \item \textbf{Stretching Stiffness}: Determina la resistenza del tessuto all'allungamento. Valori più alti rendono il tessuto meno incline a estendersi.
+
+    \item \textbf{Bending Stiffness}: Controlla la rigidità alla flessione del tessuto. Un valore elevato riduce la capacità del tessuto di piegarsi.
+    
+    \item \textbf{Use Tethers}: Applica vincoli che aiutano a prevenire che le particelle mobili del tessuto si allontanino troppo da quelle fisse, riducendo l'eccessiva elasticità.
+    
+    \item \textbf{Use Gravity}: Indica se la gravità deve influenzare il tessuto.
+    
+    \item \textbf{Damping}: Coefficiente che determina quanto velocemente il movimento del tessuto si smorza nel tempo.
+    
+    \item \textbf{External Acceleration}: Applica un'accelerazione costante esterna al tessuto, utile per simulare effetti come il vento.
+    
+    \item \textbf{Random Acceleration}: Introduce un'accelerazione casuale al tessuto, aggiungendo variazioni imprevedibili nel movimento.
+    
+    \item \textbf{World Velocity Scale}: Determina quanto il movimento in spazio globale dell'oggetto influisce sui vertici del tessuto.
+    
+    \item \textbf{World Acceleration Scale}: Controlla l'influenza dell'accelerazione globale dell'oggetto sui vertici del tessuto.
+    
+    \item \textbf{Friction}: Imposta il coefficiente di attrito del tessuto durante le collisioni.
+    
+    \item \textbf{Collision Mass Scale}: Determina l'incremento di massa delle particelle durante le collisioni.
+    
+    \item \textbf{Use Continuous Collision}: Abilita la collisione continua per migliorare la stabilità delle interazioni.
+    
+    \item \textbf{Use Virtual Particles}: Aggiunge particelle virtuali per migliorare la stabilità delle collisioni.
+    
+    \item \textbf{Solver Frequency}: Specifica il numero di iterazioni del solver per secondo, influenzando la precisione della simulazione.
+    
+    \item \textbf{Sleep Threshold}: Definisce la soglia sotto la quale il tessuto entra in stato di "sonno", interrompendo la simulazione fino a nuove interazioni.
+    
+    \item \textbf{Capsule Colliders}: Array di collisori a capsula con cui il tessuto può interagire.
+    
+    \item \textbf{Sphere Colliders}: Array di coppie di collisori sferici con cui il tessuto può interagire.
+\end{itemize}
+
+\subsection{Componente Cloth e collisioni con altri materiali}
 \section{Camera}
 
 \chapter{Risultati ottenuti e discussione}

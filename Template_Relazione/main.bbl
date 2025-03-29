@@ -1,7 +1,7 @@
 \begin{thebibliography}{1}
 
-\bibitem{DCdriver}
-``{MD10C DCdriver}, url =
-  {https://www.cytron.io/p-10amp-5v-30v-dc-motor-driver}.''
+\bibitem{ManualCloth}
+``Manual cloth unity.''
+\newblock \url{https://docs.unity3d.com/Manual/class-Cloth.html}.
 
 \end{thebibliography}
