@@ -168,7 +168,7 @@
 
 \pagenumbering{arabic}
 \tableofcontents
-\addcontentsline{toc}{chapter}{Introduzione}
+%\addcontentsline{toc}{chapter}{Introduzione}
 \newpage
 
 \pagestyle{plain}
@@ -176,7 +176,8 @@
 \newpage
 \chapter{Introduzione}
 \textit{Il capitolo fornisce una panoramica del progetto, descrivendo l'obiettivo principale di sviluppare e simulare la movimentazione di un robot TM-900 con un tessuto, attraverso l'integrazione di ROS2 e Unity. Viene fornita una panoramica delle motivazioni per l'uso di questi software e delle principali fasi del progetto.}
-\newline 
+\vspace{0.5cm}
+\newline
 Il presente progetto ha come obiettivo lo sviluppo e la simulazione della movimentazione di un robot TM-900 con un tessuto (cloth), utilizzando l'integrazione di software avanzati come ROS2 e Unity. Il contesto applicativo del progetto si colloca nell'ambito industriale e robotico, ponendo particolare attenzione sull'ottimizzazione dei processi di smontaggio di oggetti, come abiti e tessuti, mediante l'interazione con il robot. L'azienda coinvolta utilizza il software Cloth 3D per la modellazione degli abiti, mentre Unity e Gazebo sono impiegati per simulare la movimentazione del robot e l'interazione con gli oggetti.
 Uno degli obiettivi di questo progetto è quello di analizzare in dettaglio l'integrazione tra ROS2 e Unity, scelta motivata dalle potenzialità di questi due strumenti. ROS2 offre una gestione efficiente della comunicazione tra il robot e il sistema di simulazione, mentre Unity fornisce una grafica avanzata che consente di visualizzare e simulare i movimenti del robot in tempo reale, sfruttando ROS2. L'integrazione di questi due software è stata scelta per soddisfare la necessità di creare un ambiente simulativo realistico, utile non solo per eseguire test simulativi, ma anche per implementare successivamente il sistema su un robot reale.
 In questo modo, l'integrazione tra ROS2 e Unity consente di gestire il robot e simularlo in ambiente virtuale, migliorando l'efficienza e la precisione nelle operazioni robotiche. Il progetto affronta diversi task, tra cui la valutazione e la compatibilità dei tessuti con i vari software, la simulazione della movimentazione del robot e dell'oggetto da smontare in un ambiente condiviso, l'acquisizione e la definizione di una sequenza di fasi di smontaggio, l'esecuzione delle fasi in simulazione con il robot e, infine, l'esecuzione delle stesse fasi su un robot reale.
@@ -218,6 +219,8 @@ Unity è un motore di gioco e simulazione ampiamente utilizzato per la creazione
 In questo progetto, Unity è stato utilizzato come ambiente di simulazione per il robot. Grazie alla sua compatibilità con ROS2 tramite il ROS-TCP Connector, Unity ha permesso di visualizzare il robot, simulare i suoi movimenti e interagire con l'ambiente circostante. Il motore fisico di Unity è stato sfruttato soprattutto per replicare le dinamiche fisiche della maglietta, garantendo una simulazione più realistica delle interazioni tra un indumento e gli oggetti della scena.
 Per lo sviluppo del progetto, abbiamo utilizzato Unity 6, la versione più recente al momento di sviluppo del progetto.
 
+\section{Gazebo}
+
 
 
 \newpage
@@ -244,9 +247,74 @@ Per lo sviluppo del progetto, abbiamo utilizzato Unity 6, la versione più recen
 
 \subsection{URDF Importer}
 
-\section{Moveit}
+L'\textbf{URDF Importer} di Unity è uno strumento che permette di importare file URDF (Unified Robot Description Format) direttamente in Unity, consentendo così di visualizzare e interagire con modelli robotici 3D all'interno dell'ambiente di simulazione. Questo strumento risulta particolarmente utile nel progetto perché permette di integrare ROS 2 e Unity tramite il file URDF fortemente utilizzato in robotica, inoltre semplifica la gestione della cinematica e della fisica dei robot senza dover ricostruire manualmente i modelli.
 
-\section{Gazebo}
+Il formato URDF è ampiamente utilizzato nel mondo della robotica per descrivere la struttura dei robot, inclusi i links, i joints, i materiali e i sensori. L'URDF Importer converte questi modelli in GameObjects di Unity, mantenendo la gerarchia dei componenti e assegnando i giunti come oggetti fisici controllabili.
+
+Nel nostro progetto, il robot utilizzato è un Omron TM5-900, un braccio robotico con sei gradi di libertà. Il modello URDF di questo robot contiene:
+\begin{itemize}
+    \item - Link per ogni segmento del braccio, dalla base all'end-effector.
+    \item - Joints di tipo rotoidale che consentono il movimento.
+    \item - Materiali per rappresentare visivamente il robot in Unity.
+    \item - Collisioni e inerzia, che permettono una simulazione fisica realistica.
+\end{itemize}
+
+L'importazione di questo URDF in Unity è essenziale per poterlo visualizzare correttamente e per interagire con esso tramite ROS 2.
+
+Per importare installare lo strumento URDF Importer è possibile seguire i seguenti passaggi:
+\begin{itemize}
+    \item Cliccare su "Window" poi "Package Manager"
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.4\textwidth]{images/URDF_Importer_1.png}
+        \caption{URDF Importer Tutorial}
+        \label{fig:URDF_Importer_1}
+    \end{figure}
+    \item Cliccare su "+" e selezionare "Add package from git URL..."
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.4\textwidth]{images/URDF_Importer_2.png}
+        \caption{URDF Importer Tutorial}
+        \label{fig:URDF_Importer_2}
+    \end{figure}
+    \item Inserire il seguente URL della repository: 
+    \url{https://github.com/Unity-Technologies/URDF-Importer.git} e cliccare "install" per avviare l'installazione
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.4\textwidth]{images/URDF_Importer_3.png}
+        \caption{URDF Importer Tutorial}
+        \label{fig:URDF_Importer_3}
+    \end{figure}
+\end{itemize}
+
+Per importare il modello URDF su Unity invece:
+\begin{itemize}
+    \item Importare il file URDF e le varie mesh sia visual che collision nella cartella "Assets" del progetto Unity
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{images/URDF_Importer_4.png}
+        \caption{URDF Importer Tutorial}
+        \label{fig:URDF_Importer_4}
+    \end{figure}
+    \item Verificare che i vari path delle mesh all'interno del file URDF siano del tipo ""package://path/delle/meshes" come mostrato in figura \ref{fig:URDF_Importer_5}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{images/URDF_Importer_5.png}
+        \caption{URDF Importer Tutorial}
+        \label{fig:URDF_Importer_5}
+    \end{figure}
+    \item Tasto destro sul file URDF e cliccare su "Import Robot from selected URDF file"
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.35\textwidth]{images/URDF_Importer_6.png}
+        \caption{URDF Importer Tutorial}
+        \label{fig:URDF_Importer_6}
+    \end{figure}
+\end{itemize}
+
+\section{Movimentazioe TM5-900 tramite Moveit}
+
+\section{Importazione TM5-900 in Gazebo}
 
 \section{Cloth di Unity}
 Il sistema \textbf{Cloth di Unity} offre una soluzione basata sulla fisica per simulare tessuti e materiali flessibili all'interno di ambienti 3D. Sebbene sia stato progettato principalmente per rappresentare abbigliamento su personaggi, può essere utilizzato anche per altri scopi, come bandiere, tende o qualsiasi altro oggetto che richieda una simulazione realistica del comportamento dei tessuti\cite{ManualCloth}.
@@ -288,7 +356,7 @@ Per implementare una simulazione di tessuto in Unity, è necessario aggiungere i
 
     \item \textbf{Configurazione}: Una volta aggiunto il componente, sarà possibile modificare vari parametri per ottenere una simulazione personalizzata e accurata.
 \end{itemize}
-\newpage
+
 Affinchè la maglietta abbia una movimentazione guidata dalla fisica, deve chiaramente avere una parte della maglietta fissata e che quindi non è soggetta alla gravità. Questi su Unity vengono chiamati "Cloth Constraint" e quindi ""vincoli del Cloth".
 Di seguito una descrizione dei passaggi per applicarli correttamente alla maglietta:
 \begin{enumerate}
@@ -358,6 +426,8 @@ Una soluzione consiste nel posizionare una griglia di piccole Sphere Colliders s
 \item Ottimizzare il numero e la dimensione delle sfere per ottenere una buona resa senza sovraccaricare il motore fisico.
 \end{itemize}
 \section{Camera}
+
+\section{Applicazione finale}
 
 \chapter{Risultati ottenuti e discussione}
 % Nell'introduzione al capitolo specificate anche la versione dell'STM32CubeIDE e dell'STM32CubeMX che avete usato (se avete cambiato versione nel corso del progetto mettete l'ultima, quella su cui è sviluppato il codice che consegnate).
