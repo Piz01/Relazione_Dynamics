@@ -240,8 +240,8 @@ Per lo sviluppo del progetto, abbiamo utilizzato Unity 6, la versione più recen
 
 \section{Integrazione ROS-Unity}
 
-\subsection{ROS-TCP Connector}
-\subsection{ROS-TCP Endpoint }
+\subsection{ROS-TCP Connector \& ROS-TCP Endpoint}
+
 \subsection{URDF Importer}
 
 \section{Moveit}
@@ -310,44 +310,53 @@ Di seguito una descrizione dei passaggi per applicarli correttamente alla maglie
 
 
 
-% Infine una descrizione delle principali proprietà del componente Cloth e di come sono state utilizzate nell'implementazione del tessuto realistico della maglietta:
-% \begin{itemize}
-%     \item \textbf{Stretching Stiffness}: Determina la resistenza del tessuto all'allungamento. Valori più alti rendono il tessuto meno incline a estendersi.
+Infine una descrizione delle principali proprietà del componente Cloth e di come sono state utilizzate nell'implementazione del tessuto realistico della maglietta:
+\begin{itemize}
+    \item \textbf{Stretching Stiffness}: Determina la resistenza del tessuto all'allungamento. Valori più alti rendono il tessuto meno incline a estendersi. Un parametro accettabile per la maglietta è risultato compreso tra 0,5 e 0,7.
 
-%     \item \textbf{Bending Stiffness}: Controlla la rigidità alla flessione del tessuto. Un valore elevato riduce la capacità del tessuto di piegarsi.
+    \item \textbf{Bending Stiffness}: Controlla la rigidità alla flessione del tessuto. Un valore elevato riduce la capacità del tessuto di piegarsi. Un parametro accettabile per la maglietta è risultato compreso tra 0,7 e 0,9.
+
     
-%     \item \textbf{Use Tethers}: Applica vincoli che aiutano a prevenire che le particelle mobili del tessuto si allontanino troppo da quelle fisse, riducendo l'eccessiva elasticità.
+    \item \textbf{Use Tethers}: Applica vincoli che aiutano a prevenire che le particelle mobili del tessuto si allontanino troppo da quelle fisse, riducendo l'eccessiva elasticità.
     
-%     \item \textbf{Use Gravity}: Indica se la gravità deve influenzare il tessuto.
+    \item \textbf{Use Gravity}: Indica se la gravità deve influenzare il tessuto. Da applicare nel caso in cui si voglia vedere una movimentazione fisica della maglietta e condizionata dalla gravità.
     
-%     \item \textbf{Damping}: Coefficiente che determina quanto velocemente il movimento del tessuto si smorza nel tempo.
+    \item \textbf{Damping}: Coefficiente che determina quanto velocemente il movimento del tessuto si smorza nel tempo.  Un parametro accettabile per la maglietta è risultato compreso tra 0,2 e 0,4.
     
-%     \item \textbf{External Acceleration}: Applica un'accelerazione costante esterna al tessuto, utile per simulare effetti come il vento.
+    \item \textbf{External Acceleration}: Applica un'accelerazione costante esterna al tessuto, utile per simulare effetti come il vento.
     
-%     \item \textbf{Random Acceleration}: Introduce un'accelerazione casuale al tessuto, aggiungendo variazioni imprevedibili nel movimento.
+    \item \textbf{Random Acceleration}: Introduce un'accelerazione casuale al tessuto, aggiungendo variazioni imprevedibili nel movimento.
     
-%     \item \textbf{World Velocity Scale}: Determina quanto il movimento in spazio globale dell'oggetto influisce sui vertici del tessuto.
+    \item \textbf{World Velocity Scale}: Determina quanto il movimento in spazio globale dell'oggetto influisce sui vertici del tessuto.
     
-%     \item \textbf{World Acceleration Scale}: Controlla l'influenza dell'accelerazione globale dell'oggetto sui vertici del tessuto.
+    \item \textbf{World Acceleration Scale}: Controlla l'influenza dell'accelerazione globale dell'oggetto sui vertici del tessuto.
     
-%     \item \textbf{Friction}: Imposta il coefficiente di attrito del tessuto durante le collisioni.
+    \item \textbf{Friction}: Imposta il coefficiente di attrito del tessuto durante le collisioni.  Un parametro accettabile per la maglietta è risultato compreso tra 0,5 e 0,7.
     
-%     \item \textbf{Collision Mass Scale}: Determina l'incremento di massa delle particelle durante le collisioni.
+    \item \textbf{Collision Mass Scale}: Determina l'incremento di massa delle particelle durante le collisioni.
     
-%     \item \textbf{Use Continuous Collision}: Abilita la collisione continua per migliorare la stabilità delle interazioni.
+    \item \textbf{Use Continuous Collision}: Abilita la collisione continua per migliorare la stabilità delle interazioni.
     
-%     \item \textbf{Use Virtual Particles}: Aggiunge particelle virtuali per migliorare la stabilità delle collisioni.
+    \item \textbf{Use Virtual Particles}: Aggiunge particelle virtuali per migliorare la stabilità delle collisioni.
     
-%     \item \textbf{Solver Frequency}: Specifica il numero di iterazioni del solver per secondo, influenzando la precisione della simulazione.
+    \item \textbf{Solver Frequency}: Specifica il numero di iterazioni del solver per secondo, influenzando la precisione della simulazione. Un parametro accettabile per la maglietta è risultato 60 Hz.
     
-%     \item \textbf{Sleep Threshold}: Definisce la soglia sotto la quale il tessuto entra in stato di "sonno", interrompendo la simulazione fino a nuove interazioni.
+    \item \textbf{Sleep Threshold}: Definisce la soglia sotto la quale il tessuto entra in stato di "sonno", interrompendo la simulazione fino a nuove interazioni. Un parametro accettabile per la maglietta è risultato 0,1. 
     
-%     \item \textbf{Capsule Colliders}: Array di collisori a capsula con cui il tessuto può interagire.
+    \item \textbf{Capsule Colliders}: Array di collisori a capsula con cui il tessuto può interagire.
     
-%     \item \textbf{Sphere Colliders}: Array di coppie di collisori sferici con cui il tessuto può interagire.
-% \end{itemize}
+    \item \textbf{Sphere Colliders}: Array di coppie di collisori sferici con cui il tessuto può interagire.
+\end{itemize}
 
 \subsection{Componente Cloth e collisioni con altri materiali}
+Il Cloth di Unity oltre a realizzare una buona fisica per la maglietta è in grado di creare delle collisioni con altri materiali. In particolare, come è stato descritto nel capitolo precedente, si può inserire un oggetto Capsule o Sphere nel Cloth e quindi specificare alla maglietta quali e quanti oggetti dovranno avere un'interazione fisica opportuna durante la collisione. Tuttavia non è possibile far si che l'oggetto a cui è applicato il Cloth (in questo caso la maglietta) collida con un qualunque oggetto di qualunque forma geometrica. Infatti come anticipato è possibile utilizzare solo due tipi di oggetti 3D Unity: Capsule e Sphere. Questa restrizione rappresenta una problematica nel caso in cui il tessuto debba interagire con superfici piatte, angoli o forme geometriche più complesse, come un tavolo, una scatola o una struttura irregolare. Nel caso del progetto un'applicazione utile sarebbe quella di poter far interagire la maglietta con l'end effector del robot che poi riesca ad appoggiarla su una superficie piana come un tavolo. Poiché non è possibile definire direttamente colliders di tipo Mesh o Box per il Cloth, è necessario trovare soluzioni alternative per ottenere un comportamento realistico nelle simulazioni.
+\newline
+Una soluzione consiste nel posizionare una griglia di piccole Sphere Colliders sulla superficie con cui il tessuto deve interagire. In questo modo, il tessuto percepirà la presenza di una superficie continua, pur utilizzando solo colliders sferici. Per implementare questa soluzione:
+\begin{itemize}
+\item Creare uno script che generi automaticamente una matrice di sfere sulla superficie desiderata.
+\item Assicurarsi che le sfere vengano generate prima che il Cloth venga configurato, in modo che possano essere assegnate correttamente ai "Sphere Colliders" della maglietta.
+\item Ottimizzare il numero e la dimensione delle sfere per ottenere una buona resa senza sovraccaricare il motore fisico.
+\end{itemize}
 \section{Camera}
 
 \chapter{Risultati ottenuti e discussione}
