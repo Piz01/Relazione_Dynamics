@@ -353,6 +353,175 @@ Infine una descrizione delle principali proprietà del componente Cloth e di com
 \section{Interfacciamento ROS2-Unity}
 
 \subsection{ROS-TCP Connector \& ROS-TCP Endpoint}
+Il \textbf{ROS-TCP Endpoint} è il nodo ROS2 complementare al \textbf{ROS-TCP Connector}, che permette a Unity di comunicare con ROS tramite la rete. Questo nodo gestisce le connessioni TCP in ingresso provenienti da Unity e inoltra i messaggi ROS corrispondenti ai topic.
+
+\section*{\textbf{Installazione del ROS-TCP Endpoint}}
+Per utilizzare il \textbf{ROS-TCP Endpoint}, è necessario installarlo all'interno del proprio workspace ROS2:
+
+\begin{itemize}
+    \item \textbf{Clonare il repository}: \texttt{cd ~/tuo\_workspace/src}
+    \item \textbf{Compilare il workspace}: \texttt{cd ~/tuo\_workspace}
+    \begin{verbatim}
+    colcon build --symlink-install
+    source install/setup.bash
+    \end{verbatim}
+\end{itemize}
+
+\section*{\textbf{Avvio del nodo}}
+
+Per avviare il nodo \textbf{ros\_tcp\_endpoint}, bisogna eseguire il comando:
+
+\begin{verbatim}
+ros2 launch ros_tcp_endpoint endpoint.launch.py
+\end{verbatim}
+
+In questo modo si avvia il server che ascolta sulla porta TCP (di default 10000) per ricevere le connessioni da Unity.
+
+\subsection*{\textbf{Verifica del nodo}}
+Per assicurarsi che il nodo sia in esecuzione, è possibile utilizzare il comando: \begin{verbatim}
+ros2 node list
+\end{verbatim}
+
+In questo modo il nodo \textbf{/ros\_tcp\_endpoint\_node} dovrebbe essere visibile nella lista.
+
+\subsection*{\textbf{Verifica della connessione}}
+
+Per testare la connessione tra Unity e ROS2 bisogna:
+
+\begin{itemize}
+    \item \textbf{1.} Avviare ROS2 ed eseguire il nodo \texttt{ros\_tcp\_endpoint}.
+    \item \textbf{2.} Eseguire la simulazione in Unity e verificare che non vengano generati errori di connessione.
+    \item \textbf{3.} Utilizzare \texttt{ros2 topic echo} per controllare i messaggi pubblicati da Unity verso ROS2 e viceversa.
+\end{itemize}
+
+Questa configurazione permette di integrare Unity e ROS2 in un ambiente di simulazione realistico, abilitando lo scambio di dati tra il motore grafico e il framework robotico per la pianificazione e il controllo dei movimenti.
+
+\subsection*{\textbf{ROS-TCP Connector}}
+
+Il \textbf{ROS-TCP Connector} è un pacchetto sviluppato da Unity Technologies che permette di mettere in comunicazione ROS2 e Unity attraverso una connessione TCP. Questa integrazione è fondamentale perché consente di inviare e ricevere messaggi tra i due ambienti, facilitando lo sviluppo e la simulazione di robot. Grazie a questo pacchetto, Unity diventa un ambiente in cui è possibile visualizzare i dati provenienti da ROS2, testare il controllo e verificare il comportamento del robot in scenari simulati prima di passare alla fase di implementazione su un sistema reale.
+
+Il pacchetto ROS-TCP Connector include:
+
+\begin{itemize}
+    \item \textbf{ROS-TCP Connector}: permette l’invio e la ricezione di messaggi tra Unity e ROS2.
+    \item \textbf{VISUALIZATIONS PACKAGE}: utile per la visualizzazione dei messaggi in entrata e in uscita nella scena di Unity, facilitando il debug e l'analisi dei dati.
+\end{itemize}
+
+Inoltre, il pacchetto offre diverse funzionalità:
+
+\begin{itemize}
+    \item \textbf{ROSConnection}: gestisce l’intero processo di comunicazione tra Unity e ROS2.
+    \item \textbf{Message Generation}: permette di generare automaticamente classi in C\# che rappresentano i messaggi ROS2, facilitando l’interazione tra i due ambienti.
+    \item \textbf{Visualizations}: un set di API e configurazioni predefinite per rappresentare le informazioni scambiate.
+    \item \textbf{ROSGeometry}: una serie di estensioni utili per la conversione delle geometrie tra Unity e altri sistemi che semplificano la compatibilità tra gli ambienti di simulazione.
+\end{itemize}
+
+\subsection*{\textbf{Installazione del ROS-TCP Connector}}
+
+Per utilizzare il ROS-TCP Connector, è necessario installarlo all’interno di Unity e configurarlo correttamente affinché possa dialogare con ROS2.
+
+Il pacchetto è disponibile su GitHub e può essere importato in Unity tramite il Package Manager. Ecco come fare:
+
+\begin{itemize}
+    \item Aprire Unity e accedere al menu "Window", poi selezionare "Package Manager".
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.4\textwidth]{images/rostcp.jpg}
+        \caption{Package Manager in Unity}
+        \label{fig:rostcp}
+    \end{figure}
+    
+    \item Nella finestra del Package Manager, cliccare sul pulsante “+” in alto a sinistra e selezionare "Add package from git URL...".
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.4\textwidth]{images/rostcp1.jpg}
+        \caption{Package Manager in Unity}
+        \label{fig:rostcp1}
+    \end{figure}
+
+    \item Inserire l’URL del pacchetto da installare:
+    \begin{itemize}
+        \item \textbf{ROS-TCP Connector}: 
+        \url{https://github.com/Unity-Technologies/ROS-TCP-Connector.git?path=/com.unity.robotics.ros-tcp-connector}
+        \item \textbf{Visualizations Package}: 
+        \url{https://github.com/Unity-Technologies/ROS-TCP-Connector.git?path=/com.unity.robotics.visualizations}
+    \end{itemize}
+    
+    \item In alternativa, se si ha una copia locale del pacchetto, è possibile installarlo seguendo la guida ufficiale di Unity per l’installazione di pacchetti locali.
+\end{itemize}
+
+\subsection*{\textbf{Configurazione del ROS-TCP Connector}}
+
+Dopo aver installato il pacchetto, è necessario configurarlo per far sì che possa comunicare con ROS2. Questo passaggio è essenziale per garantire che Unity e ROS2 possano scambiarsi dati senza problemi.
+
+Dopo aver caricato l’oggetto, per configurare la comunicazione, bisogna:
+
+\begin{itemize}
+    \item Accedere al menu "Robotics" e selezionare "ROS Settings".
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.4\textwidth]{images/rostcp2.jpg}
+        \caption{Menu "Robotics" e "ROS Settings"}
+        \label{fig:rostcp2}
+    \end{figure}
+    
+    \item Nel campo "ROS IP Address", inserire l'indirizzo IP della macchina su cui è in esecuzione ROS2.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.4\textwidth]{images/rostcp4.jpg}
+        \caption{Configurazione dell'indirizzo IP di ROS2}
+        \label{fig:rostcp4}
+    \end{figure}
+\end{itemize}
+
+Per reperire l'indirizzo IP di ROS (ROS IP Address) sulla macchina con WSL, è sufficiente aprire un terminale e digitare:
+
+\begin{verbatim}
+hostname -I
+\end{verbatim}
+
+\subsection*{\textbf{Comunicazione tra ROS2 e Unity}}
+
+Dopo aver completato l’installazione e la configurazione, Unity sarà in grado di comunicare con ROS2 attraverso il protocollo TCP. Questo avviene tramite due modalità principali:
+
+\begin{itemize}
+    \item \textbf{Pubblicazione di Messaggi}: Unity può inviare dati a ROS2 utilizzando il componente \texttt{ROSPublisher}.
+    \item \textbf{Sottoscrizione di Messaggi}: Unity può ricevere dati da ROS2 grazie al componente \texttt{ROSSubscriber}.
+\end{itemize}
+
+Per rendere tutto operativo, è necessario avviare il nodo \texttt{ros\_tcp\_endpoint} all’interno di ROS2. Questo nodo funge da intermediario e garantisce che i messaggi possano fluire correttamente tra i due sistemi.
+
+\subsection*{\textbf{Testare la connessione tra Unity e ROS2}}
+
+
+Una volta configurata la comunicazione, è importante verificare che tutto funzioni correttamente. Ecco alcuni passaggi per effettuare un controllo:
+
+\begin{itemize}
+    \item \textbf{1. Avviare ROS2 ed eseguire il nodo \texttt{ros\_tcp\_endpoint}.}
+    \item \textbf{2. Digitare il comando per configurare l'ambiente ROS:}
+    \begin{verbatim}
+    source ~/tuo_workspace/install/setup.bash
+    \end{verbatim}
+    \item \textbf{3. Avviare il nodo tramite il comando:}
+    \begin{verbatim}
+    ros2 launch ros_tcp_endpoint endpoint.launch.py
+    \end{verbatim}
+    Questo avvierà il nodo \texttt{ROS-TCP Endpoint}, che ascolterà le connessioni da Unity sulla porta 10000 (di default).
+    \item \textbf{4. È possibile verificare se il nodo è in esecuzione tramite il comando:}
+    \begin{verbatim}
+    ros2 node list
+    \end{verbatim}
+\end{itemize}
+
+
+\subsection{Eseguire simulazione in Unity}
+\begin{itemize}
+    \item Utilizzare il comando \texttt{ros2 topic echo} per verificare se i messaggi vengono effettivamente inviati e ricevuti tra Unity e ROS2.
+\end{itemize}
+
+Se tutto è stato configurato correttamente, Unity e ROS2 saranno perfettamente integrati e potranno scambiarsi dati in tempo reale.
+
+Per concludere, grazie a questa configurazione, sarà possibile avere uno scambio di dati per la pianificazione e il controllo dei movimenti.
 
 \subsection{URDF Importer}
 
