@@ -191,10 +191,19 @@ In questo modo, l'integrazione tra ROS2 e Unity consente di gestire il robot e s
 % \textcolor{red}{NOTA: La relazione va pensata e scritta nell'ottica di dare a chi verrà dopo di voi un documento utile per capire a che punto è arrivata l'attività svolta dal vostro gruppo e per metterli in condizione di portare avanti il vostro lavoro. Di conseguenza dovete essere chiari e diretti, riportando solo le informazioni necessarie e evidenziando in modo critico cosa effettivamente funziona correttamente e cosa va migliorato}
 
 \newpage
-\chapter{Software}
+\chapter{Materiali e Metodi}
+\textit{In questo capitolo saranno presentati i materiali(principalmente software) e i metodi, quindi le tecniche utilizzate, inoltre vengono dettagliate le tecnologie impiegate e le procedure seguite, in modo da permettere la riproducibilità del progetto. In particolare la prima sezione \textbf{Integrazione ROS-Unity} approfondisce l'integrazione tra ROS 2 e Unity, analizzando strumenti chiave come ROS-TCP Connector, ROS-TCP Endpoint e URDF Importer (3.1.3). La sezione successiva tratta l'uso di \textbf{MoveIt} per la pianificazione del movimento, mentre la 3.3 descrive l'impiego di \textbf{Gazebo} per la simulazione robotica. Successivamente, la sezione 3.4 introduce \textbf{Cloth di Unity}, utilizzato per la simulazione di tessuti, e la 3.5 approfondisce la gestione della \textbf{Camera} all'interno dell'ambiente simulato.}
+
+\section{Hardware}
+\subsection{Omron TM5-900}
+\subsection{Stereo-Camera RealSense D435i}
+
+\section{Software}
 \textit{In questo capitolo verranno analizzati i software principali utilizzati per il progetto: ROS 2, Unity e Gazebo. Verranno fornite una panoramica generale, informazioni sul loro utilizzo e sulle versioni adottate, evidenziando eventuali problematiche riscontrate e le soluzioni adottate.}
 
-\section{ROS2}
+\subsection{Ubuntu}
+
+\subsection{Robot Operating System 2}
 
 \begin{figure}[h!]
     \centering
@@ -203,10 +212,15 @@ In questo modo, l'integrazione tra ROS2 e Unity consente di gestire il robot e s
     \label{fig:ROS2}
 \end{figure}
 
-\textbf{ROS 2} (Robot Operating System 2) è un framework open-source per lo sviluppo di applicazioni robotiche. Fornisce una serie di strumenti, librerie e convenzioni per facilitare la comunicazione tra i componenti software di un sistema robotico. ROS 2 è progettato per migliorare la scalabilità, la sicurezza e la compatibilità con i sistemi distribuiti rispetto al suo predecessore, ROS 1. Il suo utilizzo è diffuso in ricerca e industria per il controllo di robot mobili, bracci robotici e veicoli autonomi.
+\textbf{ROS 2} (Robot Operating System 2) \cite{ROS2} è un framework open-source per lo sviluppo di applicazioni robotiche. Fornisce una serie di strumenti, librerie e convenzioni per facilitare la comunicazione tra i componenti software di un sistema robotico. ROS 2 è progettato per migliorare la scalabilità, la sicurezza e la compatibilità con i sistemi distribuiti rispetto al suo predecessore, ROS 1. Il suo utilizzo è diffuso in ricerca e industria per il controllo di robot mobili, bracci robotici e veicoli autonomi.
 In questo progetto, ROS 2 è stato utilizzato per gestire la comunicazione tra il robot simulato in Unity e i componenti di controllo. ROS 2 permette lo scambio di messaggi tra i nodi, abilitando il controllo del robot da Unity e viceversa. In particolare, il framework ha permesso l'integrazione con il sistema di simulazione, la gestione delle traiettorie e il controllo dei giunti del manipolatore.
 Inizialmente, il progetto è stato avviato con ROS 2 Jazzy, ma si sono riscontrati diversi problemi di compatibilità e instabilità, in particolare con l'integrazione del ROS-TCP Connector per Unity. Per questo motivo, è stato deciso di passare a ROS 2 Humble, una versione più stabile e ampiamente supportata, che ha garantito una migliore compatibilità con gli strumenti di sviluppo utilizzati.
-\section{Unity}
+
+\subsection{Moveit}
+
+\subsection{Gazebo}
+
+\subsection{Unity e UnityHUB}
 
 \begin{figure}[h!]
     \centering
@@ -215,108 +229,11 @@ Inizialmente, il progetto è stato avviato con ROS 2 Jazzy, ma si sono riscontra
     \label{fig:UNITY}
 \end{figure}
 
-Unity è un motore di gioco e simulazione ampiamente utilizzato per la creazione di ambienti interattivi in tempo reale. Sebbene sia nato per lo sviluppo di videogiochi, il suo utilizzo si è esteso ad applicazioni di simulazione, robotica, realtà virtuale e aumentata. Unity permette di creare ambienti 3D realistici e interattivi grazie al suo motore grafico avanzato e alle sue funzionalità di scripting basate su C\#.
+Unity \cite{Unity} è un motore di gioco e simulazione ampiamente utilizzato per la creazione di ambienti interattivi in tempo reale. Sebbene sia nato per lo sviluppo di videogiochi, il suo utilizzo si è esteso ad applicazioni di simulazione, robotica, realtà virtuale e aumentata. Unity permette di creare ambienti 3D realistici e interattivi grazie al suo motore grafico avanzato e alle sue funzionalità di scripting basate su C\#.
 In questo progetto, Unity è stato utilizzato come ambiente di simulazione per il robot. Grazie alla sua compatibilità con ROS2 tramite il ROS-TCP Connector, Unity ha permesso di visualizzare il robot, simulare i suoi movimenti e interagire con l'ambiente circostante. Il motore fisico di Unity è stato sfruttato soprattutto per replicare le dinamiche fisiche della maglietta, garantendo una simulazione più realistica delle interazioni tra un indumento e gli oggetti della scena.
 Per lo sviluppo del progetto, abbiamo utilizzato Unity 6, la versione più recente al momento di sviluppo del progetto.
 
-\section{Gazebo}
-
-
-
-\newpage
-\chapter{Materiali e Metodi}
-\label{Materiali e Metodi}
-\textit{In questo capitolo saranno presentati i materiali(principalmente software) e i metodi, quindi le tecniche utilizzate, inoltre vengono dettagliate le tecnologie impiegate e le procedure seguite, in modo da permettere la riproducibilità del progetto. In particolare la prima sezione \textbf{Integrazione ROS-Unity} approfondisce l'integrazione tra ROS 2 e Unity, analizzando strumenti chiave come ROS-TCP Connector, ROS-TCP Endpoint e URDF Importer (3.1.3). La sezione successiva tratta l'uso di \textbf{MoveIt} per la pianificazione del movimento, mentre la 3.3 descrive l'impiego di \textbf{Gazebo} per la simulazione robotica. Successivamente, la sezione 3.4 introduce \textbf{Cloth di Unity}, utilizzato per la simulazione di tessuti, e la 3.5 approfondisce la gestione della \textbf{Camera} all'interno dell'ambiente simulato.}
-
-% \section{Componente1}
-% \section{Componente2}
-% \section{Schema dei collegamenti}
-% Inserire uno schema dei collegamenti analogo a quello in Figura \ref{fig:schema}. Si suggerisce per lo scopo di usare il software "draw.io". Nello schema riportare tutti i collegamenti tra i componenti, specificando quale pin di un componente1 si collega con quale pin di un componente2 (per la maggior parte dei collegamenti dovete cioè avere una linea con 2 label). \\
-% Inserire anche una descrizione testuale dello schema.
-
-% \begin{figure}[H]
-% \centering
-% \includegraphics[width=0.8\textwidth,keepaspectratio]{figures/Schema.JPG}
-% \caption{Schema dei collegamenti}
-% \label{fig:schema}
-% \end{figure}
-
-\section{Integrazione ROS-Unity}
-
-\subsection{ROS-TCP Connector \& ROS-TCP Endpoint}
-
-\subsection{URDF Importer}
-
-L'\textbf{URDF Importer} di Unity è uno strumento che permette di importare file URDF (Unified Robot Description Format) direttamente in Unity, consentendo così di visualizzare e interagire con modelli robotici 3D all'interno dell'ambiente di simulazione. Questo strumento risulta particolarmente utile nel progetto perché permette di integrare ROS 2 e Unity tramite il file URDF fortemente utilizzato in robotica, inoltre semplifica la gestione della cinematica e della fisica dei robot senza dover ricostruire manualmente i modelli.
-
-Il formato URDF è ampiamente utilizzato nel mondo della robotica per descrivere la struttura dei robot, inclusi i links, i joints, i materiali e i sensori. L'URDF Importer converte questi modelli in GameObjects di Unity, mantenendo la gerarchia dei componenti e assegnando i giunti come oggetti fisici controllabili.
-
-Nel nostro progetto, il robot utilizzato è un Omron TM5-900, un braccio robotico con sei gradi di libertà. Il modello URDF di questo robot contiene:
-\begin{itemize}
-    \item - Link per ogni segmento del braccio, dalla base all'end-effector.
-    \item - Joints di tipo rotoidale che consentono il movimento.
-    \item - Materiali per rappresentare visivamente il robot in Unity.
-    \item - Collisioni e inerzia, che permettono una simulazione fisica realistica.
-\end{itemize}
-
-L'importazione di questo URDF in Unity è essenziale per poterlo visualizzare correttamente e per interagire con esso tramite ROS 2.
-
-Per importare installare lo strumento URDF Importer è possibile seguire i seguenti passaggi:
-\begin{itemize}
-    \item Cliccare su "Window" poi "Package Manager"
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.4\textwidth]{images/URDF_Importer_1.png}
-        \caption{URDF Importer Tutorial}
-        \label{fig:URDF_Importer_1}
-    \end{figure}
-    \item Cliccare su "+" e selezionare "Add package from git URL..."
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.4\textwidth]{images/URDF_Importer_2.png}
-        \caption{URDF Importer Tutorial}
-        \label{fig:URDF_Importer_2}
-    \end{figure}
-    \item Inserire il seguente URL della repository: 
-    \url{https://github.com/Unity-Technologies/URDF-Importer.git} e cliccare "install" per avviare l'installazione
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.4\textwidth]{images/URDF_Importer_3.png}
-        \caption{URDF Importer Tutorial}
-        \label{fig:URDF_Importer_3}
-    \end{figure}
-\end{itemize}
-
-Per importare il modello URDF su Unity invece:
-\begin{itemize}
-    \item Importare il file URDF e le varie mesh sia visual che collision nella cartella "Assets" del progetto Unity
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.5\textwidth]{images/URDF_Importer_4.png}
-        \caption{URDF Importer Tutorial}
-        \label{fig:URDF_Importer_4}
-    \end{figure}
-    \item Verificare che i vari path delle mesh all'interno del file URDF siano del tipo ""package://path/delle/meshes" come mostrato in figura \ref{fig:URDF_Importer_5}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.5\textwidth]{images/URDF_Importer_5.png}
-        \caption{URDF Importer Tutorial}
-        \label{fig:URDF_Importer_5}
-    \end{figure}
-    \item Tasto destro sul file URDF e cliccare su "Import Robot from selected URDF file"
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.35\textwidth]{images/URDF_Importer_6.png}
-        \caption{URDF Importer Tutorial}
-        \label{fig:URDF_Importer_6}
-    \end{figure}
-\end{itemize}
-
-\section{Movimentazioe TM5-900 tramite Moveit}
-
-\section{Importazione TM5-900 in Gazebo}
-
-\section{Cloth di Unity}
+\subsection{Strumento Cloth di Unity}
 Il sistema \textbf{Cloth di Unity} offre una soluzione basata sulla fisica per simulare tessuti e materiali flessibili all'interno di ambienti 3D. Sebbene sia stato progettato principalmente per rappresentare abbigliamento su personaggi, può essere utilizzato anche per altri scopi, come bandiere, tende o qualsiasi altro oggetto che richieda una simulazione realistica del comportamento dei tessuti\cite{ManualCloth}.
 In questo progetto, il componente Cloth riveste un ruolo central,poiché il compito finale prevede che l'indumento manipolato dal robot presenti una fisica il più possibile realistica, simulando accuratamente il comportamento del tessuto. A tal fine, sono stati forniti tre file principali relativi a una maglietta: un file \textbf{OBJ}, un file \textbf{FBX} e un fil \textbf{Collada}. 
 L'analisi di questi file ha permesso di ottenere informazioni utili riguardo al formato da utilizzare e alle caratteristiche della mesh per applicare efficacemente il componente Cloth.
@@ -345,7 +262,7 @@ Il formato  \textbf{.dae} (Collada) è supportato da Gazebo e risulta essere amp
 
 In sintesi, l'utilizzo combinato di Blender per l'ottimizzazione delle mesh e la conversione dei formati, insieme all'applicazione del componente Cloth in Unity, ha consentito di ottenere simulazioni più realistiche del comportamento dei tessuti, migliorando l'interazione tra il robot e gli indumenti nel contesto del progetto.
 
-\subsection{Componente Cloth e relativo Manuale}
+%--------------------------------------------------------------------------------------------------------%
 Tra la documentazione di Unity è possibile trovare anche quella relativa al componente Cloth e in seguito verranno riassunti i passaggi fondamentali per utilizzarlo al meglio.
 
 Per implementare una simulazione di tessuto in Unity, è necessario aggiungere il componente Cloth a un oggetto mesh. Ecco i passaggi fondamentali:
@@ -416,6 +333,99 @@ Infine una descrizione delle principali proprietà del componente Cloth e di com
     \item \textbf{Sphere Colliders}: Array di coppie di collisori sferici con cui il tessuto può interagire.
 \end{itemize}
 
+
+
+% \section{Componente1}
+% \section{Componente2}
+% \section{Schema dei collegamenti}
+% Inserire uno schema dei collegamenti analogo a quello in Figura \ref{fig:schema}. Si suggerisce per lo scopo di usare il software "draw.io". Nello schema riportare tutti i collegamenti tra i componenti, specificando quale pin di un componente1 si collega con quale pin di un componente2 (per la maggior parte dei collegamenti dovete cioè avere una linea con 2 label). \\
+% Inserire anche una descrizione testuale dello schema.
+
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=0.8\textwidth,keepaspectratio]{figures/Schema.JPG}
+% \caption{Schema dei collegamenti}
+% \label{fig:schema}
+% \end{figure}
+
+\section{Predisposizione dei Software nel PC}
+
+\section{Interfacciamento ROS2-Unity}
+
+\subsection{ROS-TCP Connector \& ROS-TCP Endpoint}
+
+\subsection{URDF Importer}
+
+L'\textbf{URDF Importer} \cite{URDF-Importer} di Unity è uno strumento che permette di importare file URDF (Unified Robot Description Format) direttamente in Unity, consentendo così di visualizzare e interagire con modelli robotici 3D all'interno dell'ambiente di simulazione. Questo strumento risulta particolarmente utile nel progetto perché permette di integrare ROS 2 e Unity tramite il file URDF fortemente utilizzato in robotica, inoltre semplifica la gestione della cinematica e della fisica dei robot senza dover ricostruire manualmente i modelli.
+
+Il formato URDF è ampiamente utilizzato nel mondo della robotica per descrivere la struttura dei robot, inclusi i links, i joints, i materiali e i sensori. L'URDF Importer converte questi modelli in GameObjects di Unity, mantenendo la gerarchia dei componenti e assegnando i giunti come oggetti fisici controllabili.
+
+Nel nostro progetto, il robot utilizzato è un Omron TM5-900, un braccio robotico con sei gradi di libertà. Il modello URDF di questo robot contiene:
+\begin{itemize}
+    \item - Link per ogni segmento del braccio, dalla base all'end-effector.
+    \item - Joints di tipo rotoidale che consentono il movimento.
+    \item - Materiali per rappresentare visivamente il robot in Unity.
+    \item - Collisioni e inerzia, che permettono una simulazione fisica realistica.
+\end{itemize}
+
+L'importazione di questo URDF in Unity è essenziale per poterlo visualizzare correttamente e per interagire con esso tramite ROS 2.
+
+Per importare installare lo strumento URDF Importer è possibile seguire i seguenti passaggi:
+\begin{itemize}
+    \item Cliccare su "Window" poi "Package Manager"
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.4\textwidth]{images/URDF_Importer_1.png}
+        \caption{URDF Importer Tutorial}
+        \label{fig:URDF_Importer_1}
+    \end{figure}
+    \item Cliccare su "+" e selezionare "Add package from git URL..."
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.4\textwidth]{images/URDF_Importer_2.png}
+        \caption{URDF Importer Tutorial}
+        \label{fig:URDF_Importer_2}
+    \end{figure}
+    \item Inserire il seguente URL della repository: 
+    \url{https://github.com/Unity-Technologies/URDF-Importer.git} e cliccare "install" per avviare l'installazione
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.4\textwidth]{images/URDF_Importer_3.png}
+        \caption{URDF Importer Tutorial}
+        \label{fig:URDF_Importer_3}
+    \end{figure}
+\end{itemize}
+
+Per importare il modello URDF su Unity invece:
+\begin{itemize}
+    \item Importare il file URDF e le varie mesh sia visual che collision nella cartella "Assets" del progetto Unity
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{images/URDF_Importer_4.png}
+        \caption{URDF Importer Tutorial}
+        \label{fig:URDF_Importer_4}
+    \end{figure}
+    \item Verificare che i vari path delle mesh all'interno del file URDF siano del tipo ""package://path/delle/meshes" come mostrato in figura \ref{fig:URDF_Importer_5}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{images/URDF_Importer_5.png}
+        \caption{URDF Importer Tutorial}
+        \label{fig:URDF_Importer_5}
+    \end{figure}
+    \item Tasto destro sul file URDF e cliccare su "Import Robot from selected URDF file"
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.35\textwidth]{images/URDF_Importer_6.png}
+        \caption{URDF Importer Tutorial}
+        \label{fig:URDF_Importer_6}
+    \end{figure}
+\end{itemize}
+
+\chapter{Analisi Preliminari e Problematiche Riscontrate}
+
+\section{Problematiche sulle Compatibilità dei Software Utilizzati}
+
+\section{Compatibilità dei File 3D con Unity e Gazebo}
 \subsection{Componente Cloth e collisioni con altri materiali}
 Il Cloth di Unity oltre a realizzare una buona fisica per la maglietta è in grado di creare delle collisioni con altri materiali. In particolare, come è stato descritto nel capitolo precedente, si può inserire un oggetto Capsule o Sphere nel Cloth e quindi specificare alla maglietta quali e quanti oggetti dovranno avere un'interazione fisica opportuna durante la collisione. Tuttavia non è possibile far si che l'oggetto a cui è applicato il Cloth (in questo caso la maglietta) collida con un qualunque oggetto di qualunque forma geometrica. Infatti come anticipato è possibile utilizzare solo due tipi di oggetti 3D Unity: Capsule e Sphere. Questa restrizione rappresenta una problematica nel caso in cui il tessuto debba interagire con superfici piatte, angoli o forme geometriche più complesse, come un tavolo, una scatola o una struttura irregolare. Nel caso del progetto un'applicazione utile sarebbe quella di poter far interagire la maglietta con l'end effector del robot che poi riesca ad appoggiarla su una superficie piana come un tavolo. Poiché non è possibile definire direttamente colliders di tipo Mesh o Box per il Cloth, è necessario trovare soluzioni alternative per ottenere un comportamento realistico nelle simulazioni.
 \newline
@@ -425,6 +435,47 @@ Una soluzione consiste nel posizionare una griglia di piccole Sphere Colliders s
 \item Assicurarsi che le sfere vengano generate prima che il Cloth venga configurato, in modo che possano essere assegnate correttamente ai "Sphere Colliders" della maglietta.
 \item Ottimizzare il numero e la dimensione delle sfere per ottenere una buona resa senza sovraccaricare il motore fisico.
 \end{itemize}
+\chapter{Struttura del workspace ROS2}
+
+\chapter{Test Effettuati e Risultati Ottenuti}
+
+\chapter{Conclusioni}
+
+\section{Movimentazioe TM5-900 tramite Moveit}
+Introduzione a MoveIt
+\textbf{MoveIt} è una delle librerie più utilizzate per la pianificazione del movimento in ROS. Consente di controllare bracci robotici, eseguire pianificazioni di traiettoria, gestire collisioni e implementare strategie di manipolazione avanzate. Grazie alla sua integrazione con ROS 2, MoveIt permette di generare e simulare movimenti in modo efficiente, facilitando l'implementazione di algoritmi di pianificazione e controllo.
+
+MoveIt utilizza il modello del robot descritto tramite URDF per comprendere la struttura cinematica del sistema e genera automaticamente il corrispettivo SRDF (Semantic Robot Description Format) contenente la generazione di movimenti validi evitando collisioni. Il suo framework è composto da diversi moduli, tra cui:
+\begin{itemize}
+    \item Motion Planning: per la generazione di traiettorie.
+    \item Collision Checking: per evitare urti tra il robot e l'ambiente.
+    \item Kinematic Solvers: per calcolare i movimenti articolari necessari a raggiungere una determinata posizione.
+    \item Trajectory Execution: per inviare comandi al robot fisico o alla simulazione.
+\end{itemize}
+
+Nel nostro progetto, MoveIt è stato utilizzato per generare i file necessari alla movimentazione del robot TM5-900. In particolare, è stato impiegato lo strumento \textbf{MoveIt Setup Assistant}, che ha permesso di:
+1. Importare l'URDF del robot: il modello 3D e la cinematica del TM5-900 sono stati letti direttamente dal file URDF.
+2. Generare il file SRDF: che definisce i gruppi cinematici, i giunti, i link e le configurazioni di pianificazione.
+3. Configurare i plugin di controllo: per connettere MoveIt a ROS 2 e inviare comandi al robot.
+4. Definire le aree di collisione: per garantire che il robot si muova senza urtare gli ostacoli.
+5. Generare automaticamente i pacchetti di configurazione: che includono i parametri per il controllo e la simulazione del TM5-900.
+
+Grazie a questa configurazione, MoveIt è stato in grado di elaborare e inviare traiettorie di movimento al robot sia nella simulazione in Unity che in ROS 2.
+
+Applicazione: Definizione di Pose e Simulazione in Unity
+
+Dopo la configurazione iniziale, il nostro obiettivo è stato quello di definire due pose specifiche per il TM5-900 e inviarle alla simulazione in Unity. Il processo seguito è stato il seguente:
+
+1. **Definizione delle pose**: Abbiamo selezionato due posizioni target per il braccio robotico, specificando le coordinate spaziali e gli angoli dei giunti.
+2. **Utilizzo di MoveIt per calcolare la traiettoria**: MoveIt ha generato una traiettoria valida evitando collisioni.
+3. **Invio dei comandi a ROS 2**: La traiettoria calcolata è stata inviata al nodo ROS 2 responsabile del controllo del robot.
+4. **Simulazione in Unity**: I dati di movimento sono stati trasmessi a Unity, dove il modello del TM5-900 si è mosso in base ai comandi ricevuti.
+
+Grazie a questo workflow, siamo riusciti a controllare il robot in modo realistico, testando la movimentazione prima di applicarla in un ambiente reale. L'integrazione tra MoveIt, ROS 2 e Unity ha reso possibile una simulazione efficace, permettendoci di validare il comportamento del TM5-900 prima della sua implementazione fisica.
+
+
+\section{Importazione TM5-900 in Gazebo}
+
 \section{Camera}
 
 \section{Applicazione finale}

@@ -1,7 +1,19 @@
 \begin{thebibliography}{1}
 
+\bibitem{ROS2}
+``Ros2.''
+\newblock \url{https://docs.ros.org/en/humble/index.html}.
+
+\bibitem{Unity}
+``Unity.''
+\newblock \url{https://docs.unity.com/}.
+
 \bibitem{ManualCloth}
 ``Manual cloth unity.''
 \newblock \url{https://docs.unity3d.com/Manual/class-Cloth.html}.
+
+\bibitem{URDF-Importer}
+``Urdf-importer.''
+\newblock \url{https://github.com/Unity-Technologies/URDF-Importer}.
 
 \end{thebibliography}

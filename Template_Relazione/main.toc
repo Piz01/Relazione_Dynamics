@@ -1,23 +1,34 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
 \contentsline {chapter}{\numberline {1}Introduzione}{2}{chapter.1}%
-\contentsline {chapter}{\numberline {2}Software}{3}{chapter.2}%
-\contentsline {section}{\numberline {2.1}ROS2}{3}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Unity}{3}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Gazebo}{4}{section.2.3}%
-\contentsline {chapter}{\numberline {3}Materiali e Metodi}{5}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Integrazione ROS-Unity}{5}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}ROS-TCP Connector \& ROS-TCP Endpoint}{5}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}URDF Importer}{5}{subsection.3.1.2}%
-\contentsline {section}{\numberline {3.2}Movimentazioe TM5-900 tramite Moveit}{8}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Importazione TM5-900 in Gazebo}{8}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Cloth di Unity}{8}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Compatibilità dei file con Gazebo e Unity}{8}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Componente Cloth e relativo Manuale}{9}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Componente Cloth e collisioni con altri materiali}{12}{subsection.3.4.3}%
-\contentsline {section}{\numberline {3.5}Camera}{12}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Applicazione finale}{12}{section.3.6}%
-\contentsline {chapter}{\numberline {4}Risultati ottenuti e discussione}{13}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Conclusioni e prospettive future}{14}{chapter.5}%
-\contentsline {chapter}{Appendici}{14}{chapter.5}%
-\contentsline {chapter}{\numberline {A}Appendice1}{15}{appendix.Alph1}%
+\contentsline {chapter}{\numberline {2}Materiali e Metodi}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Hardware}{3}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Omron TM5-900}{3}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Stereo-Camera RealSense D435i}{3}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}Software}{3}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Ubuntu}{3}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Robot Operating System 2}{3}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Moveit}{4}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Gazebo}{4}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Unity e UnityHUB}{4}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.6}Strumento Cloth di Unity}{5}{subsection.2.2.6}%
+\contentsline {subsection}{\numberline {2.2.7}Compatibilità dei file con Gazebo e Unity}{5}{subsection.2.2.7}%
+\contentsline {section}{\numberline {2.3}Predisposizione dei Software nel PC}{9}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Interfacciamento ROS2-Unity}{9}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}ROS-TCP Connector \& ROS-TCP Endpoint}{9}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}URDF Importer}{9}{subsection.2.4.2}%
+\contentsline {chapter}{\numberline {3}Analisi Preliminari e Problematiche Riscontrate}{12}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Problematiche sulle Compatibilità dei Software Utilizzati}{12}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Compatibilità dei File 3D con Unity e Gazebo}{12}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Componente Cloth e collisioni con altri materiali}{12}{subsection.3.2.1}%
+\contentsline {chapter}{\numberline {4}Struttura del workspace ROS2}{13}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Test Effettuati e Risultati Ottenuti}{14}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Conclusioni}{15}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Movimentazioe TM5-900 tramite Moveit}{15}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Importazione TM5-900 in Gazebo}{16}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Camera}{16}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Applicazione finale}{16}{section.6.4}%
+\contentsline {chapter}{\numberline {7}Risultati ottenuti e discussione}{17}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Conclusioni e prospettive future}{18}{chapter.8}%
+\contentsline {chapter}{Appendici}{18}{chapter.8}%
+\contentsline {chapter}{\numberline {A}Appendice1}{19}{appendix.Alph1}%
