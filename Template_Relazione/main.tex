@@ -158,7 +158,8 @@
 
 \raggedleft{\Large Dottorandi:\\
 \Large Serafini Andrea\\
-\Large Pellicani Ilaria\\[1cm]}
+\Large Pellicani Ilaria\\
+\Large Di Biase Alessandro\\[1cm]}
 \centering{
 \includegraphics[width=2cm]{images/dii_new.png}\\[0.3cm]
 \large Dipartimento di Ingegneria dell'Informazione\\[0.3cm]
@@ -178,9 +179,9 @@
 \textit{Il capitolo fornisce una panoramica del progetto, descrivendo l'obiettivo principale di sviluppare e simulare la movimentazione di un robot TM-900 con un tessuto, attraverso l'integrazione di ROS2 e Unity. Viene fornita una panoramica delle motivazioni per l'uso di questi software e delle principali fasi del progetto.}
 \vspace{0.5cm}
 \newline
-Il presente progetto ha come obiettivo lo sviluppo e la simulazione della movimentazione di un robot TM-900 con un tessuto (cloth), utilizzando l'integrazione di software avanzati come ROS2 e Unity. Il contesto applicativo del progetto si colloca nell'ambito industriale e robotico, ponendo particolare attenzione sull'ottimizzazione dei processi di smontaggio di oggetti, come abiti e tessuti, mediante l'interazione con il robot. L'azienda coinvolta utilizza il software Cloth 3D per la modellazione degli abiti, mentre Unity e Gazebo sono impiegati per simulare la movimentazione del robot e l'interazione con gli oggetti.
-Uno degli obiettivi di questo progetto è quello di analizzare in dettaglio l'integrazione tra ROS2 e Unity, scelta motivata dalle potenzialità di questi due strumenti. ROS2 offre una gestione efficiente della comunicazione tra il robot e il sistema di simulazione, mentre Unity fornisce una grafica avanzata che consente di visualizzare e simulare i movimenti del robot in tempo reale, sfruttando ROS2. L'integrazione di questi due software è stata scelta per soddisfare la necessità di creare un ambiente simulativo realistico, utile non solo per eseguire test simulativi, ma anche per implementare successivamente il sistema su un robot reale.
-In questo modo, l'integrazione tra ROS2 e Unity consente di gestire il robot e simularlo in ambiente virtuale, migliorando l'efficienza e la precisione nelle operazioni robotiche. Il progetto affronta diversi task, tra cui la valutazione e la compatibilità dei tessuti con i vari software, la simulazione della movimentazione del robot e dell'oggetto da smontare in un ambiente condiviso, l'acquisizione e la definizione di una sequenza di fasi di smontaggio, l'esecuzione delle fasi in simulazione con il robot e, infine, l'esecuzione delle stesse fasi su un robot reale.
+Il presente progetto ha come obiettivo lo sviluppo e la simulazione della manipolazione dei tessuti con il robot collaborativo TM5-900, utilizzando l'integrazione di software avanzati come ROS2 e Unity. Il contesto applicativo del progetto si colloca nell'ambito industriale e robotico, ponendo particolare attenzione sull'ottimizzazione dei processi di smantellamento di oggetti deformabili, come abiti e tessuti. L'azienda coinvolta utilizza il software Cloth 3D per la modellazione degli abiti, mentre Unity e Gazebo sono impiegati per simulare la movimentazione del robot e l'interazione con gli oggetti.
+Uno degli obiettivi di questo progetto è quello di analizzare in dettaglio l'integrazione tra ROS2 e Unity, scelta motivata dalle potenzialità di questi due strumenti. ROS2 offre una gestione efficiente della comunicazione tra il robot e il sistema di simulazione, mentre Unity fornisce la possibilità di simulare l'effetto della gravità sui tessuti e i movimenti del robot in tempo reale tramite una grafica avanzata. L'integrazione di questi due software è stata scelta per soddisfare la necessità di creare un ambiente simulativo realistico, utile non solo per eseguire test simulativi, ma anche per implementare successivamente il sistema su un robot reale.
+In questo modo, l'integrazione tra ROS2 e Unity consente di gestire il robot e simularlo in ambiente virtuale, migliorando l'efficienza e la precisione nelle operazioni robotiche. Il progetto affronta diversi task, tra cui la valutazione e la compatibilità dei tessuti con i vari software, la simulazione della movimentazione del robot e dell'oggetto da disassemblare in un ambiente condiviso, l'acquisizione e la definizione di una sequenza di fasi di smantellamento, l'esecuzione delle fasi in simulazione con il robot e, infine, l'esecuzione delle stesse fasi su un robot reale.
 % Spiegazione dettagliata del task assegnato al gruppo (cosa avete fatto e su quale sistema).\\
 % Se per lo svolgimento del task è stato necessario interagire con altri gruppi che hanno lavorato sullo stesso sistema presentare anche brevemente i task svolti dagli altri gruppi e spiegare la loro interconnessione.
 % Se si è invece optato per far confluire il lavoro di più gruppi in un'unica relazione, va spiegato qual era il task iniziale dei singoli gruppi e poi come è avvenuta l'integrazione. \\
@@ -235,7 +236,7 @@ Per lo sviluppo del progetto, abbiamo utilizzato Unity 6, la versione più recen
 
 \subsection{Strumento Cloth di Unity}
 Il sistema \textbf{Cloth di Unity} offre una soluzione basata sulla fisica per simulare tessuti e materiali flessibili all'interno di ambienti 3D. Sebbene sia stato progettato principalmente per rappresentare abbigliamento su personaggi, può essere utilizzato anche per altri scopi, come bandiere, tende o qualsiasi altro oggetto che richieda una simulazione realistica del comportamento dei tessuti\cite{ManualCloth}.
-In questo progetto, il componente Cloth riveste un ruolo central,poiché il compito finale prevede che l'indumento manipolato dal robot presenti una fisica il più possibile realistica, simulando accuratamente il comportamento del tessuto. A tal fine, sono stati forniti tre file principali relativi a una maglietta: un file \textbf{OBJ}, un file \textbf{FBX} e un fil \textbf{Collada}. 
+In questo progetto, il componente Cloth riveste un ruolo centrale, poiché il compito finale prevede che l'indumento manipolato dal robot presenti una fisica il più possibile realistica, simulando accuratamente il comportamento del tessuto. A tal fine, sono stati forniti tre file principali relativi a una maglietta: un file \textbf{OBJ}, un file \textbf{FBX} e un file \textbf{Collada}. 
 L'analisi di questi file ha permesso di ottenere informazioni utili riguardo al formato da utilizzare e alle caratteristiche della mesh per applicare efficacemente il componente Cloth.
 \subsection{Compatibilità dei file con Gazebo e Unity}
 Il formato \textbf{.obj} è stato testato con successo sia in Unity che in Gazebo, consentendo l'importazione corretta del modello della t-shirt in entrambi i software. Tuttavia, durante le simulazioni in Unity, l'applicazione del componente Cloth alla t-shirt ha evidenziato alcune difficoltà: il computer ha riscontrato problemi nel gestire correttamente i comandi impostati e, una volta avviata la simulazione, la t-shirt appariva deformata e non realistica, come è possibile vedere nella figura \ref{fig:cloth_error}.
@@ -274,10 +275,10 @@ Per implementare una simulazione di tessuto in Unity, è necessario aggiungere i
     \item \textbf{Configurazione}: Una volta aggiunto il componente, sarà possibile modificare vari parametri per ottenere una simulazione personalizzata e accurata.
 \end{itemize}
 
-Affinchè la maglietta abbia una movimentazione guidata dalla fisica, deve chiaramente avere una parte della maglietta fissata e che quindi non è soggetta alla gravità. Questi su Unity vengono chiamati "Cloth Constraint" e quindi ""vincoli del Cloth".
+Affinchè la maglietta abbia una movimentazione guidata dalla fisica, deve chiaramente avere una parte della maglietta fissata e che quindi non è soggetta alla gravità. Questi su Unity vengono chiamati "Cloth Constraint" e quindi "vincoli del Cloth".
 Di seguito una descrizione dei passaggi per applicarli correttamente alla maglietta:
 \begin{enumerate}
-    \item sul component Cloth si clicca su "Edit Cloth Constraint" come possiamo vedere dalla figura \ref{fig:cloth_constraints}
+    \item sul componente Cloth si clicca su "Edit Cloth Constraint" come possiamo vedere dalla figura \ref{fig:cloth_constraints}
     \begin{figure}[h!]
         \centering
         \includegraphics[width=0.3\textwidth]{images/cloth_constraints.PNG}
