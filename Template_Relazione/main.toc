@@ -4,32 +4,32 @@
 \contentsline {chapter}{\numberline {2}Materiali e Metodi}{3}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Hardware}{3}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Omron TM5-900}{3}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}Stereo-Camera RealSense D435i}{3}{subsection.2.1.2}%
-\contentsline {section}{\numberline {2.2}Software}{3}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Ubuntu}{4}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Robot Operating System 2}{4}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}Moveit}{4}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}Gazebo}{4}{subsection.2.2.4}%
-\contentsline {subsection}{\numberline {2.2.5}Unity e UnityHUB}{4}{subsection.2.2.5}%
-\contentsline {subsection}{\numberline {2.2.6}Strumento Cloth di Unity}{5}{subsection.2.2.6}%
-\contentsline {section}{\numberline {2.3}Predisposizione dei Software nel PC}{8}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Interfacciamento ROS2-Unity}{8}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}ROS-TCP Connector \& ROS-TCP Endpoint}{8}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Eseguire simulazione in Unity}{12}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}URDF Importer}{13}{subsection.2.4.3}%
-\contentsline {chapter}{\numberline {3}Analisi Preliminari e Problematiche Riscontrate}{16}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Problematiche sulle Compatibilità dei Software Utilizzati}{16}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Compatibilità dei File 3D con Unity e Gazebo}{16}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Compatibilità dei file con Gazebo e Unity}{16}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Componente Cloth e collisioni con altri materiali}{17}{subsection.3.2.2}%
-\contentsline {chapter}{\numberline {4}Struttura del workspace ROS2}{19}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Test Effettuati e Risultati Ottenuti}{20}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Conclusioni}{21}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Movimentazioe TM5-900 tramite Moveit}{21}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Importazione TM5-900 in Gazebo}{22}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Camera}{22}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Applicazione finale}{22}{section.6.4}%
-\contentsline {chapter}{\numberline {7}Risultati ottenuti e discussione}{23}{chapter.7}%
-\contentsline {chapter}{\numberline {8}Conclusioni e prospettive future}{24}{chapter.8}%
-\contentsline {chapter}{Appendici}{24}{chapter.8}%
-\contentsline {chapter}{\numberline {A}Appendice1}{25}{appendix.Alph1}%
+\contentsline {subsection}{\numberline {2.1.2}Stereo-Camera RealSense D435i}{5}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}Software}{5}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Ubuntu}{5}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Robot Operating System 2}{5}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Moveit}{6}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Gazebo}{6}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Unity e UnityHUB}{6}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.6}Strumento Cloth di Unity}{6}{subsection.2.2.6}%
+\contentsline {section}{\numberline {2.3}Predisposizione dei Software nel PC}{9}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Interfacciamento ROS2-Unity}{9}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}ROS-TCP Connector \& ROS-TCP Endpoint}{9}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Eseguire simulazione in Unity}{14}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}URDF Importer}{14}{subsection.2.4.3}%
+\contentsline {chapter}{\numberline {3}Analisi Preliminari e Problematiche Riscontrate}{18}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Problematiche sulle Compatibilità dei Software Utilizzati}{18}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Compatibilità dei File 3D con Unity e Gazebo}{18}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Compatibilità dei file con Gazebo e Unity}{18}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Componente Cloth e collisioni con altri materiali}{19}{subsection.3.2.2}%
+\contentsline {chapter}{\numberline {4}Struttura del workspace ROS2}{21}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Test Effettuati e Risultati Ottenuti}{22}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Conclusioni}{23}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Movimentazioe TM5-900 tramite Moveit}{23}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Importazione TM5-900 in Gazebo}{24}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Camera}{24}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Applicazione finale}{24}{section.6.4}%
+\contentsline {chapter}{\numberline {7}Risultati ottenuti e discussione}{25}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Conclusioni e prospettive future}{26}{chapter.8}%
+\contentsline {chapter}{Appendici}{26}{chapter.8}%
+\contentsline {chapter}{\numberline {A}Appendice1}{27}{appendix.Alph1}%

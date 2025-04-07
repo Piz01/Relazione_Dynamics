@@ -199,6 +199,29 @@ In questo modo, l'integrazione tra ROS2 e Unity consente di gestire il robot e s
 \textit{In questa sezione verranno presentati i principali componenti hardware utilizzati nel progetto, in particolare il robot Omron TM5-900 e la Stereo-Camera RealSense D435i. Saranno forniti dettagli tecnici e funzionali su ciascun componente, evidenziando le loro caratteristiche principali e il loro ruolo all'interno del sistema di simulazione.}
 
 \subsection{Omron TM5-900}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/omron.png}
+    \caption{Omron TM5-900}
+    \label{fig:omron}
+\end{figure}
+
+Un robot è un manipolatore riprogrammabile e multifunzionale progettato per spostare materiali, parti, strumenti o dispositivi specializzati attraverso vari movimenti programmati per l'esecuzione di una varietà di compiti. Il \textbf{robot OMRON TM5-900} è un robot industriale collaborativo (cobot) di ultima generazione, progettato per applicazioni che richiedono flessibilità, precisione e la capacità di operare in ambienti dinamici e collaborativi. È dotato di una serie di caratteristiche avanzate che lo rendono adatto a una varietà di compiti in ambienti industriali, inclusi il montaggio, il pick-and-place, e operazioni di smontaggio come quelle previste in questo progetto.
+
+Tra le caratteristiche principali vi sono:
+
+\begin{itemize}
+    \item \textbf{Design compatto e flessibile}: Il TM5-900 è progettato per lavorare in spazi ristretti, con un braccio robotico che può essere facilmente integrato in linee di produzione esistenti senza necessitare di ampi spazi operativi. La sua flessibilità gli consente di essere facilmente usato per diverse applicazioni.
+    \item \textbf{Portata e capacità di carico}: Il TM5-900 ha una capacità di carico utile fino a 5 kg, che lo rende adatto a manipolare una varietà di oggetti e strumenti, come i tessuti utilizzati in questo progetto.
+    \item \textbf{Gradi di libertà (DOF)}: Il TM5-900 è dotato di 6 gradi di libertà (DOF), che gli consentono di eseguire movimenti complessi e articolati, simili a quelli di un braccio umano. Questo permette al robot di raggiungere e manipolare oggetti in spazi tridimensionali con alta precisione.
+    \item \textbf{Giunti e movimenti}: Il robot è equipaggiato con giunti motorizzati, che consentono di controllare i movimenti di rotazione in modo fluido e preciso. I giunti, insieme ai sensori di forza e coppia, permettono di eseguire operazioni delicate, come il manipolamento di oggetti morbidi (ad esempio i tessuti) senza danneggiarli.
+    \item \textbf{Facilità di programmazione e utilizzo}: Questo robot è dotato di un'interfaccia utente intuitiva e di software di programmazione che ne facilita l'uso anche da parte di personale non specializzato. La programmazione è resa semplice grazie alla modalità di "teaching", che consente di insegnare al robot i movimenti direttamente sul campo.
+    \item \textbf{Tecnologia di sensori avanzati}: Il TM5-900 è equipaggiato con sensori di forza e coppia, che permettono di eseguire operazioni delicate con una precisione millimetrica, ideale per manipolare oggetti senza danneggiarli.
+    \item \textbf{Compatibilità con ROS2}: Il robot è compatibile con il sistema ROS2, che consente di integrarlo facilmente in ambienti di simulazione come Gazebo e Unity, come previsto nel progetto. Questo permette di controllare il robot tramite comandi remoti e di simulare il suo comportamento in ambienti virtuali.
+\end{itemize}
+
+In questo progetto, il robot OMRON TM5-900 è stato scelto per la sua versatilità e capacità di manipolare oggetti come tessuti in modo preciso e sicuro. Il suo utilizzo si concentra sulla simulazione della movimentazione del robot, dove l'integrazione con ROS2 assicura una gestione ottimale della comunicazione e delle operazioni. Inoltre, l'interazione con Unity permette di visualizzare in tempo reale il comportamento del robot, monitorando e ottimizzando il suo funzionamento durante le diverse fasi del progetto.
+
 \subsection{Stereo-Camera RealSense D435i}
 
 \section{Software}
