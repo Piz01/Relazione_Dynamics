@@ -193,7 +193,7 @@ In questo modo, l'integrazione tra ROS2 e Unity consente di gestire il robot e s
 
 \newpage
 \chapter{Materiali e Metodi}
-\textit{In questo capitolo saranno presentati i materiali(hardware e software) e i metodi, quindi le tecniche utilizzate, inoltre vengono dettagliate le tecnologie impiegate e le procedure seguite, in modo da permettere la riproducibilità del progetto. In particolare la prima sezione, \textbf{Hardware} comprende la descrizione del robot utilizzato in simulazione Omron TM5-900 e della camera RealSense D435i. Successivamente saranno presentati i vari \textbf{Software}, utilizzati all'interno del progetto e che hanno permesso la riuscita dell'applicazione, tra i quali Ubuntu, ROS2, Moveit, Gazebo, Unity e in particolare lo strumento Cloth di Unity. Infine, verranno descritte nel dettaglio la \textbf{Predisposizione dei Software} nel PC e le modalità di \textbf{Interfacciamento tra ROS 2 e Unity}, con focus su strumenti fondamentali come ROS-TCP Connector, ROS-TCP Endpoint e URDF Importer.}
+\textit{In questo capitolo saranno presentati i materiali(hardware e software) e i metodi, quindi le tecniche utilizzate, inoltre vengono dettagliate le tecnologie impiegate e le procedure seguite, in modo da permettere la riproducibilità del progetto. In particolare la prima sezione, \textbf{Hardware} comprende la descrizione del robot utilizzato in simulazione Omron TM5-900 e della camera RealSense D435i. Successivamente saranno presentati i vari \textbf{Software}, utilizzati all'interno del progetto e che hanno permesso la riuscita dell'applicazione, tra i quali Ubuntu, ROS2, Moveit, Gazebo, Unity e in particolare lo strumento Cloth di Unity. Infine, verranno descritte nel dettaglio la \textbf{Predisposizione dei Software nel PC} e le modalità di \textbf{Interfacciamento tra ROS 2 e Unity}, con focus su strumenti fondamentali come ROS-TCP Connector, ROS-TCP Endpoint e URDF Importer.}
 
 \section{Hardware}
 \textit{In questa sezione verranno presentati i principali componenti hardware utilizzati nel progetto, in particolare il robot Omron TM5-900 e la Stereo-Camera RealSense D435i. Saranno forniti dettagli tecnici e funzionali su ciascun componente, evidenziando le loro caratteristiche principali e il loro ruolo all'interno del sistema di simulazione.}
@@ -393,7 +393,13 @@ Infine una descrizione delle principali proprietà del componente Cloth e di com
 % \end{figure}
 
 \section{Predisposizione dei Software nel PC}
+\textit{In questo capitolo viene presentata la configurazione dell'ambiente di lavoro adottato per lo sviluppo del progetto, con particolare attenzione alle versioni e alle modalità di integrazione dei principali software utilizzati: Ubuntu, ROS2, Gazebo, Unity (insieme a Unity Hub) e MoveIt2.}
 
+Per la parte robotica e di simulazione, è stato scelto di adottare \textbf{Ubuntu 22.04} installato tramite una macchina virtuale WSL2, in quanto offre un ambiente stabile e supportato ufficialmente per lo sviluppo con \textbf{ROS2 Humble} e \textbf{MoveIt2}. ROS2 Humble è stato selezionato per la sua affidabilità e le migliorate capacità di integrazione, che hanno risolto i problemi riscontrati con precedenti versioni (come Jazzy).\textbf{Gazebo Fortress}, la cui scelta della versione è dovuta alla compatibilità con ROS2\cite{Gazebo-ROS2}, garantisce simulazioni avanzate e un'elevata accuratezza nella riproduzione delle dinamiche robotiche, tuttavia non ha un ruolo centrale nel progetto in quanto non è possibile applicare la fisica ai tessuti come in Unity.
+
+Parallelamente, per lo sviluppo dell'ambiente 3D e della visualizzazione in tempo reale, si è mantenuto \textbf{Unity 6}(ultima versione) su Windows, supportato da \textbf{Unity Hub} che permette una gestione semplificata dei vari progetti Unity. La scelta di utilizzare Windows come sistema operativo per Unity è motivata dalla sua eccellente compatibilità con gli strumenti grafici e i driver necessari per un'interfaccia utente fluida e performante, in quanto Unity è un software nativo Windows. La comunicazione tra l'ambiente robotico gestito tramite Ubuntu e quello grafico su Windows è resa possibile attraverso il ROS-TCP Connector, che funge da ponte tra le due piattaforme, garantendo lo scambio efficiente dei dati.
+
+Questa configurazione ibrida, che sfrutta al massimo le potenzialità di ogni sistema operativo e software specifico, consente di ottimizzare sia le prestazioni delle simulazioni che l'interattività dell'interfaccia grafica, contribuendo a rendere il progetto complessivamente robusto e flessibile.
 \section{Interfacciamento ROS2-Unity}
 
 \subsection{ROS-TCP Connector \& ROS-TCP Endpoint}
@@ -651,8 +657,6 @@ A questo punto, se è stato utilizzato il file urdf del TM5-900 corretto, sarà 
 \section{Problematiche sulle Compatibilità dei Software Utilizzati}
 
 \section{Compatibilità dei File 3D con Unity e Gazebo}
-
-\subsection{Compatibilità dei file con Gazebo e Unity}
 Il formato \textbf{.obj} è stato testato con successo sia in Unity che in Gazebo, consentendo l'importazione corretta del modello della t-shirt in entrambi i software. Tuttavia, durante le simulazioni in Unity, l'applicazione del componente Cloth alla t-shirt ha evidenziato alcune difficoltà: il computer ha riscontrato problemi nel gestire correttamente i comandi impostati e, una volta avviata la simulazione, la t-shirt appariva deformata e non realistica, come è possibile vedere nella figura \ref{fig:cloth_error}.
 
 \begin{figure}[h!]

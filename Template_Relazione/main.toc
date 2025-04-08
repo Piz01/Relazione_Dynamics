@@ -13,17 +13,16 @@
 \contentsline {subsection}{\numberline {2.2.5}Unity e UnityHUB}{8}{subsection.2.2.5}%
 \contentsline {subsection}{\numberline {2.2.6}Strumento Cloth di Unity}{8}{subsection.2.2.6}%
 \contentsline {section}{\numberline {2.3}Predisposizione dei Software nel PC}{11}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Interfacciamento ROS2-Unity}{11}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}ROS-TCP Connector \& ROS-TCP Endpoint}{11}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Eseguire simulazione in Unity}{15}{subsection.2.4.2}%
+\contentsline {section}{\numberline {2.4}Interfacciamento ROS2-Unity}{12}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}ROS-TCP Connector \& ROS-TCP Endpoint}{12}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Eseguire simulazione in Unity}{16}{subsection.2.4.2}%
 \contentsline {subsection}{\numberline {2.4.3}URDF Importer}{16}{subsection.2.4.3}%
 \contentsline {section}{\numberline {2.5}Importazione TM5-900 in Gazebo}{19}{section.2.5}%
 \contentsline {section}{\numberline {2.6}Camera}{19}{section.2.6}%
 \contentsline {chapter}{\numberline {3}Analisi Preliminari e Problematiche Riscontrate}{20}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Problematiche sulle Compatibilità dei Software Utilizzati}{20}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Compatibilità dei File 3D con Unity e Gazebo}{20}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Compatibilità dei file con Gazebo e Unity}{20}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Componente Cloth e collisioni con altri materiali}{21}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.1}Componente Cloth e collisioni con altri materiali}{21}{subsection.3.2.1}%
 \contentsline {chapter}{\numberline {4}Struttura del workspace ROS2}{23}{chapter.4}%
 \contentsline {chapter}{\numberline {5}Test Effettuati e Risultati Ottenuti}{24}{chapter.5}%
 \contentsline {chapter}{\numberline {6}Conclusioni}{25}{chapter.6}%

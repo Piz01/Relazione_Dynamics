@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.16)  8 APR 2025 16:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.16)  8 APR 2025 16:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -465,12 +465,12 @@ Package hyperref Info: Link coloring OFF on input line 131.
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
-<images/logoUnivpm.jpg, id=122, 111.2958pt x 115.632pt>
+<images/logoUnivpm.jpg, id=118, 111.2958pt x 115.632pt>
 File: images/logoUnivpm.jpg Graphic file (type jpg)
 <use images/logoUnivpm.jpg>
 Package pdftex.def Info: images/logoUnivpm.jpg  used on input line 143.
 (pdftex.def)             Requested size: 142.26378pt x 147.82495pt.
-<images/dii_new.png, id=123, 192.72pt x 79.29625pt>
+<images/dii_new.png, id=119, 192.72pt x 79.29625pt>
 File: images/dii_new.png Graphic file (type png)
 <use images/dii_new.png>
 Package pdftex.def Info: images/dii_new.png  used on input line 164.
@@ -508,7 +508,7 @@ Capitolo 1.
 
 ]
 Capitolo 2.
-<images/omron.png, id=175, 198.7425pt x 198.7425pt>
+<images/omron.png, id=170, 198.7425pt x 198.7425pt>
 File: images/omron.png Graphic file (type png)
 <use images/omron.png>
 Package pdftex.def Info: images/omron.png  used on input line 204.
@@ -523,12 +523,12 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 ]
 
 [4 <./images/omron.png>]
-<images/ROS2.png, id=188, 1084.05pt x 542.025pt>
+<images/ROS2.png, id=183, 1084.05pt x 542.025pt>
 File: images/ROS2.png Graphic file (type png)
 <use images/ROS2.png>
 Package pdftex.def Info: images/ROS2.png  used on input line 236.
 (pdftex.def)             Requested size: 264.51115pt x 132.25555pt.
-<images/moveit.png, id=190, 491.8375pt x 103.38625pt>
+<images/moveit.png, id=185, 491.8375pt x 103.38625pt>
 File: images/moveit.png Graphic file (type png)
 <use images/moveit.png>
 Package pdftex.def Info: images/moveit.png  used on input line 248.
@@ -543,7 +543,7 @@ Overfull \hbox (30.81534pt too wide) in paragraph at lines 275--276
 
 
 [6 <./images/moveit.png>]
-<images/UNITY.jpg, id=214, 3011.25pt x 1600.98125pt>
+<images/UNITY.jpg, id=209, 3011.25pt x 1600.98125pt>
 File: images/UNITY.jpg Graphic file (type jpg)
 <use images/UNITY.jpg>
 Package pdftex.def Info: images/UNITY.jpg  used on input line 297.
@@ -553,12 +553,12 @@ Package pdftex.def Info: images/UNITY.jpg  used on input line 297.
 [7]
 
 [8 <./images/UNITY.jpg>]
-<images/cloth_constraints.PNG, id=237, 315.579pt x 501.072pt>
+<images/cloth_constraints.PNG, id=232, 315.579pt x 501.072pt>
 File: images/cloth_constraints.PNG Graphic file (type png)
 <use images/cloth_constraints.PNG>
 Package pdftex.def Info: images/cloth_constraints.PNG  used on input line 327.
 (pdftex.def)             Requested size: 132.25557pt x 209.99007pt.
-<images/cloth_constraints_2.PNG, id=239, 402.90524pt x 273.4215pt>
+<images/cloth_constraints_2.PNG, id=234, 402.90524pt x 273.4215pt>
 File: images/cloth_constraints_2.PNG Graphic file (type png)
 <use images/cloth_constraints_2.PNG>
 Package pdftex.def Info: images/cloth_constraints_2.PNG  used on input line 334.
@@ -576,108 +576,116 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [11]
 
 [12]
-<images/rostcp.jpg, id=263, 163.3603pt x 172.39406pt>
+<images/rostcp.jpg, id=260, 163.3603pt x 172.39406pt>
 File: images/rostcp.jpg Graphic file (type jpg)
 <use images/rostcp.jpg>
-Package pdftex.def Info: images/rostcp.jpg  used on input line 473.
+Package pdftex.def Info: images/rostcp.jpg  used on input line 479.
 (pdftex.def)             Requested size: 176.33629pt x 186.0881pt.
-<images/rostcp1.jpg, id=264, 231.11343pt x 161.85469pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<images/rostcp1.jpg, id=261, 231.11343pt x 161.85469pt>
 File: images/rostcp1.jpg Graphic file (type jpg)
 <use images/rostcp1.jpg>
-Package pdftex.def Info: images/rostcp1.jpg  used on input line 481.
+Package pdftex.def Info: images/rostcp1.jpg  used on input line 487.
 (pdftex.def)             Requested size: 176.33629pt x 123.49242pt.
 
-Overfull \hbox (57.48044pt too wide) in paragraph at lines 488--490
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (57.48044pt too wide) in paragraph at lines 494--496
 []\OT1/cmr/bx/n/10.95 ROS-TCP Con-nec-tor\OT1/cmr/m/n/10.95 : []$\OT1/cmtt/m/n/10.95 https : / / github . com / Unity-[]Technologies / ROS-[]TCP-[]Connector .
  []
 
 
-Overfull \hbox (64.37416pt too wide) in paragraph at lines 490--492
+Overfull \hbox (64.37416pt too wide) in paragraph at lines 496--498
 []\OT1/cmr/bx/n/10.95 Visualizations Pac-ka-ge\OT1/cmr/m/n/10.95 : []$\OT1/cmtt/m/n/10.95 https : / / github . com / Unity-[]Technologies / ROS-[]TCP-[]Connector .
  []
 
 
 
-[13 <./images/rostcp.jpg> <./images/rostcp1.jpg>]
-<images/rostcp2.jpg, id=275, 146.79843pt x 45.92157pt>
+[13]
+<images/rostcp2.jpg, id=269, 146.79843pt x 45.92157pt>
 File: images/rostcp2.jpg Graphic file (type jpg)
 <use images/rostcp2.jpg>
-Package pdftex.def Info: images/rostcp2.jpg  used on input line 507.
+Package pdftex.def Info: images/rostcp2.jpg  used on input line 513.
 (pdftex.def)             Requested size: 176.33629pt x 55.16165pt.
-<images/rostcp4.jpg, id=276, 191.9672pt x 218.31563pt>
+
+
+[14 <./images/rostcp.jpg> <./images/rostcp1.jpg>]
+<images/rostcp4.jpg, id=277, 191.9672pt x 218.31563pt>
 File: images/rostcp4.jpg Graphic file (type jpg)
 <use images/rostcp4.jpg>
-Package pdftex.def Info: images/rostcp4.jpg  used on input line 515.
+Package pdftex.def Info: images/rostcp4.jpg  used on input line 521.
 (pdftex.def)             Requested size: 176.33629pt x 200.553pt.
 
 
-[14 <./images/rostcp2.jpg> <./images/rostcp4.jpg>]
+[15 <./images/rostcp2.jpg> <./images/rostcp4.jpg>]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 544.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 550.
 
 
-[15]
-<images/URDF_Importer_1.png, id=288, 646.21425pt x 411.33675pt>
+[16]
+<images/URDF_Importer_1.png, id=290, 646.21425pt x 411.33675pt>
 File: images/URDF_Importer_1.png Graphic file (type png)
 <use images/URDF_Importer_1.png>
-Package pdftex.def Info: images/URDF_Importer_1.png  used on input line 591.
+Package pdftex.def Info: images/URDF_Importer_1.png  used on input line 597.
 (pdftex.def)             Requested size: 176.33629pt x 112.24239pt.
-<images/URDF_Importer_2.png, id=289, 561.89925pt x 455.90324pt>
+<images/URDF_Importer_2.png, id=291, 561.89925pt x 455.90324pt>
 File: images/URDF_Importer_2.png Graphic file (type png)
 <use images/URDF_Importer_2.png>
-Package pdftex.def Info: images/URDF_Importer_2.png  used on input line 598.
+Package pdftex.def Info: images/URDF_Importer_2.png  used on input line 604.
 (pdftex.def)             Requested size: 176.33629pt x 143.06766pt.
-
-
-[16 <./images/URDF_Importer_1.png>]
-<images/URDF_Importer_3.png, id=298, 561.297pt x 453.49425pt>
+<images/URDF_Importer_3.png, id=293, 561.297pt x 453.49425pt>
 File: images/URDF_Importer_3.png Graphic file (type png)
 <use images/URDF_Importer_3.png>
-Package pdftex.def Info: images/URDF_Importer_3.png  used on input line 606.
+Package pdftex.def Info: images/URDF_Importer_3.png  used on input line 612.
 (pdftex.def)             Requested size: 176.33629pt x 142.47086pt.
 
-Overfull \hbox (1.05592pt too wide) in paragraph at lines 602--609
+Overfull \hbox (1.05592pt too wide) in paragraph at lines 608--615
 []\OT1/cmr/m/n/10.95 Inserire il se-guen-te URL del-la re-po-si-to-ry: []$\OT1/cmtt/m/n/10.95 https : / / github . com / Unity-[]Technologies /
  []
 
-<images/URDF_Importer_4.png, id=299, 398.08725pt x 172.84575pt>
+
+
+[17 <./images/URDF_Importer_1.png> <./images/URDF_Importer_2.png>]
+<images/URDF_Importer_4.png, id=303, 398.08725pt x 172.84575pt>
 File: images/URDF_Importer_4.png Graphic file (type png)
 <use images/URDF_Importer_4.png>
-Package pdftex.def Info: images/URDF_Importer_4.png  used on input line 617.
+Package pdftex.def Info: images/URDF_Importer_4.png  used on input line 623.
 (pdftex.def)             Requested size: 220.42372pt x 95.70633pt.
-<images/URDF_Importer_5.png, id=301, 549.85425pt x 230.0595pt>
+<images/URDF_Importer_5.png, id=305, 549.85425pt x 230.0595pt>
 File: images/URDF_Importer_5.png Graphic file (type png)
 <use images/URDF_Importer_5.png>
-Package pdftex.def Info: images/URDF_Importer_5.png  used on input line 624.
+Package pdftex.def Info: images/URDF_Importer_5.png  used on input line 630.
 (pdftex.def)             Requested size: 220.42372pt x 92.22577pt.
-
-
-[17 <./images/URDF_Importer_2.png> <./images/URDF_Importer_3.png> <./images/URDF_Importer_4.png>]
-<images/URDF_Importer_6.png, id=314, 317.38576pt x 470.9595pt>
+<images/URDF_Importer_6.png, id=306, 317.38576pt x 470.9595pt>
 File: images/URDF_Importer_6.png Graphic file (type png)
 <use images/URDF_Importer_6.png>
-Package pdftex.def Info: images/URDF_Importer_6.png  used on input line 631.
+Package pdftex.def Info: images/URDF_Importer_6.png  used on input line 637.
 (pdftex.def)             Requested size: 154.29929pt x 228.96123pt.
-<images/URDF_Importer_7.png, id=316, 628.14674pt x 466.74374pt>
+
+
+[18 <./images/URDF_Importer_3.png> <./images/URDF_Importer_4.png> <./images/URDF_Importer_5.png>]
+<images/URDF_Importer_7.png, id=319, 628.14674pt x 466.74374pt>
 File: images/URDF_Importer_7.png Graphic file (type png)
 <use images/URDF_Importer_7.png>
-Package pdftex.def Info: images/URDF_Importer_7.png  used on input line 640.
+Package pdftex.def Info: images/URDF_Importer_7.png  used on input line 646.
 (pdftex.def)             Requested size: 154.29929pt x 114.64877pt.
 
 
-[18 <./images/URDF_Importer_5.png> <./images/URDF_Importer_6.png> <./images/URDF_Importer_7.png>]
-
-[19]
+[19 <./images/URDF_Importer_6.png> <./images/URDF_Importer_7.png>]
 Capitolo 3.
-<images/cloth_error.PNG, id=332, 161.403pt x 166.221pt>
+<images/cloth_error.PNG, id=329, 161.403pt x 166.221pt>
 File: images/cloth_error.PNG Graphic file (type png)
 <use images/cloth_error.PNG>
-Package pdftex.def Info: images/cloth_error.PNG  used on input line 660.
+Package pdftex.def Info: images/cloth_error.PNG  used on input line 664.
 (pdftex.def)             Requested size: 176.33629pt x 181.61098pt.
-<images/blender_ratio.PNG, id=333, 173.448pt x 292.6935pt>
+<images/blender_ratio.PNG, id=330, 173.448pt x 292.6935pt>
 File: images/blender_ratio.PNG Graphic file (type png)
 <use images/blender_ratio.PNG>
-Package pdftex.def Info: images/blender_ratio.PNG  used on input line 669.
+Package pdftex.def Info: images/blender_ratio.PNG  used on input line 673.
 (pdftex.def)             Requested size: 132.25557pt x 223.19073pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -714,7 +722,12 @@ Appendice A.
 
 [26
 
-])
+]
+Underfull \hbox (badness 10000) in paragraph at lines 30--33
+[]\OT1/cmr/m/n/10.95 ``Compatibilit^^Ra gazebo-ros2.''  []$\OT1/cmtt/m/n/10.95 https : / / gazebosim . org / docs / harmonic / ros _
+ []
+
+)
 
 Package caption Warning: Unused \captionsetup[table] on input line 133.
 See the caption package documentation for explanation.
@@ -729,20 +742,20 @@ LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-30>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 0E67CEA93B1975337EBE7ED5337D903E;5343.
+(rerunfilecheck)             Checksum: CC8237816A4433265A791462C28761B5;5055.
  ) 
 Here is how much of TeX's memory you used:
  15430 strings out of 473898
- 253738 string characters out of 5725062
- 759929 words of memory out of 5000000
+ 253733 string characters out of 5725062
+ 759962 words of memory out of 5000000
  38005 multiletter control sequences out of 15000+600000
  567917 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 79i,7n,93p,1354b,610s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,7n,93p,1354b,575s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\lachiara\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (28 pages, 1507272 bytes).
+Output written on main.pdf (28 pages, 1510898 bytes).
 PDF statistics:
- 449 PDF objects out of 1000 (max. 8388607)
+ 448 PDF objects out of 1000 (max. 8388607)
  95 named destinations out of 1000 (max. 500000)
- 346 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 338 words of extra memory for PDF output out of 10000 (max. 10000000)
 

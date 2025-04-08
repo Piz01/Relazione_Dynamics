@@ -26,6 +26,11 @@
 ``Manual cloth unity.''
 \newblock \url{https://docs.unity3d.com/Manual/class-Cloth.html}.
 
+\bibitem{Gazebo-ROS2}
+``Compatibilità gazebo-ros2.''
+\newblock
+  \url{https://gazebosim.org/docs/harmonic/ros_installation/#summary-of-compatible-ros-and-gazebo-combinations}.
+
 \bibitem{URDF-Importer}
 ``Urdf-importer.''
 \newblock \url{https://github.com/Unity-Technologies/URDF-Importer}.
