@@ -598,6 +598,42 @@ A questo punto, se è stato utilizzato il file urdf del TM5-900 corretto, sarà 
     \label{fig:URDF_Importer_7}     
 \end{figure}
 
+\section{Movimentazioe TM5-900 tramite Moveit}
+Introduzione a MoveIt
+\textbf{MoveIt} è una delle librerie più utilizzate per la pianificazione del movimento in ROS. Consente di controllare bracci robotici, eseguire pianificazioni di traiettoria, gestire collisioni e implementare strategie di manipolazione avanzate. Grazie alla sua integrazione con ROS 2, MoveIt permette di generare e simulare movimenti in modo efficiente, facilitando l'implementazione di algoritmi di pianificazione e controllo.
+
+MoveIt utilizza il modello del robot descritto tramite URDF per comprendere la struttura cinematica del sistema e genera automaticamente il corrispettivo SRDF (Semantic Robot Description Format) contenente la generazione di movimenti validi evitando collisioni. Il suo framework è composto da diversi moduli, tra cui:
+\begin{itemize}
+    \item Motion Planning: per la generazione di traiettorie.
+    \item Collision Checking: per evitare urti tra il robot e l'ambiente.
+    \item Kinematic Solvers: per calcolare i movimenti articolari necessari a raggiungere una determinata posizione.
+    \item Trajectory Execution: per inviare comandi al robot fisico o alla simulazione.
+\end{itemize}
+
+Nel nostro progetto, MoveIt è stato utilizzato per generare i file necessari alla movimentazione del robot TM5-900. In particolare, è stato impiegato lo strumento \textbf{MoveIt Setup Assistant}, che ha permesso di:
+1. Importare l'URDF del robot: il modello 3D e la cinematica del TM5-900 sono stati letti direttamente dal file URDF.
+2. Generare il file SRDF: che definisce i gruppi cinematici, i giunti, i link e le configurazioni di pianificazione.
+3. Configurare i plugin di controllo: per connettere MoveIt a ROS 2 e inviare comandi al robot.
+4. Definire le aree di collisione: per garantire che il robot si muova senza urtare gli ostacoli.
+5. Generare automaticamente i pacchetti di configurazione: che includono i parametri per il controllo e la simulazione del TM5-900.
+
+Grazie a questa configurazione, MoveIt è stato in grado di elaborare e inviare traiettorie di movimento al robot sia nella simulazione in Unity che in ROS 2.
+
+Applicazione: Definizione di Pose e Simulazione in Unity
+
+Dopo la configurazione iniziale, il nostro obiettivo è stato quello di definire due pose specifiche per il TM5-900 e inviarle alla simulazione in Unity. Il processo seguito è stato il seguente:
+
+1. **Definizione delle pose**: Abbiamo selezionato due posizioni target per il braccio robotico, specificando le coordinate spaziali e gli angoli dei giunti.
+2. **Utilizzo di MoveIt per calcolare la traiettoria**: MoveIt ha generato una traiettoria valida evitando collisioni.
+3. **Invio dei comandi a ROS 2**: La traiettoria calcolata è stata inviata al nodo ROS 2 responsabile del controllo del robot.
+4. **Simulazione in Unity**: I dati di movimento sono stati trasmessi a Unity, dove il modello del TM5-900 si è mosso in base ai comandi ricevuti.
+
+Grazie a questo workflow, siamo riusciti a controllare il robot in modo realistico, testando la movimentazione prima di applicarla in un ambiente reale. L'integrazione tra MoveIt, ROS 2 e Unity ha reso possibile una simulazione efficace, permettendoci di validare il comportamento del TM5-900 prima della sua implementazione fisica.
+
+\section{Importazione TM5-900 in Gazebo}
+
+\section{Camera}
+
 \chapter{Analisi Preliminari e Problematiche Riscontrate}
 
 \section{Problematiche sulle Compatibilità dei Software Utilizzati}
@@ -643,43 +679,6 @@ Una soluzione consiste nel posizionare una griglia di piccole Sphere Colliders s
 \chapter{Test Effettuati e Risultati Ottenuti}
 
 \chapter{Conclusioni}
-
-\section{Movimentazioe TM5-900 tramite Moveit}
-Introduzione a MoveIt
-\textbf{MoveIt} è una delle librerie più utilizzate per la pianificazione del movimento in ROS. Consente di controllare bracci robotici, eseguire pianificazioni di traiettoria, gestire collisioni e implementare strategie di manipolazione avanzate. Grazie alla sua integrazione con ROS 2, MoveIt permette di generare e simulare movimenti in modo efficiente, facilitando l'implementazione di algoritmi di pianificazione e controllo.
-
-MoveIt utilizza il modello del robot descritto tramite URDF per comprendere la struttura cinematica del sistema e genera automaticamente il corrispettivo SRDF (Semantic Robot Description Format) contenente la generazione di movimenti validi evitando collisioni. Il suo framework è composto da diversi moduli, tra cui:
-\begin{itemize}
-    \item Motion Planning: per la generazione di traiettorie.
-    \item Collision Checking: per evitare urti tra il robot e l'ambiente.
-    \item Kinematic Solvers: per calcolare i movimenti articolari necessari a raggiungere una determinata posizione.
-    \item Trajectory Execution: per inviare comandi al robot fisico o alla simulazione.
-\end{itemize}
-
-Nel nostro progetto, MoveIt è stato utilizzato per generare i file necessari alla movimentazione del robot TM5-900. In particolare, è stato impiegato lo strumento \textbf{MoveIt Setup Assistant}, che ha permesso di:
-1. Importare l'URDF del robot: il modello 3D e la cinematica del TM5-900 sono stati letti direttamente dal file URDF.
-2. Generare il file SRDF: che definisce i gruppi cinematici, i giunti, i link e le configurazioni di pianificazione.
-3. Configurare i plugin di controllo: per connettere MoveIt a ROS 2 e inviare comandi al robot.
-4. Definire le aree di collisione: per garantire che il robot si muova senza urtare gli ostacoli.
-5. Generare automaticamente i pacchetti di configurazione: che includono i parametri per il controllo e la simulazione del TM5-900.
-
-Grazie a questa configurazione, MoveIt è stato in grado di elaborare e inviare traiettorie di movimento al robot sia nella simulazione in Unity che in ROS 2.
-
-Applicazione: Definizione di Pose e Simulazione in Unity
-
-Dopo la configurazione iniziale, il nostro obiettivo è stato quello di definire due pose specifiche per il TM5-900 e inviarle alla simulazione in Unity. Il processo seguito è stato il seguente:
-
-1. **Definizione delle pose**: Abbiamo selezionato due posizioni target per il braccio robotico, specificando le coordinate spaziali e gli angoli dei giunti.
-2. **Utilizzo di MoveIt per calcolare la traiettoria**: MoveIt ha generato una traiettoria valida evitando collisioni.
-3. **Invio dei comandi a ROS 2**: La traiettoria calcolata è stata inviata al nodo ROS 2 responsabile del controllo del robot.
-4. **Simulazione in Unity**: I dati di movimento sono stati trasmessi a Unity, dove il modello del TM5-900 si è mosso in base ai comandi ricevuti.
-
-Grazie a questo workflow, siamo riusciti a controllare il robot in modo realistico, testando la movimentazione prima di applicarla in un ambiente reale. L'integrazione tra MoveIt, ROS 2 e Unity ha reso possibile una simulazione efficace, permettendoci di validare il comportamento del TM5-900 prima della sua implementazione fisica.
-
-
-\section{Importazione TM5-900 in Gazebo}
-
-\section{Camera}
 
 \section{Applicazione finale}
 
