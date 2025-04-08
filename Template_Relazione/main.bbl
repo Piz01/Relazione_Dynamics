@@ -13,6 +13,11 @@
 \newblock
   \url{https://moveit.picknik.ai/humble/doc/tutorials/getting_started/getting_started.html}.
 
+\bibitem{Moveit_tutorial}
+``Moveit setup assistant tutorial.''
+\newblock
+  \url{https://docs.ros.org/en/kinetic/api/moveit_tutorials/html/doc/setup_assistant/setup_assistant_tutorial.html}.
+
 \bibitem{Unity}
 ``Unity.''
 \newblock \url{https://docs.unity.com/}.

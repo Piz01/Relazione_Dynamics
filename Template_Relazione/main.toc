@@ -9,27 +9,24 @@
 \contentsline {subsection}{\numberline {2.2.1}Ubuntu}{5}{subsection.2.2.1}%
 \contentsline {subsection}{\numberline {2.2.2}Robot Operating System 2}{5}{subsection.2.2.2}%
 \contentsline {subsection}{\numberline {2.2.3}Moveit}{6}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}Gazebo}{7}{subsection.2.2.4}%
-\contentsline {subsection}{\numberline {2.2.5}Unity e UnityHUB}{7}{subsection.2.2.5}%
-\contentsline {subsection}{\numberline {2.2.6}Strumento Cloth di Unity}{7}{subsection.2.2.6}%
-\contentsline {section}{\numberline {2.3}Predisposizione dei Software nel PC}{10}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Interfacciamento ROS2-Unity}{10}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}ROS-TCP Connector \& ROS-TCP Endpoint}{10}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Eseguire simulazione in Unity}{14}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}URDF Importer}{15}{subsection.2.4.3}%
-\contentsline {section}{\numberline {2.5}Movimentazioe TM5-900 tramite Moveit}{18}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Importazione TM5-900 in Gazebo}{18}{section.2.6}%
-\contentsline {section}{\numberline {2.7}Camera}{18}{section.2.7}%
-\contentsline {chapter}{\numberline {3}Analisi Preliminari e Problematiche Riscontrate}{19}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Problematiche sulle Compatibilità dei Software Utilizzati}{19}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Compatibilità dei File 3D con Unity e Gazebo}{19}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Compatibilità dei file con Gazebo e Unity}{19}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Componente Cloth e collisioni con altri materiali}{20}{subsection.3.2.2}%
-\contentsline {chapter}{\numberline {4}Struttura del workspace ROS2}{22}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Test Effettuati e Risultati Ottenuti}{23}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Conclusioni}{24}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Applicazione finale}{24}{section.6.1}%
-\contentsline {chapter}{\numberline {7}Risultati ottenuti e discussione}{25}{chapter.7}%
-\contentsline {chapter}{\numberline {8}Conclusioni e prospettive future}{26}{chapter.8}%
-\contentsline {chapter}{Appendici}{26}{chapter.8}%
-\contentsline {chapter}{\numberline {A}Appendice1}{27}{appendix.Alph1}%
+\contentsline {subsection}{\numberline {2.2.4}Gazebo}{8}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Unity e UnityHUB}{8}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.6}Strumento Cloth di Unity}{8}{subsection.2.2.6}%
+\contentsline {section}{\numberline {2.3}Predisposizione dei Software nel PC}{11}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Interfacciamento ROS2-Unity}{11}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}ROS-TCP Connector \& ROS-TCP Endpoint}{11}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Eseguire simulazione in Unity}{15}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}URDF Importer}{16}{subsection.2.4.3}%
+\contentsline {section}{\numberline {2.5}Importazione TM5-900 in Gazebo}{19}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Camera}{19}{section.2.6}%
+\contentsline {chapter}{\numberline {3}Analisi Preliminari e Problematiche Riscontrate}{20}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Problematiche sulle Compatibilità dei Software Utilizzati}{20}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Compatibilità dei File 3D con Unity e Gazebo}{20}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Compatibilità dei file con Gazebo e Unity}{20}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Componente Cloth e collisioni con altri materiali}{21}{subsection.3.2.2}%
+\contentsline {chapter}{\numberline {4}Struttura del workspace ROS2}{23}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Test Effettuati e Risultati Ottenuti}{24}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Conclusioni}{25}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Applicazione finale}{25}{section.6.1}%
+\contentsline {chapter}{Appendici}{25}{section.6.1}%
+\contentsline {chapter}{\numberline {A}Appendice1}{26}{appendix.Alph1}%
