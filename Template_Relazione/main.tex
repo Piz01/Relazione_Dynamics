@@ -243,19 +243,48 @@ In questo progetto, ROS 2 è stato utilizzato per gestire la comunicazione tra i
 Inizialmente, il progetto è stato avviato con ROS 2 Jazzy, ma si sono riscontrati diversi problemi di compatibilità e instabilità, in particolare con l'integrazione del ROS-TCP Connector per Unity. Per questo motivo, è stato deciso di passare a ROS 2 Humble, una versione più stabile e ampiamente supportata, che ha garantito una migliore compatibilità con gli strumenti di sviluppo utilizzati.
 
 \subsection{Moveit}
+\textbf{MoveIt} \cite{Moveit} \cite{Moveit_install} è una delle librerie più utilizzate per la pianificazione del movimento in ROS. Consente di controllare bracci robotici, eseguire pianificazioni di traiettoria, gestire collisioni e implementare strategie di manipolazione avanzate. Grazie alla sua integrazione con ROS 2, MoveIt permette di generare e simulare movimenti in modo efficiente, facilitando l'implementazione di algoritmi di pianificazione e controllo.
+
+MoveIt utilizza il modello del robot descritto tramite URDF per comprendere la struttura cinematica del sistema e genera automaticamente il corrispettivo SRDF (Semantic Robot Description Format) contenente la generazione di movimenti validi evitando collisioni. Il suo framework è composto da diversi moduli, tra cui:
+\begin{itemize}
+    \item Motion Planning: per la generazione di traiettorie.
+    \item Collision Checking: per evitare urti tra il robot e l'ambiente.
+    \item Kinematic Solvers: per calcolare i movimenti articolari necessari a raggiungere una determinata posizione.
+    \item Trajectory Execution: per inviare comandi al robot fisico o alla simulazione.
+\end{itemize}
+
+Nel nostro progetto, MoveIt è stato utilizzato per pianificare e simulare i movimenti del manipolatore Omron TM5-900. Dopo aver generato il pacchetto di configurazione tramite il MoveIt Setup Assistant, è stato possibile definire i gruppi cinematici, i giunti controllabili e le geometrie di collisione.
+
+MoveIt è stato integrato con ROS 2 Humble tramite la versione Moveit2 e tramite questa libreria sono state svolte le seguenti operazioni:
+\begin{itemize}
+    \item Creazione del file SRDF tramite MoveIt Setup Assistant.
+
+    \item Definizione dei controller nel file $ros2_controllers.yaml$.
+
+    \item Definizione delle pose iniziali e finali del robot.
+
+    \item Invio delle traiettorie a Unity per visualizzare e simulare il movimento del robot in un contesto 3D realistico.
+\end{itemize}
+
+Di seguito sono riportati i passaggi svolti per la configurazione del package $moveit_config_tm5_900$ utilizzando il MoveIt Setup Assistant: 
+
+
+MoveIt ha svolto un ruolo centrale nell’interazione tra ROS 2 e Unity. Le traiettorie generate da MoveIt sono state pubblicate sul topic $/manipulator_controller/joint_trajectory$, successivamente sottoscritto in Unity tramite il pacchetto ROS-TCP Connector. Questo ha permesso una rappresentazione visiva coerente tra la pianificazione in ROS 2 e l’esecuzione nella simulazione 3D.
+
+MoveIt ha anche permesso la sperimentazione di vincoli cinematici, test di avoidance con ostacoli statici e valutazione di percorsi alternativi, contribuendo a rendere il sistema robusto e adattabile a contesti reali.
 
 \subsection{Gazebo}
 
 \subsection{Unity e UnityHUB}
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{images/UNITY.jpg}
     \caption{Logo Unity}
     \label{fig:UNITY}
 \end{figure}
 
-Unity \cite{Unity} è un motore di gioco e simulazione ampiamente utilizzato per la creazione di ambienti interattivi in tempo reale. Sebbene sia nato per lo sviluppo di videogiochi, il suo utilizzo si è esteso ad applicazioni di simulazione, robotica, realtà virtuale e aumentata. Unity permette di creare ambienti 3D realistici e interattivi grazie al suo motore grafico avanzato e alle sue funzionalità di scripting basate su C\#.
+\textbf{Unity} \cite{Unity} è un motore di gioco e simulazione ampiamente utilizzato per la creazione di ambienti interattivi in tempo reale. Sebbene sia nato per lo sviluppo di videogiochi, il suo utilizzo si è esteso ad applicazioni di simulazione, robotica, realtà virtuale e aumentata. Unity permette di creare ambienti 3D realistici e interattivi grazie al suo motore grafico avanzato e alle sue funzionalità di scripting basate su C\#.
 In questo progetto, Unity è stato utilizzato come ambiente di simulazione per il robot. Grazie alla sua compatibilità con ROS2 tramite il ROS-TCP Connector, Unity ha permesso di visualizzare il robot, simulare i suoi movimenti e interagire con l'ambiente circostante. Il motore fisico di Unity è stato sfruttato soprattutto per replicare le dinamiche fisiche della maglietta, garantendo una simulazione più realistica delle interazioni tra un indumento e gli oggetti della scena.
 Per lo sviluppo del progetto, abbiamo utilizzato Unity 6, la versione più recente al momento di sviluppo del progetto.
 
@@ -599,17 +628,6 @@ A questo punto, se è stato utilizzato il file urdf del TM5-900 corretto, sarà 
 \end{figure}
 
 \section{Movimentazioe TM5-900 tramite Moveit}
-Introduzione a MoveIt
-\textbf{MoveIt} è una delle librerie più utilizzate per la pianificazione del movimento in ROS. Consente di controllare bracci robotici, eseguire pianificazioni di traiettoria, gestire collisioni e implementare strategie di manipolazione avanzate. Grazie alla sua integrazione con ROS 2, MoveIt permette di generare e simulare movimenti in modo efficiente, facilitando l'implementazione di algoritmi di pianificazione e controllo.
-
-MoveIt utilizza il modello del robot descritto tramite URDF per comprendere la struttura cinematica del sistema e genera automaticamente il corrispettivo SRDF (Semantic Robot Description Format) contenente la generazione di movimenti validi evitando collisioni. Il suo framework è composto da diversi moduli, tra cui:
-\begin{itemize}
-    \item Motion Planning: per la generazione di traiettorie.
-    \item Collision Checking: per evitare urti tra il robot e l'ambiente.
-    \item Kinematic Solvers: per calcolare i movimenti articolari necessari a raggiungere una determinata posizione.
-    \item Trajectory Execution: per inviare comandi al robot fisico o alla simulazione.
-\end{itemize}
-
 Nel nostro progetto, MoveIt è stato utilizzato per generare i file necessari alla movimentazione del robot TM5-900. In particolare, è stato impiegato lo strumento \textbf{MoveIt Setup Assistant}, che ha permesso di:
 1. Importare l'URDF del robot: il modello 3D e la cinematica del TM5-900 sono stati letti direttamente dal file URDF.
 2. Generare il file SRDF: che definisce i gruppi cinematici, i giunti, i link e le configurazioni di pianificazione.

@@ -4,6 +4,15 @@
 ``Ros2.''
 \newblock \url{https://docs.ros.org/en/humble/index.html}.
 
+\bibitem{Moveit}
+``Moveit.''
+\newblock \url{ https://moveit.picknik.ai}.
+
+\bibitem{Moveit_install}
+``Moveit installation.''
+\newblock
+  \url{https://moveit.picknik.ai/humble/doc/tutorials/getting_started/getting_started.html}.
+
 \bibitem{Unity}
 ``Unity.''
 \newblock \url{https://docs.unity.com/}.

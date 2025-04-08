@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1744096600.54867 "main.aux" "main.bbl" "main" 1744096604.57594 0
-  "./bibl.bib" 1743756951 679 d406bf67eb4d23b293c9b82567ebc690 ""
+["bibtex main"] 1744099490.17034 "main.aux" "main.bbl" "main" 1744099494.37283 0
+  "./bibl.bib" 1744099182 918 5931206ba0b9cf906eadfd0484c38db9 ""
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/ieeetr.bst" 1291864344 18361 1a00e58565e7f19bf2b3e1bfb82254ae ""
-  "main.aux" 1744096603 9826 1f73fed7168c4c528e3e5cdfe5169855 "pdflatex"
+  "main.aux" 1744099492 9921 e384ad5c7590c2c56dd072c07cb4ce26 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1744096601.03327 "c:/Users/lachiara/Documents/GitHub/Relazione_Dynamics/Template_Relazione/main.tex" "main.pdf" "main" 1744096604.57721 0
+["pdflatex"] 1744099490.68679 "c:/Users/lachiara/Documents/GitHub/Relazione_Dynamics/Template_Relazione/main.tex" "main.pdf" "main" 1744099494.37373 0
   "C:/Users/lachiara/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1742286946 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/lachiara/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1095.pk" 1742286950 12668 c071cd0a07f67dc746c50366f2ac2921 ""
   "C:/Users/lachiara/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1729062342 11949655 4753afc974ece99460c183b41b4f6e58 ""
@@ -40,8 +40,11 @@
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1247596666 32080 340ef9bf63678554ee606688e7b5339d ""
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb" 1247596667 36554 b67dc2cfa451409e100b3fcf5f506509 ""
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb" 1247596667 32001 6aeea3afe875097b1eb0da29acd61e28 ""
+  "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1247596667 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
+  "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1247596666 35469 dcf3a5f2fc1862f5952e3ee5eb1d98c4 ""
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1247596667 35752 024fb6c41858982481f6968b5fc26508 ""
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1247596667 32722 d7379af29a190c3f453aba36302ff5a9 ""
+  "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1247596667 32726 39f0f9e62e84beb801509898a605dbd5 ""
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1247596667 37944 359e864bd06cde3b1cf57bb20757fb06 ""
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb" 1247596667 31099 342ef5a582aacbd3346f3cf4579679fa ""
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
@@ -124,7 +127,7 @@
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/tex/latex/tools/verbatim.sty" 1718356376 7532 d2e1111e17bfebb1607d8ffa779705ec ""
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
-  "c:/Users/lachiara/Documents/GitHub/Relazione_Dynamics/Template_Relazione/main.tex" 1744096594 51655 49d4333c1a72d4543747ce8f80d4775a ""
+  "c:/Users/lachiara/Documents/GitHub/Relazione_Dynamics/Template_Relazione/main.tex" 1744099481 53247 7ea803beb84898bd22daf76d8c08fbc2 ""
   "images/ROS2.png" 1742983949 148601 0f44e0c1a99f2ab9b027f06b1fc54f5d ""
   "images/UNITY.jpg" 1742984038 111049 9c76c478b1988c952797d0457b1a3600 ""
   "images/URDF_Importer_1.png" 1743603518 155282 815f3325b7fc182e7eb204d8839711f0 ""
@@ -145,11 +148,11 @@
   "images/rostcp1.jpg" 1743952573 14929 1e291a6ed9845297a4a18dd6c4f3dd13 ""
   "images/rostcp2.jpg" 1743952573 5631 ff54dd654ca122f094fdf77016ae3d7c ""
   "images/rostcp4.jpg" 1743952580 16935 c1a2db1d8cfff0a07bbe7adea611272f ""
-  "main.aux" 1744096603 9826 1f73fed7168c4c528e3e5cdfe5169855 "pdflatex"
-  "main.bbl" 1744096600 449 71a0ac61170c47087437733a11bc9ad3 "bibtex main"
-  "main.out" 1744096603 6011 027b3db886a2f3b13cb51cea79ff3d6e "pdflatex"
-  "main.tex" 1744096594 51655 49d4333c1a72d4543747ce8f80d4775a ""
-  "main.toc" 1744096603 2939 159de6734fecb0a2ea8607f35e9004b5 "pdflatex"
+  "main.aux" 1744099492 9921 e384ad5c7590c2c56dd072c07cb4ce26 "pdflatex"
+  "main.bbl" 1744099490 686 e1bcc7ea08cd3242f76b3aa917036fea "bibtex main"
+  "main.out" 1744099492 6011 027b3db886a2f3b13cb51cea79ff3d6e "pdflatex"
+  "main.tex" 1744099481 53247 7ea803beb84898bd22daf76d8c08fbc2 ""
+  "main.toc" 1744099492 2942 ae22e3ffb4028b3b903fbbb08debb41d "pdflatex"
   (generated)
   "main.aux"
   "main.log"
