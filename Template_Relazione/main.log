@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.16)  9 APR 2025 12:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.16)  9 APR 2025 12:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -575,7 +575,7 @@ Package pdftex.def Info: images/rviz_3.PNG  used on input line 323.
 <images/UNITY.jpg, id=239, 3011.25pt x 1600.98125pt>
 File: images/UNITY.jpg Graphic file (type jpg)
 <use images/UNITY.jpg>
-Package pdftex.def Info: images/UNITY.jpg  used on input line 334.
+Package pdftex.def Info: images/UNITY.jpg  used on input line 336.
 (pdftex.def)             Requested size: 264.51115pt x 140.61317pt.
 
 
@@ -585,12 +585,12 @@ Package pdftex.def Info: images/UNITY.jpg  used on input line 334.
 <images/cloth_constraints.PNG, id=257, 315.579pt x 501.072pt>
 File: images/cloth_constraints.PNG Graphic file (type png)
 <use images/cloth_constraints.PNG>
-Package pdftex.def Info: images/cloth_constraints.PNG  used on input line 364.
+Package pdftex.def Info: images/cloth_constraints.PNG  used on input line 366.
 (pdftex.def)             Requested size: 132.25557pt x 209.99007pt.
 <images/cloth_constraints_2.PNG, id=259, 402.90524pt x 273.4215pt>
 File: images/cloth_constraints_2.PNG Graphic file (type png)
 <use images/cloth_constraints_2.PNG>
-Package pdftex.def Info: images/cloth_constraints_2.PNG  used on input line 371.
+Package pdftex.def Info: images/cloth_constraints_2.PNG  used on input line 373.
 (pdftex.def)             Requested size: 220.42372pt x 149.58958pt.
 
 
@@ -608,7 +608,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <images/rostcp.jpg, id=285, 163.3603pt x 172.39406pt>
 File: images/rostcp.jpg Graphic file (type jpg)
 <use images/rostcp.jpg>
-Package pdftex.def Info: images/rostcp.jpg  used on input line 516.
+Package pdftex.def Info: images/rostcp.jpg  used on input line 518.
 (pdftex.def)             Requested size: 176.33629pt x 186.0881pt.
 
 
@@ -617,18 +617,18 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <images/rostcp1.jpg, id=286, 231.11343pt x 161.85469pt>
 File: images/rostcp1.jpg Graphic file (type jpg)
 <use images/rostcp1.jpg>
-Package pdftex.def Info: images/rostcp1.jpg  used on input line 524.
+Package pdftex.def Info: images/rostcp1.jpg  used on input line 526.
 (pdftex.def)             Requested size: 176.33629pt x 123.49242pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (57.48044pt too wide) in paragraph at lines 531--533
+Overfull \hbox (57.48044pt too wide) in paragraph at lines 533--535
 []\OT1/cmr/bx/n/10.95 ROS-TCP Con-nec-tor\OT1/cmr/m/n/10.95 : []$\OT1/cmtt/m/n/10.95 https : / / github . com / Unity-[]Technologies / ROS-[]TCP-[]Connector .
  []
 
 
-Overfull \hbox (64.37416pt too wide) in paragraph at lines 533--535
+Overfull \hbox (64.37416pt too wide) in paragraph at lines 535--537
 []\OT1/cmr/bx/n/10.95 Visualizations Pac-ka-ge\OT1/cmr/m/n/10.95 : []$\OT1/cmtt/m/n/10.95 https : / / github . com / Unity-[]Technologies / ROS-[]TCP-[]Connector .
  []
 
@@ -638,7 +638,7 @@ Overfull \hbox (64.37416pt too wide) in paragraph at lines 533--535
 <images/rostcp2.jpg, id=294, 146.79843pt x 45.92157pt>
 File: images/rostcp2.jpg Graphic file (type jpg)
 <use images/rostcp2.jpg>
-Package pdftex.def Info: images/rostcp2.jpg  used on input line 550.
+Package pdftex.def Info: images/rostcp2.jpg  used on input line 552.
 (pdftex.def)             Requested size: 176.33629pt x 55.16165pt.
 
 
@@ -646,33 +646,33 @@ Package pdftex.def Info: images/rostcp2.jpg  used on input line 550.
 <images/rostcp4.jpg, id=302, 191.9672pt x 218.31563pt>
 File: images/rostcp4.jpg Graphic file (type jpg)
 <use images/rostcp4.jpg>
-Package pdftex.def Info: images/rostcp4.jpg  used on input line 558.
+Package pdftex.def Info: images/rostcp4.jpg  used on input line 560.
 (pdftex.def)             Requested size: 176.33629pt x 200.553pt.
 
 
 [17 <./images/rostcp2.jpg> <./images/rostcp4.jpg>]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 587.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 589.
 
 
 [18]
 <images/URDF_Importer_1.png, id=316, 646.21425pt x 411.33675pt>
 File: images/URDF_Importer_1.png Graphic file (type png)
 <use images/URDF_Importer_1.png>
-Package pdftex.def Info: images/URDF_Importer_1.png  used on input line 634.
+Package pdftex.def Info: images/URDF_Importer_1.png  used on input line 636.
 (pdftex.def)             Requested size: 176.33629pt x 112.24239pt.
 <images/URDF_Importer_2.png, id=317, 561.89925pt x 455.90324pt>
 File: images/URDF_Importer_2.png Graphic file (type png)
 <use images/URDF_Importer_2.png>
-Package pdftex.def Info: images/URDF_Importer_2.png  used on input line 641.
+Package pdftex.def Info: images/URDF_Importer_2.png  used on input line 643.
 (pdftex.def)             Requested size: 176.33629pt x 143.06766pt.
 <images/URDF_Importer_3.png, id=319, 561.297pt x 453.49425pt>
 File: images/URDF_Importer_3.png Graphic file (type png)
 <use images/URDF_Importer_3.png>
-Package pdftex.def Info: images/URDF_Importer_3.png  used on input line 649.
+Package pdftex.def Info: images/URDF_Importer_3.png  used on input line 651.
 (pdftex.def)             Requested size: 176.33629pt x 142.47086pt.
 
-Overfull \hbox (1.05592pt too wide) in paragraph at lines 645--652
+Overfull \hbox (1.05592pt too wide) in paragraph at lines 647--654
 []\OT1/cmr/m/n/10.95 Inserire il se-guen-te URL del-la re-po-si-to-ry: []$\OT1/cmtt/m/n/10.95 https : / / github . com / Unity-[]Technologies /
  []
 
@@ -682,17 +682,17 @@ Overfull \hbox (1.05592pt too wide) in paragraph at lines 645--652
 <images/URDF_Importer_4.png, id=329, 398.08725pt x 172.84575pt>
 File: images/URDF_Importer_4.png Graphic file (type png)
 <use images/URDF_Importer_4.png>
-Package pdftex.def Info: images/URDF_Importer_4.png  used on input line 660.
+Package pdftex.def Info: images/URDF_Importer_4.png  used on input line 662.
 (pdftex.def)             Requested size: 220.42372pt x 95.70633pt.
 <images/URDF_Importer_5.png, id=331, 549.85425pt x 230.0595pt>
 File: images/URDF_Importer_5.png Graphic file (type png)
 <use images/URDF_Importer_5.png>
-Package pdftex.def Info: images/URDF_Importer_5.png  used on input line 667.
+Package pdftex.def Info: images/URDF_Importer_5.png  used on input line 669.
 (pdftex.def)             Requested size: 220.42372pt x 92.22577pt.
 <images/URDF_Importer_6.png, id=332, 317.38576pt x 470.9595pt>
 File: images/URDF_Importer_6.png Graphic file (type png)
 <use images/URDF_Importer_6.png>
-Package pdftex.def Info: images/URDF_Importer_6.png  used on input line 674.
+Package pdftex.def Info: images/URDF_Importer_6.png  used on input line 676.
 (pdftex.def)             Requested size: 154.29929pt x 228.96123pt.
 
 
@@ -700,7 +700,7 @@ Package pdftex.def Info: images/URDF_Importer_6.png  used on input line 674.
 <images/URDF_Importer_7.png, id=344, 628.14674pt x 466.74374pt>
 File: images/URDF_Importer_7.png Graphic file (type png)
 <use images/URDF_Importer_7.png>
-Package pdftex.def Info: images/URDF_Importer_7.png  used on input line 683.
+Package pdftex.def Info: images/URDF_Importer_7.png  used on input line 685.
 (pdftex.def)             Requested size: 154.29929pt x 114.64877pt.
 
 
@@ -709,12 +709,12 @@ Capitolo 3.
 <images/cloth_error.PNG, id=354, 161.403pt x 166.221pt>
 File: images/cloth_error.PNG Graphic file (type png)
 <use images/cloth_error.PNG>
-Package pdftex.def Info: images/cloth_error.PNG  used on input line 701.
+Package pdftex.def Info: images/cloth_error.PNG  used on input line 703.
 (pdftex.def)             Requested size: 176.33629pt x 181.61098pt.
 <images/blender_ratio.PNG, id=355, 173.448pt x 292.6935pt>
 File: images/blender_ratio.PNG Graphic file (type png)
 <use images/blender_ratio.PNG>
-Package pdftex.def Info: images/blender_ratio.PNG  used on input line 710.
+Package pdftex.def Info: images/blender_ratio.PNG  used on input line 712.
 (pdftex.def)             Requested size: 132.25557pt x 223.19073pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -784,7 +784,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  79i,7n,93p,1354b,575s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\lachiara\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (31 pages, 1757894 bytes).
+Output written on main.pdf (31 pages, 1758177 bytes).
 PDF statistics:
  486 PDF objects out of 1000 (max. 8388607)
  103 named destinations out of 1000 (max. 500000)
