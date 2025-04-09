@@ -35,4 +35,8 @@
 ``Urdf-importer.''
 \newblock \url{https://github.com/Unity-Technologies/URDF-Importer}.
 
+\bibitem{Repository_ROS2}
+``Repository di ros2.''
+\newblock \url{https://github.com/Piz01/Dynamics.git}.
+
 \end{thebibliography}

@@ -22,6 +22,7 @@
 \usepackage{xcolor}
 \usepackage{url}
 \usepackage{hyperref}
+\usepackage{fancyvrb}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -243,6 +244,7 @@ In questo progetto, ROS 2 è stato utilizzato per gestire la comunicazione tra i
 Inizialmente, il progetto è stato avviato con ROS 2 Jazzy, ma si sono riscontrati diversi problemi di compatibilità e instabilità, in particolare con l'integrazione del ROS-TCP Connector per Unity. Per questo motivo, è stato deciso di passare a ROS 2 Humble, una versione più stabile e ampiamente supportata, che ha garantito una migliore compatibilità con gli strumenti di sviluppo utilizzati.
 
 \subsection{Moveit}
+\label{sec:moveit}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{images/moveit.png}
@@ -286,7 +288,7 @@ Di seguito sono riportati i passaggi svolti per la configurazione del package mo
     \item A questo punto rimane solo da generare il package tramite "Genera Package" nella sezione "Configurations Files".
 \end{enumerate}
 
-MoveIt ha svolto un ruolo centrale nell’interazione tra ROS 2 e Unity e ci ha permesso di simulare la movimentazione del robot solo tramite due codici, uno in C\# per Unity e uno in Python per ROS2, che verranno poi approfonditi nella sezione \ref{cap:Conclusioni}.
+MoveIt ha svolto un ruolo centrale nell’interazione tra ROS 2 e Unity e ci ha permesso di simulare la movimentazione del robot solo tramite due codici, uno in C\# per Unity e uno in Python per ROS2, che verranno poi approfonditi nella sezione \ref{cap:Conclusioni}. Le traiettorie generate da MoveIt sono state pubblicate sul topic $/manipulator_controller/joint_trajectory$, successivamente sottoscritto in Unity tramite il pacchetto ROS-TCP Connector. Questo ha permesso una rappresentazione visiva coerente tra la pianificazione in ROS 2 e l’esecuzione nella simulazione 3D.
 
 \subsection{Gazebo}
 
@@ -690,7 +692,74 @@ Una soluzione consiste nel posizionare una griglia di piccole Sphere Colliders s
 \item Assicurarsi che le sfere vengano generate prima che il Cloth venga configurato, in modo che possano essere assegnate correttamente ai "Sphere Colliders" della maglietta.
 \item Ottimizzare il numero e la dimensione delle sfere per ottenere una buona resa senza sovraccaricare il motore fisico.
 \end{itemize}
+
+\section{Problemi di visualizzazione delle meshes in Gazebo e Unity}
+\label{sec:visualizzazione_meshes}
 \chapter{Struttura del workspace ROS2}
+\textit{In questo capitolo viene presentata la struttura del workspace ROS2, con particolare attenzione alla disposizione dei pacchetti e dei file necessari per l'integrazione con Unity e la simulazione del robot. Come sotto riportato, i package sono evidenziati in rosso mentre i file Python sono evidenziati in blu.}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+Dynamics/
+    |-- ros2_humble/
+    |   |-- src/
+    |   |   |-- \textcolor{red}{moveit_config_tm5_900/}
+    |   |   |   |-- config/
+    |   |   |   |-- launch/
+    |   |   |   |   |-- \textcolor{blue}{demo.launch.py}
+    |   |   |   |   |-- \textcolor{blue}{move_group.launch.py}
+    |   |   |   |   |-- \textcolor{blue}{setup_assistant.launch.py}
+    |   |   |   |-- .setup_assistant
+    |   |   |   |-- CMakeLists.txt
+    |   |   |   `-- package.xml
+    |   |   |-- \textcolor{red}{my_ros2_package/}
+    |   |   |   |-- my_ros2_package/
+    |   |   |   |   |-- build/
+    |   |   |   |   |-- install/ 
+    |   |   |   |   |-- log/
+    |   |   |   |   |-- \textcolor{blue}{moveit_controller.py}
+    |   |   |   |   `-- \textcolor{blue}{pose_listener.py}  
+    |   |   |   |-- resource/
+    |   |   |   |-- test/
+    |   |   |   |-- setup.cfg
+    |   |   |   `-- setup.py
+    |   |   |-- \textcolor{red}{tm_description/}
+    |   |   |   |-- config/
+    |   |   |   |-- launch/  
+    |   |   |   |-- meshes/
+    |   |   |   |-- urdf/
+    |   |   |   |-- CMakeLists.txt
+    |   |   |   |-- package.xml
+    |   |   `-- \textcolor{red}{tm_moveit_config/}
+    |   |       |-- ...
+    |   |-- install/
+    |   |-- build/
+    |   `-- log/
+\end{Verbatim}
+
+\newpage
+
+Nel diagramma sono state riportate solo le cartelle e i file considerati più rilevanti per la comprensione dell'architettura del workspace; la repository completa è disponibile a \cite{Repository_ROS2}.
+
+Si segnala, inoltre, che il package \textcolor{red}{\texttt{tm\_moveit\_config}} non è stato ulteriormente implementato, in quanto è stato creato automaticamente tramite il MoveIt Setup Assistant e presenta la stessa struttura di \textcolor{red}{\texttt{moveit\_config\_tm5\_900}}, spiegata nel dettaglio alla sezione \ref{sec:moveit}.
+
+Questi due package influenzano direttamente il funzionamento del robot e sono stati creati per gestire la cinematica e la dinamica del braccio robotico. Tramite il comando 
+\begin{verbatim}
+    ros2 launch moveit_config_tm5_900 setup_assistant.launch.py
+\end{verbatim}
+oppure
+\begin{verbatim}
+    ros2 launch tm_moveit_config setup_assistant.launch.py
+\end{verbatim} 
+per i due package, si avvierà il Moveit Setup Assistant con il quale è possibile variare le pose del robot, le traiettorie e i giunti influenzati da esse. Il file \textcolor{blue}{\texttt{demo.launch.py}} permette di avviare il MoveIt2 demo, che consente di testare le funzionalità del robot in un ambiente simulato (approfondimento alla sezione \ref{sec:moveit}). Il file \textcolor{blue}{\texttt{move\_group.launch.py}} è il nodo principale che gestisce la comunicazione tra ROS2 e MoveIt2, mentre il file \textcolor{blue}{\texttt{setup\_assistant.launch.py}}, come già accenato, è utilizzato per configurare il robot e le sue proprietà cinematiche.
+\newline
+La cartella \textcolor{red}{\texttt{my\_ros2\_package}} contiene gli script Python che, una volta stabilita la connessione e avviati i controllori di Moveit, inviano i comandi da ROS2 a Unity, in particolare il file \textcolor{red}{\texttt{moveit\_controller.py}} che si occupa di simulare la movimentazione del robot TM5-900 in Unity dalla posa di "Home" a quella di "Work" definite nel Moveit Setup Assistant. Questo file è fondamentale per l'integrazione tra ROS2 e Unity, in quanto consente di controllare il robot direttamente dall'interfaccia grafica di Unity, facilitando la simulazione e il test delle traiettorie.
+\newline
+La cartella \textcolor{red}{\texttt{tm\_description}} contiene i file URDF e i modelli 3D necessari per rappresentare il robot in Gazebo e Unity. In questo package è importante che siano presenti le meshes all'interno della cartella \texttt{meshes}, sia di visualizzazione che di collisione, e il file URDF all'interno della cartella \texttt{urdf}.
+In particolare il file URDF è possibile generarlo a partire dal file xacro tramite il comando:
+\begin{verbatim}
+    ros2 run xacro xacro nome_file.xacro > nome_file.urdf
+\end{verbatim}
+Il file URDF è fondamentale per la rappresentazione del robot in Gazebo e Unity, in quanto definisce la struttura e le proprietà fisiche del robot, inclusi i link, i giunti e le collisioni. Inoltre, il file URDF deve essere correttamente configurato per garantire che il robot venga visualizzato e simulato correttamente in entrambi gli ambienti e quindi che i path relativi alle meshes siano corretti (problematiche riguardo ai path delle meshes nei vari software alla sezione \ref{sec:visualizzazione_meshes}).
 
 \chapter{Test Effettuati e Risultati Ottenuti}
 
