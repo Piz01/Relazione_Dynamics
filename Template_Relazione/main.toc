@@ -9,24 +9,24 @@
 \contentsline {subsection}{\numberline {2.2.1}Ubuntu}{5}{subsection.2.2.1}%
 \contentsline {subsection}{\numberline {2.2.2}Robot Operating System 2}{5}{subsection.2.2.2}%
 \contentsline {subsection}{\numberline {2.2.3}Moveit}{6}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}Gazebo}{8}{subsection.2.2.4}%
-\contentsline {subsection}{\numberline {2.2.5}Unity e UnityHUB}{8}{subsection.2.2.5}%
-\contentsline {subsection}{\numberline {2.2.6}Strumento Cloth di Unity}{8}{subsection.2.2.6}%
-\contentsline {section}{\numberline {2.3}Predisposizione dei Software nel PC}{11}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Interfacciamento ROS2-Unity}{12}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}ROS-TCP Connector \& ROS-TCP Endpoint}{12}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Eseguire simulazione in Unity}{16}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}URDF Importer}{16}{subsection.2.4.3}%
-\contentsline {section}{\numberline {2.5}Importazione TM5-900 in Gazebo}{19}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Camera}{19}{section.2.6}%
-\contentsline {chapter}{\numberline {3}Analisi Preliminari e Problematiche Riscontrate}{20}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Problematiche sulle Compatibilità dei Software Utilizzati}{20}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Compatibilità dei File 3D con Unity e Gazebo}{20}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Componente Cloth e collisioni con altri materiali}{21}{subsection.3.2.1}%
-\contentsline {section}{\numberline {3.3}Problemi di visualizzazione delle meshes in Gazebo e Unity}{22}{section.3.3}%
-\contentsline {chapter}{\numberline {4}Struttura del workspace ROS2}{23}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Test Effettuati e Risultati Ottenuti}{25}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Conclusioni}{26}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Applicazione finale}{26}{section.6.1}%
-\contentsline {chapter}{Appendici}{26}{section.6.1}%
-\contentsline {chapter}{\numberline {A}Appendice1}{27}{appendix.Alph1}%
+\contentsline {subsection}{\numberline {2.2.4}Gazebo}{10}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Unity e UnityHUB}{10}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.6}Strumento Cloth di Unity}{10}{subsection.2.2.6}%
+\contentsline {section}{\numberline {2.3}Predisposizione dei Software nel PC}{13}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Interfacciamento ROS2-Unity}{14}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}ROS-TCP Connector \& ROS-TCP Endpoint}{14}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Eseguire simulazione in Unity}{18}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}URDF Importer}{18}{subsection.2.4.3}%
+\contentsline {section}{\numberline {2.5}Importazione TM5-900 in Gazebo}{21}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Camera}{21}{section.2.6}%
+\contentsline {chapter}{\numberline {3}Analisi Preliminari e Problematiche Riscontrate}{22}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Problematiche sulle Compatibilità dei Software Utilizzati}{22}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Compatibilità dei File 3D con Unity e Gazebo}{22}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Componente Cloth e collisioni con altri materiali}{23}{subsection.3.2.1}%
+\contentsline {section}{\numberline {3.3}Problemi di visualizzazione delle meshes in Gazebo e Unity}{24}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Struttura del workspace ROS2}{25}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Test Effettuati e Risultati Ottenuti}{27}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Conclusioni}{28}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Applicazione finale}{28}{section.6.1}%
+\contentsline {chapter}{Appendici}{28}{section.6.1}%
+\contentsline {chapter}{\numberline {A}Appendice1}{29}{appendix.Alph1}%

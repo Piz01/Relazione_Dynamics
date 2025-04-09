@@ -261,7 +261,7 @@ MoveIt utilizza il modello del robot descritto tramite URDF per comprendere la s
     \item Trajectory Execution: per inviare comandi al robot fisico o alla simulazione.
 \end{itemize}
 
-Nel nostro progetto, MoveIt è stato utilizzato per pianificare e simulare i movimenti del manipolatore Omron TM5-900. Dopo aver generato il pacchetto di configurazione tramite il MoveIt Setup Assistant, è stato possibile definire i gruppi cinematici, i giunti controllabili e le geometrie di collisione.
+Nel nostro progetto, MoveIt è stato utilizzato per pianificare e simulare i movimenti del manipolatore Omron TM5-900. Tramite il MoveIt Setup Assistant è stato possibile definire i gruppi cinematici, i giunti controllabili e le geometrie di collisione.
 
 MoveIt è stato integrato con ROS 2 Humble tramite la versione Moveit2 e tramite questa libreria sono state svolte le seguenti operazioni:
 \begin{itemize}
@@ -289,6 +289,41 @@ Di seguito sono riportati i passaggi svolti per la configurazione del package mo
 \end{enumerate}
 
 MoveIt ha svolto un ruolo centrale nell’interazione tra ROS 2 e Unity e ci ha permesso di simulare la movimentazione del robot solo tramite due codici, uno in C\# per Unity e uno in Python per ROS2, che verranno poi approfonditi nella sezione \ref{cap:Conclusioni}. Le traiettorie generate da MoveIt sono state pubblicate sul topic $/manipulator_controller/joint_trajectory$, successivamente sottoscritto in Unity tramite il pacchetto ROS-TCP Connector. Questo ha permesso una rappresentazione visiva coerente tra la pianificazione in ROS 2 e l’esecuzione nella simulazione 3D.
+
+Inoltre è stato possibile utilizzare il package generato per avviare RViz, un potente strumento di visualizzazione per ROS, che consente di monitorare e analizzare i movimenti del robot in tempo reale. RViz è stato utilizzato per verificare la correttezza della pianificazione delle traiettorie e per eseguire test preliminari prima di passare alla simulazione in Unity.
+
+Tramite il comando:
+\begin{verbatim}
+    ros2 launch moveit_config_tm5_900 demo.launch.py
+\end{verbatim}
+
+è possibile avviare il package generato e visualizzare il robot in RViz, in quanto l'URDF del robot è già presente nel package.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/rviz_1.PNG}
+    \caption{Schermata iniziale RViz}
+    \label{fig:rviz_1}
+\end{figure}
+
+Dalla figura \ref{fig:rviz_1} è possibile vedere la schermata iniziale una volta lanciato il comando sopra indicato.
+A questo punto, nella sezione "Planning", indicando il gruppo di giunti, una posizione iniziale e finale del robot, come mostrato in figura \ref{fig:rviz_2}, RViz salverà le posizioni dei giunti di entrambe le pose. Successivamente, cliccando su "Plan \& Execute" il robot si muoverà nella posizione finale indicata, simulanod la traiettoria.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/rviz_2.PNG}
+    \caption{Configurazione della pianificazione ed esecuzione della traiettoria in RViz}
+    \label{fig:rviz_2}
+\end{figure}
+
+Non solo, tramite RViz è inoltre possibile creare nuove pose come mostrato in figura \ref{fig:rviz_3}, e testare le traiettorie in breve tempo.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/rviz_3.PNG}
+    \caption{Configurazione della posizione dei giunti in RViz}
+    \label{fig:rviz_3}
+\end{figure}
 
 \subsection{Gazebo}
 
