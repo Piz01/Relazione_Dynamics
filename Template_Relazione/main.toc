@@ -9,12 +9,12 @@
 \contentsline {subsection}{\numberline {2.2.1}Ubuntu}{5}{subsection.2.2.1}%
 \contentsline {subsection}{\numberline {2.2.2}Robot Operating System 2}{5}{subsection.2.2.2}%
 \contentsline {subsection}{\numberline {2.2.3}Moveit}{6}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}Gazebo}{8}{subsection.2.2.4}%
-\contentsline {subsection}{\numberline {2.2.5}Unity e UnityHUB}{8}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.4}Gazebo}{7}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Unity e UnityHUB}{7}{subsection.2.2.5}%
 \contentsline {subsection}{\numberline {2.2.6}Strumento Cloth di Unity}{8}{subsection.2.2.6}%
 \contentsline {section}{\numberline {2.3}Predisposizione dei Software nel PC}{11}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Interfacciamento ROS2-Unity}{12}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}ROS-TCP Connector \& ROS-TCP Endpoint}{12}{subsection.2.4.1}%
+\contentsline {section}{\numberline {2.4}Interfacciamento ROS2-Unity}{11}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}ROS-TCP Connector \& ROS-TCP Endpoint}{11}{subsection.2.4.1}%
 \contentsline {subsection}{\numberline {2.4.2}Eseguire simulazione in Unity}{16}{subsection.2.4.2}%
 \contentsline {subsection}{\numberline {2.4.3}URDF Importer}{16}{subsection.2.4.3}%
 \contentsline {section}{\numberline {2.5}Importazione TM5-900 in Gazebo}{19}{section.2.5}%
