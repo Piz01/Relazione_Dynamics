@@ -207,7 +207,7 @@ In questo modo, l'integrazione tra ROS2 e Unity consente di gestire il robot e s
     \label{fig:omron}
 \end{figure}
 
-Un robot è un manipolatore riprogrammabile e multifunzionale progettato per spostare materiali, parti, strumenti o dispositivi specializzati attraverso vari movimenti programmati per l'esecuzione di una varietà di compiti. Il \textbf{robot OMRON TM5-900} è un robot industriale collaborativo (cobot) di ultima generazione, progettato per applicazioni che richiedono flessibilità, precisione e la capacità di operare in ambienti dinamici e collaborativi. È dotato di una serie di caratteristiche avanzate che lo rendono adatto a una varietà di compiti in ambienti industriali, inclusi il montaggio, il pick-and-place, e operazioni di smontaggio come quelle previste in questo progetto.
+Un robot è un manipolatore riprogrammabile e multifunzionale progettato per spostare materiali, parti, strumenti o dispositivi specializzati attraverso vari movimenti programmati per l'esecuzione di una varietà di compiti. Il robot \textbf{OMRON TM5-900} è un robot industriale collaborativo (cobot) di ultima generazione, progettato per applicazioni che richiedono flessibilità, precisione e la capacità di operare in ambienti dinamici e collaborativi. È dotato di una serie di caratteristiche avanzate che lo rendono adatto a una varietà di compiti in ambienti industriali, inclusi il montaggio, il pick-and-place, e operazioni di smontaggio come quelle previste in questo progetto.
 
 Tra le caratteristiche principali vi sono:
 
@@ -229,7 +229,7 @@ In questo progetto, il robot OMRON TM5-900 è stato scelto per la sua versatilit
 \textit{In questo capitolo verranno analizzati i software principali utilizzati per il progetto: Ubuntu, Robot Operating System 2, Moeveit, Gazebo e Unity. Verranno fornite una panoramica generale, informazioni sul loro utilizzo e sulle versioni adottate. Inoltre, si approfondirà l'uso del componente Cloth di Unity, che ha rivestito un ruolo centrale nella simulazione della fisica dei tessuti.}
 
 \subsection{Ubuntu}
-\textit{Per consentire l’esecuzione degli strumenti necessari allo sviluppo del progetto, è stato necessario configurare un ambiente Linux compatibile con ROS2. A tal fine, si è scelto di utilizzare Ubuntu, installato tramite WSL (Windows Subsystem for Linux), una soluzione che permette di lavorare in ambiente Linux direttamente da un sistema operativo Windows.}
+% \textit{Per consentire l’esecuzione degli strumenti necessari allo sviluppo del progetto, è stato necessario configurare un ambiente Linux compatibile con ROS2. A tal fine, si è scelto di utilizzare Ubuntu, installato tramite WSL (Windows Subsystem for Linux), una soluzione che permette di lavorare in ambiente Linux direttamente da un sistema operativo Windows.}
 
 \begin{figure}[H]
     \centering
@@ -243,46 +243,40 @@ Per lo sviluppo del progetto è stato utilizzato il sistema operativo \textbf{Ub
 L’installazione di Ubuntu è avvenuta tramite WSL (Windows Subsystem for Linux), una funzionalità disponibile su Windows 10 e 11 che consente di eseguire nativamente un ambiente GNU/Linux all’interno di Windows, senza dover ricorrere a una macchina virtuale o a un sistema dual boot.
 In particolare, è stata utilizzata la versione WSL2, che offre prestazioni migliorate rispetto a WSL1 grazie all’integrazione di un vero e proprio kernel Linux. Questa soluzione permette di combinare la potenza e la flessibilità di Ubuntu con la praticità degli strumenti di sviluppo offerti dall’ambiente Windows.
 
-Per seguire passo dopo passo l’installazione, è disponibile una guida video al seguente link: https://www.youtube.com/watch?v=bOwsWabST-0
-
-
-\textbf{Di seguito, i principali passaggi eseguiti per l’installazione:}
+\textbf{Di seguito, i principali passaggi eseguiti per l’installazione:} \cite{Ubuntu-install}
 
 \begin{enumerate}
-    \item Abilitazione delle funzionalità WSL e Virtual Machine Platform
+    \item Abilitazione delle funzionalità WSL e Virtual Machine Platform:
     \begin{itemize}
         \item Aprire il menu Start e cercare \textit{Windows PowerShell}.
         \item Avviare PowerShell come amministratore.
         \item Digitare il comando:
         \begin{verbatim}
 wsl --install
-Questo comando installa WSL2 come versione predefinita.
         \end{verbatim}
+        Questo comando installa WSL2 come versione predefinita. Al termine dell’installazione, sarà necessario riavviare il computer.
     \end{itemize}
+    \item Installazione di Ubuntu 22.04
+        \begin{itemize}
+            \item Dopo aver abilitato WSL2, è possibile installare Ubuntu digitando:
+            \begin{verbatim}
+    wsl --install -d Ubuntu-22.04
+            \end{verbatim}
+        \end{itemize}
+    Al termine dell’installazione, sarà necessario riavviare il computer.
+
+
+    \item Configurazione iniziale:
+        \begin{itemize}
+            \item Al primo avvio, verrà richiesto di creare un utente e una password Linux.
+            \item Infine, è consigliato aggiornare i pacchetti eseguendo:
+            \begin{verbatim}
+        sudo apt update && sudo apt upgrade
+            \end{verbatim}
+        \end{itemize}
 \end{enumerate}
-Al termine dell’installazione, sarà necessario riavviare il computer.
-
-\begin{enumerate}
-\item Installazione di Ubuntu 22.04
-    \begin{itemize}
-        \item Dopo aver abilitato WSL2, è possibile installare Ubuntu digitando:
-        \begin{verbatim}
-wsl --install -d Ubuntu-22.04
-        \end{verbatim}
-    \end{itemize}
-\end{enumerate}
-
-Al termine dell’installazione, sarà necessario \textbf{riavviare il computer}.
 
 
-Configurazione iniziale
-\begin{itemize}
-    \item Al primo avvio, verrà richiesto di creare un utente e una password Linux.
-    \item Infine, è consigliato aggiornare i pacchetti eseguendo:
-    \begin{verbatim}
-sudo apt update && sudo apt upgrade
-    \end{verbatim}
-\end{itemize}
 
 Questa configurazione ha permesso l’installazione di ROS2 e l’integrazione con librerie e strumenti specifici per la robotica, mantenendo una buona compatibilità con gli altri software utilizzati nel progetto, come Unity e Gazebo.
 
@@ -327,66 +321,14 @@ MoveIt è stato integrato con ROS 2 Humble tramite la versione Moveit2 e tramite
 \begin{itemize}
     \item Creazione del file SRDF tramite MoveIt Setup Assistant.
 
-    \item Definizione dei controller nel file $ros2_controllers.yaml$.
+    \item Definizione dei controller nel file $ros2\_controllers.yaml$.
 
     \item Definizione delle pose iniziali e finali del robot.
 
     \item Invio delle traiettorie a Unity per visualizzare e simulare il movimento del robot in un contesto 3D realistico.
 \end{itemize}
 
-Di seguito sono riportati i passaggi svolti per la configurazione del package moveit\_config\_tm5\_900 utilizzando il MoveIt Setup Assistant \cite{Moveit_tutorial}: 
-\begin{enumerate}
-    \item Lanciamo il MoveIt Setup Assistant con il comando \begin{verbatim}
-        roslaunch moveit_setup_assistant setup_assistant.launch
-    \end{verbatim}
-    \item Clicchiamo su "Create New MoveIt Configuration Package" e selezioniamo il file URDF del robot
-    \item Nella sezione "Self Collision" è possibile generare automaticamente il controllo delle auto-collisioni del robot, selezionando "Generate Collision Matrix".
-    \item Tramite "Virtual Joint" è possibile definire il giunto virtuale del robot, che rappresenta la connessione tra il robot e il mondo esterno. In questo caso, abbiamo selezionato "fixed" come tipo di giunto.
-    \item Nella sezione "Planning Groups" aggiungere il gruppo "Manipulator" che comprende tutti i giunti a partire da "shoulder\_1\_ joint" fino a "wrist\_3\_joint". Se nel URDF è presente la pinza è possibile aggiungere anche il gruppo "Gripper".
-    \item Successivamente tramite "Robot Poses" sono state definite due pose, una di riposo(Home) e una di lavoro(Work). In caso di aggiunta della pinza si possono definire due pose della pinza in modo che il robot possa afferrare oggetti e manipolarli.
-    \item Infine generiamo i controllori "Ros2 Controllers" e "Ros2 MoveIt Controllers" per la comunicazione tra il robot e MoveIt. Per il nostro progetto abbiamo selezionato rispettivamente il controller "JointTrajectoryController" e "FollowJointTrajectory" per il gruppo "Manipulator".
-    \item A questo punto rimane solo da generare il package tramite "Genera Package" nella sezione "Configurations Files".
-\end{enumerate}
-
-MoveIt ha svolto un ruolo centrale nell’interazione tra ROS 2 e Unity e ci ha permesso di simulare la movimentazione del robot solo tramite due codici, uno in C\# per Unity e uno in Python per ROS2, che verranno poi approfonditi nella sezione \ref{cap:Conclusioni}. Le traiettorie generate da MoveIt sono state pubblicate sul topic $/manipulator_controller/joint_trajectory$, successivamente sottoscritto in Unity tramite il pacchetto ROS-TCP Connector. Questo ha permesso una rappresentazione visiva coerente tra la pianificazione in ROS 2 e l’esecuzione nella simulazione 3D.
-
-Inoltre è stato possibile utilizzare il package generato per avviare RViz, un potente strumento di visualizzazione per ROS, che consente di monitorare e analizzare i movimenti del robot in tempo reale. RViz è stato utilizzato per verificare la correttezza della pianificazione delle traiettorie e per eseguire test preliminari prima di passare alla simulazione in Unity.
-
-Tramite il comando:
-\begin{verbatim}
-    ros2 launch moveit_config_tm5_900 demo.launch.py
-\end{verbatim}
-
-è possibile avviare il package generato e visualizzare il robot in RViz, in quanto l'URDF del robot è già presente nel package.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\textwidth]{images/rviz_1.PNG}
-    \caption{Schermata iniziale RViz}
-    \label{fig:rviz_1}
-\end{figure}
-
-Dalla figura \ref{fig:rviz_1} è possibile vedere la schermata iniziale una volta lanciato il comando sopra indicato.
-A questo punto, nella sezione "Planning", indicando il gruppo di giunti, una posizione iniziale e finale del robot, come mostrato in figura \ref{fig:rviz_2}, RViz salverà le posizioni dei giunti di entrambe le pose. Successivamente, cliccando su "Plan \& Execute" il robot si muoverà nella posizione finale indicata, simulanod la traiettoria.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{images/rviz_2.PNG}
-    \caption{Configurazione della pianificazione ed esecuzione della traiettoria in RViz}
-    \label{fig:rviz_2}
-\end{figure}
-
-Non solo, tramite RViz è inoltre possibile creare nuove pose come mostrato in figura \ref{fig:rviz_3}, e testare le traiettorie in breve tempo.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{images/rviz_3.PNG}
-    \caption{Configurazione della posizione dei giunti in RViz}
-    \label{fig:rviz_3}
-\end{figure}
-
-Nel mentre, è risultato molto utile controllare il terminale durante queste operazioni perché Moveit riportava eventuali errori o problemi di collisione tra il robot e l'ambiente circostante. Questo ha permesso di ottimizzare le traiettorie e garantire un movimento fluido e sicuro del robot.
-
+Alla sezione \ref{sec:moveit_setup_assistant} è presente una descrizione dettagliata dei passaggi svolti con il MoveIt Setup Assistant per la creazione del file SRDF e la definizione dei controller.
 \subsection{Gazebo}
 
 \subsection{Unity e UnityHUB}
@@ -501,14 +443,14 @@ Parallelamente, per lo sviluppo dell'ambiente 3D e della visualizzazione in temp
 Questa configurazione ibrida, che sfrutta al massimo le potenzialità di ogni sistema operativo e software specifico, consente di ottimizzare sia le prestazioni delle simulazioni che l'interattività dell'interfaccia grafica, contribuendo a rendere il progetto complessivamente robusto e flessibile.
 \section{Interfacciamento ROS2-Unity}
 
+\textit{Il capitolo "Interfacciamento ros2-Unity" si propone di illustrare come integrare in maniera efficace ROS2 con l’ambiente grafico e simulativo offerto da Unity, al fine di realizzare una piattaforma in grado di gestire in tempo reale sia la simulazione fisica che la comunicazione dei dati. In particolare, saranno mostrati il ROS-TCP Connector e il ROS-TCP Endpoint per lo scambio di messaggi tra ROS2 e Unity, nonché l'URDF Importer per la corretta rappresentazione del robot all'interno di Unity.}
+
 \subsection{ROS-TCP Connector \& ROS-TCP Endpoint}
 Il \textbf{ROS-TCP Endpoint} è il nodo ROS2 complementare al \textbf{ROS-TCP Connector}, che permette a Unity di comunicare con ROS tramite la rete. Questo nodo gestisce le connessioni TCP in ingresso provenienti da Unity e inoltra i messaggi ROS corrispondenti ai topic.
-
-\section*{\textbf{Installazione del ROS-TCP Endpoint}}
 Per utilizzare il \textbf{ROS-TCP Endpoint}, è necessario installarlo all'interno del proprio workspace ROS2:
 
 \begin{itemize}
-    \item \textbf{Clonare il repository}: \texttt{cd ~/tuo\_workspace/src}
+    \item \textbf{Clonare la repository}: \texttt{cd ~/tuo\_workspace/src}
     \item \textbf{Compilare il workspace}: \texttt{cd ~/tuo\_workspace}
     \begin{verbatim}
     colcon build --symlink-install
@@ -662,16 +604,6 @@ Una volta configurata la comunicazione, è importante verificare che tutto funzi
     \end{verbatim}
 \end{itemize}
 
-
-\subsection{Eseguire simulazione in Unity}
-\begin{itemize}
-    \item Utilizzare il comando \texttt{ros2 topic echo} per verificare se i messaggi vengono effettivamente inviati e ricevuti tra Unity e ROS2.
-\end{itemize}
-
-Se tutto è stato configurato correttamente, Unity e ROS2 saranno perfettamente integrati e potranno scambiarsi dati in tempo reale.
-
-Per concludere, grazie a questa configurazione, sarà possibile avere uno scambio di dati per la pianificazione e il controllo dei movimenti.
-
 \subsection{URDF Importer}
 
 L'\textbf{URDF Importer} \cite{URDF-Importer} di Unity è uno strumento che permette di importare file URDF (Unified Robot Description Format) direttamente in Unity, consentendo così di visualizzare e interagire con modelli robotici 3D all'interno dell'ambiente di simulazione. Questo strumento risulta particolarmente utile nel progetto perché permette di integrare ROS 2 e Unity tramite il file URDF fortemente utilizzato in robotica, inoltre semplifica la gestione della cinematica e della fisica dei robot senza dover ricostruire manualmente i modelli.
@@ -747,6 +679,61 @@ A questo punto, se è stato utilizzato il file urdf del TM5-900 corretto, sarà 
     \label{fig:URDF_Importer_7}     
 \end{figure}
 
+\section{Configurazione del Moveit Setup Assistant}
+\label{sec:moveit_setup_assistant}
+Di seguito sono riportati i passaggi svolti per la configurazione del package moveit\_config\_tm5\_900 utilizzando il MoveIt Setup Assistant \cite{Moveit_tutorial}: 
+\begin{enumerate}
+    \item Lanciamo il MoveIt Setup Assistant con il comando \begin{verbatim}
+        roslaunch moveit_setup_assistant setup_assistant.launch
+    \end{verbatim}
+    \item Clicchiamo su "Create New MoveIt Configuration Package" e selezioniamo il file URDF del robot
+    \item Nella sezione "Self Collision" è possibile generare automaticamente il controllo delle auto-collisioni del robot, selezionando "Generate Collision Matrix".
+    \item Tramite "Virtual Joint" è possibile definire il giunto virtuale del robot, che rappresenta la connessione tra il robot e il mondo esterno. In questo caso, abbiamo selezionato "fixed" come tipo di giunto.
+    \item Nella sezione "Planning Groups" aggiungere il gruppo "Manipulator" che comprende tutti i giunti a partire da "shoulder\_1\_ joint" fino a "wrist\_3\_joint". Se nel URDF è presente la pinza è possibile aggiungere anche il gruppo "Gripper".
+    \item Successivamente tramite "Robot Poses" sono state definite due pose, una di riposo(Home) e una di lavoro(Work). In caso di aggiunta della pinza si possono definire due pose della pinza in modo che il robot possa afferrare oggetti e manipolarli.
+    \item Infine generiamo i controllori "Ros2 Controllers" e "Ros2 MoveIt Controllers" per la comunicazione tra il robot e MoveIt. Per il nostro progetto abbiamo selezionato rispettivamente il controller "JointTrajectoryController" e "FollowJointTrajectory" per il gruppo "Manipulator".
+    \item A questo punto rimane solo da generare il package tramite "Genera Package" nella sezione "Configurations Files".
+\end{enumerate}
+
+MoveIt ha svolto un ruolo centrale nell’interazione tra ROS 2 e Unity e ci ha permesso di simulare la movimentazione del robot solo tramite due codici, uno in C\# per Unity e uno in Python per ROS2, che verranno poi approfonditi nella sezione \ref{cap:Conclusioni}. Le traiettorie generate da MoveIt sono state pubblicate sul topic $/manipulator_controller/joint_trajectory$, successivamente sottoscritto in Unity tramite il pacchetto ROS-TCP Connector. Questo ha permesso una rappresentazione visiva coerente tra la pianificazione in ROS 2 e l’esecuzione nella simulazione 3D.
+
+Inoltre è stato possibile utilizzare il package generato per avviare RViz, un potente strumento di visualizzazione per ROS, che consente di monitorare e analizzare i movimenti del robot in tempo reale. RViz è stato utilizzato per verificare la correttezza della pianificazione delle traiettorie e per eseguire test preliminari prima di passare alla simulazione in Unity.
+
+Tramite il comando:
+\begin{verbatim}
+    ros2 launch moveit_config_tm5_900 demo.launch.py
+\end{verbatim}
+
+è possibile avviare il package generato e visualizzare il robot in RViz, in quanto l'URDF del robot è già presente nel package.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/rviz_1.PNG}
+    \caption{Schermata iniziale RViz}
+    \label{fig:rviz_1}
+\end{figure}
+
+Dalla figura \ref{fig:rviz_1} è possibile vedere la schermata iniziale una volta lanciato il comando sopra indicato.
+A questo punto, nella sezione "Planning", indicando il gruppo di giunti, una posizione iniziale e finale del robot, come mostrato in figura \ref{fig:rviz_2}, RViz salverà le posizioni dei giunti di entrambe le pose. Successivamente, cliccando su "Plan \& Execute" il robot si muoverà nella posizione finale indicata, simulanod la traiettoria.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/rviz_2.PNG}
+    \caption{Configurazione della pianificazione ed esecuzione della traiettoria in RViz}
+    \label{fig:rviz_2}
+\end{figure}
+
+Non solo, tramite RViz è inoltre possibile creare nuove pose come mostrato in figura \ref{fig:rviz_3}, e testare le traiettorie in breve tempo.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/rviz_3.PNG}
+    \caption{Configurazione della posizione dei giunti in RViz}
+    \label{fig:rviz_3}
+\end{figure}
+
+Nel mentre, è risultato molto utile controllare il terminale durante queste operazioni perché Moveit riportava eventuali errori o problemi di collisione tra il robot e l'ambiente circostante. Questo ha permesso di ottimizzare le traiettorie e garantire un movimento fluido e sicuro del robot.
+
 \section{Importazione TM5-900 in Gazebo}
 
 \section{Camera}
@@ -792,6 +779,9 @@ Una soluzione consiste nel posizionare una griglia di piccole Sphere Colliders s
 
 \section{Problemi di visualizzazione delle meshes in Gazebo e Unity}
 \label{sec:visualizzazione_meshes}
+
+\section{Problemi di importazione del URDF del robot in Unity}
+
 \chapter{Struttura del workspace ROS2}
 \textit{In questo capitolo viene presentata la struttura del workspace ROS2, con particolare attenzione alla disposizione dei pacchetti e dei file necessari per l'integrazione con Unity e la simulazione del robot. Come sotto riportato, i package sono evidenziati in rosso mentre i file Python sono evidenziati in blu.}
 

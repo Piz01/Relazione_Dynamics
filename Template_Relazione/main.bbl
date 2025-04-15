@@ -1,29 +1,28 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{Ubuntu-install}
+``Video tutorial per installazione di ubuntu.''
+\newblock \url{https://www.youtube.com/watch?v=bOwsWabST-0}.
 
 \bibitem{ROS2}
-``Ros2.''
+``Documentazione di ros2.''
 \newblock \url{https://docs.ros.org/en/humble/index.html}.
 
 \bibitem{Moveit}
-``Moveit.''
-\newblock \url{ https://moveit.picknik.ai}.
+``Documentazione di moveit.''
+\newblock \url{https://moveit.picknik.ai}.
 
 \bibitem{Moveit_install}
-``Moveit installation.''
+``Installazione di moveit.''
 \newblock
   \url{https://moveit.picknik.ai/humble/doc/tutorials/getting_started/getting_started.html}.
 
-\bibitem{Moveit_tutorial}
-``Moveit setup assistant tutorial.''
-\newblock
-  \url{https://docs.ros.org/en/kinetic/api/moveit_tutorials/html/doc/setup_assistant/setup_assistant_tutorial.html}.
-
 \bibitem{Unity}
-``Unity.''
+``Documentazione di unity.''
 \newblock \url{https://docs.unity.com/}.
 
 \bibitem{ManualCloth}
-``Manual cloth unity.''
+``Manuale del componente cloth di unity.''
 \newblock \url{https://docs.unity3d.com/Manual/class-Cloth.html}.
 
 \bibitem{Gazebo-ROS2}
@@ -32,8 +31,13 @@
   \url{https://gazebosim.org/docs/harmonic/ros_installation/#summary-of-compatible-ros-and-gazebo-combinations}.
 
 \bibitem{URDF-Importer}
-``Urdf-importer.''
+``Repository del urdf-importer.''
 \newblock \url{https://github.com/Unity-Technologies/URDF-Importer}.
+
+\bibitem{Moveit_tutorial}
+``Tutorial per il setup assistant di moveit.''
+\newblock
+  \url{https://docs.ros.org/en/kinetic/api/moveit_tutorials/html/doc/setup_assistant/setup_assistant_tutorial.html}.
 
 \bibitem{Repository_ROS2}
 ``Repository di ros2.''
