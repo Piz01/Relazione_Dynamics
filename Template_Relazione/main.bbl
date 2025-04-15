@@ -30,6 +30,15 @@
 \newblock
   \url{https://gazebosim.org/docs/harmonic/ros_installation/#summary-of-compatible-ros-and-gazebo-combinations}.
 
+\bibitem{Repository-ROS-TCP-Endpoint}
+``Repository per il tcp endpoint di ros.''
+\newblock \url{https://github.com/Unity-Technologies/ROS-TCP-Endpoint.git}.
+
+\bibitem{Test-Connessione-ROS-Unity}
+``Tutorial per test della connessione tra unity e ros2.''
+\newblock
+  \url{https://github.com/Unity-Technologies/Unity-Robotics-Hub/blob/main/tutorials/ros_unity_integration/publisher.md}.
+
 \bibitem{URDF-Importer}
 ``Repository del urdf-importer.''
 \newblock \url{https://github.com/Unity-Technologies/URDF-Importer}.
