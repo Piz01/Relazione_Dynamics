@@ -598,10 +598,10 @@ Il formato URDF è ampiamente utilizzato nel mondo della robotica per descrivere
 
 Nel nostro progetto, il robot utilizzato è un Omron TM5-900, un braccio robotico con sei gradi di libertà. Il modello URDF di questo robot contiene:
 \begin{itemize}
-    \item - Link per ogni segmento del braccio, dalla base all'end-effector.
-    \item - Joints di tipo rotoidale che consentono il movimento.
-    \item - Materiali per rappresentare visivamente il robot in Unity.
-    \item - Collisioni e inerzia, che permettono una simulazione fisica realistica.
+    \item Link per ogni segmento del braccio, dalla base all'end-effector.
+    \item Joints di tipo rotoidale che consentono il movimento.
+    \item Materiali per rappresentare visivamente il robot in Unity.
+    \item Collisioni e inerzia, che permettono una simulazione fisica realistica.
 \end{itemize}
 
 L'importazione di questo URDF in Unity è essenziale per poterlo visualizzare correttamente e per interagire con esso tramite ROS 2.
@@ -721,17 +721,34 @@ Non solo, tramite RViz è inoltre possibile creare nuove pose come mostrato in f
 Nel mentre, è risultato molto utile controllare il terminale durante queste operazioni perché Moveit riportava eventuali errori o problemi di collisione tra il robot e l'ambiente circostante. Questo ha permesso di ottimizzare le traiettorie e garantire un movimento fluido e sicuro del robot.
 
 \section{Importazione TM5-900 in Gazebo}
-
+\label{sec:Importazione_TM5-900_Gazebo}
 \section{Camera}
 
 \chapter{Analisi Preliminari e Problematiche Riscontrate}
-
+\label{sec:Problemi}
 \section{Problematiche sulle Compatibilità dei Software Utilizzati}
+\label{sec:Problemi_Compatibilità}
+Nel contesto del progetto, l’integrazione tra Unity e ROS2 rappresenta una sfida notevole dal punto di vista della compatibilità software. L’armonizzazione degli ambienti di simulazione grafica e del framework robotico comporta l’allineamento di versioni, librerie e tool, dove eventuali discrepanze possono causare malfunzionamenti, comportamenti inattesi e difficoltà nel mantenimento della comunicazione affidabile fra i sistemi. In generale, le principali problematiche riguardano:
+\begin{itemize}
+    \item \textbf{Dipendenze e Librerie}: Ogni ambiente software si basa su set specifici di dipendenze e librerie. Una discrepanza nelle versioni o nelle configurazioni può portare a malfunzionamenti, crash o comportamenti inattesi.
 
+    \item \textbf{Protocollo di Comunicazione}: L’interfacciamento tramite strumenti come il ROS-TCP Connector \& Endpoint impone un rigoroso rispetto degli standard di serializzazione e deserializzazione dei messaggi. Differenze nelle versioni possono influenzare la compatibilità dei protocolli, rendendo critica la coerenza delle implementazioni.
+    
+    \item \textbf{Ambiente di Esecuzione e Simulazione}: La perfetta integrazione tra il motore fisico di Unity e il middleware ROS2 richiede una sincronizzazione accurata dei tempi di esecuzione, in modo da garantire una simulazione fluida e reattiva. Eventuali incompatibilità possono compromettere le performance e l’efficacia dei test simulativi.
+\end{itemize}
+
+Durante le fasi iniziali di sviluppo, il gruppo ha scelto di utilizzare ROS2 Jazzy, una distribuzione che, è supportata fino a maggio 2029, e rappresentava una versione più nuova e all’avanguardia. Tuttavia, in fase di integrazione con Unity sono emerse alcune criticità, in particolare durante i test si sono riscontrate carenze funzionali nelle librerie e nei tool di ROS2 Jazzy. Queste mancanze evidenziavano dei limiti, in particolare per quanto riguarda la robustezza delle comunicazioni e la gestione dei messaggi in ambienti complessi.
+\newline
+La migrazione verso ROS2 Humble è stata dettata dalla necessità di disporre di una versione più consolidata e con una maggiore compatibilità con gli strumenti attuali di Unity. ROS2 Humble, supportato fino a maggio 2027, ha offerto miglioramenti in termini di performance, stabilità e aggiornamenti, garantendo una maggiore robustezza nelle comunicazioni e nella gestione delle dipendenze. \cite{Supporto-versioni-ROS}
+\newline
+Chiaramente, con la scelta di passare a ROS2-Humble anche gli altri software utilizzati sono stati aggiornati, in particolare Gazebo è stato aggiornato alla versione Fortress, che ha mostrato una maggiore stabilità e compatibilità con ROS2 Humble. \cite{Gazebo-ROS2}
+\newline
+Con l’evolversi del progetto e l’avvicinarsi della scadenza del supporto per Humble, si dovrà valutare attentamente una futura migrazione verso ROS2 Jazzy. Passare a Jazzy in un secondo momento potrebbe permettere di sfruttare i miglioramenti continui offerti dalla nuova distribuzione, garantendo così una maggiore longevità e integrazione degli aggiornamenti nell’ecosistema software del progetto.
 \section{Compatibilità dei File 3D con Unity e Gazebo}
+\label{sec:Problemi_Compatibilità_3D}
 Il formato \textbf{.obj} è stato testato con successo sia in Unity che in Gazebo, consentendo l'importazione corretta del modello della t-shirt in entrambi i software. Tuttavia, durante le simulazioni in Unity, l'applicazione del componente Cloth alla t-shirt ha evidenziato alcune difficoltà: il computer ha riscontrato problemi nel gestire correttamente i comandi impostati e, una volta avviata la simulazione, la t-shirt appariva deformata e non realistica, come è possibile vedere nella figura \ref{fig:cloth_error}.
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{images/cloth_error.PNG}
     \caption{Errore nell'applicazione del Cloth di Unity}
@@ -740,7 +757,7 @@ Il formato \textbf{.obj} è stato testato con successo sia in Unity che in Gazeb
 
 Per risolvere questo problema, l'oggetto è stato importato nel software Blender, dove è stato utilizzato il modificatore Decimate per ridurre il numero di poligoni della mesh. Diminuendo il parametro "Ratio" a un valore che ha portato la mesh a circa 5000 poligoni, è stato possibile reimportare l'oggetto in Unity e applicare correttamente il componente Cloth, ottenendo una simulazione più realistica.
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.3\textwidth]{images/blender_ratio.PNG}
     \caption{Modifica della Mesh nel software Blender}
@@ -763,11 +780,90 @@ Una soluzione consiste nel posizionare una griglia di piccole Sphere Colliders s
 \item Ottimizzare il numero e la dimensione delle sfere per ottenere una buona resa senza sovraccaricare il motore fisico.
 \end{itemize}
 
+\section{Problemi di importazione del URDF del robot in Unity}
+\label{sec:Problemi_importazione_URDF}
+
 \section{Problemi di visualizzazione delle meshes in Gazebo e Unity}
 \label{sec:visualizzazione_meshes}
+In questo progetto, sia su Gazebo che su Unity, si è utilizzato il file URDF per importare il robot TM5-900. Tuttavia, i due ambienti presentano differenze significative nell’interpretazione dei percorsi dei file che possono causare disallineamenti nella visualizzazione degli asset.
+Quella che segue è una soluzione pratica a un problema avvenuto durante l'importazione del file URDF del robot in Gazebo e Unity.
 
-\section{Problemi di importazione del URDF del robot in Unity}
+\subsection{Problemi di visualizzazione delle meshes in Gazebo}
+Come già proposto nella sezione \ref{sec:Importazione_TM5-900_Gazebo}, è possibile importare il robot TM5-900 utilizzando il file URDF. Tuttavia, durante il caricamento del file in Gazebo, si è riscontrato un errore di visualizzazione delle meshes, che non venivano caricate correttamente. Questo problema è stato causato da un errore nei percorsi delle meshes all'interno del file URDF. In particolare, i percorsi delle meshes erano stati definiti in questo modo:
 
+\begin{verbatim}
+    <link name="base_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://tm_description/meshes/tm900/visual/Base.STL"/>
+      </geometry>
+      <material name="Grey">
+        <color rgba="0.5 0.5 0.5 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://tm_description/meshes/tm900/collision/base.STL"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <insert_block name="origin"/>
+      <inertia ixx="0.00110833289" ixy="0.0" ixz="0.0" iyy="0.00110833289" iyz="0.0" izz="0.0018"/>
+    </inertial>
+  </link>
+\end{verbatim}
+
+tuttavia Gazebo non riusciva a riconoscere il path, così la soluzione è stata quella di inserire il path completo a partire dalla cartella "home" di Linux, come mostrato di seguito:
+\begin{verbatim}
+    <link name="base_link">
+    <visual>
+      <geometry>
+        <mesh filename="/home/User/ros2_workspace/install/tm_description/share/tm_description/meshes/tm900/visual/Base.STL"/>
+      </geometry>
+      <material name="Grey">
+        <color rgba="0.5 0.5 0.5 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="/home/User/ros2_workspace/install/tm_description/share/tm_description/meshes/tm900/collision/base.STL"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <insert_block name="origin"/>
+      <inertia ixx="0.00110833289" ixy="0.0" ixz="0.0" iyy="0.00110833289" iyz="0.0" izz="0.0018"/>
+    </inertial>
+  </link>
+\end{verbatim}
+\subsection{Problemi di visualizzazione delle meshes in Unity}
+Analogamente si è riscontrato un problema di visualizzazione delle meshes in Unity, dove il robot non veniva caricato correttamente. Anche in questo caso, il problema era dovuto a un errore nei percorsi delle meshes all'interno del file URDF. La soluzione è stata quella di modificare i percorsi delle meshes nel file URDF come mostrato di seguito:
+
+\begin{verbatim}
+    <link name="base_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://meshes/tm900/collision/base.STL"/>
+      </geometry>
+      <material name="Grey">
+        <color rgba="0.5 0.5 0.5 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://meshes/tm900/collision/base.STL"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <insert_block name="origin"/>
+      <inertia ixx="0.00110833289" ixy="0.0" ixz="0.0" iyy="0.00110833289" iyz="0.0" izz="0.0018"/>
+    </inertial>
+  </link>
+\end{verbatim}
+
+facendo attenzione a inserire nella cartella Assets di Unity la prima cartella definita dopo "package://", in questo caso "meshes". In questo modo Unity riesce a riconoscere il path e caricare correttamente le meshes del robot.
 \chapter{Struttura del workspace ROS2}
 \textit{In questo capitolo viene presentata la struttura del workspace ROS2, con particolare attenzione alla disposizione dei pacchetti e dei file necessari per l'integrazione con Unity e la simulazione del robot. Come sotto riportato, i package sono evidenziati in rosso mentre i file Python sono evidenziati in blu.}
 

@@ -48,6 +48,10 @@
 \newblock
   \url{https://docs.ros.org/en/kinetic/api/moveit_tutorials/html/doc/setup_assistant/setup_assistant_tutorial.html}.
 
+\bibitem{Supporto-versioni-ROS}
+``Documentazione per il supporto delle versioni di ros.''
+\newblock \url{https://docs.ros.org/en/humble/Releases.html}.
+
 \bibitem{Repository_ROS2}
 ``Repository di ros2.''
 \newblock \url{https://github.com/Piz01/Dynamics.git}.
