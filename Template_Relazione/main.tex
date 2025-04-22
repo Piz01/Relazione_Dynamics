@@ -591,7 +591,7 @@ Successivamente, una volta che è stato avviato il ROS-TCP-Endpoint le frecce ca
 % In questo modo il nodo \textbf{/ros\_tcp\_endpoint\_node} dovrebbe essere visibile nella lista.
 
 \subsection{URDF Importer}
-
+\label{sec:urdf_importer}
 L'\textbf{URDF Importer} \cite{URDF-Importer} di Unity è uno strumento che permette di importare file URDF (Unified Robot Description Format) direttamente in Unity, consentendo così di visualizzare e interagire con modelli robotici 3D all'interno dell'ambiente di simulazione. Questo strumento risulta particolarmente utile nel progetto perché permette di integrare ROS 2 e Unity tramite il file URDF fortemente utilizzato in robotica, inoltre semplifica la gestione della cinematica e della fisica dei robot senza dover ricostruire manualmente i modelli.
 
 Il formato URDF è ampiamente utilizzato nel mondo della robotica per descrivere la struttura dei robot, inclusi i links, i joints, i materiali e i sensori. L'URDF Importer converte questi modelli in GameObjects di Unity, mantenendo la gerarchia dei componenti e assegnando i giunti come oggetti fisici controllabili.
@@ -775,13 +775,40 @@ Il Cloth di Unity oltre a realizzare una buona fisica per la maglietta è in gra
 \newline
 Una soluzione consiste nel posizionare una griglia di piccole Sphere Colliders sulla superficie con cui il tessuto deve interagire. In questo modo, il tessuto percepirà la presenza di una superficie continua, pur utilizzando solo colliders sferici. Per implementare questa soluzione:
 \begin{itemize}
-\item Creare uno script che generi automaticamente una matrice di sfere sulla superficie desiderata.
-\item Assicurarsi che le sfere vengano generate prima che il Cloth venga configurato, in modo che possano essere assegnate correttamente ai "Sphere Colliders" della maglietta.
-\item Ottimizzare il numero e la dimensione delle sfere per ottenere una buona resa senza sovraccaricare il motore fisico.
+    \item Creare uno script che generi automaticamente una matrice di sfere sulla superficie desiderata.
+    \item Assicurarsi che le sfere vengano generate prima che il Cloth venga configurato, in modo che possano essere assegnate correttamente ai "Sphere Colliders" della maglietta.
+    \item Ottimizzare il numero e la dimensione delle sfere per ottenere una buona resa senza sovraccaricare il motore fisico.
 \end{itemize}
 
 \section{Problemi di importazione del URDF del robot in Unity}
 \label{sec:Problemi_importazione_URDF}
+Un altro problema riscontrato durante la fase di sviluppo del progetto, è nato durante la fase di importazione del file URDF del robot TM5-900 in Unity tramite lo strumento URDF-Importer. Come spiegato nella sezione \ref{sec:urdf_importer}, tramite questo package è possibile importare il robot in Unity con le varie meshes sia di visual che di collision in pochi e semplici click. Tuttavia è importante far notare un problema che è stato riscontrato durante l'importazione del file URDF del robot TM5-900. Infatti, una volta che il robot è stato importato per la prima volta, Unity creata automaticamente dei file .prefab all'interno della cartella "assets" e quindi sia dentro la cartella "visual" che "collision". In figura \ref{fig:visual_prefab} e \ref{fig:collision_prefab} vediamo rispettivamente le cartelle "visual" e "collision" una volta che il robot è stato importato, i file di colore rosa sono appunto i file che Unity genera automaticamente (.prefab).
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/prefab_visual.PNG}
+    \caption{Cartella "visual" con i file .prefab generati automaticamente da Unity}
+    \label{fig:visual_prefab}
+\end{figure}
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/prefab_collision.PNG}
+    \caption{Cartella "collision" con i file .prefab generati automaticamente da Unity}
+    \label{fig:collision_prefab}
+\end{figure}
+
+Tuttavia, una volta che il robot veniva cancellato dalla scena e quindi lo si voleva reimportare questi file .prefab venivano sovrascritti e il robot non veniva più visualizzato correttamente. In particolare, in fase di importazione l'errore che si otteneva era il seguente:
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/errore_prefab.PNG}
+    \caption{Errore durante l'importazione del file URDF del robot TM5-900}
+    \label{fig:errore_prefab}
+\end{figure}
+
+Questo problema è stato risolto semplicemente eliminando i vari file .prefab all'interno della cartella "meshes" (sia in "visual" che in "collision").
+
 
 \section{Problemi di visualizzazione delle meshes in Gazebo e Unity}
 \label{sec:visualizzazione_meshes}
