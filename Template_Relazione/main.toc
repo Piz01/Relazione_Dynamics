@@ -1,35 +1,38 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
-\contentsline {chapter}{\numberline {1}Introduzione}{2}{chapter.1}%
-\contentsline {chapter}{\numberline {2}Materiali e Metodi}{3}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Hardware}{3}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Omron TM5-900}{3}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}Stereo-Camera RealSense D435i}{5}{subsection.2.1.2}%
-\contentsline {section}{\numberline {2.2}Software}{5}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Ubuntu}{5}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Robot Operating System 2}{6}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}Moveit}{7}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}Gazebo}{8}{subsection.2.2.4}%
-\contentsline {subsection}{\numberline {2.2.5}Unity e UnityHUB}{8}{subsection.2.2.5}%
-\contentsline {subsection}{\numberline {2.2.6}Strumento Cloth di Unity}{8}{subsection.2.2.6}%
-\contentsline {section}{\numberline {2.3}Predisposizione dei Software nel PC}{11}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Interfacciamento ROS2-Unity}{12}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}ROS-TCP Connector \& ROS-TCP Endpoint}{12}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}URDF Importer}{16}{subsection.2.4.2}%
-\contentsline {section}{\numberline {2.5}Configurazione del Moveit Setup Assistant}{19}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Importazione TM5-900 in Gazebo}{22}{section.2.6}%
-\contentsline {section}{\numberline {2.7}Camera}{22}{section.2.7}%
-\contentsline {chapter}{\numberline {3}Analisi Preliminari e Problematiche Riscontrate}{23}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Problematiche sulle Compatibilità dei Software Utilizzati}{23}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Compatibilità dei File 3D con Unity e Gazebo}{24}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Componente Cloth e collisioni con altri materiali}{25}{subsection.3.2.1}%
-\contentsline {section}{\numberline {3.3}Problemi di importazione del URDF del robot in Unity}{26}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Problemi di visualizzazione delle meshes in Gazebo e Unity}{27}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Problemi di visualizzazione delle meshes in Gazebo}{27}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Problemi di visualizzazione delle meshes in Unity}{28}{subsection.3.4.2}%
-\contentsline {chapter}{\numberline {4}Struttura del workspace ROS2}{30}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Test Effettuati e Risultati Ottenuti}{32}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Conclusioni}{33}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Applicazione finale}{33}{section.6.1}%
-\contentsline {chapter}{Appendici}{33}{section.6.1}%
-\contentsline {chapter}{\numberline {A}Appendice1}{34}{appendix.Alph1}%
+\contentsline {chapter}{\numberline {1}Introduzione}{3}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Materiali e Metodi}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Hardware}{4}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Omron TM5-900}{4}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Stereo-Camera RealSense D435i}{6}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}Software}{6}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Ubuntu}{6}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Robot Operating System 2}{7}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Moveit}{8}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Gazebo}{9}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Unity e UnityHUB}{9}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.6}Strumento Cloth di Unity}{9}{subsection.2.2.6}%
+\contentsline {section}{\numberline {2.3}Predisposizione dei Software nel PC}{12}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Interfacciamento ROS2-Unity}{13}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}ROS-TCP Connector \& ROS-TCP Endpoint}{13}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}URDF Importer}{17}{subsection.2.4.2}%
+\contentsline {section}{\numberline {2.5}Configurazione del Moveit Setup Assistant}{20}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Importazione TM5-900 in Gazebo}{23}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Camera}{23}{section.2.7}%
+\contentsline {chapter}{\numberline {3}Analisi Preliminari e Problematiche Riscontrate}{24}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Problematiche sulle Compatibilità dei Software Utilizzati}{24}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Compatibilità dei File 3D con Unity e Gazebo}{25}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Componente Cloth e collisioni con altri materiali}{26}{subsection.3.2.1}%
+\contentsline {section}{\numberline {3.3}Problemi di importazione del URDF del robot in Unity}{27}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Problemi di visualizzazione delle meshes in Gazebo e Unity}{28}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Problemi di visualizzazione delle meshes in Gazebo}{28}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Problemi di visualizzazione delle meshes in Unity}{29}{subsection.3.4.2}%
+\contentsline {chapter}{\numberline {4}Struttura del workspace ROS2}{31}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Test Effettuati e Risultati Ottenuti}{33}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Test di comunicazione tra ROS2 e Unity}{33}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Test di simulazione del movimento del robot in Unity}{33}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Test di integrazione della camera}{33}{section.5.3}%
+\contentsline {chapter}{\numberline {6}Conclusioni}{34}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Applicazione finale}{34}{section.6.1}%
+\contentsline {chapter}{Appendici}{34}{section.6.1}%
+\contentsline {chapter}{\numberline {A}Appendice1}{35}{appendix.Alph1}%
