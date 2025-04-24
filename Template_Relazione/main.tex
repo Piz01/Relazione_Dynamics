@@ -330,6 +330,139 @@ MoveIt è stato integrato con ROS 2 Humble tramite la versione Moveit2 e tramite
 
 Alla sezione \ref{sec:moveit_setup_assistant} è presente una descrizione dettagliata dei passaggi svolti con il MoveIt Setup Assistant per la creazione del file SRDF e la definizione dei controller.
 \subsection{Gazebo}
+\subsubsection{URDF importer In Gazebo}
+Il file URDF (\textit{Unified Robot Description Format}) è un file XML usato per rappresentare la struttura fisica, cinematica e dinamica di un robot. Questa descrizione è fondamentale per simulazioni, visualizzazioni 3D e per l'interazione con i sistemi ROS.
+
+In questo documento viene descritto nel dettaglio il file URDF del robot \textbf{TM900}.
+
+\subsubsection*{Struttura generale URDF}
+
+Tutti gli elementi sono racchiusi nel tag \texttt{<robot>}:
+
+\begin{lstlisting}[language=xml]
+<robot name="tm900">
+    ...
+</robot>
+\end{lstlisting}
+
+\subsubsection*{Descrizione dei Link}
+
+Ogni \texttt{link} rappresenta una parte rigida del robot. Ogni link include:
+
+\begin{itemize}
+    \item \texttt{<visual>} – descrizione visiva (mesh o primitiva)
+    \item \texttt{<collision>} – forma per la collisione
+    \item \texttt{<inertial>} – massa, centro di massa e inerzia
+\end{itemize}
+
+Esempio per il link \texttt{shoulder\_1\_link}:
+
+\begin{lstlisting}[language=xml]
+<link name="shoulder_1_link">
+  <visual>
+    <geometry>
+      <mesh filename="package://tm900/meshes/shoulder_1.stl"/>
+    </geometry>
+    <material name="grey"/>
+  </visual>
+  <collision>
+    <geometry>
+      <mesh filename="package://tm900/meshes/shoulder_1.stl"/>
+    </geometry>
+  </collision>
+  <inertial>
+    <mass value="2.5"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <inertia
+      ixx="0.03" ixy="0.0" ixz="0.0"
+      iyy="0.03" iyz="0.0"
+      izz="0.03"/>
+  </inertial>
+</link>
+\end{lstlisting}
+
+\subsubsection*{Descrizione dei Joint}
+
+I \texttt{joint} collegano due link tra loro e ne definiscono il tipo di movimento relativo. Ogni joint contiene:
+
+\begin{itemize}
+    \item \texttt{name}, \texttt{type} (revolute, fixed, prismatic, ecc.)
+    \item \texttt{<parent>} e \texttt{<child>}
+    \item \texttt{<origin>} – posizione e orientamento del giunto
+    \item \texttt{<axis>} – direzione dell’asse di rotazione
+    \item \texttt{<limit>} – limiti meccanici (per giunti mobili)
+\end{itemize}
+
+Esempio:
+
+\begin{lstlisting}[language=xml]
+<joint name="shoulder_1_joint" type="revolute">
+  <parent link="base_link"/>
+  <child link="shoulder_1_link"/>
+  <origin xyz="0 0 0.1" rpy="0 0 0"/>
+  <axis xyz="0 0 1"/>
+  <limit lower="-3.14" upper="3.14" effort="20" velocity="1.0"/>
+</joint>
+\end{lstlisting}
+
+\subsubsection*{Proprietà Fisiche}
+
+Le proprietà fisiche sono definite nei blocchi \texttt{<inertial>} e \texttt{<collision>} di ogni link. Queste includono:
+
+\begin{itemize}
+    \item \textbf{Massa} – specificata in kg
+    \item \textbf{Momento d’inerzia} – matrice 3x3, usata per simulazioni dinamiche
+    \item \textbf{Collisioni} – geometrie per il rilevamento delle collisioni
+    \item \textbf{Materiali} – colore e aspetto visivo
+\end{itemize}
+
+\section*{Trasmissioni e Controllo}
+
+Il controllo avviene tramite plugin ROS. Ogni giunto attuato ha una trasmissione:
+
+\begin{lstlisting}[language=xml]
+<transmission name="elbow_trans">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="elbow_joint">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="elbow_motor">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+\end{lstlisting}
+
+\subsubsection*{Simulazione in Gazebo}
+
+Per la simulazione in Gazebo si definisce il plugin:
+
+\begin{lstlisting}[language=xml]
+<gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
+</gazebo>
+\end{lstlisting}
+
+Per ogni link si può abilitare la self-collision:
+
+\begin{lstlisting}[language=xml]
+<gazebo reference="wrist_link">
+  <selfCollide>true</selfCollide>
+</gazebo>
+\end{lstlisting}
+
+\subsubsection*{Problema con la visualizzazione delle Mesh}
+
+Durante il processo di sviluppo del modello URDF del robot TM900, è stato riscontrato un problema relativo alla visualizzazione delle mesh in Gazebo. Sebbene l'oggetto venisse correttamente creato nel mondo Gazebo, non veniva visualizzato graficamente. Dopo una serie di verifiche, si è scoperto che il problema derivava dal fatto che le mesh non erano correttamente localizzate nel path di installazione.
+
+La soluzione adottata è stata quella di spostare i file delle mesh nel path di install del pacchetto. In particolare, sono stati inseriti all'interno della cartella:
+
+\begin{quote}
+\texttt{package://tm900/meshes/}
+\end{quote}
+
+Questo ha permesso a Gazebo di localizzare correttamente i file e di visualizzare il robot senza ulteriori problemi.
+
 
 \subsection{Unity e UnityHUB}
 
