@@ -3,7 +3,7 @@
 \titleformat{\chapter}
   {\normalfont\LARGE\bfseries}{\thechapter}{1em}{}
 \titlespacing*{\chapter}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
-
+\usepackage{setspace}
 \usepackage[margin=1.2in]{geometry}
 \usepackage[toc,page]{appendix}
 \usepackage{graphicx}
@@ -330,138 +330,23 @@ MoveIt è stato integrato con ROS 2 Humble tramite la versione Moveit2 e tramite
 
 Alla sezione \ref{sec:moveit_setup_assistant} è presente una descrizione dettagliata dei passaggi svolti con il MoveIt Setup Assistant per la creazione del file SRDF e la definizione dei controller.
 \subsection{Gazebo}
-\subsubsection{URDF importer In Gazebo}
-Il file URDF (\textit{Unified Robot Description Format}) è un file XML usato per rappresentare la struttura fisica, cinematica e dinamica di un robot. Questa descrizione è fondamentale per simulazioni, visualizzazioni 3D e per l'interazione con i sistemi ROS.
 
-In questo documento viene descritto nel dettaglio il file URDF del robot \textbf{TM900}.
+\subsubsection*{Modellazione e simulazione robotica in ROS 2 con URDF, XACRO, SDF e Gazebo}
 
-\subsubsection*{Struttura generale URDF}
+In ambiente \textbf{ROS 2}, la modellazione e la simulazione robotica si basano su un insieme di strumenti e formati standardizzati che consentono la rappresentazione dettagliata dei robot e del mondo simulato. Il formato \textbf{URDF} (Unified Robot Description Format) viene utilizzato per descrivere la struttura fisica e cinematica di un robot, includendo elementi come i \textit{link} (parti rigide), le \textit{joint} (articolazioni mobili), le geometrie visuali e di collisione, e le proprietà fisiche quali massa, inerzia e materiali. URDF è nativamente supportato da ROS 2 ed è lo standard di riferimento per la descrizione dei modelli robotici.
 
-Tutti gli elementi sono racchiusi nel tag \texttt{<robot>}:
-
-\begin{lstlisting}[language=xml]
-<robot name="tm900">
-    ...
-</robot>
-\end{lstlisting}
-
-\subsubsection*{Descrizione dei Link}
-
-Ogni \texttt{link} rappresenta una parte rigida del robot. Ogni link include:
-
-\begin{itemize}
-    \item \texttt{<visual>} – descrizione visiva (mesh o primitiva)
-    \item \texttt{<collision>} – forma per la collisione
-    \item \texttt{<inertial>} – massa, centro di massa e inerzia
-\end{itemize}
-
-Esempio per il link \texttt{shoulder\_1\_link}:
-
-\begin{lstlisting}[language=xml]
-<link name="shoulder_1_link">
-  <visual>
-    <geometry>
-      <mesh filename="package://tm900/meshes/shoulder_1.stl"/>
-    </geometry>
-    <material name="grey"/>
-  </visual>
-  <collision>
-    <geometry>
-      <mesh filename="package://tm900/meshes/shoulder_1.stl"/>
-    </geometry>
-  </collision>
-  <inertial>
-    <mass value="2.5"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-    <inertia
-      ixx="0.03" ixy="0.0" ixz="0.0"
-      iyy="0.03" iyz="0.0"
-      izz="0.03"/>
-  </inertial>
-</link>
-\end{lstlisting}
-
-\subsubsection*{Descrizione dei Joint}
-
-I \texttt{joint} collegano due link tra loro e ne definiscono il tipo di movimento relativo. Ogni joint contiene:
-
-\begin{itemize}
-    \item \texttt{name}, \texttt{type} (revolute, fixed, prismatic, ecc.)
-    \item \texttt{<parent>} e \texttt{<child>}
-    \item \texttt{<origin>} – posizione e orientamento del giunto
-    \item \texttt{<axis>} – direzione dell’asse di rotazione
-    \item \texttt{<limit>} – limiti meccanici (per giunti mobili)
-\end{itemize}
-
-Esempio:
-
-\begin{lstlisting}[language=xml]
-<joint name="shoulder_1_joint" type="revolute">
-  <parent link="base_link"/>
-  <child link="shoulder_1_link"/>
-  <origin xyz="0 0 0.1" rpy="0 0 0"/>
-  <axis xyz="0 0 1"/>
-  <limit lower="-3.14" upper="3.14" effort="20" velocity="1.0"/>
-</joint>
-\end{lstlisting}
-
-\subsubsection*{Proprietà Fisiche}
-
-Le proprietà fisiche sono definite nei blocchi \texttt{<inertial>} e \texttt{<collision>} di ogni link. Queste includono:
-
-\begin{itemize}
-    \item \textbf{Massa} – specificata in kg
-    \item \textbf{Momento d’inerzia} – matrice 3x3, usata per simulazioni dinamiche
-    \item \textbf{Collisioni} – geometrie per il rilevamento delle collisioni
-    \item \textbf{Materiali} – colore e aspetto visivo
-\end{itemize}
-
-\section*{Trasmissioni e Controllo}
-
-Il controllo avviene tramite plugin ROS. Ogni giunto attuato ha una trasmissione:
-
-\begin{lstlisting}[language=xml]
-<transmission name="elbow_trans">
-  <type>transmission_interface/SimpleTransmission</type>
-  <joint name="elbow_joint">
-    <hardwareInterface>PositionJointInterface</hardwareInterface>
-  </joint>
-  <actuator name="elbow_motor">
-    <hardwareInterface>PositionJointInterface</hardwareInterface>
-    <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-</transmission>
-\end{lstlisting}
-
-\subsubsection*{Simulazione in Gazebo}
-
-Per la simulazione in Gazebo si definisce il plugin:
-
-\begin{lstlisting}[language=xml]
-<gazebo>
-  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
-</gazebo>
-\end{lstlisting}
-
-Per ogni link si può abilitare la self-collision:
-
-\begin{lstlisting}[language=xml]
-<gazebo reference="wrist_link">
-  <selfCollide>true</selfCollide>
-</gazebo>
-\end{lstlisting}
-
-\subsubsection*{Problema con la visualizzazione delle Mesh}
-
-Durante il processo di sviluppo del modello URDF del robot TM900, è stato riscontrato un problema relativo alla visualizzazione delle mesh in Gazebo. Sebbene l'oggetto venisse correttamente creato nel mondo Gazebo, non veniva visualizzato graficamente. Dopo una serie di verifiche, si è scoperto che il problema derivava dal fatto che le mesh non erano correttamente localizzate nel path di installazione.
-
-La soluzione adottata è stata quella di spostare i file delle mesh nel path di install del pacchetto. In particolare, sono stati inseriti all'interno della cartella:
+Per migliorare la modularità e la riusabilità del codice, viene spesso impiegata l’estensione \textbf{XACRO} (XML Macros), che consente di definire macro, parametri e inclusioni di file esterni. XACRO permette una gestione più efficiente di modelli complessi, sebbene sia necessario convertirne i file in formato URDF standard prima dell’utilizzo in Gazebo, tramite un semplice comando da terminale:
 
 \begin{quote}
-\texttt{package://tm900/meshes/}
+\texttt{xacro my\_robot.urdf.xacro > my\_robot.urdf}
 \end{quote}
 
-Questo ha permesso a Gazebo di localizzare correttamente i file e di visualizzare il robot senza ulteriori problemi.
+La simulazione fisica e visuale viene gestita da \textbf{Gazebo}, un simulatore open source sviluppato originariamente presso la University of Southern California e successivamente mantenuto dalla \textit{Open Source Robotics Foundation}. Gazebo permette la simulazione realistica dell’interazione tra robot e ambiente, includendo dinamiche fisiche, sensori virtuali, rendering 3D e supporto a plugin personalizzati.
+
+Per la descrizione dell’ambiente simulato, Gazebo utilizza un formato nativo denominato \textbf{SDF} (Simulation Description Format), più completo rispetto a URDF e adatto a rappresentare terreni, luci, oggetti dinamici o statici, proprietà ambientali e plugin. Nell’ambito ROS 2, l’approccio più comune consiste nell’utilizzare URDF (o XACRO) per la descrizione del robot e SDF per la definizione del mondo simulativo.
+
+Il collegamento tra ROS 2 e Gazebo è garantito dal pacchetto \texttt{gazebo\_ros}, che funge da interfaccia tra i due ambienti. Questo bridge consente l’integrazione di modelli URDF/XACRO nella simulazione, la pubblicazione dei dati sensoriali simulati su topic ROS 2, l’interazione con i robot tramite comandi ROS e la sincronizzazione del tempo simulato con il clock del sistema ROS. L’adozione combinata di URDF/XACRO, SDF, Gazebo e \texttt{gazebo\_ros} rappresenta dunque una soluzione completa e flessibile per lo sviluppo, il test e la validazione di sistemi robotici complessi all’interno di ambienti simulati.
+
 
 
 \subsection{Unity e UnityHUB}
@@ -855,7 +740,628 @@ Nel mentre, è risultato molto utile controllare il terminale durante queste ope
 
 \section{Importazione TM5-900 in Gazebo}
 \label{sec:Importazione_TM5-900_Gazebo}
+
+\subsubsection{URDF importer In Gazebo}
+Il file URDF (\textit{Unified Robot Description Format}) è un file XML usato per rappresentare la struttura fisica, cinematica e dinamica di un robot. Questa descrizione è fondamentale per simulazioni, visualizzazioni 3D e per l'interazione con i sistemi ROS.
+.
+
+\subsubsection*{Struttura dell' URDF}
+
+Tutti gli elementi sono racchiusi nel tag \texttt{<robot>}:
+
+\begin{lstlisting}[language=xml]
+<robot name="tm900">
+    ...
+</robot>
+\end{lstlisting}
+
+\subsubsection*{Descrizione dei Link}
+
+Ogni \texttt{link} rappresenta una parte rigida del robot. Ogni link include:
+
+\begin{itemize}
+    \item \texttt{<visual>} – descrizione visiva (mesh o primitiva)
+    \item \texttt{<collision>} – forma per la collisione
+    \item \texttt{<inertial>} – massa, centro di massa e inerzia
+\end{itemize}
+
+Esempio per il link \texttt{shoulder\_1\_link}:
+
+\begin{lstlisting}[language=xml]
+<link name="shoulder_1_link">
+  <visual>
+    <geometry>
+      <mesh filename="package://tm900/meshes/shoulder_1.stl"/>
+    </geometry>
+    <material name="grey"/>
+  </visual>
+  <collision>
+    <geometry>
+      <mesh filename="package://tm900/meshes/shoulder_1.stl"/>
+    </geometry>
+  </collision>
+  <inertial>
+    <mass value="2.5"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <inertia
+      ixx="0.03" ixy="0.0" ixz="0.0"
+      iyy="0.03" iyz="0.0"
+      izz="0.03"/>
+  </inertial>
+</link>
+\end{lstlisting}
+
+\subsubsection*{Descrizione dei Joint}
+
+I \texttt{joint} collegano due link tra loro e ne definiscono il tipo di movimento relativo. Ogni joint contiene:
+
+\begin{itemize}
+    \item \texttt{name}, \texttt{type} (revolute, fixed, prismatic, ecc.)
+    \item \texttt{<parent>} e \texttt{<child>}
+    \item \texttt{<origin>} – posizione e orientamento del giunto
+    \item \texttt{<axis>} – direzione dell’asse di rotazione
+    \item \texttt{<limit>} – limiti meccanici (per giunti mobili)
+\end{itemize}
+
+Esempio:
+
+\begin{lstlisting}[language=xml]
+<joint name="shoulder_1_joint" type="revolute">
+  <parent link="base_link"/>
+  <child link="shoulder_1_link"/>
+  <origin xyz="0 0 0.1" rpy="0 0 0"/>
+  <axis xyz="0 0 1"/>
+  <limit lower="-3.14" upper="3.14" effort="20" velocity="1.0"/>
+</joint>
+\end{lstlisting}
+
+\subsubsection*{Proprietà Fisiche}
+
+Le proprietà fisiche sono definite nei blocchi \texttt{<inertial>} e \texttt{<collision>} di ogni link. Queste includono:
+
+\begin{itemize}
+    \item \textbf{Massa} – specificata in kg
+    \item \textbf{Momento d’inerzia} – matrice 3x3, usata per simulazioni dinamiche
+    \item \textbf{Collisioni} – geometrie per il rilevamento delle collisioni
+    \item \textbf{Materiali} – colore e aspetto visivo
+\end{itemize}
+
+\section*{Trasmissioni e Controllo}
+
+Il controllo avviene tramite plugin ROS. Ogni giunto attuato ha una trasmissione:
+
+\begin{lstlisting}[language=xml]
+<transmission name="elbow_trans">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="elbow_joint">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="elbow_motor">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+\end{lstlisting}
+
+\subsubsection*{Simulazione in Gazebo}
+
+Per la simulazione in Gazebo si definisce il plugin:
+
+\begin{lstlisting}[language=xml]
+<gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
+</gazebo>
+\end{lstlisting}
+
+Per ogni link si può abilitare la self-collision:
+
+\begin{lstlisting}[language=xml]
+<gazebo reference="wrist_link">
+  <selfCollide>true</selfCollide>
+</gazebo>
+\end{lstlisting}
+
+\subsubsection*{Problema con la visualizzazione delle Mesh}
+
+Durante il processo di sviluppo del modello URDF del robot TM900, è stato riscontrato un problema relativo alla visualizzazione delle mesh in Gazebo. Sebbene l'oggetto venisse correttamente creato nel mondo Gazebo, non veniva visualizzato graficamente. Dopo una serie di verifiche, si è scoperto che il problema derivava dal fatto che le mesh non erano correttamente localizzate nel path di installazione.
+
+La soluzione adottata è stata quella di spostare i file delle mesh nel path di install del pacchetto. In particolare, sono stati inseriti all'interno della cartella:
+
+\begin{quote}
+\texttt{package://tm900/meshes/}
+\end{quote}
+
+Questo ha permesso a Gazebo di localizzare correttamente i file e di visualizzare il robot senza ulteriori problemi.
+
+
 \section{Camera}
+
+\subsection{Introduzione}
+La camera Intel RealSense D435i è un dispositivo avanzato per la rilevazione della profondità, dotato di sensore IMU integrato che consente l'acquisizione simultanea di dati visivi e inerziali. Grazie alla combinazione di una coppia di sensori stereo e di una fotocamera RGB, la D435i è ampiamente utilizzata in applicazioni di robotica, visione artificiale, mappatura 3D e realtà aumentata.
+
+\subsection{Configurazione Iniziale}
+\subsubsection{Setup della Camera Virtuale}
+\begin{itemize}
+\item Eliminare l'oggetto \texttt{mainCamera} predefinito
+\item Creare un nuovo oggetto Camera dal menu GameObject
+\item Rinominarlo \texttt{realSenseCamera}
+\item Impostare il Field Of View a 87°
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Immagine1.png}
+    \caption{Creazione dell'oggetto camera in Unity}
+    \label{fig:create_camera}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Immagine2.png}
+    \caption{Impostazione del Field Of View}
+    \label{fig:fov_setting}
+\end{figure}
+
+\subsection{Preparazione Scena}
+\begin{itemize}
+\item Aggiungere una sfera come oggetto di test
+\item Assegnare materiali e colori
+\item Configurare l'illuminazione base
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Immagine3.png}
+    \caption{Inserimento del materiale e colore alla sfera}
+    \label{fig:sphere_material}
+\end{figure}
+
+\section{Implementazione Base}
+\begin{lstlisting}[caption=Script base di acquisizione immagini, label=lst:base, lineskip=0.3em]
+using UnityEngine;
+using System.IO;
+
+[RequireComponent(typeof(Camera))]
+public class RealSenseSimulator : MonoBehaviour
+{
+    public Camera realSenseCamera;
+    private RenderTexture renderTexture;
+    private Texture2D colorTexture2D;
+    private Texture2D depthTexture2D;
+
+    void Start()
+    {
+        renderTexture = new RenderTexture(1280, 720, 24, 
+            RenderTextureFormat.ARGB32);
+        realSenseCamera.targetTexture = renderTexture;
+        realSenseCamera.depthTextureMode = DepthTextureMode.Depth;
+        
+        colorTexture2D = new Texture2D(1280, 720, 
+            TextureFormat.RGB24, false);
+        depthTexture2D = new Texture2D(1280, 720, 
+            TextureFormat.RGB24, false);
+    }
+
+    void Update()
+    {
+        RenderTexture.active = renderTexture;
+        colorTexture2D.ReadPixels(new Rect(0, 0, 1280, 720), 0, 0);
+        colorTexture2D.Apply();
+        
+        SaveRGBValuesToFile();
+        SaveRGBImage();
+        StartCoroutine(CaptureDepth());
+    }
+
+    private void SaveRGBValuesToFile()
+    {
+        string filePath = "Assets/rgb_values.csv";
+        using (StreamWriter writer = new StreamWriter(filePath, false))
+        {
+            writer.WriteLine("X,Y,R,G,B");
+            for (int y = 0; y < colorTexture2D.height; y++)
+            {
+                for (int x = 0; x < colorTexture2D.width; x++)
+                {
+                    Color pixelColor = colorTexture2D.GetPixel(x, y);
+                    writer.WriteLine($"{x},{y},{
+                        pixelColor.r * 255},{
+                        pixelColor.g * 255},{
+                        pixelColor.b * 255}");
+                }
+            }
+        }
+        Debug.Log("RGB values saved to " + filePath);
+    }
+
+    private void SaveRGBImage()
+    {
+        byte[] rgbData = colorTexture2D.EncodeToPNG();
+        File.WriteAllBytes(
+            Application.dataPath + "/simulated_rgb_image.png", 
+            rgbData);
+    }
+
+    private IEnumerator CaptureDepth()
+    {
+        yield return new WaitForEndOfFrame();
+        
+        RenderTexture depthRT = RenderTexture.GetTemporary(
+            1280, 720, 24, RenderTextureFormat.Depth);
+        Graphics.Blit(null, depthRT, 
+            new Material(Shader.Find(
+                "Hidden/Internal-DepthNormalsTexture")));
+        
+        RenderTexture.active = depthRT;
+        Texture2D tempDepth = new Texture2D(1280, 720, 
+            TextureFormat.RFloat, false);
+        tempDepth.ReadPixels(new Rect(0, 0, 1280, 720), 0, 0);
+        tempDepth.Apply();
+
+        for (int y = 0; y < depthTexture2D.height; y++)
+        {
+            for (int x = 0; x < depthTexture2D.width; x++)
+            {
+                float depthValue = tempDepth.GetPixel(x, y).r;
+                Color gray = new Color(depthValue, 
+                    depthValue, depthValue);
+                depthTexture2D.SetPixel(x, y, gray);
+            }
+        }
+        depthTexture2D.Apply();
+
+        byte[] depthData = depthTexture2D.EncodeToPNG();
+        File.WriteAllBytes(
+            Application.dataPath + "/simulated_depth_image.png", 
+            depthData);
+
+        RenderTexture.ReleaseTemporary(depthRT);
+        Destroy(tempDepth);
+        Debug.Log("Depth image saved.");
+    }
+}
+\end{lstlisting}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Immagine4.png}
+    \caption{Immagine creata in formato PNG}
+    \label{fig:output_image}
+\end{figure}
+
+\subsection{L'algoritmo base}
+\onehalfspacing
+Attraverso l'utilizzo di una camera virtuale e di una RenderTexture, il sistema acquisisce i dati visivi della scena e li converte in texture gestibili tramite Texture2D.
+ Ogni n frame, i dati RGB vengono esportati in formato .png e salvati anche in un file .csv, consentendo un'analisi dettagliata dei singoli pixel. Contestualmente, viene generata una mappa di profondità simulata mediante una funzione sinusoidale che varia nel tempo, permettendo una rappresentazione dinamica della distanza. Una sezione specifica dello script è inoltre dedicata alla simulazione di variazioni visive e di profondità localizzate, al fine di testare la sensibilità del sistema nel rilevare modifiche. L’architettura del codice è orientata all’efficienza e alla modularità, risultando adatta a scenari di test e sviluppo per sistemi di visione artificiale basati su dati RGB-D.
+La simulazione della profondità è stata realizzata tramite una funzione periodica per garantire un controllo preciso e dinamico dei valori di profondità, senza la necessità di un sensore fisico. Questo approccio consente di testare il comportamento del sistema in modo riproducibile. Inoltre, permette di verificare l’integrazione e la sincronizzazione tra il flusso visivo e quello di profondità in un contesto completamente simulato.
+ Il metodo GenerateDepthData() simula una mappa di profondità generando valori di intensità in scala di grigi per ogni pixel, utilizzando una funzione sinusoidale che varia nel tempo. Questo crea un effetto ondulato e dinamico, utile per testare il comportamento di sistemi basati su dati di profondità senza l’uso di un sensore fisico.
+
+\section{Integrazione ROS2 nell'algoritmo base}
+\subsection{requisiti di Sistema}
+\begin{itemize}
+\item Pubblicazione su due topic separati (RGB e Depth)
+\item Frequenza: 10Hz (0.1 secondi)
+\item Utilizzo del pacchetto Unity-Robotics-ROSTCPConnector
+\item Formato messaggi ROS standard
+\end{itemize}
+\vspace{-1em} % rimuove spazio tra caption e codice
+\begin{lstlisting}[caption=Integrazione dello script di Ros2, label=lst:base, lineskip=0.3em]
+using UnityEngine;
+using System.IO;
+using System.Collections;
+using Unity.Robotics.ROSTCPConnector;
+using RosMessageTypes.Sensor;
+
+[RequireComponent(typeof(Camera))]
+public class RealSenseSimulator : MonoBehaviour
+{
+    public Camera realSenseCamera;
+    private RenderTexture renderTexture;
+    private Texture2D colorTexture2D;
+    private Texture2D depthTexture2D;
+    
+    public float publishInterval = 0.1f;
+    private float nextPublishTime = 0f;
+    public string colorTopic = "/camera/color/image_raw";
+    public string depthTopic = "/camera/depth/image_raw";
+    private ROSConnection ros;
+
+    void Start()
+    {
+        ros = ROSConnection.instance;
+        ros.RegisterPublisher<ImageMsg>(colorTopic);
+        ros.RegisterPublisher<ImageMsg>(depthTopic);
+
+        renderTexture = new RenderTexture(1280, 720, 24, 
+            RenderTextureFormat.ARGB32);
+        realSenseCamera.targetTexture = renderTexture;
+        realSenseCamera.depthTextureMode = DepthTextureMode.Depth;
+        
+        colorTexture2D = new Texture2D(1280, 720, 
+            TextureFormat.RGB24, false);
+        depthTexture2D = new Texture2D(1280, 720, 
+            TextureFormat.R8, false);
+    }
+
+    void Update()
+    {
+        RenderTexture.active = renderTexture;
+        colorTexture2D.ReadPixels(new Rect(0, 0, 1280, 720), 0, 0);
+        colorTexture2D.Apply();
+        
+        StartCoroutine(CaptureDepth());
+
+        if (Time.time >= nextPublishTime)
+        {
+            PublishRGBD();
+            nextPublishTime = Time.time + publishInterval;
+        }
+    }
+
+    private void PublishRGBD()
+    {
+        ImageMsg colorMsg = new ImageMsg
+        {
+            header = new StdMsgs.HeaderMsg { 
+                frame_id = "camera_color_frame" },
+            height = (uint)colorTexture2D.height,
+            width = (uint)colorTexture2D.width,
+            encoding = "rgb8",
+            step = (uint)(colorTexture2D.width * 3),
+            data = colorTexture2D.GetRawTextureData()
+        };
+
+        ImageMsg depthMsg = new ImageMsg
+        {
+            header = new StdMsgs.HeaderMsg { 
+                frame_id = "camera_depth_frame" },
+            height = (uint)depthTexture2D.height,
+            width = (uint)depthTexture2D.width,
+            encoding = "mono8",
+            step = (uint)(depthTexture2D.width * 1),
+            data = depthTexture2D.GetRawTextureData()
+        };
+
+        ros.Publish(colorTopic, colorMsg);
+        ros.Publish(depthTopic, depthMsg);
+    }
+
+    private IEnumerator CaptureDepth()
+    {
+        yield return new WaitForEndOfFrame();
+        
+        RenderTexture depthRT = RenderTexture.GetTemporary(
+            1280, 720, 0, RenderTextureFormat.ARGBFloat);
+        Material depthMat = new Material(
+            Shader.Find("Hidden/Internal-DepthNormalsTexture"));
+        
+        Graphics.Blit(null, depthRT, depthMat);
+        RenderTexture.active = depthRT;
+        
+        Texture2D tempDepth = new Texture2D(1280, 720, 
+            TextureFormat.RGBAFloat, false);
+        tempDepth.ReadPixels(new Rect(0, 0, 1280, 720), 0, 0);
+        tempDepth.Apply();
+
+        for (int y = 0; y < depthTexture2D.height; y++)
+        {
+            for (int x = 0; x < depthTexture2D.width; x++)
+            {
+                float d = tempDepth.GetPixel(x, y).a;
+                depthTexture2D.SetPixel(x, y, new Color(d, 0f, 0f));
+            }
+        }
+        depthTexture2D.Apply();
+
+        RenderTexture.ReleaseTemporary(depthRT);
+        Destroy(tempDepth);
+    }
+}
+\end{lstlisting}
+\subsection{Descrizione dello script \texttt{RealSenseSimulator.cs}}
+
+Lo script \texttt{RealSenseSimulator.cs}, scritto in C\#, è progettato per simulare il comportamento di una telecamera RealSense all'interno di Unity, con la capacità di acquisire immagini a colori e mappe di profondità, e di pubblicarle tramite ROS~2 utilizzando il pacchetto \texttt{Unity.Robotics.ROSTCPConnector}.
+
+\paragraph{Componenti principali}
+Lo script è associato ad un oggetto Unity contenente una \texttt{Camera}, il cui output visivo viene catturato e trasformato in messaggi \texttt{sensor\_msgs/Image} compatibili con ROS~2. Il comportamento dello script è articolato nei seguenti punti principali:
+
+\begin{itemize}
+  \item \textbf{Inizializzazione:} Nella funzione \texttt{Start()}, viene creato un \texttt{RenderTexture} con risoluzione 1280$\times$720 e formato ARGB32. Questo buffer viene assegnato come output della telecamera per la cattura dei frame a colori. Inoltre, viene abilitato il \texttt{DepthTextureMode.Depth} per permettere la generazione automatica della mappa di profondità. Vengono quindi inizializzate due texture 2D: una per il colore (\texttt{RGB24}) e una per la profondità (\texttt{R8}).
+  
+  \item \textbf{Integrazione con ROS 2:} Viene ottenuta l’istanza di \texttt{ROSConnection}, alla quale sono registrati due publisher per i topic \texttt{/camera/color/image\_raw} e \texttt{/camera/depth/image\_raw}, entrambi configurati per inviare messaggi di tipo \texttt{ImageMsg}.
+\end{itemize}
+
+\paragraph{Funzionamento in tempo reale}
+All'interno della funzione \texttt{Update()}, chiamata ad ogni frame da Unity, avvengono le seguenti operazioni:
+\begin{enumerate}
+  \item Il contenuto del \texttt{RenderTexture} attivo viene letto nella \texttt{colorTexture2D} mediante \texttt{ReadPixels}, catturando il frame RGB.
+  \item Viene avviata la coroutine \texttt{CaptureDepth()}, che esegue in modo asincrono la cattura della profondità.
+  \item Se è trascorso l'intervallo di pubblicazione definito (\texttt{publishInterval}), vengono pubblicati i dati RGB e di profondità tramite la funzione \texttt{PublishRGBD()}.
+\end{enumerate}
+
+\paragraph{Pubblicazione dei dati}
+Il metodo \texttt{PublishRGBD()} crea due oggetti \texttt{ImageMsg}, uno per l’immagine RGB e uno per la profondità, impostando opportunamente il frame di riferimento, risoluzione, encoding e passo (\texttt{step}). I dati grezzi delle texture vengono letti tramite \texttt{GetRawTextureData()} e assegnati ai rispettivi messaggi. Infine, i messaggi vengono pubblicati sui topic ROS specificati.
+
+\paragraph{Cattura della profondità}
+La funzione \texttt{CaptureDepth()} è una coroutine che utilizza un \texttt{RenderTexture} temporaneo in formato \texttt{ARGBFloat} per acquisire la mappa di profondità. Questo viene ottenuto applicando un materiale con shader interno \texttt{Hidden/Internal-DepthNormalsTexture}, che consente di generare una texture contenente informazioni di profondità.
+
+La profondità viene letta in una texture temporanea in formato \texttt{RGBAFloat}. Per ciascun pixel, il canale alfa rappresenta la profondità normalizzata, che viene poi convertita in un'immagine a canale singolo scrivendo il valore nel canale rosso della \texttt{depthTexture2D}. La texture risultante viene infine utilizzata per la pubblicazione ROS.
+
+\paragraph{Nota sull'efficienza}
+Va notato che la conversione della profondità pixel-per-pixel e la distruzione dinamica delle texture temporanee possono introdurre un overhead computazionale significativo, specialmente in scenari ad alta frequenza di pubblicazione. In contesti più esigenti, si potrebbe considerare l'ottimizzazione attraverso l'elaborazione GPU-side o tecniche di bufferizzazione.
+
+\paragraph{Conclusione}
+In sintesi, lo script \texttt{RealSenseSimulator} fornisce un'integrazione completa tra Unity e ROS~2 per la simulazione di sensori RGB-D. Esso consente lo sviluppo e la validazione di sistemi robotici in ambienti virtuali realistici, mantenendo una struttura modulare e compatibile con l'infrastruttura ROS.
+
+\subsection{Subscriber ROS2}
+\begin{lstlisting}[language=Python, caption=Subscriber RGB-D ROS2 con salvataggio video, label=lst:rgbd_subscriber]
+#!/usr/bin/env python3
+import rclpy
+from rclpy.node import Node
+from sensor_msgs.msg import Image
+from cv_bridge import CvBridge, CvBridgeError
+import cv2
+
+class RGBDSubscriber(Node):
+    def __init__(self):
+        super().__init__('rgbd_subscriber')
+        self.bridge = CvBridge()
+        # File video di output
+        fourcc = cv2.VideoWriter_fourcc(*'XVID')
+        width, height = 1280, 720
+        fps = 10.0  # 10 fps in linea con Unity
+        self.rgb_writer = cv2.VideoWriter('output_rgb.avi', fourcc, fps, (width, height))
+        self.depth_writer = cv2.VideoWriter('output_depth.avi', fourcc, fps, (width, height), isColor=False)
+
+        if not self.rgb_writer.isOpened():
+            self.get_logger().error('Impossibile aprire output_rgb.avi') 
+        if not self.depth_writer.isOpened():
+            self.get_logger().error('Impossibile aprire output_depth.avi') 
+
+        # Subscriber per colore e profondità
+        self.create_subscription(Image, '/camera/color/image_raw', self.color_callback, 10)
+        self.create_subscription(Image, '/camera/depth/image_raw', self.depth_callback, 10)
+
+        self.shutdown_timer = self.create_timer(
+            60.0,                 # periodo in secondi
+            self.shutdown_callback  # callback di chiusura
+        )
+
+    def color_callback(self, msg: Image):
+        try:
+            # Converte in BGR8 (OpenCV usa BGR)
+            cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='rgb8')
+            cv_image = cv2.cvtColor(cv_image, cv2.COLOR_RGB2BGR)
+
+            # Ruota di 180 gradi
+            rotated = cv2.rotate(cv_image, cv2.ROTATE_180)
+            cv2.imshow('Color View', rotated)
+
+            # Scrive sul video
+            self.rgb_writer.write(rotated)
+
+        except CvBridgeError as e:
+            self.get_logger().error(f'CVBridge Error: {e}')
+        
+        cv2.waitKey(1)
+
+    def depth_callback(self, msg: Image):
+        try:
+            # Converte direttamente in gray-scale 8-bit
+            gray = self.bridge.imgmsg_to_cv2(msg, desired_encoding='mono8')
+
+            # Visualizza la depth
+            cv2.imshow('Depth View', gray)
+
+            # Scrive nel video
+            self.depth_writer.write(gray)
+
+        except CvBridgeError as e:
+            self.get_logger().error(f'CVBridge Error (Depth): {e}')
+
+        cv2.waitKey(1)
+
+    def destroy_node(self):
+        super().destroy_node()
+
+    def shutdown_callback(self):
+        self.get_logger().info('Timeout raggiunto: fermo acquisizione e chiudo finestre.')
+        self.rgb_writer.release()
+        self.depth_writer.release()
+        cv2.destroyAllWindows()
+        self.shutdown_timer.cancel()
+        self.destroy_node()
+        rclpy.shutdown()
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = RGBDSubscriber()
+    rclpy.spin(node)
+
+if __name__ == '__main__':
+    main()
+\end{lstlisting}
+\subsection{Descrizione del nodo \texttt{RGBDSubscriber}}
+
+Il nodo \texttt{RGBDSubscriber} in ambiente ROS~2 ha il compito di acquisire, visualizzare e registrare in formato video i flussi RGB e di profondità (Depth) provenienti da una telecamera simulata. I dati sono pubblicati su due topic ROS distinti, rispettivamente per il colore e la profondità. Il nodo è implementato in Python e fa uso delle librerie \texttt{rclpy} per la comunicazione con ROS~2, \texttt{sensor\_msgs.msg.Image} per la gestione dei messaggi di immagine, \texttt{cv\_bridge} per la conversione tra formati ROS e strutture compatibili con OpenCV, e \texttt{opencv-python} per l’elaborazione e visualizzazione delle immagini.
+
+\paragraph{Inizializzazione}
+Nel costruttore della classe \texttt{RGBDSubscriber}, viene inizializzato un oggetto \texttt{CvBridge} per la conversione tra messaggi ROS e immagini OpenCV. Successivamente, vengono creati due oggetti \texttt{cv2.VideoWriter} per la registrazione dei video RGB e di profondità, utilizzando il codec \texttt{XVID}, una risoluzione di 1280$\times$720 pixel e una frequenza di 10~fps, in linea con la frequenza di pubblicazione del simulatore Unity.
+
+Il nodo si sottoscrive ai seguenti topic:
+\begin{itemize}
+  \item \texttt{/camera/color/image\_raw} per le immagini RGB;
+  \item \texttt{/camera/depth/image\_raw} per le immagini di profondità.
+\end{itemize}
+
+Viene inoltre impostato un \textit{timer} di spegnimento automatico a 60 secondi, che richiama una procedura di chiusura controllata.
+
+\paragraph{Gestione del flusso RGB}
+Il metodo \texttt{color\_callback} viene eseguito ad ogni ricezione di un messaggio RGB. L’immagine viene convertita nel formato \texttt{BGR8}, ruotata di 180° per correggere l’orientamento, visualizzata in una finestra OpenCV denominata \texttt{"Color View"} e registrata nel file \texttt{output\_rgb.avi}. La chiamata a \texttt{cv2.waitKey(1)} permette l’aggiornamento dell’interfaccia grafica di OpenCV.
+
+\paragraph{Gestione del flusso di profondità}
+In modo analogo, il metodo \texttt{depth\_callback} converte il messaggio ROS nel formato \texttt{mono8} (scala di grigi a 8 bit), visualizza il risultato nella finestra \texttt{"Depth View"} e lo registra nel file \texttt{output\_depth.avi}. Anche in questo caso, \texttt{cv2.waitKey(1)} consente la corretta gestione delle finestre OpenCV.
+
+\paragraph{Procedura di arresto}
+Trascorsi 60 secondi, il metodo \texttt{shutdown\_callback} viene eseguito automaticamente. Esso:
+\begin{itemize}
+  \item stampa un messaggio di log;
+  \item rilascia i \texttt{VideoWriter} per completare i file video;
+  \item chiude tutte le finestre di OpenCV;
+  \item cancella il timer ed esegue la distruzione del nodo;
+  \item richiama \texttt{rclpy.shutdown()} per arrestare ROS~2.
+\end{itemize}
+
+\paragraph{Funzione \texttt{main}}
+La funzione \texttt{main()} inizializza l'ambiente ROS~2, crea un’istanza del nodo e mantiene attiva l’elaborazione degli eventi attraverso \texttt{rclpy.spin()}, fino alla terminazione del nodo stesso.
+
+\subsection{Output Base}
+\begin{itemize}
+\item File RGB in formato PNG e CSV
+\item Mappa di profondità in scala di grigi
+\item Salvataggio automatico nella cartella Assets
+\end{itemize}
+
+\subsection{Output ROS2}
+\begin{itemize}
+\item Flusso video RGB funzionante
+\item Problemi con dati di profondità:
+\begin{itemize}
+    \item Immagini piatte
+    \item Mancanza di variazioni
+    \item Possibili cause:
+    \begin{itemize}
+        \item Impostazioni camera
+        \item Shader di profondità
+        \item Conversione formato
+    \end{itemize}
+\end{itemize}
+\end{itemize}
+
+\section{Conclusioni}
+\subsection{Risultati dell'implememntazione della Camera}
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/rgb_results.png}
+        \caption{Risultato RGB}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/depth_results.png}
+        \caption{Risultato profondità}
+    \end{subfigure}
+    \caption{Risultati dell'acquisizione}
+    \label{fig:results}
+\end{figure}
+\subsection{Limitazioni}
+\begin{itemize}
+\item Profondità non completamente realistica
+\item Dipendenza da shader Unity
+\item Throughput non ottimizzato
+\end{itemize}
+
 
 \chapter{Analisi Preliminari e Problematiche Riscontrate}
 \label{sec:Problemi}
@@ -1203,4 +1709,5 @@ Se necessario ricorrete alle appendici per spiegare le parti "di contorno" dell'
 
 \bibliographystyle{ieeetr}
 \bibliography{bibl} 
+
 \end{document}
