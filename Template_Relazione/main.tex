@@ -911,7 +911,7 @@ La camera Intel RealSense D435i è un dispositivo avanzato per la rilevazione de
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Immagine3.png}
+    \includegraphics[width=0.8\textwidth]{images/Immagine3.png}
     \caption{Inserimento del materiale e colore alla sfera}
     \label{fig:sphere_material}
 \end{figure}
@@ -1024,7 +1024,7 @@ public class RealSenseSimulator : MonoBehaviour
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Immagine4.png}
+    \includegraphics[width=0.8\textwidth]{images/Immagine4.png}
     \caption{Immagine creata in formato PNG}
     \label{fig:output_image}
 \end{figure}
@@ -1218,7 +1218,7 @@ class RGBDSubscriber(Node):
         if not self.depth_writer.isOpened():
             self.get_logger().error('Impossibile aprire output_depth.avi') 
 
-        # Subscriber per colore e profondità
+        #Subscriber per colore e profondita
         self.create_subscription(Image, '/camera/color/image_raw', self.color_callback, 10)
         self.create_subscription(Image, '/camera/depth/image_raw', self.depth_callback, 10)
 
@@ -1340,21 +1340,21 @@ La funzione \texttt{main()} inizializza l'ambiente ROS~2, crea un’istanza del 
 
 \section{Conclusioni}
 \subsection{Risultati dell'implememntazione della Camera}
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}{0.45\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/rgb_results.png}
-        \caption{Risultato RGB}
-    \end{subfigure}
-    \begin{subfigure}{0.45\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/depth_results.png}
-        \caption{Risultato profondità}
-    \end{subfigure}
-    \caption{Risultati dell'acquisizione}
-    \label{fig:results}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \begin{subfigure}{0.45\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{images/rgb_results.png}
+%         \caption{Risultato RGB}
+%     \end{subfigure}
+%     \begin{subfigure}{0.45\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{images/depth_results.png}
+%         \caption{Risultato profondità}
+%     \end{subfigure}
+%     \caption{Risultati dell'acquisizione}
+%     \label{fig:results}
+% \end{figure}
 \subsection{Limitazioni}
 \begin{itemize}
 \item Profondità non completamente realistica
