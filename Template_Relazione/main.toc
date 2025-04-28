@@ -13,54 +13,32 @@
 \contentsline {subsection}{\numberline {2.2.5}Unity e UnityHUB}{10}{subsection.2.2.5}%
 \contentsline {subsection}{\numberline {2.2.6}Strumento Cloth di Unity}{10}{subsection.2.2.6}%
 \contentsline {section}{\numberline {2.3}Predisposizione dei Software nel PC}{13}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Interfacciamento ROS2-Unity}{13}{section.2.4}%
+\contentsline {section}{\numberline {2.4}Interfacciamento ROS2-Unity}{14}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}ROS-TCP Connector \& ROS-TCP Endpoint}{14}{subsection.2.4.1}%
 \contentsline {subsection}{\numberline {2.4.2}URDF Importer}{18}{subsection.2.4.2}%
 \contentsline {section}{\numberline {2.5}Configurazione del Moveit Setup Assistant}{21}{section.2.5}%
 \contentsline {section}{\numberline {2.6}Importazione TM5-900 in Gazebo}{24}{section.2.6}%
 \contentsline {subsubsection}{URDF importer In Gazebo}{24}{subsubsection*.25}%
 \contentsline {section}{\numberline {2.7}Camera}{26}{section.2.7}%
-\contentsline {subsection}{\numberline {2.7.1}Introduzione}{26}{subsection.2.7.1}%
-\contentsline {subsection}{\numberline {2.7.2}Configurazione Iniziale}{26}{subsection.2.7.2}%
-\contentsline {subsubsection}{Setup della Camera Virtuale}{26}{subsubsection*.26}%
-\contentsline {subsection}{\numberline {2.7.3}Preparazione Scena}{29}{subsection.2.7.3}%
-\contentsline {section}{\numberline {2.8}Implementazione Base}{29}{section.2.8}%
-\contentsline {subsection}{\numberline {2.8.1}L'algoritmo base}{33}{subsection.2.8.1}%
-\contentsline {section}{\numberline {2.9}Integrazione ROS2 nell'algoritmo base}{33}{section.2.9}%
-\contentsline {subsection}{\numberline {2.9.1}requisiti di Sistema}{33}{subsection.2.9.1}%
-\contentsline {subsection}{\numberline {2.9.2}Descrizione dello script \texttt {RealSenseSimulator.cs}}{36}{subsection.2.9.2}%
-\contentsline {paragraph}{Componenti principali}{37}{paragraph*.31}%
-\contentsline {paragraph}{Funzionamento in tempo reale}{37}{paragraph*.32}%
-\contentsline {paragraph}{Pubblicazione dei dati}{37}{paragraph*.33}%
-\contentsline {paragraph}{Cattura della profondità}{37}{paragraph*.34}%
-\contentsline {paragraph}{Nota sull'efficienza}{38}{paragraph*.35}%
-\contentsline {paragraph}{Conclusione}{38}{paragraph*.36}%
-\contentsline {subsection}{\numberline {2.9.3}Subscriber ROS2}{38}{subsection.2.9.3}%
-\contentsline {subsection}{\numberline {2.9.4}Descrizione del nodo \texttt {RGBDSubscriber}}{40}{subsection.2.9.4}%
-\contentsline {paragraph}{Inizializzazione}{40}{paragraph*.37}%
-\contentsline {paragraph}{Gestione del flusso RGB}{41}{paragraph*.38}%
-\contentsline {paragraph}{Gestione del flusso di profondità}{41}{paragraph*.39}%
-\contentsline {paragraph}{Procedura di arresto}{41}{paragraph*.40}%
-\contentsline {paragraph}{Funzione \texttt {main}}{41}{paragraph*.41}%
-\contentsline {subsection}{\numberline {2.9.5}Output Base}{42}{subsection.2.9.5}%
-\contentsline {subsection}{\numberline {2.9.6}Output ROS2}{42}{subsection.2.9.6}%
-\contentsline {section}{\numberline {2.10}Conclusioni}{42}{section.2.10}%
-\contentsline {subsection}{\numberline {2.10.1}Risultati dell'implememntazione della Camera}{42}{subsection.2.10.1}%
-\contentsline {subsection}{\numberline {2.10.2}Limitazioni}{42}{subsection.2.10.2}%
-\contentsline {chapter}{\numberline {3}Analisi Preliminari e Problematiche Riscontrate}{43}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Problematiche sulle Compatibilità dei Software Utilizzati}{43}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Compatibilità dei File 3D con Unity e Gazebo}{44}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Componente Cloth e collisioni con altri materiali}{45}{subsection.3.2.1}%
-\contentsline {section}{\numberline {3.3}Problemi di importazione del URDF del robot in Unity}{46}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Problemi di visualizzazione delle meshes in Gazebo e Unity}{47}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Problemi di visualizzazione delle meshes in Gazebo}{48}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Problemi di visualizzazione delle meshes in Unity}{49}{subsection.3.4.2}%
-\contentsline {chapter}{\numberline {4}Struttura del workspace ROS2}{51}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Test Effettuati e Risultati Ottenuti}{54}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Test di comunicazione tra ROS2 e Unity}{54}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Test di simulazione del movimento del robot in Unity}{54}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Test di integrazione della camera}{54}{section.5.3}%
-\contentsline {chapter}{\numberline {6}Conclusioni}{55}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Applicazione finale}{55}{section.6.1}%
-\contentsline {chapter}{Appendici}{55}{section.6.1}%
-\contentsline {chapter}{\numberline {A}Appendice1}{56}{appendix.Alph1}%
+\contentsline {subsection}{\numberline {2.7.1}Setup della Camera Virtuale}{27}{subsection.2.7.1}%
+\contentsline {subsection}{\numberline {2.7.2}Implementazione codice per l'acquisizione delle immagini}{30}{subsection.2.7.2}%
+\contentsline {subsection}{\numberline {2.7.3}Publisher di Unity}{33}{subsection.2.7.3}%
+\contentsline {subsection}{\numberline {2.7.4}Subscriber ROS2}{38}{subsection.2.7.4}%
+\contentsline {chapter}{\numberline {3}Analisi Preliminari e Problematiche Riscontrate}{41}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Problematiche sulle Compatibilità dei Software Utilizzati}{41}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Compatibilità dei File 3D con Unity e Gazebo}{42}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Componente Cloth e collisioni con altri materiali}{43}{subsection.3.2.1}%
+\contentsline {section}{\numberline {3.3}Problemi di importazione del URDF del robot in Unity}{44}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Problemi di visualizzazione delle meshes in Gazebo e Unity}{45}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Problemi di visualizzazione delle meshes in Gazebo}{45}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Problemi di visualizzazione delle meshes in Unity}{46}{subsection.3.4.2}%
+\contentsline {section}{\numberline {3.5}Problemi con l'acquisizione della profondità tramite la camera virtuale}{47}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Struttura del workspace ROS2}{48}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Test Effettuati e Risultati Ottenuti}{50}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Test di comunicazione tra ROS2 e Unity}{50}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Test di simulazione del movimento del robot in Unity}{50}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Test di integrazione della camera}{50}{section.5.3}%
+\contentsline {chapter}{\numberline {6}Conclusioni}{51}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Applicazione finale}{51}{section.6.1}%
+\contentsline {chapter}{Appendici}{51}{section.6.1}%
+\contentsline {chapter}{\numberline {A}Appendice1}{52}{appendix.Alph1}%

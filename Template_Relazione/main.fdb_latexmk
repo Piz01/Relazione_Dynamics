@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1745658651.30736 "main.aux" "main.bbl" "main" 1745658656.48642 0
+["bibtex main"] 1745854230.81309 "main.aux" "main.bbl" "main" 1745854237.49121 0
   "./bibl.bib" 1744793800 2212 90a3dd022449fbbc5e801a1acfe963e1 ""
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/ieeetr.bst" 1291864344 18361 1a00e58565e7f19bf2b3e1bfb82254ae ""
-  "main.aux" 1745658655 20228 aab2106a669f28f85f1eb3d764ce90f9 "pdflatex"
+  "main.aux" 1745854235 17441 399e1ee20bc45c93334d912ca250dd06 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1745658651.71196 "c:/Users/lachiara/Documents/GitHub/Relazione_Dynamics/Template_Relazione/main.tex" "main.pdf" "main" 1745658656.48784 0
+["pdflatex"] 1745854231.45189 "c:/Users/lachiara/Documents/GitHub/Relazione_Dynamics/Template_Relazione/main.tex" "main.pdf" "main" 1745854237.49288 0
   "C:/Users/lachiara/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1745658358 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/lachiara/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1095.pk" 1742286950 12668 c071cd0a07f67dc746c50366f2ac2921 ""
   "C:/Users/lachiara/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcti1095.pk" 1745658364 15464 1b4062215b962b73e291594148e62243 ""
@@ -38,7 +38,6 @@
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmsy8.tfm" 1136765053 1120 8b7d695260f3cff42e636090a8002094 ""
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmti10.tfm" 1136765053 1480 aa8e34af0eb6a2941b776984cf1dfdc4 ""
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmtt10.tfm" 1136765053 768 1321e9409b4137d6fb428ac9dc956269 ""
-  "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmtt12.tfm" 1136765053 772 9a936b7f5e2ff0557fce0f62822f0bbf ""
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1247596666 34811 78b52f49e893bcba91bd7581cdc144c0 ""
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1247596666 32080 340ef9bf63678554ee606688e7b5339d ""
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb" 1247596667 36554 b67dc2cfa451409e100b3fcf5f506509 ""
@@ -50,7 +49,6 @@
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1247596667 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1247596667 37944 359e864bd06cde3b1cf57bb20757fb06 ""
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb" 1247596667 31099 342ef5a582aacbd3346f3cf4579679fa ""
-  "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb" 1247596666 24252 1e4e051947e12dfb50fee0b7f4e26e3a ""
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/tex/generic/atbegshi/atbegshi.sty" 1575571100 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/tex/generic/babel/babel.sty" 1724932513 146459 bc754156bcff0b0651cf59d8ba0cb2bc ""
@@ -136,10 +134,9 @@
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/tex/latex/tools/verbatim.sty" 1718356376 7532 d2e1111e17bfebb1607d8ffa779705ec ""
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/lachiara/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
-  "c:/Users/lachiara/Documents/GitHub/Relazione_Dynamics/Template_Relazione/main.tex" 1745658640 105892 e60f87cd37081849f195c4bfe4c563f2 ""
+  "c:/Users/lachiara/Documents/GitHub/Relazione_Dynamics/Template_Relazione/main.tex" 1745854222 108369 9f8b89e2feffdb2a6ef620bba2479bf4 ""
   "images/Immagine1.png" 1745649419 61010 ff59590f68d2444ab458689aeacc7ecc ""
   "images/Immagine2.png" 1745649419 61252 94d488947eaf8302f2395fa8abf1c874 ""
-  "images/Immagine3.png" 1745649419 143785 13ea25fec6c58023a4967f3cd806cbd9 ""
   "images/Immagine4.png" 1745649419 61117 b6f13280e8cf802681e56fb2c0b8516e ""
   "images/ROS2.png" 1742983949 148601 0f44e0c1a99f2ab9b027f06b1fc54f5d ""
   "images/UNITY.jpg" 1742984038 111049 9c76c478b1988c952797d0457b1a3600 ""
@@ -171,11 +168,11 @@
   "images/test_connessione_1.PNG" 1744724890 139723 faec8dbcab48bf3f72cd1b37dd5d1733 ""
   "images/test_connessione_2.PNG" 1744724993 139868 1c88be303b6bf87fd7003496b3d02859 ""
   "images/ubuntu1.png" 1744465141 12629 9fab32c1edd29666043a9195924d1a5a ""
-  "main.aux" 1745658655 20228 aab2106a669f28f85f1eb3d764ce90f9 "pdflatex"
-  "main.bbl" 1745658651 1967 3e9bd065882a9b9623748686efa8a89e "bibtex main"
-  "main.out" 1745658655 9935 3121d164974190a9dfd8ffe905881018 "pdflatex"
-  "main.tex" 1745658640 105892 e60f87cd37081849f195c4bfe4c563f2 ""
-  "main.toc" 1745658655 5663 9e4f7015490c327dbbbe5709bacc905a "pdflatex"
+  "main.aux" 1745854235 17441 399e1ee20bc45c93334d912ca250dd06 "pdflatex"
+  "main.bbl" 1745854231 1967 3e9bd065882a9b9623748686efa8a89e "bibtex main"
+  "main.out" 1745854235 8606 3d0dd52264df9f13dabd90516128b5ed "pdflatex"
+  "main.tex" 1745854222 108369 9f8b89e2feffdb2a6ef620bba2479bf4 ""
+  "main.toc" 1745854235 3951 8e88135fd526866cdb772d8cf076b970 "pdflatex"
   (generated)
   "main.aux"
   "main.log"

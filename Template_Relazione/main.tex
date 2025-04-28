@@ -224,6 +224,7 @@ Tra le caratteristiche principali vi sono:
 In questo progetto, il robot OMRON TM5-900 è stato scelto per la sua versatilità e capacità di manipolare oggetti come tessuti in modo preciso e sicuro. Il suo utilizzo si concentra sulla simulazione della movimentazione del robot, dove l'integrazione con ROS2 assicura una gestione ottimale della comunicazione e delle operazioni. Inoltre, l'interazione con Unity permette di visualizzare in tempo reale il comportamento del robot, monitorando e ottimizzando il suo funzionamento durante le diverse fasi del progetto.
 
 \subsection{Stereo-Camera RealSense D435i}
+La camera Intel RealSense D435i è un dispositivo avanzato per la rilevazione della profondità, dotato di sensore IMU integrato che consente l'acquisizione simultanea di dati visivi e inerziali. Grazie alla combinazione di una coppia di sensori stereo e di una fotocamera RGB, la D435i è ampiamente utilizzata in applicazioni di robotica, visione artificiale, mappatura 3D e realtà aumentata.
 
 \section{Software}
 \textit{In questo capitolo verranno analizzati i software principali utilizzati per il progetto: Ubuntu, Robot Operating System 2, Moeveit, Gazebo e Unity. Verranno fornite una panoramica generale, informazioni sul loro utilizzo e sulle versioni adottate. Inoltre, si approfondirà l'uso del componente Cloth di Unity, che ha rivestito un ruolo centrale nella simulazione della fisica dei tessuti.}
@@ -875,48 +876,56 @@ Questo ha permesso a Gazebo di localizzare correttamente i file e di visualizzar
 
 
 \section{Camera}
+\textit{Questo capitolo descrive il task riguardante la camera e la soluzione ottenuta. Il problema consisteva nell’acquisizione e nella trasmissione in tempo reale delle immagini della scena virtuale (sia RGB sia di profondità) da Unity al framework ROS2. L’obiettivo è duplice: da un lato, permettere a ROS2 di ricevere flussi video ad alta frequenza per eventuali elaborazioni e algoritmi di visione artificiale; dall’altro, garantire una struttura modulare, facilmente estendibile e conforme alle best practice di comunicazione offerta da ROS2. Successivamente, grazie a questo task è possibile integrare nel nella realtà la camera Realsense D455, che fornisce flussi video RGB e di profondità. In particolare, saranno descritti i passaggi per la preparazione del RenderTexture e la spiegazione del codice C\# per l’acquisizione delle immagini. Infine, verranno presentati sia il codice Publisher di Unity che il Subscriber di ROS2.}
 
-\subsection{Introduzione}
-La camera Intel RealSense D435i è un dispositivo avanzato per la rilevazione della profondità, dotato di sensore IMU integrato che consente l'acquisizione simultanea di dati visivi e inerziali. Grazie alla combinazione di una coppia di sensori stereo e di una fotocamera RGB, la D435i è ampiamente utilizzata in applicazioni di robotica, visione artificiale, mappatura 3D e realtà aumentata.
+La soluzione adottata per rispondere a questa esigenza, è la RenderTexture di Unity, utilizzata come fonte di acquisizione dei frame. Sono stati sviluppati due componenti software distinti:
+\begin{itemize}
+    \item \textbf{Publisher Unity} uno script in C\# che cattura ad intervalli regolari le texture della scena virtuale, estrae separatamente i dati RGB e quelli di profondità e li pubblica su due topic ROS2 distinti.
 
-\subsection{Configurazione Iniziale}
-\subsubsection{Setup della Camera Virtuale}
+    \item \textbf{Subscriber ROS2} un nodo Python che si iscrive ai due topic, riceve i pacchetti di dati, li converte in immagini tramite OpenCV e infine li salva come video nel workspace di lavoro.
+\end{itemize}
+
+Inoltre è stato implementata una soluzione iniziale interamente in Unity che permette di esportare i dati RGB sia in formato .png che in .csv, in modo da avere un file di testo con le coordinate RGB di ogni pixel. Questo è stato utile per testare la funzionalità del Publisher e per verificare la veridicità dei dati.
+
+\subsection{Setup della Camera Virtuale}
+Prima di procedere con la scrittura del codice, è necessario configurare correttamente la scena in Unity. In particolare, è necessario creare un oggetto Camera che simuli il funzionamento della Realsense D455. Per fare ciò, seguire i seguenti passaggi:
+
 \begin{itemize}
 \item Eliminare l'oggetto \texttt{mainCamera} predefinito
-\item Creare un nuovo oggetto Camera dal menu GameObject
+\item Creare un nuovo oggetto Camera dal menu GameObject, vedi figura \ref{fig:create_camera}
 \item Rinominarlo \texttt{realSenseCamera}
-\item Impostare il Field Of View a 87°
+\item Impostare il Field Of View a 87°, vedi figura \ref{fig:fov_setting}
 \end{itemize}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/Immagine1.png}
+    \includegraphics[width=0.4\textwidth]{images/Immagine1.png}
     \caption{Creazione dell'oggetto camera in Unity}
     \label{fig:create_camera}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/Immagine2.png}
+    \includegraphics[width=0.4\textwidth]{images/Immagine2.png}
     \caption{Impostazione del Field Of View}
     \label{fig:fov_setting}
 \end{figure}
 
-\subsection{Preparazione Scena}
+A questo punto, è possibile procedere con la creazione della scena. Per testare il funzionamento del sistema, è sufficiente creare un oggetto 3D (ad esempio una sfera) e posizionarlo nella scena. In questo modo, sarà possibile verificare che il sistema acquisisca correttamente le immagini e i dati di profondità. I passaggi da seguire sono i seguenti:
 \begin{itemize}
 \item Aggiungere una sfera come oggetto di test
 \item Assegnare materiali e colori
 \item Configurare l'illuminazione base
 \end{itemize}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Immagine3.png}
-    \caption{Inserimento del materiale e colore alla sfera}
-    \label{fig:sphere_material}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{images/Immagine3.png}
+%     \caption{Inserimento del materiale e colore alla sfera}
+%     \label{fig:sphere_material}
+% \end{figure}
 
-\section{Implementazione Base}
+\subsection{Implementazione codice per l'acquisizione delle immagini}
 \begin{lstlisting}[caption=Script base di acquisizione immagini, label=lst:base, lineskip=0.3em]
 using UnityEngine;
 using System.IO;
@@ -1021,23 +1030,21 @@ public class RealSenseSimulator : MonoBehaviour
     }
 }
 \end{lstlisting}
+\vspace{1em} % aggiunge spazio tra caption e codice
+Attraverso l'utilizzo di una camera virtuale e quindi di una RenderTexture, il sistema acquisisce i dati visivi della scena e li converte in texture gestibili tramite Texture2D.
+Ogni n frame, i dati RGB vengono esportati in formato .png e salvati anche in un file .csv, consentendo un'analisi dettagliata dei singoli pixel. Contestualmente, viene generata una mappa di profondità simulata mediante una funzione sinusoidale che varia nel tempo, permettendo una rappresentazione dinamica della distanza. Una sezione specifica dello script è inoltre dedicata alla simulazione di variazioni visive e di profondità localizzate, al fine di testare la sensibilità del sistema nel rilevare modifiche. L’architettura del codice è orientata all’efficienza e alla modularità, risultando adatta a scenari di test e sviluppo per sistemi di visione artificiale basati su dati RGB-D.
+La simulazione della profondità è stata realizzata tramite una funzione periodica per garantire un controllo preciso e dinamico dei valori di profondità, senza la necessità di un sensore fisico. Questo approccio consente di testare il comportamento del sistema in modo riproducibile. Inoltre, permette di verificare l’integrazione e la sincronizzazione tra il flusso visivo e quello di profondità in un contesto completamente simulato.
+Il metodo GenerateDepthData() simula una mappa di profondità generando valori di intensità in scala di grigi per ogni pixel, utilizzando una funzione sinusoidale che varia nel tempo. Questo crea un effetto ondulato e dinamico, utile per testare il comportamento di sistemi basati su dati di profondità senza l’uso di un sensore fisico.
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Immagine4.png}
-    \caption{Immagine creata in formato PNG}
-    \label{fig:output_image}
+   \centering
+   \includegraphics[width=0.8\textwidth]{images/Immagine4.png}
+   \caption{Immagine creata in formato PNG}
+   \label{fig:output_image}
 \end{figure}
 
-\subsection{L'algoritmo base}
-\onehalfspacing
-Attraverso l'utilizzo di una camera virtuale e di una RenderTexture, il sistema acquisisce i dati visivi della scena e li converte in texture gestibili tramite Texture2D.
- Ogni n frame, i dati RGB vengono esportati in formato .png e salvati anche in un file .csv, consentendo un'analisi dettagliata dei singoli pixel. Contestualmente, viene generata una mappa di profondità simulata mediante una funzione sinusoidale che varia nel tempo, permettendo una rappresentazione dinamica della distanza. Una sezione specifica dello script è inoltre dedicata alla simulazione di variazioni visive e di profondità localizzate, al fine di testare la sensibilità del sistema nel rilevare modifiche. L’architettura del codice è orientata all’efficienza e alla modularità, risultando adatta a scenari di test e sviluppo per sistemi di visione artificiale basati su dati RGB-D.
-La simulazione della profondità è stata realizzata tramite una funzione periodica per garantire un controllo preciso e dinamico dei valori di profondità, senza la necessità di un sensore fisico. Questo approccio consente di testare il comportamento del sistema in modo riproducibile. Inoltre, permette di verificare l’integrazione e la sincronizzazione tra il flusso visivo e quello di profondità in un contesto completamente simulato.
- Il metodo GenerateDepthData() simula una mappa di profondità generando valori di intensità in scala di grigi per ogni pixel, utilizzando una funzione sinusoidale che varia nel tempo. Questo crea un effetto ondulato e dinamico, utile per testare il comportamento di sistemi basati su dati di profondità senza l’uso di un sensore fisico.
-
-\section{Integrazione ROS2 nell'algoritmo base}
-\subsection{requisiti di Sistema}
+\subsection{Publisher di Unity}
+Di seguito, è riportato il codice del Publisher di Unity, che si occupa di pubblicare i dati RGB e Depth su due topic separati. Il codice è stato sviluppato in C\# con le seguenti caratteristiche:
 \begin{itemize}
 \item Pubblicazione su due topic separati (RGB e Depth)
 \item Frequenza: 10Hz (0.1 secondi)
@@ -1045,7 +1052,7 @@ La simulazione della profondità è stata realizzata tramite una funzione period
 \item Formato messaggi ROS standard
 \end{itemize}
 \vspace{-1em} % rimuove spazio tra caption e codice
-\begin{lstlisting}[caption=Integrazione dello script di Ros2, label=lst:base, lineskip=0.3em]
+\begin{lstlisting}[caption=Publisher di Unity, label=lst:base, lineskip=0.3em]
 using UnityEngine;
 using System.IO;
 using System.Collections;
@@ -1158,12 +1165,10 @@ public class RealSenseSimulator : MonoBehaviour
     }
 }
 \end{lstlisting}
-\subsection{Descrizione dello script \texttt{RealSenseSimulator.cs}}
-
-Lo script \texttt{RealSenseSimulator.cs}, scritto in C\#, è progettato per simulare il comportamento di una telecamera RealSense all'interno di Unity, con la capacità di acquisire immagini a colori e mappe di profondità, e di pubblicarle tramite ROS~2 utilizzando il pacchetto \texttt{Unity.Robotics.ROSTCPConnector}.
-
-\paragraph{Componenti principali}
-Lo script è associato ad un oggetto Unity contenente una \texttt{Camera}, il cui output visivo viene catturato e trasformato in messaggi \texttt{sensor\_msgs/Image} compatibili con ROS~2. Il comportamento dello script è articolato nei seguenti punti principali:
+\vspace{1em} % aggiunge spazio tra caption e codice
+Lo script \texttt{RealSenseSimulator.cs}, scritto in C\#, è progettato per simulare il comportamento di una telecamera RealSense all'interno di Unity, con la capacità di acquisire immagini a colori e mappe di profondità, e di pubblicarle su ROS2 utilizzando il pacchetto \texttt{Unity.Robotics.ROSTCPConnector}.
+\newline
+Lo script è associato ad un oggetto Unity contenente una \texttt{Camera}, il cui output visivo viene catturato e trasformato in messaggi \texttt{sensor\_msgs/Image} compatibili con ROS2. Il comportamento dello script è articolato nei seguenti punti principali:
 
 \begin{itemize}
   \item \textbf{Inizializzazione:} Nella funzione \texttt{Start()}, viene creato un \texttt{RenderTexture} con risoluzione 1280$\times$720 e formato ARGB32. Questo buffer viene assegnato come output della telecamera per la cattura dei frame a colori. Inoltre, viene abilitato il \texttt{DepthTextureMode.Depth} per permettere la generazione automatica della mappa di profondità. Vengono quindi inizializzate due texture 2D: una per il colore (\texttt{RGB24}) e una per la profondità (\texttt{R8}).
@@ -1171,7 +1176,6 @@ Lo script è associato ad un oggetto Unity contenente una \texttt{Camera}, il cu
   \item \textbf{Integrazione con ROS 2:} Viene ottenuta l’istanza di \texttt{ROSConnection}, alla quale sono registrati due publisher per i topic \texttt{/camera/color/image\_raw} e \texttt{/camera/depth/image\_raw}, entrambi configurati per inviare messaggi di tipo \texttt{ImageMsg}.
 \end{itemize}
 
-\paragraph{Funzionamento in tempo reale}
 All'interno della funzione \texttt{Update()}, chiamata ad ogni frame da Unity, avvengono le seguenti operazioni:
 \begin{enumerate}
   \item Il contenuto del \texttt{RenderTexture} attivo viene letto nella \texttt{colorTexture2D} mediante \texttt{ReadPixels}, catturando il frame RGB.
@@ -1179,19 +1183,15 @@ All'interno della funzione \texttt{Update()}, chiamata ad ogni frame da Unity, a
   \item Se è trascorso l'intervallo di pubblicazione definito (\texttt{publishInterval}), vengono pubblicati i dati RGB e di profondità tramite la funzione \texttt{PublishRGBD()}.
 \end{enumerate}
 
-\paragraph{Pubblicazione dei dati}
 Il metodo \texttt{PublishRGBD()} crea due oggetti \texttt{ImageMsg}, uno per l’immagine RGB e uno per la profondità, impostando opportunamente il frame di riferimento, risoluzione, encoding e passo (\texttt{step}). I dati grezzi delle texture vengono letti tramite \texttt{GetRawTextureData()} e assegnati ai rispettivi messaggi. Infine, i messaggi vengono pubblicati sui topic ROS specificati.
-
-\paragraph{Cattura della profondità}
+\newline
 La funzione \texttt{CaptureDepth()} è una coroutine che utilizza un \texttt{RenderTexture} temporaneo in formato \texttt{ARGBFloat} per acquisire la mappa di profondità. Questo viene ottenuto applicando un materiale con shader interno \texttt{Hidden/Internal-DepthNormalsTexture}, che consente di generare una texture contenente informazioni di profondità.
-
+\newline
 La profondità viene letta in una texture temporanea in formato \texttt{RGBAFloat}. Per ciascun pixel, il canale alfa rappresenta la profondità normalizzata, che viene poi convertita in un'immagine a canale singolo scrivendo il valore nel canale rosso della \texttt{depthTexture2D}. La texture risultante viene infine utilizzata per la pubblicazione ROS.
-
-\paragraph{Nota sull'efficienza}
+\newline
 Va notato che la conversione della profondità pixel-per-pixel e la distruzione dinamica delle texture temporanee possono introdurre un overhead computazionale significativo, specialmente in scenari ad alta frequenza di pubblicazione. In contesti più esigenti, si potrebbe considerare l'ottimizzazione attraverso l'elaborazione GPU-side o tecniche di bufferizzazione.
 
-\paragraph{Conclusione}
-In sintesi, lo script \texttt{RealSenseSimulator} fornisce un'integrazione completa tra Unity e ROS~2 per la simulazione di sensori RGB-D. Esso consente lo sviluppo e la validazione di sistemi robotici in ambienti virtuali realistici, mantenendo una struttura modulare e compatibile con l'infrastruttura ROS.
+% In sintesi, lo script \texttt{RealSenseSimulator} fornisce un'integrazione completa tra Unity e ROS~2 per la simulazione di sensori RGB-D. Esso consente lo sviluppo e la validazione di sistemi robotici in ambienti virtuali realistici, mantenendo una struttura modulare e compatibile con l'infrastruttura ROS.
 
 \subsection{Subscriber ROS2}
 \begin{lstlisting}[language=Python, caption=Subscriber RGB-D ROS2 con salvataggio video, label=lst:rgbd_subscriber]
@@ -1281,13 +1281,11 @@ def main(args=None):
 if __name__ == '__main__':
     main()
 \end{lstlisting}
-\subsection{Descrizione del nodo \texttt{RGBDSubscriber}}
-
-Il nodo \texttt{RGBDSubscriber} in ambiente ROS~2 ha il compito di acquisire, visualizzare e registrare in formato video i flussi RGB e di profondità (Depth) provenienti da una telecamera simulata. I dati sono pubblicati su due topic ROS distinti, rispettivamente per il colore e la profondità. Il nodo è implementato in Python e fa uso delle librerie \texttt{rclpy} per la comunicazione con ROS~2, \texttt{sensor\_msgs.msg.Image} per la gestione dei messaggi di immagine, \texttt{cv\_bridge} per la conversione tra formati ROS e strutture compatibili con OpenCV, e \texttt{opencv-python} per l’elaborazione e visualizzazione delle immagini.
-
-\paragraph{Inizializzazione}
+\vspace{1em} % aggiunge spazio tra caption e codice
+Il nodo \texttt{RGBDSubscriber} in ambiente ROS2 ha il compito di ricevere i dati RGB e di profondità inviati su due topic differenti dal Publisher e di trasformarli in formato video. Il nodo è implementato in Python e fa uso delle librerie \texttt{rclpy} per la comunicazione con ROS~2, \texttt{sensor\_msgs.msg.Image} per la gestione dei messaggi di immagine, \texttt{cv\_bridge} per la conversione tra formati ROS e strutture compatibili con OpenCV, e \texttt{opencv-python} per l’elaborazione e visualizzazione delle immagini.
+\newline
 Nel costruttore della classe \texttt{RGBDSubscriber}, viene inizializzato un oggetto \texttt{CvBridge} per la conversione tra messaggi ROS e immagini OpenCV. Successivamente, vengono creati due oggetti \texttt{cv2.VideoWriter} per la registrazione dei video RGB e di profondità, utilizzando il codec \texttt{XVID}, una risoluzione di 1280$\times$720 pixel e una frequenza di 10~fps, in linea con la frequenza di pubblicazione del simulatore Unity.
-
+\newline
 Il nodo si sottoscrive ai seguenti topic:
 \begin{itemize}
   \item \texttt{/camera/color/image\_raw} per le immagini RGB;
@@ -1295,14 +1293,11 @@ Il nodo si sottoscrive ai seguenti topic:
 \end{itemize}
 
 Viene inoltre impostato un \textit{timer} di spegnimento automatico a 60 secondi, che richiama una procedura di chiusura controllata.
-
-\paragraph{Gestione del flusso RGB}
+\newline
 Il metodo \texttt{color\_callback} viene eseguito ad ogni ricezione di un messaggio RGB. L’immagine viene convertita nel formato \texttt{BGR8}, ruotata di 180° per correggere l’orientamento, visualizzata in una finestra OpenCV denominata \texttt{"Color View"} e registrata nel file \texttt{output\_rgb.avi}. La chiamata a \texttt{cv2.waitKey(1)} permette l’aggiornamento dell’interfaccia grafica di OpenCV.
-
-\paragraph{Gestione del flusso di profondità}
+\newline
 In modo analogo, il metodo \texttt{depth\_callback} converte il messaggio ROS nel formato \texttt{mono8} (scala di grigi a 8 bit), visualizza il risultato nella finestra \texttt{"Depth View"} e lo registra nel file \texttt{output\_depth.avi}. Anche in questo caso, \texttt{cv2.waitKey(1)} consente la corretta gestione delle finestre OpenCV.
-
-\paragraph{Procedura di arresto}
+\newline
 Trascorsi 60 secondi, il metodo \texttt{shutdown\_callback} viene eseguito automaticamente. Esso:
 \begin{itemize}
   \item stampa un messaggio di log;
@@ -1312,34 +1307,25 @@ Trascorsi 60 secondi, il metodo \texttt{shutdown\_callback} viene eseguito autom
   \item richiama \texttt{rclpy.shutdown()} per arrestare ROS~2.
 \end{itemize}
 
-\paragraph{Funzione \texttt{main}}
-La funzione \texttt{main()} inizializza l'ambiente ROS~2, crea un’istanza del nodo e mantiene attiva l’elaborazione degli eventi attraverso \texttt{rclpy.spin()}, fino alla terminazione del nodo stesso.
+La funzione \texttt{main()} inizializza l'ambiente ROS2, crea un’istanza del nodo e mantiene attiva l’elaborazione degli eventi attraverso \texttt{rclpy.spin()}, fino alla terminazione del nodo stesso.
 
-\subsection{Output Base}
-\begin{itemize}
-\item File RGB in formato PNG e CSV
-\item Mappa di profondità in scala di grigi
-\item Salvataggio automatico nella cartella Assets
-\end{itemize}
+Tramite quindi il Publisher di Unity e il Subscriber ROS2, è possibile acquisire e visualizzare i dati RGB e di profondità in tempo reale. I video risultanti possono essere utilizzati per analisi successive o per l'addestramento di modelli di visione artificiale.
+% \subsection{Output ROS2}
+% \begin{itemize}
+% \item Flusso video RGB funzionante
+% \item Problemi con dati di profondità:
+% \begin{itemize}
+%     \item Immagini piatte
+%     \item Mancanza di variazioni
+%     \item Possibili cause:
+%     \begin{itemize}
+%         \item Impostazioni camera
+%         \item Shader di profondità
+%         \item Conversione formato
+%     \end{itemize}
+% \end{itemize}
+% \end{itemize}
 
-\subsection{Output ROS2}
-\begin{itemize}
-\item Flusso video RGB funzionante
-\item Problemi con dati di profondità:
-\begin{itemize}
-    \item Immagini piatte
-    \item Mancanza di variazioni
-    \item Possibili cause:
-    \begin{itemize}
-        \item Impostazioni camera
-        \item Shader di profondità
-        \item Conversione formato
-    \end{itemize}
-\end{itemize}
-\end{itemize}
-
-\section{Conclusioni}
-\subsection{Risultati dell'implememntazione della Camera}
 % \begin{figure}[H]
 %     \centering
 %     \begin{subfigure}{0.45\textwidth}
@@ -1355,12 +1341,8 @@ La funzione \texttt{main()} inizializza l'ambiente ROS~2, crea un’istanza del 
 %     \caption{Risultati dell'acquisizione}
 %     \label{fig:results}
 % \end{figure}
-\subsection{Limitazioni}
-\begin{itemize}
-\item Profondità non completamente realistica
-\item Dipendenza da shader Unity
-\item Throughput non ottimizzato
-\end{itemize}
+
+Tuttavia, questo task ha mostrato alcune limitazioni. In particolare, la mappa di profondità generata non è stata in grado di fornire informazioni dettagliate e realistiche sulla scena. Questa discussione è approfondita alla sezione \ref{sec:Problemi_camera_virtuale}.
 
 
 \chapter{Analisi Preliminari e Problematiche Riscontrate}
@@ -1530,6 +1512,9 @@ Analogamente si è riscontrato un problema di visualizzazione delle meshes in Un
 \end{verbatim}
 
 facendo attenzione a inserire nella cartella Assets di Unity la prima cartella definita dopo "package://", in questo caso "meshes". In questo modo Unity riesce a riconoscere il path e caricare correttamente le meshes del robot.
+
+\section{Problemi con l'acquisizione della profondità tramite la camera virtuale}
+\label{sec:Problemi_camera_virtuale}
 \chapter{Struttura del workspace ROS2}
 \textit{In questo capitolo viene presentata la struttura del workspace ROS2, con particolare attenzione alla disposizione dei pacchetti e dei file necessari per l'integrazione con Unity e la simulazione del robot. Come sotto riportato, i package sono evidenziati in rosso mentre i file Python sono evidenziati in blu.}
 
