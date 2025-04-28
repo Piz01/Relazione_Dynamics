@@ -741,13 +741,10 @@ Nel mentre, è risultato molto utile controllare il terminale durante queste ope
 
 \section{Importazione TM5-900 in Gazebo}
 \label{sec:Importazione_TM5-900_Gazebo}
-
-\subsubsection{URDF importer In Gazebo}
+\textit{In questo capitolo viene presentata la configurazione del robot TM5-900 in Gazebo, con particolare attenzione alla creazione del file URDF e alla definizione dei plugin necessari per la simulazione.}
+\subsubsection{URDF in Gazebo}
 Il file URDF (\textit{Unified Robot Description Format}) è un file XML usato per rappresentare la struttura fisica, cinematica e dinamica di un robot. Questa descrizione è fondamentale per simulazioni, visualizzazioni 3D e per l'interazione con i sistemi ROS.
-.
-
-\subsubsection*{Struttura dell' URDF}
-
+\newline
 Tutti gli elementi sono racchiusi nel tag \texttt{<robot>}:
 
 \begin{lstlisting}[language=xml]
@@ -755,18 +752,16 @@ Tutti gli elementi sono racchiusi nel tag \texttt{<robot>}:
     ...
 </robot>
 \end{lstlisting}
-
-\subsubsection*{Descrizione dei Link}
-
+\vspace{1em}
 Ogni \texttt{link} rappresenta una parte rigida del robot. Ogni link include:
 
 \begin{itemize}
-    \item \texttt{<visual>} – descrizione visiva (mesh o primitiva)
-    \item \texttt{<collision>} – forma per la collisione
-    \item \texttt{<inertial>} – massa, centro di massa e inerzia
+    \item \texttt{<visual>}, descrizione visiva (mesh o primitiva)
+    \item \texttt{<collision>}, forma per la collisione
+    \item \texttt{<inertial>}, massa, centro di massa e inerzia
 \end{itemize}
 
-Esempio per il link \texttt{shoulder\_1\_link}:
+Ecco un esempio per il link \texttt{shoulder\_1\_link}:
 
 \begin{lstlisting}[language=xml]
 <link name="shoulder_1_link">
@@ -791,20 +786,18 @@ Esempio per il link \texttt{shoulder\_1\_link}:
   </inertial>
 </link>
 \end{lstlisting}
-
-\subsubsection*{Descrizione dei Joint}
-
+\vspace{1em}
 I \texttt{joint} collegano due link tra loro e ne definiscono il tipo di movimento relativo. Ogni joint contiene:
 
 \begin{itemize}
     \item \texttt{name}, \texttt{type} (revolute, fixed, prismatic, ecc.)
     \item \texttt{<parent>} e \texttt{<child>}
-    \item \texttt{<origin>} – posizione e orientamento del giunto
-    \item \texttt{<axis>} – direzione dell’asse di rotazione
-    \item \texttt{<limit>} – limiti meccanici (per giunti mobili)
+    \item \texttt{<origin>}, posizione e orientamento del giunto
+    \item \texttt{<axis>}, direzione dell’asse di rotazione
+    \item \texttt{<limit>}, limiti meccanici (per giunti mobili)
 \end{itemize}
 
-Esempio:
+Ecco un esempio:
 
 \begin{lstlisting}[language=xml]
 <joint name="shoulder_1_joint" type="revolute">
@@ -815,9 +808,7 @@ Esempio:
   <limit lower="-3.14" upper="3.14" effort="20" velocity="1.0"/>
 </joint>
 \end{lstlisting}
-
-\subsubsection*{Proprietà Fisiche}
-
+\vspace{1em}
 Le proprietà fisiche sono definite nei blocchi \texttt{<inertial>} e \texttt{<collision>} di ogni link. Queste includono:
 
 \begin{itemize}
@@ -826,9 +817,7 @@ Le proprietà fisiche sono definite nei blocchi \texttt{<inertial>} e \texttt{<c
     \item \textbf{Collisioni} – geometrie per il rilevamento delle collisioni
     \item \textbf{Materiali} – colore e aspetto visivo
 \end{itemize}
-
-\section*{Trasmissioni e Controllo}
-
+\vspace{1em}
 Il controllo avviene tramite plugin ROS. Ogni giunto attuato ha una trasmissione:
 
 \begin{lstlisting}[language=xml]
@@ -843,8 +832,7 @@ Il controllo avviene tramite plugin ROS. Ogni giunto attuato ha una trasmissione
   </actuator>
 </transmission>
 \end{lstlisting}
-
-\subsubsection*{Simulazione in Gazebo}
+\vspace{1em}
 
 Per la simulazione in Gazebo si definisce il plugin:
 
@@ -853,7 +841,7 @@ Per la simulazione in Gazebo si definisce il plugin:
   <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
 </gazebo>
 \end{lstlisting}
-
+\vspace{1em}
 Per ogni link si può abilitare la self-collision:
 
 \begin{lstlisting}[language=xml]
@@ -861,19 +849,24 @@ Per ogni link si può abilitare la self-collision:
   <selfCollide>true</selfCollide>
 </gazebo>
 \end{lstlisting}
+\vspace{1em}
 
-\subsubsection*{Problema con la visualizzazione delle Mesh}
+Per importare il modello del TM5-900 in Ignition Gazebo abbiamo innanzitutto predisposto un environment minimale, avviando un mondo vuoto tramite il comando:  
+\begin{verbatim}
+    ign gazebo empty.sdf
+\end{verbatim}
+In questo modo si crea uno spazio di simulazione "pulito", privo di elementi superflui, che ci permette di verificare in modo isolato il corretto caricamento del robot. Successivamente, abbiamo impiegato il servizio "EntityFactory" di Gazebo per "spawnare" il robot a partire dal file URDF prodotto dal pacchetto "tm\_description" di ROS2 Humble. Nello specifico, il comando utilizzato è stato:  
+\begin{verbatim}
+    ign service -s /world/empty/create \
+    --reqtype ignition.msgs.EntityFactory \
+    --reptype ignition.msgs.Boolean \
+    --timeout 1000 \
+    --req "sdf_filename: '/home/pizzu01/ros2_humble/install/tm_description/share/tm_description/urdf/tm900_robot_prova2.urdf', name: 'tm900'"
+\end{verbatim}
 
-Durante il processo di sviluppo del modello URDF del robot TM900, è stato riscontrato un problema relativo alla visualizzazione delle mesh in Gazebo. Sebbene l'oggetto venisse correttamente creato nel mondo Gazebo, non veniva visualizzato graficamente. Dopo una serie di verifiche, si è scoperto che il problema derivava dal fatto che le mesh non erano correttamente localizzate nel path di installazione.
+Con --reqtype abbiamo definito rispettivamente il tipo di messaggio di richiesta e di risposta, mentre --timeout imposta un tempo massimo di attesa per la conferma del caricamento. La chiave sdf\_filename punta al file URDF compilato durante l’installazione del pacchetto, garantendo che vengano letti correttamente tutti i link, i joint e i plugin definiti. Infine, assegnando al modello il nome “tm900” ci assicuriamo di poterlo indirizzare univocamente nelle successive chiamate di spawn o nei nodi ROS2 che interagiranno con esso. Alla conclusione della procedura, il TM5-900 è dunque presente nella scena di Gazebo e pronto per essere controllato e validato tramite i controller ROS2 e i plugin di interfaccia.
 
-La soluzione adottata è stata quella di spostare i file delle mesh nel path di install del pacchetto. In particolare, sono stati inseriti all'interno della cartella:
-
-\begin{quote}
-\texttt{package://tm900/meshes/}
-\end{quote}
-
-Questo ha permesso a Gazebo di localizzare correttamente i file e di visualizzare il robot senza ulteriori problemi.
-
+Durante il processo di sviluppo del modello URDF del robot TM900, è stato riscontrato un problema relativo alla visualizzazione delle mesh in Gazebo. Il problema e la soluzione adottata è documentata alla sezione \ref{sec:sec:Problemi_visualizzazione_Gazebo}.
 
 \section{Camera}
 \textit{Questo capitolo descrive il task riguardante la camera e la soluzione ottenuta. Il problema consisteva nell’acquisizione e nella trasmissione in tempo reale delle immagini della scena virtuale (sia RGB sia di profondità) da Unity al framework ROS2. L’obiettivo è duplice: da un lato, permettere a ROS2 di ricevere flussi video ad alta frequenza per eventuali elaborazioni e algoritmi di visione artificiale; dall’altro, garantire una struttura modulare, facilmente estendibile e conforme alle best practice di comunicazione offerta da ROS2. Successivamente, grazie a questo task è possibile integrare nel nella realtà la camera Realsense D455, che fornisce flussi video RGB e di profondità. In particolare, saranno descritti i passaggi per la preparazione del RenderTexture e la spiegazione del codice C\# per l’acquisizione delle immagini. Infine, verranno presentati sia il codice Publisher di Unity che il Subscriber di ROS2.}
@@ -1437,6 +1430,7 @@ In questo progetto, sia su Gazebo che su Unity, si è utilizzato il file URDF pe
 Quella che segue è una soluzione pratica a un problema avvenuto durante l'importazione del file URDF del robot in Gazebo e Unity.
 
 \subsection{Problemi di visualizzazione delle meshes in Gazebo}
+\label{sec:Problemi_visualizzazione_Gazebo}
 Come già proposto nella sezione \ref{sec:Importazione_TM5-900_Gazebo}, è possibile importare il robot TM5-900 utilizzando il file URDF. Tuttavia, durante il caricamento del file in Gazebo, si è riscontrato un errore di visualizzazione delle meshes, che non venivano caricate correttamente. Questo problema è stato causato da un errore nei percorsi delle meshes all'interno del file URDF. In particolare, i percorsi delle meshes erano stati definiti in questo modo:
 
 \begin{verbatim}

@@ -18,7 +18,7 @@
 \contentsline {subsection}{\numberline {2.4.2}URDF Importer}{18}{subsection.2.4.2}%
 \contentsline {section}{\numberline {2.5}Configurazione del Moveit Setup Assistant}{21}{section.2.5}%
 \contentsline {section}{\numberline {2.6}Importazione TM5-900 in Gazebo}{24}{section.2.6}%
-\contentsline {subsubsection}{URDF importer In Gazebo}{24}{subsubsection*.25}%
+\contentsline {subsubsection}{URDF in Gazebo}{24}{subsubsection*.25}%
 \contentsline {section}{\numberline {2.7}Camera}{26}{section.2.7}%
 \contentsline {subsection}{\numberline {2.7.1}Setup della Camera Virtuale}{27}{subsection.2.7.1}%
 \contentsline {subsection}{\numberline {2.7.2}Implementazione codice per l'acquisizione delle immagini}{30}{subsection.2.7.2}%
