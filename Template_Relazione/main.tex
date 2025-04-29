@@ -223,8 +223,62 @@ Tra le caratteristiche principali vi sono:
 
 In questo progetto, il robot OMRON TM5-900 è stato scelto per la sua versatilità e capacità di manipolare oggetti come tessuti in modo preciso e sicuro. Il suo utilizzo si concentra sulla simulazione della movimentazione del robot, dove l'integrazione con ROS2 assicura una gestione ottimale della comunicazione e delle operazioni. Inoltre, l'interazione con Unity permette di visualizzare in tempo reale il comportamento del robot, monitorando e ottimizzando il suo funzionamento durante le diverse fasi del progetto.
 
+
 \subsection{Stereo-Camera RealSense D435i}
-La camera Intel RealSense D435i è un dispositivo avanzato per la rilevazione della profondità, dotato di sensore IMU integrato che consente l'acquisizione simultanea di dati visivi e inerziali. Grazie alla combinazione di una coppia di sensori stereo e di una fotocamera RGB, la D435i è ampiamente utilizzata in applicazioni di robotica, visione artificiale, mappatura 3D e realtà aumentata.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/d435i}
+    \caption{Vista frontale della Intel RealSense D435i}
+    \label{fig:d435i}
+\end{figure}
+
+La Intel RealSense Depth Camera D435i è un dispositivo avanzato per la rilevazione della profondità, sviluppato per applicazioni in ambito robotico, automazione industriale e visione artificiale. Rispetto ad altri modelli della serie D400, la D435i integra un’unità di misura inerziale (IMU), che consente la fusione di dati visivi e di movimento per una percezione spaziale più precisa.
+
+\paragraph{Sensori di profondità}  
+La D435i utilizza una configurazione stereo attiva con due sensori infrarossi (IR) dotati di \emph{global shutter}, affiancati da un proiettore IR a pattern strutturato. Questa configurazione consente l’acquisizione di immagini di profondità ad alta risoluzione, anche in condizioni di bassa illuminazione o con superfici a bassa texture.
+
+\begin{itemize}
+  \item Risoluzione massima: 1280~$\times$~720 a 30~fps
+  \item Frequenza massima: fino a 90~fps a risoluzioni inferiori
+  \item Campo visivo (FOV): 85° $\times$ 58° (orizzontale $\times$ verticale)
+  \item Distanza operativa: da 0.1~m a oltre 10~m
+\end{itemize}
+
+\paragraph{Sensore RGB}  
+Accanto ai sensori IR, è presente una camera RGB con sensore CMOS a \emph{rolling shutter}, capace di catturare immagini a colori in alta definizione, utili per applicazioni di riconoscimento e mappatura testurizzata.
+
+\begin{itemize}
+  \item Risoluzione massima: 1920~$\times$~1080 a 30~fps
+  \item Campo visivo: 69° $\times$ 42°
+\end{itemize}
+
+\paragraph{Unità di misura inerziale (IMU)}  
+La principale caratteristica distintiva della D435i è l’inclusione di una IMU a 6 assi, che combina:
+
+\begin{itemize}
+  \item Un giroscopio triassiale
+  \item Un accelerometro triassiale
+\end{itemize}
+
+Questa unità consente il tracciamento del movimento della telecamera in tempo reale, abilitando funzionalità come la localizzazione simultanea e mappatura (SLAM).
+
+\paragraph{Connettività e alimentazione}  
+La telecamera dispone di una porta USB~3.1~Gen~1 con connettore Type-C, che permette la trasmissione sincrona di flussi RGB, di profondità e dati IMU. È compatibile anche con USB~2.0, sebbene con prestazioni ridotte.
+
+\begin{itemize}
+  \item Alimentazione: 5~V tramite USB
+  \item Consumo energetico: circa 1.5–2.0~W
+\end{itemize}
+
+\paragraph{Struttura fisica}  
+Il dispositivo presenta un corpo in alluminio anodizzato, leggero e resistente, adatto per l'integrazione in sistemi mobili e fissi. Le dimensioni compatte ne facilitano l'installazione in ambienti ristretti o su robot mobili.
+
+\begin{itemize}
+  \item Dimensioni: 90~mm $\times$ 25~mm $\times$ 25~mm
+  \item Peso: circa 72~g
+  \item Montaggio: filettatura standard ¼"-20 UNC
+\end{itemize}
 
 \section{Software}
 \textit{In questo capitolo verranno analizzati i software principali utilizzati per il progetto: Ubuntu, Robot Operating System 2, Moeveit, Gazebo e Unity. Verranno fornite una panoramica generale, informazioni sul loro utilizzo e sulle versioni adottate. Inoltre, si approfondirà l'uso del componente Cloth di Unity, che ha rivestito un ruolo centrale nella simulazione della fisica dei tessuti.}
