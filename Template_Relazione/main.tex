@@ -1720,7 +1720,11 @@ Infine, una volta che la connessione è stabilita correttamente, tramite il segu
 
 \section{Test di integrazione della camera}
 \label{sec:Test_camera} 
+Per testare l'integrazione della camera virtuale, è necessario prima di tutto configurarla correttamente come spiegato alla sezione \ref{sec:camera}. Infine rimane solamente da eseguire il comando per avviare il nodo ROS2 che si occupa di ricevere i dati rgb e di profondità dalla scena simulata pubblicati dal Publisher di Unity e di trasformarli in video. Per farlo, è possibile utilizzare il seguente comando:
 
+\begin{verbatim}
+    ros2 run my_ros2_package virtual_camera_subscriber
+\end{verbatim}
 
 \chapter{Conclusioni}
 \label{cap:Conclusioni}
@@ -1814,10 +1818,10 @@ Infine, una volta che la connessione è stabilita correttamente, tramite il segu
 % Riassumere brevemente il lavoro svolto rispetto al task assegnato, evidenziando quali risultati sono stati raggiunti e quali no. Se ci sono aspetti del task non completati spiegare quali sono stati i problemi riscontrati in merito.\\
 % Inserire considerazioni personali su possibili sviluppi futuri dell'attività svolta (idee per migliorarla che non avete avuto modo di sperimentare, aspetti che suggerite di approfondire, problemi da risolvere..).
 
-\addcontentsline{toc}{chapter}{Appendici}
-\appendix
-\chapter{Appendice1}
-Se necessario ricorrete alle appendici per spiegare le parti "di contorno" dell'attività svolta e/o ciò che non riuscite ad inserire nello schema generale dei capitoli della relazione (es acquisizione dei dati con Matlab).
+% \addcontentsline{toc}{chapter}{Appendici}
+% \appendix
+% \chapter{Appendice1}
+% Se necessario ricorrete alle appendici per spiegare le parti "di contorno" dell'attività svolta e/o ciò che non riuscite ad inserire nello schema generale dei capitoli della relazione (es acquisizione dei dati con Matlab).
 
 
 \bibliographystyle{ieeetr}
