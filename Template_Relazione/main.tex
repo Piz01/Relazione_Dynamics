@@ -888,6 +888,7 @@ Il controllo avviene tramite plugin ROS. Ogni giunto attuato ha una trasmissione
 \end{lstlisting}
 \vspace{1em}
 
+\subsection{Importazione URDF in Gazebo}
 Per la simulazione in Gazebo si definisce il plugin:
 
 \begin{lstlisting}[language=xml]
@@ -923,6 +924,7 @@ Con --reqtype abbiamo definito rispettivamente il tipo di messaggio di richiesta
 Durante il processo di sviluppo del modello URDF del robot TM900, è stato riscontrato un problema relativo alla visualizzazione delle mesh in Gazebo. Il problema e la soluzione adottata è documentata alla sezione \ref{sec:sec:Problemi_visualizzazione_Gazebo}.
 
 \section{Camera}
+\label{sec:camera}
 \textit{Questo capitolo descrive il task riguardante la camera e la soluzione ottenuta. Il problema consisteva nell’acquisizione e nella trasmissione in tempo reale delle immagini della scena virtuale (sia RGB sia di profondità) da Unity al framework ROS2. L’obiettivo è duplice: da un lato, permettere a ROS2 di ricevere flussi video ad alta frequenza per eventuali elaborazioni e algoritmi di visione artificiale; dall’altro, garantire una struttura modulare, facilmente estendibile e conforme alle best practice di comunicazione offerta da ROS2. Successivamente, grazie a questo task è possibile integrare nel nella realtà la camera Realsense D455, che fornisce flussi video RGB e di profondità. In particolare, saranno descritti i passaggi per la preparazione del RenderTexture e la spiegazione del codice C\# per l’acquisizione delle immagini. Infine, verranno presentati sia il codice Publisher di Unity che il Subscriber di ROS2.}
 
 La soluzione adottata per rispondere a questa esigenza, è la RenderTexture di Unity, utilizzata come fonte di acquisizione dei frame. Sono stati sviluppati due componenti software distinti:
@@ -1563,6 +1565,17 @@ facendo attenzione a inserire nella cartella Assets di Unity la prima cartella d
 
 \section{Problemi con l'acquisizione della profondità tramite la camera virtuale}
 \label{sec:Problemi_camera_virtuale}
+Durante lo sviluppo del task della camera virtuale \ref{sec:camera}, sono stati riscontrati problemi significativi nella rappresentazione della profondità. In particolare, la mappa di profondità generata non forniva informazioni dettagliate e realistiche sulla scena, risultando piatta e priva di variazioni significative, come vediamo in figura \ref{fig:depth}. 
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/depth.PNG}
+    \caption{Errore nella rappresentazione video della profondità}
+    \label{fig:depth}
+\end{figure}
+
+Questo problema crediamo sia causato dalla scelta del formato di acquisizione della profondità e dalla configurazione della camera virtuale in Unity. Inoltre è possibile che l'elaborazione dei dati di profondità eseguita nel codice Subscriber non fosse sufficientemente robusta per gestire le variazioni di profondità in modo accurato. Tuttavia, purtroppo, per mancanza di tempo non è stato possibile approfondire ulteriormente il problema e trovare una soluzione definitiva. 
+
 \chapter{Struttura del workspace ROS2}
 \textit{In questo capitolo viene presentata la struttura del workspace ROS2, con particolare attenzione alla disposizione dei pacchetti e dei file necessari per l'integrazione con Unity e la simulazione del robot. Come sotto riportato, i package sono evidenziati in rosso mentre i file Python sono evidenziati in blu.}
 

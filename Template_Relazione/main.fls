@@ -254,6 +254,12 @@ INPUT .\images\omron.png
 INPUT C:\Users\lachiara\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx10.tfm
 INPUT C:\Users\lachiara\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti10.tfm
 INPUT C:\Users\lachiara\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\tcrm1095.tfm
+INPUT .\images\d435i.jpg
+INPUT .\images\d435i.jpg
+INPUT .\images\d435i.jpg
+INPUT .\images\d435i.jpg
+INPUT .\images\d435i.jpg
+INPUT .\images\d435i.jpg
 INPUT .\images\ubuntu1.png
 INPUT .\images\ubuntu1.png
 INPUT .\images\ubuntu1.png
@@ -481,6 +487,13 @@ INPUT .\images\errore_prefab.PNG
 INPUT .\images\errore_prefab.PNG
 INPUT .\images\errore_prefab.PNG
 INPUT .\images\errore_prefab.PNG
+INPUT .\images\depth.PNG
+INPUT .\images\depth.PNG
+INPUT .\images\depth.PNG
+INPUT .\images\depth.PNG
+INPUT .\images\depth.PNG
+INPUT .\images\depth.PNG
+INPUT .\images\depth.PNG
 INPUT .\main.bbl
 INPUT .\main.bbl
 INPUT main.bbl
