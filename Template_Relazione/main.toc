@@ -41,10 +41,9 @@
 \contentsline {section}{\numberline {3.5}Problemi con l'acquisizione della profondità tramite la camera virtuale}{49}{section.3.5}%
 \contentsline {chapter}{\numberline {4}Struttura del workspace ROS2}{51}{chapter.4}%
 \contentsline {chapter}{\numberline {5}Test Effettuati e Risultati Ottenuti}{53}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Test di comunicazione tra ROS2 e Unity}{53}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Test di simulazione del movimento del robot in Unity}{53}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Test di integrazione della camera}{53}{section.5.3}%
-\contentsline {chapter}{\numberline {6}Conclusioni}{54}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Applicazione finale}{54}{section.6.1}%
-\contentsline {chapter}{Appendici}{54}{section.6.1}%
-\contentsline {chapter}{\numberline {A}Appendice1}{55}{appendix.Alph1}%
+\contentsline {section}{\numberline {5.1}Test di simulazione del movimento del robot in Unity}{53}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Test di integrazione della camera}{55}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Conclusioni}{56}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Applicazione finale}{56}{section.6.1}%
+\contentsline {chapter}{Appendici}{56}{section.6.1}%
+\contentsline {chapter}{\numberline {A}Appendice1}{57}{appendix.Alph1}%

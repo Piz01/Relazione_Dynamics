@@ -515,7 +515,7 @@ Parallelamente, per lo sviluppo dell'ambiente 3D e della visualizzazione in temp
 
 Questa configurazione ibrida, che sfrutta al massimo le potenzialità di ogni sistema operativo e software specifico, consente di ottimizzare sia le prestazioni delle simulazioni che l'interattività dell'interfaccia grafica, contribuendo a rendere il progetto complessivamente robusto e flessibile.
 \section{Interfacciamento ROS2-Unity}
-
+\label{sec:interfacciamento_ros2_unity}
 \textit{Il capitolo "Interfacciamento ros2-Unity" si propone di illustrare come integrare in maniera efficace ROS2 con l’ambiente grafico e simulativo offerto da Unity, al fine di realizzare una piattaforma in grado di gestire in tempo reale sia la simulazione fisica che la comunicazione dei dati. In particolare, saranno mostrati il ROS-TCP Connector e il ROS-TCP Endpoint per lo scambio di messaggi tra ROS2 e Unity, nonché l'URDF Importer per la corretta rappresentazione del robot all'interno di Unity.}
 
 \subsection{ROS-TCP Connector \& ROS-TCP Endpoint}
@@ -657,6 +657,14 @@ Successivamente, una volta che è stato avviato il ROS-TCP-Endpoint le frecce ca
     \caption{Test della connessione dopo aver avviato il ROS-TCP-Endpoint}
     \label{fig:test_connessione_2}
 \end{figure}
+
+Una volta che si vuole terminare la connessione, è possibile farlo tramite i seguenti comandi:
+\begin{verbatim}
+    sudo lsof -i :10000
+    sudo kill -9 <PID>
+\end{verbatim}
+
+Con il primo comando si ottiene il PID del processo che occupa la porta 10000, mentre con il secondo comando si termina il processo specificato dal PID.
 % Per assicurarsi che il nodo sia in esecuzione, è possibile utilizzare il comando: \begin{verbatim}
 % ros2 node list
 % \end{verbatim}
@@ -1644,13 +1652,71 @@ Il file URDF è fondamentale per la rappresentazione del robot in Gazebo e Unity
 
 \chapter{Test Effettuati e Risultati Ottenuti}
 \label{cap:Test}
-\textit{In questo capitolo si vuole guidare il lettore attraverso i test effettuati e i risultati ottenuti durante lo sviluppo del progetto. I test sono stati suddivisi in tre sezioni principali: test di comunicazione tra ROS2 e Unity, test di simulazione del movimento del robot in Unity e test di integrazione della camera. Ogni sezione presenta una descrizione dettagliata dei test effettuati, dei risultati ottenuti e delle eventuali problematiche riscontrate.}
+\textit{In questo capitolo si vuole guidare il lettore attraverso i test effettuati e i risultati ottenuti durante lo sviluppo del progetto. I test sono stati suddivisi in due sezioni principali: test di simulazione del movimento del robot in Unity e test di integrazione della camera. Ogni sezione presenta una descrizione dettagliata dei test effettuati, dei risultati ottenuti e delle eventuali problematiche riscontrate.}
 
-\section{Test di comunicazione tra ROS2 e Unity}
-\label{sec:Test_comunicazione}
+Scaricando la repository di ROS2 \cite{Repository_ROS2} e installando i pacchetti necessari, è possibile eseguire i test direttamente sul proprio computer. Per eseguire i test, è necessario che siano stati eseguiti i passaggi spiegati nelle seguenti sezioni: \ref{sec:interfacciamento_ros2_unity}, \ref{sec:moveit_setup_assistant}, \ref{sec:camera}.
 
 \section{Test di simulazione del movimento del robot in Unity}
 \label{sec:Test_simulazione}    
+In questa sezione si vogliono illustrare i comandi e i passaggi da eseguire per lanciare lo script python di ROS2 che esegue il movimento del robot TM5-900 in Unity, tramite Moveit2. 
+\newline
+Per prima cosa, dal terminale di Ubuntu, è necessario lanciare i seguenti comandi per trovarsi nella cartella del workspace di ROS2 ed eseguire il build:
+
+\begin{verbatim}
+    cd ros2_huble/
+    source install/setup.bash
+    colcon build 
+\end{verbatim}
+
+Dopo aver eseguito il build, si deve avviare il \textit{move\_group} di Moveit2, che permette di controllare il robot TM5-900. Per farlo, è necessario lanciare il seguente comando:
+\begin{verbatim}
+    ros2 launch moveit_config_tm5_900 move_group.launch.py
+\end{verbatim}
+
+In figura \ref{fig:move_group} è possibile vedere il terminale con il \textit{move\_group} di Moveit2 avviato. 
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/move_group.PNG}
+    \caption{Terminale dopo l'avvio del \textit{move\_group} di Moveit2}
+    \label{fig:move_group}
+\end{figure}
+
+Successivamente, è necessario avviare due nodi separati che collaborano tra loro:
+\begin{itemize}
+    \item \textbf{joint\_state\_publisher}: questo nodo pubblica sul topic /joint\_states i valori correnti di tutte le giunture del robot, consentendo a Unity di ricevere le informazioni necessarie per visualizzare il movimento del robot in modo corretto.
+    \item \textbf{robot\_state\_publisher}: questo nodo carica il modello URDF (attraverso il parametro robot\_description), si sottoscrive al topic /joint\_states, infine calcola e pubblica sui topic TF (/tf e /tf\_static) tutte le trasformazioni tra i link del robot, in tempo reale.
+\end{itemize}
+
+Per farlo eseguiamo i seguenti comandi:
+
+\begin{verbatim}
+    ros2 launch tm_description robot_state_publisher.launch.py
+\end{verbatim}
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/terminale_2.PNG}
+    \caption{Terminale dopo l'avvio del \textit{robot\_state\_publisher} di ROS2}
+    \label{fig:terminale_2}
+\end{figure}
+
+
+\begin{verbatim}
+    ros2 run joint_state_publisher joint_state_publisher
+\end{verbatim}
+
+A questo punto, rimane da avviare il progetto Unity e avviare la scena, poi lanciare il seguente comando per stabilire la connessione tra ROS2 e Unity:
+\begin{verbatim}
+    ros2 run ros_tcp_endpoint default_server_endpoint --ros-args -p ROS_IP:=... 
+\end{verbatim}
+
+Infine, una volta che la connessione è stabilita correttamente, tramite il seguente comando è possibile vedere il movimento del robot TM5-900 in Unity dalla posizione "home" a quella di "work" configurate tramite il Moveit Setup Assistant:
+
+\begin{verbatim}
+    ros2 run my_ros2_package moveit_controller
+\end{verbatim}
+
 
 \section{Test di integrazione della camera}
 \label{sec:Test_camera} 
@@ -1658,6 +1724,7 @@ Il file URDF è fondamentale per la rappresentazione del robot in Gazebo e Unity
 
 \chapter{Conclusioni}
 \label{cap:Conclusioni}
+
 \section{Applicazione finale}
 % Nell'introduzione al capitolo specificate anche la versione dell'STM32CubeIDE e dell'STM32CubeMX che avete usato (se avete cambiato versione nel corso del progetto mettete l'ultima, quella su cui è sviluppato il codice che consegnate).
 
