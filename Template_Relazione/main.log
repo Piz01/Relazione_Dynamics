@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.16)  29 APR 2025 19:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.16)  29 APR 2025 20:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -479,12 +479,12 @@ Package hyperref Info: Link coloring OFF on input line 132.
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
-<images/logoUnivpm.jpg, id=159, 111.2958pt x 115.632pt>
+<images/logoUnivpm.jpg, id=155, 111.2958pt x 115.632pt>
 File: images/logoUnivpm.jpg Graphic file (type jpg)
 <use images/logoUnivpm.jpg>
 Package pdftex.def Info: images/logoUnivpm.jpg  used on input line 144.
 (pdftex.def)             Requested size: 142.26378pt x 147.82495pt.
-<images/dii_new.png, id=160, 192.72pt x 79.29625pt>
+<images/dii_new.png, id=156, 192.72pt x 79.29625pt>
 File: images/dii_new.png Graphic file (type png)
 <use images/dii_new.png>
 Package pdftex.def Info: images/dii_new.png  used on input line 165.
@@ -524,7 +524,7 @@ Capitolo 1.
 
 ]
 Capitolo 2.
-<images/omron.png, id=225, 198.7425pt x 198.7425pt>
+<images/omron.png, id=220, 198.7425pt x 198.7425pt>
 File: images/omron.png Graphic file (type png)
 <use images/omron.png>
 Package pdftex.def Info: images/omron.png  used on input line 205.
@@ -539,7 +539,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 ]
 
 [5 <./images/omron.png>]
-<images/d435i.jpg, id=238, 803.0pt x 415.5525pt>
+<images/d435i.jpg, id=233, 803.0pt x 415.5525pt>
 File: images/d435i.jpg Graphic file (type jpg)
 <use images/d435i.jpg>
 Package pdftex.def Info: images/d435i.jpg  used on input line 231.
@@ -547,7 +547,7 @@ Package pdftex.def Info: images/d435i.jpg  used on input line 231.
 
 
 [6 <./images/d435i.jpg>]
-<images/ubuntu1.png, id=248, 311.66437pt x 175.40532pt>
+<images/ubuntu1.png, id=243, 311.66437pt x 175.40532pt>
 File: images/ubuntu1.png Graphic file (type png)
 <use images/ubuntu1.png>
 Package pdftex.def Info: images/ubuntu1.png  used on input line 291.
@@ -557,12 +557,12 @@ Package pdftex.def Info: images/ubuntu1.png  used on input line 291.
 [7]
 
 [8 <./images/ubuntu1.png>]
-<images/ROS2.png, id=267, 1084.05pt x 542.025pt>
+<images/ROS2.png, id=262, 1084.05pt x 542.025pt>
 File: images/ROS2.png Graphic file (type png)
 <use images/ROS2.png>
 Package pdftex.def Info: images/ROS2.png  used on input line 346.
 (pdftex.def)             Requested size: 264.51115pt x 132.25555pt.
-<images/moveit.png, id=269, 491.8375pt x 103.38625pt>
+<images/moveit.png, id=264, 491.8375pt x 103.38625pt>
 File: images/moveit.png Graphic file (type png)
 <use images/moveit.png>
 Package pdftex.def Info: images/moveit.png  used on input line 359.
@@ -572,7 +572,7 @@ Package pdftex.def Info: images/moveit.png  used on input line 359.
 [9 <./images/ROS2.png>]
 
 [10 <./images/moveit.png>]
-<images/UNITY.jpg, id=289, 3011.25pt x 1600.98125pt>
+<images/UNITY.jpg, id=284, 3011.25pt x 1600.98125pt>
 File: images/UNITY.jpg Graphic file (type jpg)
 <use images/UNITY.jpg>
 Package pdftex.def Info: images/UNITY.jpg  used on input line 411.
@@ -582,12 +582,12 @@ Package pdftex.def Info: images/UNITY.jpg  used on input line 411.
 [11]
 
 [12 <./images/UNITY.jpg>]
-<images/cloth_constraints.PNG, id=305, 315.579pt x 501.072pt>
+<images/cloth_constraints.PNG, id=300, 315.579pt x 501.072pt>
 File: images/cloth_constraints.PNG Graphic file (type png)
 <use images/cloth_constraints.PNG>
 Package pdftex.def Info: images/cloth_constraints.PNG  used on input line 441.
 (pdftex.def)             Requested size: 132.25557pt x 209.99007pt.
-<images/cloth_constraints_2.PNG, id=307, 402.90524pt x 273.4215pt>
+<images/cloth_constraints_2.PNG, id=302, 402.90524pt x 273.4215pt>
 File: images/cloth_constraints_2.PNG Graphic file (type png)
 <use images/cloth_constraints_2.PNG>
 Package pdftex.def Info: images/cloth_constraints_2.PNG  used on input line 448.
@@ -607,7 +607,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 522--526
 
  []
 
-<images/rostcp.jpg, id=328, 163.3603pt x 172.39406pt>
+<images/rostcp.jpg, id=323, 163.3603pt x 172.39406pt>
 File: images/rostcp.jpg Graphic file (type jpg)
 <use images/rostcp.jpg>
 Package pdftex.def Info: images/rostcp.jpg  used on input line 551.
@@ -615,7 +615,7 @@ Package pdftex.def Info: images/rostcp.jpg  used on input line 551.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<images/rostcp1.jpg, id=329, 231.11343pt x 161.85469pt>
+<images/rostcp1.jpg, id=324, 231.11343pt x 161.85469pt>
 File: images/rostcp1.jpg Graphic file (type jpg)
 <use images/rostcp1.jpg>
 Package pdftex.def Info: images/rostcp1.jpg  used on input line 559.
@@ -631,12 +631,12 @@ Overfull \hbox (57.48044pt too wide) in paragraph at lines 566--570
 
 
 [16]
-<images/rostcp2.jpg, id=336, 146.79843pt x 45.92157pt>
+<images/rostcp2.jpg, id=331, 146.79843pt x 45.92157pt>
 File: images/rostcp2.jpg Graphic file (type jpg)
 <use images/rostcp2.jpg>
 Package pdftex.def Info: images/rostcp2.jpg  used on input line 583.
 (pdftex.def)             Requested size: 176.33629pt x 55.16165pt.
-<images/rostcp4.jpg, id=337, 191.9672pt x 218.31563pt>
+<images/rostcp4.jpg, id=332, 191.9672pt x 218.31563pt>
 File: images/rostcp4.jpg Graphic file (type jpg)
 <use images/rostcp4.jpg>
 Package pdftex.def Info: images/rostcp4.jpg  used on input line 591.
@@ -651,12 +651,12 @@ Overfull \hbox (36.29362pt too wide) in paragraph at lines 632--632
 
 
 [18 <./images/rostcp4.jpg>]
-<images/test_connessione_1.PNG, id=357, 553.46774pt x 348.1005pt>
+<images/test_connessione_1.PNG, id=352, 553.46774pt x 348.1005pt>
 File: images/test_connessione_1.PNG Graphic file (type png)
 <use images/test_connessione_1.PNG>
 Package pdftex.def Info: images/test_connessione_1.PNG  used on input line 647.
 (pdftex.def)             Requested size: 264.51115pt x 166.36926pt.
-<images/test_connessione_2.PNG, id=359, 554.67226pt x 346.896pt>
+<images/test_connessione_2.PNG, id=354, 554.67226pt x 346.896pt>
 File: images/test_connessione_2.PNG Graphic file (type png)
 <use images/test_connessione_2.PNG>
 Package pdftex.def Info: images/test_connessione_2.PNG  used on input line 656.
@@ -664,12 +664,12 @@ Package pdftex.def Info: images/test_connessione_2.PNG  used on input line 656.
 
 
 [19 <./images/test_connessione_1.PNG> <./images/test_connessione_2.PNG>]
-<images/URDF_Importer_1.png, id=369, 646.21425pt x 411.33675pt>
+<images/URDF_Importer_1.png, id=364, 646.21425pt x 411.33675pt>
 File: images/URDF_Importer_1.png Graphic file (type png)
 <use images/URDF_Importer_1.png>
 Package pdftex.def Info: images/URDF_Importer_1.png  used on input line 695.
 (pdftex.def)             Requested size: 176.33629pt x 112.24239pt.
-<images/URDF_Importer_2.png, id=370, 561.89925pt x 455.90324pt>
+<images/URDF_Importer_2.png, id=365, 561.89925pt x 455.90324pt>
 File: images/URDF_Importer_2.png Graphic file (type png)
 <use images/URDF_Importer_2.png>
 Package pdftex.def Info: images/URDF_Importer_2.png  used on input line 702.
@@ -677,7 +677,7 @@ Package pdftex.def Info: images/URDF_Importer_2.png  used on input line 702.
 
 
 [20 <./images/URDF_Importer_1.png>]
-<images/URDF_Importer_3.png, id=379, 561.297pt x 453.49425pt>
+<images/URDF_Importer_3.png, id=374, 561.297pt x 453.49425pt>
 File: images/URDF_Importer_3.png Graphic file (type png)
 <use images/URDF_Importer_3.png>
 Package pdftex.def Info: images/URDF_Importer_3.png  used on input line 710.
@@ -687,12 +687,12 @@ Overfull \hbox (1.05592pt too wide) in paragraph at lines 706--713
 []\OT1/cmr/m/n/10.95 Inserire il se-guen-te URL del-la re-po-si-to-ry: []$\OT1/cmtt/m/n/10.95 https : / / github . com / Unity-[]Technologies /
  []
 
-<images/URDF_Importer_4.png, id=380, 398.08725pt x 172.84575pt>
+<images/URDF_Importer_4.png, id=375, 398.08725pt x 172.84575pt>
 File: images/URDF_Importer_4.png Graphic file (type png)
 <use images/URDF_Importer_4.png>
 Package pdftex.def Info: images/URDF_Importer_4.png  used on input line 721.
 (pdftex.def)             Requested size: 220.42372pt x 95.70633pt.
-<images/URDF_Importer_5.png, id=382, 549.85425pt x 230.0595pt>
+<images/URDF_Importer_5.png, id=377, 549.85425pt x 230.0595pt>
 File: images/URDF_Importer_5.png Graphic file (type png)
 <use images/URDF_Importer_5.png>
 Package pdftex.def Info: images/URDF_Importer_5.png  used on input line 728.
@@ -700,12 +700,12 @@ Package pdftex.def Info: images/URDF_Importer_5.png  used on input line 728.
 
 
 [21 <./images/URDF_Importer_2.png> <./images/URDF_Importer_3.png> <./images/URDF_Importer_4.png>]
-<images/URDF_Importer_6.png, id=394, 317.38576pt x 470.9595pt>
+<images/URDF_Importer_6.png, id=389, 317.38576pt x 470.9595pt>
 File: images/URDF_Importer_6.png Graphic file (type png)
 <use images/URDF_Importer_6.png>
 Package pdftex.def Info: images/URDF_Importer_6.png  used on input line 735.
 (pdftex.def)             Requested size: 154.29929pt x 228.96123pt.
-<images/URDF_Importer_7.png, id=396, 628.14674pt x 466.74374pt>
+<images/URDF_Importer_7.png, id=391, 628.14674pt x 466.74374pt>
 File: images/URDF_Importer_7.png Graphic file (type png)
 <use images/URDF_Importer_7.png>
 Package pdftex.def Info: images/URDF_Importer_7.png  used on input line 744.
@@ -720,7 +720,7 @@ Overfull \hbox (13.81534pt too wide) in paragraph at lines 751--752
 
 
 [23 <./images/URDF_Importer_7.png>]
-<images/rviz_1.PNG, id=422, 717.882pt x 587.796pt>
+<images/rviz_1.PNG, id=417, 717.882pt x 587.796pt>
 File: images/rviz_1.PNG Graphic file (type png)
 <use images/rviz_1.PNG>
 Package pdftex.def Info: images/rviz_1.PNG  used on input line 778.
@@ -728,12 +728,12 @@ Package pdftex.def Info: images/rviz_1.PNG  used on input line 778.
 
 
 [24 <./images/rviz_1.PNG>]
-<images/rviz_2.PNG, id=433, 419.166pt x 244.5135pt>
+<images/rviz_2.PNG, id=428, 419.166pt x 244.5135pt>
 File: images/rviz_2.PNG Graphic file (type png)
 <use images/rviz_2.PNG>
 Package pdftex.def Info: images/rviz_2.PNG  used on input line 788.
 (pdftex.def)             Requested size: 308.59187pt x 180.0156pt.
-<images/rviz_3.PNG, id=435, 728.7225pt x 586.5915pt>
+<images/rviz_3.PNG, id=430, 728.7225pt x 586.5915pt>
 File: images/rviz_3.PNG Graphic file (type png)
 <use images/rviz_3.PNG>
 Package pdftex.def Info: images/rviz_3.PNG  used on input line 797.
@@ -771,7 +771,7 @@ LaTeX Warning: Reference `sec:sec:Problemi_visualizzazione_Gazebo' on page 28 un
 
 
 [28]
-<images/Immagine1.png, id=512, 291.33844pt x 546.54187pt>
+<images/Immagine1.png, id=507, 291.33844pt x 546.54187pt>
 File: images/Immagine1.png Graphic file (type png)
 <use images/Immagine1.png>
 Package pdftex.def Info: images/Immagine1.png  used on input line 959.
@@ -779,7 +779,7 @@ Package pdftex.def Info: images/Immagine1.png  used on input line 959.
 
 
 [29]
-<images/Immagine2.png, id=519, 192.72pt x 511.15968pt>
+<images/Immagine2.png, id=514, 192.72pt x 511.15968pt>
 File: images/Immagine2.png Graphic file (type png)
 <use images/Immagine2.png>
 Package pdftex.def Info: images/Immagine2.png  used on input line 966.
@@ -813,7 +813,7 @@ Overfull \hbox (12.48726pt too wide) in paragraph at lines 1032--1033
 [33]
 
 [34]
-<images/Immagine4.png, id=646, 457.71pt x 257.46187pt>
+<images/Immagine4.png, id=641, 457.71pt x 257.46187pt>
 File: images/Immagine4.png Graphic file (type png)
 <use images/Immagine4.png>
 Package pdftex.def Info: images/Immagine4.png  used on input line 1098.
@@ -898,12 +898,12 @@ Capitolo 3.
 [43
 
 ]
-<images/cloth_error.PNG, id=894, 161.403pt x 166.221pt>
+<images/cloth_error.PNG, id=889, 161.403pt x 166.221pt>
 File: images/cloth_error.PNG Graphic file (type png)
 <use images/cloth_error.PNG>
 Package pdftex.def Info: images/cloth_error.PNG  used on input line 1431.
 (pdftex.def)             Requested size: 176.33629pt x 181.61098pt.
-<images/blender_ratio.PNG, id=895, 173.448pt x 292.6935pt>
+<images/blender_ratio.PNG, id=890, 173.448pt x 292.6935pt>
 File: images/blender_ratio.PNG Graphic file (type png)
 <use images/blender_ratio.PNG>
 Package pdftex.def Info: images/blender_ratio.PNG  used on input line 1440.
@@ -913,12 +913,12 @@ Package pdftex.def Info: images/blender_ratio.PNG  used on input line 1440.
 [44 <./images/cloth_error.PNG>]
 
 [45 <./images/blender_ratio.PNG>]
-<images/prefab_visual.PNG, id=911, 880.4895pt x 235.47975pt>
+<images/prefab_visual.PNG, id=906, 880.4895pt x 235.47975pt>
 File: images/prefab_visual.PNG Graphic file (type png)
 <use images/prefab_visual.PNG>
 Package pdftex.def Info: images/prefab_visual.PNG  used on input line 1467.
 (pdftex.def)             Requested size: 352.6793pt x 94.32317pt.
-<images/prefab_collision.PNG, id=912, 882.8985pt x 234.8775pt>
+<images/prefab_collision.PNG, id=907, 882.8985pt x 234.8775pt>
 File: images/prefab_collision.PNG Graphic file (type png)
 <use images/prefab_collision.PNG>
 Package pdftex.def Info: images/prefab_collision.PNG  used on input line 1474.
@@ -926,7 +926,7 @@ Package pdftex.def Info: images/prefab_collision.PNG  used on input line 1474.
 
 
 [46 <./images/prefab_visual.PNG>]
-<images/errore_prefab.PNG, id=920, 1037.0745pt x 22.28325pt>
+<images/errore_prefab.PNG, id=915, 1037.0745pt x 22.28325pt>
 File: images/errore_prefab.PNG Graphic file (type png)
 <use images/errore_prefab.PNG>
 Package pdftex.def Info: images/errore_prefab.PNG  used on input line 1483.
@@ -970,7 +970,7 @@ Overfull \hbox (128.27263pt too wide) in paragraph at lines 1567--1567
 []      \OT1/cmtt/m/n/10.95 <inertia ixx="0.00110833289" ixy="0.0" ixz="0.0" iyy="0.00110833289" iyz="0.0" izz="0.0018"/>[] 
  []
 
-<images/depth.PNG, id=936, 1156.32pt x 619.113pt>
+<images/depth.PNG, id=931, 1156.32pt x 619.113pt>
 File: images/depth.PNG Graphic file (type png)
 <use images/depth.PNG>
 Package pdftex.def Info: images/depth.PNG  used on input line 1580.
@@ -989,7 +989,7 @@ Capitolo 4.
 
 [52]
 Capitolo 5.
-<images/move_group.PNG, id=965, 1156.32pt x 627.5445pt>
+<images/move_group.PNG, id=960, 1156.32pt x 627.5445pt>
 File: images/move_group.PNG Graphic file (type png)
 <use images/move_group.PNG>
 Package pdftex.def Info: images/move_group.PNG  used on input line 1680.
@@ -999,7 +999,7 @@ Package pdftex.def Info: images/move_group.PNG  used on input line 1680.
 [53
 
 ]
-<images/terminale_2.PNG, id=971, 650.43pt x 184.2885pt>
+<images/terminale_2.PNG, id=966, 650.43pt x 184.2885pt>
 File: images/terminale_2.PNG Graphic file (type png)
 <use images/terminale_2.PNG>
 Package pdftex.def Info: images/terminale_2.PNG  used on input line 1699.
@@ -1066,20 +1066,20 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 4EB91AA956DB8BC62F84232EA063BDC4;8359.
+(rerunfilecheck)             Checksum: 186C6C8E21DCB84F9FAD01669AF6DC65;8206.
  ) 
 Here is how much of TeX's memory you used:
- 17209 strings out of 473898
- 280440 string characters out of 5725062
- 993954 words of memory out of 5000000
- 39334 multiletter control sequences out of 15000+600000
+ 17207 strings out of 473898
+ 280416 string characters out of 5725062
+ 993951 words of memory out of 5000000
+ 39333 multiletter control sequences out of 15000+600000
  568298 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  79i,7n,93p,1354b,2080s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\lachiara\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcti1095.pk> <C:\Users\lachiara\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/lachiara/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (58 pages, 2656691 bytes).
+Output written on main.pdf (58 pages, 2655834 bytes).
 PDF statistics:
- 1187 PDF objects out of 1200 (max. 8388607)
- 523 named destinations out of 1000 (max. 500000)
- 498 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1181 PDF objects out of 1200 (max. 8388607)
+ 522 named destinations out of 1000 (max. 500000)
+ 490 words of extra memory for PDF output out of 10000 (max. 10000000)
 
