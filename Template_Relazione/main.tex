@@ -929,7 +929,7 @@ In questo modo si crea uno spazio di simulazione "pulito", privo di elementi sup
 
 Con --reqtype abbiamo definito rispettivamente il tipo di messaggio di richiesta e di risposta, mentre --timeout imposta un tempo massimo di attesa per la conferma del caricamento. La chiave sdf\_filename punta al file URDF compilato durante l’installazione del pacchetto, garantendo che vengano letti correttamente tutti i link, i joint e i plugin definiti. Infine, assegnando al modello il nome “tm900” ci assicuriamo di poterlo indirizzare univocamente nelle successive chiamate di spawn o nei nodi ROS2 che interagiranno con esso. Alla conclusione della procedura, il TM5-900 è dunque presente nella scena di Gazebo e pronto per essere controllato e validato tramite i controller ROS2 e i plugin di interfaccia.
 
-Durante il processo di sviluppo del modello URDF del robot TM900, è stato riscontrato un problema relativo alla visualizzazione delle mesh in Gazebo. Il problema e la soluzione adottata è documentata alla sezione \ref{sec:sec:Problemi_visualizzazione_Gazebo}.
+Durante il processo di sviluppo del modello URDF del robot TM900, è stato riscontrato un problema relativo alla visualizzazione delle mesh in Gazebo. Il problema e la soluzione adottata è documentata alla sezione \ref{sec:Problemi_visualizzazione_Gazebo}.
 
 \section{Camera}
 \label{sec:camera}
@@ -1725,6 +1725,37 @@ Per testare l'integrazione della camera virtuale, è necessario prima di tutto c
 \begin{verbatim}
     ros2 run my_ros2_package virtual_camera_subscriber
 \end{verbatim}
+
+Di seguito alcuni frame del video RGB ricavato dalla camera virtuale, in cui è possibile vedere il robot TM5-900 e la t-shirt che si muovono all'interno della scena di Unity. 
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/frame_video_1.PNG}
+    \caption{Primo frame del video della camera virtuale}
+    \label{fig:frame_video_1}
+\end{figure}
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/frame_video_2.PNG}
+    \caption{Secondo frame del video della camera virtuale}
+    \label{fig:frame_video_2}
+\end{figure}
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/frame_video_3.PNG}
+    \caption{Terzo frame del video della camera virtuale}
+    \label{fig:frame_video_3}
+\end{figure}
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/frame_video_4.PNG}
+    \caption{Quarto frame del video della camera virtuale}
+    \label{fig:frame_video_4}
+\end{figure}
+
 
 \chapter{Conclusioni}
 \label{cap:Conclusioni}
