@@ -1250,6 +1250,60 @@ Va evidenziato che la conversione della profondità pixel-per-pixel e la distruz
 
 % In sintesi, lo script \texttt{RealSenseSimulator} fornisce un'integrazione completa tra Unity e ROS~2 per la simulazione di sensori RGB-D. Esso consente lo sviluppo e la validazione di sistemi robotici in ambienti virtuali realistici, mantenendo una struttura modulare e compatibile con l'infrastruttura ROS.
 
+\subsubsection{Gestione delle dipendenze con \texttt{requirements.txt}}
+
+Per semplificare l'installazione dei pacchetti necessari, questo progetto utilizza un file \texttt{requirements.txt} che elenca tutte le dipendenze Python richieste:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Package} & \textbf{Version} \\
+\hline
+opencv-python & 4.8.1 \\
+rclpy & 3.3.9 \\
+sensor msgs & 4.4.0 \\
+cv bridge & 3.2.1 \\
+numpy & 1.24.3 \\
+\hline
+\end{tabular}
+\caption{Python dependencies and their versions}
+\end{table}
+
+
+\paragraph{Descrizione delle dipendenze}
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Pacchetto}      & \textbf{Descrizione} \\
+\midrule
+\texttt{opencv-python}  & Elaborazione di immagini e visione artificiale. \\
+\texttt{rclpy}          & Client library Python per ROS 2. \\
+\texttt{sensor\_msgs}   & Messaggi standard per sensori in ROS 2. \\
+\texttt{cv\_bridge}     & Conversione tra immagini OpenCV e ROS. \\
+\texttt{numpy}          & Libreria per il calcolo scientifico. \\
+
+\end{tabular}
+\end{center}
+
+\paragraph{Installazione}
+
+Si consiglia l'uso di un ambiente virtuale per isolare le dipendenze. Ecco i comandi consigliati:
+
+\begin{lstlisting}[language=bash]
+
+python3 -m venv venv
+source venv/bin/activate    # Su Windows: venv\Scripts\activate
+pip install -r requirements.txt
+\end{lstlisting}
+
+
+\noindent Dopo l’installazione, tutte le librerie saranno disponibili localmente per l’utilizzo nel progetto.
+
+
+
+
 \subsection{Subscriber ROS2}
 \begin{lstlisting}[language=Python, caption=Subscriber RGB-D ROS2 con salvataggio video, label=lst:rgbd_subscriber]
 #!/usr/bin/env python3
