@@ -4,7 +4,7 @@
 \contentsline {chapter}{\numberline {2}Materiali e Metodi}{4}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Hardware}{4}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Omron TM5-900}{4}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}Stereo-Camera RealSense D435i}{6}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.2}Depth-Camera RealSense D435i}{6}{subsection.2.1.2}%
 \contentsline {paragraph}{Sensori di profondità}{6}{paragraph*.4}%
 \contentsline {paragraph}{Sensore RGB}{6}{paragraph*.5}%
 \contentsline {paragraph}{Unità di misura inerziale (IMU)}{7}{paragraph*.6}%
@@ -25,7 +25,7 @@
 \contentsline {section}{\numberline {2.6}Importazione TM5-900 in Gazebo}{26}{section.2.6}%
 \contentsline {subsubsection}{URDF in Gazebo}{26}{subsubsection*.31}%
 \contentsline {subsection}{\numberline {2.6.1}Importazione URDF in Gazebo}{28}{subsection.2.6.1}%
-\contentsline {section}{\numberline {2.7}Camera}{28}{section.2.7}%
+\contentsline {section}{\numberline {2.7}Camera}{29}{section.2.7}%
 \contentsline {subsection}{\numberline {2.7.1}Setup della Camera Virtuale}{29}{subsection.2.7.1}%
 \contentsline {subsection}{\numberline {2.7.2}Implementazione codice per l'acquisizione delle immagini}{32}{subsection.2.7.2}%
 \contentsline {subsection}{\numberline {2.7.3}Publisher di Unity}{35}{subsection.2.7.3}%
@@ -37,7 +37,7 @@
 \contentsline {section}{\numberline {3.3}Problemi di importazione del URDF del robot in Unity}{46}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Problemi di visualizzazione delle meshes in Gazebo e Unity}{47}{section.3.4}%
 \contentsline {subsection}{\numberline {3.4.1}Problemi di visualizzazione delle meshes in Gazebo}{47}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Problemi di visualizzazione delle meshes in Unity}{48}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.2}Problemi di visualizzazione delle meshes in Unity}{49}{subsection.3.4.2}%
 \contentsline {section}{\numberline {3.5}Problemi con l'acquisizione della profondità tramite la camera virtuale}{49}{section.3.5}%
 \contentsline {chapter}{\numberline {4}Struttura del workspace ROS2}{51}{chapter.4}%
 \contentsline {chapter}{\numberline {5}Test Effettuati e Risultati Ottenuti}{53}{chapter.5}%

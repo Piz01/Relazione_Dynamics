@@ -181,7 +181,7 @@
 \vspace{0.5cm}
 \newline
 Il presente progetto ha come obiettivo lo sviluppo e la simulazione della manipolazione dei tessuti con il robot collaborativo TM5-900, utilizzando l'integrazione di software avanzati come ROS2 e Unity. Il contesto applicativo del progetto si colloca nell'ambito industriale e robotico, ponendo particolare attenzione sull'ottimizzazione dei processi di smantellamento di oggetti deformabili, come abiti e tessuti. L'azienda coinvolta utilizza il software Cloth 3D per la modellazione degli abiti, mentre Unity e Gazebo sono impiegati per simulare la movimentazione del robot e l'interazione con gli oggetti.
-Uno degli obiettivi di questo progetto è quello di analizzare in dettaglio l'integrazione tra ROS2 e Unity, scelta motivata dalle potenzialità di questi due strumenti. ROS2 offre una gestione efficiente della comunicazione tra il robot e il sistema di simulazione, mentre Unity fornisce la possibilità di simulare l'effetto della gravità sui tessuti e i movimenti del robot in tempo reale tramite una grafica avanzata. L'integrazione di questi due software è stata scelta per soddisfare la necessità di creare un ambiente simulativo realistico, utile non solo per eseguire test simulativi, ma anche per implementare successivamente il sistema su un robot reale.
+Uno degli obiettivi di questo progetto è quello di analizzare in dettaglio l'integrazione tra ROS2 e Unity, scelta motivata dalle potenzialità di questi due strumenti. ROS2 offre una gestione efficiente della comunicazione tra il robot e il sistema di simulazione, mentre Unity fornisce la possibilità di simulare l'effetto della gravità sui tessuti e i movimenti del robot in tempo reale tramite una grafica avanzata. L'integrazione di questi due software è stata scelta per soddisfare la necessità di creare un ambiente simulativo realistico, utile sia all'esecuzione di test virtuali sia alla successiva implementazione del sistema su un robot reale.
 In questo modo, l'integrazione tra ROS2 e Unity consente di gestire il robot e simularlo in ambiente virtuale, migliorando l'efficienza e la precisione nelle operazioni robotiche. Il progetto affronta diversi task, tra cui la valutazione e la compatibilità dei tessuti con i vari software, la simulazione della movimentazione del robot e dell'oggetto da disassemblare in un ambiente condiviso, l'acquisizione e la definizione di una sequenza di fasi di smantellamento, l'esecuzione delle fasi in simulazione con il robot e, infine, l'esecuzione delle stesse fasi su un robot reale.
 % Spiegazione dettagliata del task assegnato al gruppo (cosa avete fatto e su quale sistema).\\
 % Se per lo svolgimento del task è stato necessario interagire con altri gruppi che hanno lavorato sullo stesso sistema presentare anche brevemente i task svolti dagli altri gruppi e spiegare la loro interconnessione.
@@ -197,7 +197,7 @@ In questo modo, l'integrazione tra ROS2 e Unity consente di gestire il robot e s
 \textit{In questo capitolo saranno presentati i materiali(hardware e software) e i metodi, quindi le tecniche utilizzate, inoltre vengono dettagliate le tecnologie impiegate e le procedure seguite, in modo da permettere la riproducibilità del progetto. In particolare la prima sezione, \textbf{Hardware} comprende la descrizione del robot utilizzato in simulazione Omron TM5-900 e della camera RealSense D435i. Successivamente saranno presentati i vari \textbf{Software}, utilizzati all'interno del progetto e che hanno permesso la riuscita dell'applicazione, tra i quali Ubuntu, ROS2, Moveit, Gazebo, Unity e in particolare lo strumento Cloth di Unity. Infine, verranno descritte nel dettaglio la \textbf{Predisposizione dei Software nel PC} e le modalità di \textbf{Interfacciamento tra ROS 2 e Unity}, con focus su strumenti fondamentali come ROS-TCP Connector, ROS-TCP Endpoint e URDF Importer.}
 
 \section{Hardware}
-\textit{In questa sezione verranno presentati i principali componenti hardware utilizzati nel progetto, in particolare il robot Omron TM5-900 e la Stereo-Camera RealSense D435i. Saranno forniti dettagli tecnici e funzionali su ciascun componente, evidenziando le loro caratteristiche principali e il loro ruolo all'interno del sistema di simulazione.}
+\textit{In questa sezione verranno presentati i principali componenti hardware utilizzati nel progetto, in particolare il robot Omron TM5-900 e la Depth-Camera RealSense D435i. Saranno forniti dettagli tecnici e funzionali su ciascun componente, evidenziando le loro caratteristiche principali e il loro ruolo all'interno del sistema di simulazione.}
 
 \subsection{Omron TM5-900}
 \begin{figure}[h!]
@@ -213,7 +213,7 @@ Tra le caratteristiche principali vi sono:
 
 \begin{itemize}
     \item \textbf{Design compatto e flessibile}: Il TM5-900 è progettato per lavorare in spazi ristretti, con un braccio robotico che può essere facilmente integrato in linee di produzione esistenti senza necessitare di ampi spazi operativi. La sua flessibilità gli consente di essere facilmente usato per diverse applicazioni.
-    \item \textbf{Portata e capacità di carico}: Il TM5-900 ha una capacità di carico utile fino a 5 kg, che lo rende adatto a manipolare una varietà di oggetti e strumenti, come i tessuti utilizzati in questo progetto.
+    \item \textbf{Portata e capacità di carico}: Il TM5-900 ha una capacità di carico utile fino a 5 kg, che lo rende adatto a manipolare una varietà di oggetti e strumenti, come i tessuti utilizzati in questo progetto. Inoltre, ha un'estensione massima di 0,9 metri, che consente di coprire un'ampia area di lavoro.
     \item \textbf{Gradi di libertà (DOF)}: Il TM5-900 è dotato di 6 gradi di libertà (DOF), che gli consentono di eseguire movimenti complessi e articolati, simili a quelli di un braccio umano. Questo permette al robot di raggiungere e manipolare oggetti in spazi tridimensionali con alta precisione.
     \item \textbf{Giunti e movimenti}: Il robot è equipaggiato con giunti motorizzati, che consentono di controllare i movimenti di rotazione in modo fluido e preciso. I giunti, insieme ai sensori di forza e coppia, permettono di eseguire operazioni delicate, come il manipolamento di oggetti morbidi (ad esempio i tessuti) senza danneggiarli.
     \item \textbf{Facilità di programmazione e utilizzo}: Questo robot è dotato di un'interfaccia utente intuitiva e di software di programmazione che ne facilita l'uso anche da parte di personale non specializzato. La programmazione è resa semplice grazie alla modalità di "teaching", che consente di insegnare al robot i movimenti direttamente sul campo.
@@ -224,7 +224,7 @@ Tra le caratteristiche principali vi sono:
 In questo progetto, il robot OMRON TM5-900 è stato scelto per la sua versatilità e capacità di manipolare oggetti come tessuti in modo preciso e sicuro. Il suo utilizzo si concentra sulla simulazione della movimentazione del robot, dove l'integrazione con ROS2 assicura una gestione ottimale della comunicazione e delle operazioni. Inoltre, l'interazione con Unity permette di visualizzare in tempo reale il comportamento del robot, monitorando e ottimizzando il suo funzionamento durante le diverse fasi del progetto.
 
 
-\subsection{Stereo-Camera RealSense D435i}
+\subsection{Depth-Camera RealSense D435i}
 
 \begin{figure}[H]
     \centering
@@ -442,7 +442,7 @@ Di seguito una descrizione dei passaggi per applicarli correttamente alla maglie
         \caption{Schermata Unity per l'applicazione dei vincoli}
         \label{fig:cloth_constraints}
     \end{figure}
-    \item successivamente si aprirà una schermata che permetterà di selezionare (tramite "Select") oppure colorare (tramite "Paint") le parti che saranno vincolate e quindi rimarranno maggiormente rigide. E' importante specificare una distanza minima nel parametro "Max Distance", in figura \ref{fig:cloth_constraints_2} è stato assegnato il valore 0.2 ed ha permesso un buon risultato.
+    \item successivamente si aprirà una schermata che permetterà di selezionare (tramite "Select") oppure colorare (tramite "Paint") le parti che saranno vincolate e quindi rimarranno maggiormente rigide. E' importante specificare una distanza minima nel parametro "Max Distance": in figura \ref{fig:cloth_constraints_2} è stato assegnato il valore 0.2 che ha permesso di ottenere un buon risultato.
     \begin{figure}[h!]
         \centering
         \includegraphics[width=0.5\textwidth]{images/cloth_constraints_2.PNG}
@@ -462,7 +462,7 @@ Infine una descrizione delle principali proprietà del componente Cloth e di com
     
     \item \textbf{Use Tethers}: Applica vincoli che aiutano a prevenire che le particelle mobili del tessuto si allontanino troppo da quelle fisse, riducendo l'eccessiva elasticità.
     
-    \item \textbf{Use Gravity}: Indica se la gravità deve influenzare il tessuto. Da applicare nel caso in cui si voglia vedere una movimentazione fisica della maglietta e condizionata dalla gravità.
+    \item \textbf{Use Gravity}: Specifica se il tessuto deve essere influenzato dalla forza di gravità. Da applicare nel caso in cui si voglia vedere una movimentazione fisica della maglietta e condizionata dalla gravità.
     
     \item \textbf{Damping}: Coefficiente che determina quanto velocemente il movimento del tessuto si smorza nel tempo.  Un parametro accettabile per la maglietta è risultato compreso tra 0,2 e 0,4.
     
@@ -511,12 +511,12 @@ Infine una descrizione delle principali proprietà del componente Cloth e di com
 
 Per la parte robotica e di simulazione, è stato scelto di adottare \textbf{Ubuntu 22.04} installato tramite una macchina virtuale WSL2, in quanto offre un ambiente stabile e supportato ufficialmente per lo sviluppo con \textbf{ROS2 Humble} e \textbf{MoveIt2}. ROS2 Humble è stato selezionato per la sua affidabilità e le migliorate capacità di integrazione, che hanno risolto i problemi riscontrati con precedenti versioni (come Jazzy).\textbf{Gazebo Fortress}, la cui scelta della versione è dovuta alla compatibilità con ROS2\cite{Gazebo-ROS2}, garantisce simulazioni avanzate e un'elevata accuratezza nella riproduzione delle dinamiche robotiche, tuttavia non ha un ruolo centrale nel progetto in quanto non è possibile applicare la fisica ai tessuti come in Unity.
 
-Parallelamente, per lo sviluppo dell'ambiente 3D e della visualizzazione in tempo reale, si è mantenuto \textbf{Unity 6}(ultima versione) su Windows, supportato da \textbf{Unity Hub} che permette una gestione semplificata dei vari progetti Unity. La scelta di utilizzare Windows come sistema operativo per Unity è motivata dalla sua eccellente compatibilità con gli strumenti grafici e i driver necessari per un'interfaccia utente fluida e performante, in quanto Unity è un software nativo Windows. La comunicazione tra l'ambiente robotico gestito tramite Ubuntu e quello grafico su Windows è resa possibile attraverso il ROS-TCP Connector, che funge da ponte tra le due piattaforme, garantendo lo scambio efficiente dei dati.
+Parallelamente, per lo sviluppo dell'ambiente 3D e della visualizzazione in tempo reale, si è mantenuto \textbf{Unity 6} su Windows, supportato da \textbf{Unity Hub} che permette una gestione semplificata dei vari progetti Unity. La scelta di utilizzare Windows come sistema operativo per Unity è motivata dalla sua eccellente compatibilità con gli strumenti grafici e i driver necessari per un'interfaccia utente fluida e performante, in quanto Unity è un software nativo Windows. La comunicazione tra l'ambiente robotico gestito tramite Ubuntu e quello grafico su Windows è resa possibile attraverso il ROS-TCP Connector, che funge da ponte tra le due piattaforme, garantendo lo scambio efficiente dei dati.
 
 Questa configurazione ibrida, che sfrutta al massimo le potenzialità di ogni sistema operativo e software specifico, consente di ottimizzare sia le prestazioni delle simulazioni che l'interattività dell'interfaccia grafica, contribuendo a rendere il progetto complessivamente robusto e flessibile.
 \section{Interfacciamento ROS2-Unity}
 \label{sec:interfacciamento_ros2_unity}
-\textit{Il capitolo "Interfacciamento ros2-Unity" si propone di illustrare come integrare in maniera efficace ROS2 con l’ambiente grafico e simulativo offerto da Unity, al fine di realizzare una piattaforma in grado di gestire in tempo reale sia la simulazione fisica che la comunicazione dei dati. In particolare, saranno mostrati il ROS-TCP Connector e il ROS-TCP Endpoint per lo scambio di messaggi tra ROS2 e Unity, nonché l'URDF Importer per la corretta rappresentazione del robot all'interno di Unity.}
+\textit{Il capitolo "Interfacciamento ROS2-Unity" si propone di illustrare come integrare in maniera efficace ROS2 con l’ambiente grafico e simulativo offerto da Unity, al fine di realizzare una piattaforma in grado di gestire in tempo reale sia la simulazione fisica che la comunicazione dei dati. In particolare, saranno mostrati il ROS-TCP Connector e il ROS-TCP Endpoint per lo scambio di messaggi tra ROS2 e Unity, nonché l'URDF Importer per la corretta rappresentazione del robot all'interno di Unity.}
 
 \subsection{ROS-TCP Connector \& ROS-TCP Endpoint}
 Unity Technologies fornisce un pacchetto che consente di integrare ROS2 con Unity, facilitando la comunicazione tra i due ambienti. Questo pacchetto è composto da due nodi principali e complementari tra loro: il \textbf{ROS-TCP Connector} e il \textbf{ROS-TCP Endpoint}.
@@ -601,7 +601,7 @@ hostname -I
 \end{verbatim}
 
 Ora lato Unity la comunicazione è pronta, quindi procediamo con l'installazione e la configurazione del \textbf{ROS-TCP Endpoint} lato ROS2.
-Per utilizzarlo, è necessario installarlo all'interno del proprio workspace ROS2, clonando la repository tramite il comando: \cite{Repository-ROS-TCP-Endpoint}
+Per utilizzarlo, è necessario installarlo all'interno del proprio workspace ROS2, clonando la repository tramite il seguente comando: \cite{Repository-ROS-TCP-Endpoint}
 \begin{verbatim}
     git clone https://github.com/Unity-Technologies/ROS-TCP-Endpoint.git
 \end{verbatim}
@@ -620,19 +620,19 @@ Dopo aver completato l’installazione e la configurazione, Unity sarà in grado
 \end{itemize}
 
 A questo punto, per verificare che le installazioni e le configurazioni siano avvenute con successo è possibile seguire un breve tutorial per testare la connessione tra Unity e ROS2.
-In particolare l'obiettivo sarà quello di inviare le coordinate di un oggetto di Unity a ROS2 tramite un Publisher e ricevere le coordinate di un oggetto di ROS2 in Unity tramite un Subscriber, il link è in bibliografia.\cite{Test-Connessione-ROS-Unity}
+In particolare l'obiettivo sarà quello di inviare le coordinate di un oggetto di Unity a ROS2 tramite un Publisher e ricevere le coordinate di un oggetto di ROS2 in Unity tramite un Subscriber. Il link è in bibliografia \cite{Test-Connessione-ROS-Unity}.
 
 Tuttavia, seguono i comandi generali che saranno poi nuovamente riproposti alla sezione \ref{cap:Test}.
 
 Inizialmente, è necessario avviare il nodo \texttt{ros\_tcp\_endpoint} all’interno di ROS2. Questo nodo funge da intermediario e garantisce che i messaggi possano fluire correttamente tra i due sistemi.
     
-Per avviare il nodo \textbf{ros\_tcp\_endpoint}, bisogna eseguire il comando:
+Per avviare il nodo \textbf{ros\_tcp\_endpoint}, bisogna eseguire il seguente comando:
 
 \begin{verbatim}
     ros2 run ros_tcp_endpoint default_server_endpoint --ros-args -p ROS_IP:=YOUR_IP
 \end{verbatim}
 
-Dove per conoscere l'indirizzo IP del proprio computer è possibile utilizzare il comando: 
+Dove per conoscere l'indirizzo IP del proprio computer è possibile utilizzare il comando 
 \begin{verbatim}
     hostname -I
 \end{verbatim}
@@ -640,7 +640,7 @@ Dove per conoscere l'indirizzo IP del proprio computer è possibile utilizzare i
 In questo modo si avvia il server che ascolta sulla porta TCP (di default 10000) per ricevere le connessioni da Unity.
 
 A questo punto, se nella Scena di Unity è presente un Publisher o un Subscriber configurato correttamente, Unity tenterà di connettersi al nodo \textbf{ros\_tcp\_endpoint} e inizierà a inviare o ricevere messaggi.
-In particolare una volta avviata la simulazione in Unity dovremmo vedere le due frecce rosse come mostrato in figura \ref{fig:test_connessione_1}.
+In particolare, una volta avviata la simulazione in Unity dovrebbero essere visbili le due frecce rosse come mostrato in figura \ref{fig:test_connessione_1}.
 
 \begin{figure}[H]
     \centering
@@ -649,7 +649,7 @@ In particolare una volta avviata la simulazione in Unity dovremmo vedere le due 
     \label{fig:test_connessione_1}
 \end{figure}
 
-Successivamente, una volta che è stato avviato il ROS-TCP-Endpoint le frecce cambieranno colore in blu, indicando che la connessione è stata stabilita con successo, come mostrato in figura \ref{fig:test_connessione_2}.
+Successivamente, una volta avviato il ROS-TCP-Endpoint, le frecce cambieranno colore in blu, indicando che la connessione è stata stabilita con successo, come mostrato in figura \ref{fig:test_connessione_2}.
 
 \begin{figure}[H]
     \centering
@@ -673,7 +673,7 @@ Con il primo comando si ottiene il PID del processo che occupa la porta 10000, m
 
 \subsection{URDF Importer}
 \label{sec:urdf_importer}
-L'\textbf{URDF Importer} \cite{URDF-Importer} di Unity è uno strumento che permette di importare file URDF (Unified Robot Description Format) direttamente in Unity, consentendo così di visualizzare e interagire con modelli robotici 3D all'interno dell'ambiente di simulazione. Questo strumento risulta particolarmente utile nel progetto perché permette di integrare ROS 2 e Unity tramite il file URDF fortemente utilizzato in robotica, inoltre semplifica la gestione della cinematica e della fisica dei robot senza dover ricostruire manualmente i modelli.
+L'\textbf{URDF Importer} \cite{URDF-Importer} di Unity è uno strumento che permette di importare file URDF (Unified Robot Description Format) direttamente in Unity, consentendo così di visualizzare e interagire con modelli robotici 3D all'interno dell'ambiente di simulazione. Questo strumento risulta particolarmente utile nel progetto perché permette di integrare ROS 2 e Unity tramite il file URDF fortemente utilizzato in robotica. Inoltre semplifica la gestione della cinematica e della fisica dei robot senza dover ricostruire manualmente i modelli.
 
 Il formato URDF è ampiamente utilizzato nel mondo della robotica per descrivere la struttura dei robot, inclusi i links, i joints, i materiali e i sensori. L'URDF Importer converte questi modelli in GameObjects di Unity, mantenendo la gerarchia dei componenti e assegnando i giunti come oggetti fisici controllabili.
 
@@ -687,9 +687,9 @@ Nel nostro progetto, il robot utilizzato è un Omron TM5-900, un braccio robotic
 
 L'importazione di questo URDF in Unity è essenziale per poterlo visualizzare correttamente e per interagire con esso tramite ROS 2.
 
-Per importare installare lo strumento URDF Importer è possibile seguire i seguenti passaggi:
+Per installare lo strumento URDF Importer è possibile seguire i seguenti passaggi:
 \begin{itemize}
-    \item Cliccare su "Window" poi "Package Manager"
+    \item Cliccare su "Window" e poi su "Package Manager"
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.4\textwidth]{images/URDF_Importer_1.png}
@@ -713,7 +713,7 @@ Per importare installare lo strumento URDF Importer è possibile seguire i segue
     \end{figure}
 \end{itemize}
 
-Per importare il modello URDF su Unity invece:
+Per importare il modello URDF su Unity, è necessario:
 \begin{itemize}
     \item Importare il file URDF e le varie mesh sia visual che collision nella cartella "Assets" del progetto Unity
     \begin{figure}[H]
@@ -722,7 +722,7 @@ Per importare il modello URDF su Unity invece:
         \caption{URDF Importer Tutorial}
         \label{fig:URDF_Importer_4}
     \end{figure}
-    \item Verificare che i vari path delle mesh all'interno del file URDF siano del tipo ""package://path/delle/meshes" come mostrato in figura \ref{fig:URDF_Importer_5}
+    \item Verificare che i vari path delle mesh all'interno del file URDF siano del tipo "package://path/delle/meshes" come mostrato in figura \ref{fig:URDF_Importer_5}
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.5\textwidth]{images/URDF_Importer_5.png}
@@ -738,7 +738,7 @@ Per importare il modello URDF su Unity invece:
     \end{figure}
 \end{itemize}
 
-A questo punto, se è stato utilizzato il file urdf del TM5-900 corretto, sarà possibile visualizzare il robot come mostrato in figura \ref{fig:URDF_Importer_7}.
+A questo punto, se è stato utilizzato il file URDF del TM5-900 corretto, sarà possibile visualizzare il robot come mostrato in figura \ref{fig:URDF_Importer_7}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.35\textwidth]{images/URDF_Importer_7.png}
@@ -750,19 +750,19 @@ A questo punto, se è stato utilizzato il file urdf del TM5-900 corretto, sarà 
 \label{sec:moveit_setup_assistant}
 Di seguito sono riportati i passaggi svolti per la configurazione del package moveit\_config\_tm5\_900 utilizzando il MoveIt Setup Assistant \cite{Moveit_tutorial}: 
 \begin{enumerate}
-    \item Lanciamo il MoveIt Setup Assistant con il comando \begin{verbatim}
+    \item Si lancia il MoveIt Setup Assistant con il comando \begin{verbatim}
         roslaunch moveit_setup_assistant setup_assistant.launch
     \end{verbatim}
-    \item Clicchiamo su "Create New MoveIt Configuration Package" e selezioniamo il file URDF del robot
+    \item Si clicca su "Create New MoveIt Configuration Package" e si seleziona il file URDF del robot
     \item Nella sezione "Self Collision" è possibile generare automaticamente il controllo delle auto-collisioni del robot, selezionando "Generate Collision Matrix".
-    \item Tramite "Virtual Joint" è possibile definire il giunto virtuale del robot, che rappresenta la connessione tra il robot e il mondo esterno. In questo caso, abbiamo selezionato "fixed" come tipo di giunto.
+    \item Tramite "Virtual Joint" è possibile definire il giunto virtuale del robot, che rappresenta la connessione tra il robot e il mondo esterno. In questo caso, il tipo di giunto che è stato selezionato è di tipo "fixed"
     \item Nella sezione "Planning Groups" aggiungere il gruppo "Manipulator" che comprende tutti i giunti a partire da "shoulder\_1\_ joint" fino a "wrist\_3\_joint". Se nel URDF è presente la pinza è possibile aggiungere anche il gruppo "Gripper".
-    \item Successivamente tramite "Robot Poses" sono state definite due pose, una di riposo(Home) e una di lavoro(Work). In caso di aggiunta della pinza si possono definire due pose della pinza in modo che il robot possa afferrare oggetti e manipolarli.
-    \item Infine generiamo i controllori "Ros2 Controllers" e "Ros2 MoveIt Controllers" per la comunicazione tra il robot e MoveIt. Per il nostro progetto abbiamo selezionato rispettivamente il controller "JointTrajectoryController" e "FollowJointTrajectory" per il gruppo "Manipulator".
+    \item Successivamente tramite "Robot Poses" sono state definite due pose, una di riposo(Home) e una di lavoro(Work). In caso di aggiunta della pinza si possono definire due pose relative ad essa in modo che il robot possa afferrare oggetti e manipolarli.
+    \item Infine vengono generati i controllori "Ros2 Controllers" e "Ros2 MoveIt Controllers" per la comunicazione tra il robot e MoveIt. Per il nostro progetto è stato selezionato rispettivamente il controller "JointTrajectoryController" e "FollowJointTrajectory" per il gruppo "Manipulator".
     \item A questo punto rimane solo da generare il package tramite "Genera Package" nella sezione "Configurations Files".
 \end{enumerate}
 
-MoveIt ha svolto un ruolo centrale nell’interazione tra ROS 2 e Unity e ci ha permesso di simulare la movimentazione del robot solo tramite due codici, uno in C\# per Unity e uno in Python per ROS2, che verranno poi approfonditi nella sezione \ref{cap:Conclusioni}. Le traiettorie generate da MoveIt sono state pubblicate sul topic $/manipulator_controller/joint_trajectory$, successivamente sottoscritto in Unity tramite il pacchetto ROS-TCP Connector. Questo ha permesso una rappresentazione visiva coerente tra la pianificazione in ROS 2 e l’esecuzione nella simulazione 3D.
+MoveIt ha svolto un ruolo centrale nell’interazione tra ROS 2 e Unity e ci ha permesso di simulare la movimentazione del robot solo tramite due codici, uno in C\# per Unity e uno in Python per ROS2, che verranno poi approfonditi nella sezione \ref{cap:Conclusioni}. Le traiettorie generate da MoveIt sono state pubblicate sul topic /manipulator\_controller/joint\_trajectory, successivamente sottoscritto in Unity tramite il pacchetto ROS-TCP Connector. Questo ha permesso una rappresentazione visiva coerente tra la pianificazione in ROS 2 e l’esecuzione nella simulazione 3D.
 
 Inoltre è stato possibile utilizzare il package generato per avviare RViz, un potente strumento di visualizzazione per ROS, che consente di monitorare e analizzare i movimenti del robot in tempo reale. RViz è stato utilizzato per verificare la correttezza della pianificazione delle traiettorie e per eseguire test preliminari prima di passare alla simulazione in Unity.
 
@@ -781,7 +781,7 @@ Tramite il comando:
 \end{figure}
 
 Dalla figura \ref{fig:rviz_1} è possibile vedere la schermata iniziale una volta lanciato il comando sopra indicato.
-A questo punto, nella sezione "Planning", indicando il gruppo di giunti, una posizione iniziale e finale del robot, come mostrato in figura \ref{fig:rviz_2}, RViz salverà le posizioni dei giunti di entrambe le pose. Successivamente, cliccando su "Plan \& Execute" il robot si muoverà nella posizione finale indicata, simulanod la traiettoria.
+A questo punto, nella sezione "Planning", indicando il gruppo di giunti, una posizione iniziale e finale del robot, come mostrato in figura \ref{fig:rviz_2}, RViz salverà le posizioni dei giunti di entrambe le pose. Successivamente, cliccando su "Plan \& Execute" il robot si muoverà nella posizione finale indicata, simulando la traiettoria.
 
 \begin{figure}[H]
     \centering
@@ -815,7 +815,7 @@ Tutti gli elementi sono racchiusi nel tag \texttt{<robot>}:
 </robot>
 \end{lstlisting}
 \vspace{1em}
-Ogni \texttt{link} rappresenta una parte rigida del robot. Ogni link include:
+Ogni \texttt{link} rappresenta una parte rigida del robot e include:
 
 \begin{itemize}
     \item \texttt{<visual>}, descrizione visiva (mesh o primitiva)
@@ -825,7 +825,7 @@ Ogni \texttt{link} rappresenta una parte rigida del robot. Ogni link include:
 
 Ecco un esempio per il link \texttt{shoulder\_1\_link}:
 
-\begin{lstlisting}[language=xml]
+\begin{verbatim}
 <link name="shoulder_1_link">
   <visual>
     <geometry>
@@ -847,7 +847,7 @@ Ecco un esempio per il link \texttt{shoulder\_1\_link}:
       izz="0.03"/>
   </inertial>
 </link>
-\end{lstlisting}
+\end{verbatim}
 \vspace{1em}
 I \texttt{joint} collegano due link tra loro e ne definiscono il tipo di movimento relativo. Ogni joint contiene:
 
@@ -861,7 +861,7 @@ I \texttt{joint} collegano due link tra loro e ne definiscono il tipo di movimen
 
 Ecco un esempio:
 
-\begin{lstlisting}[language=xml]
+\begin{verbatim}
 <joint name="shoulder_1_joint" type="revolute">
   <parent link="base_link"/>
   <child link="shoulder_1_link"/>
@@ -869,7 +869,7 @@ Ecco un esempio:
   <axis xyz="0 0 1"/>
   <limit lower="-3.14" upper="3.14" effort="20" velocity="1.0"/>
 </joint>
-\end{lstlisting}
+\end{verbatim}
 \vspace{1em}
 Le proprietà fisiche sono definite nei blocchi \texttt{<inertial>} e \texttt{<collision>} di ogni link. Queste includono:
 
@@ -905,7 +905,7 @@ Per la simulazione in Gazebo si definisce il plugin:
 </gazebo>
 \end{lstlisting}
 \vspace{1em}
-Per ogni link si può abilitare la self-collision:
+Per ogni link si può abilitare la self-collision, come segue:
 
 \begin{lstlisting}[language=xml]
 <gazebo reference="wrist_link">
@@ -914,38 +914,38 @@ Per ogni link si può abilitare la self-collision:
 \end{lstlisting}
 \vspace{1em}
 
-Per importare il modello del TM5-900 in Ignition Gazebo abbiamo innanzitutto predisposto un environment minimale, avviando un mondo vuoto tramite il comando:  
+Per importare il modello del TM5-900 in Ignition Gazebo, è stato innanzitutto predisposto un environment minimale, avviando un mondo vuoto tramite il seguente comando:  
 \begin{verbatim}
     ign gazebo empty.sdf
 \end{verbatim}
-In questo modo si crea uno spazio di simulazione "pulito", privo di elementi superflui, che ci permette di verificare in modo isolato il corretto caricamento del robot. Successivamente, abbiamo impiegato il servizio "EntityFactory" di Gazebo per "spawnare" il robot a partire dal file URDF prodotto dal pacchetto "tm\_description" di ROS2 Humble. Nello specifico, il comando utilizzato è stato:  
-\begin{verbatim}
+In questo modo si inizializza un nuovo spazio di simulazione, privo di elementi superflui, che permette di verificare in modo isolato il corretto caricamento del robot. Successivamente, è stato utilizzato il servizio "EntityFactory" di Gazebo per "spawnare" il robot a partire dal file URDF prodotto dal pacchetto "tm\_description" di ROS2 Humble. Nello specifico, il comando utilizzato è stato:  
+\begin{lstlisting}[language=bash,breaklines=true]
     ign service -s /world/empty/create \
     --reqtype ignition.msgs.EntityFactory \
     --reptype ignition.msgs.Boolean \
     --timeout 1000 \
     --req "sdf_filename: '/home/pizzu01/ros2_humble/install/tm_description/share/tm_description/urdf/tm900_robot_prova2.urdf', name: 'tm900'"
-\end{verbatim}
+\end{lstlisting}
 
-Con --reqtype abbiamo definito rispettivamente il tipo di messaggio di richiesta e di risposta, mentre --timeout imposta un tempo massimo di attesa per la conferma del caricamento. La chiave sdf\_filename punta al file URDF compilato durante l’installazione del pacchetto, garantendo che vengano letti correttamente tutti i link, i joint e i plugin definiti. Infine, assegnando al modello il nome “tm900” ci assicuriamo di poterlo indirizzare univocamente nelle successive chiamate di spawn o nei nodi ROS2 che interagiranno con esso. Alla conclusione della procedura, il TM5-900 è dunque presente nella scena di Gazebo e pronto per essere controllato e validato tramite i controller ROS2 e i plugin di interfaccia.
+Con \texttt{--reqtype} è stato definito rispettivamente il tipo di messaggio di richiesta e di risposta, mentre \texttt{--timeout} imposta un tempo massimo di attesa per la conferma del caricamento. La chiave \texttt{sdf\_filename} punta al file URDF compilato durante l’installazione del pacchetto, garantendo che vengano letti correttamente tutti i link, i joint e i plugin definiti. Infine, assegnando al modello il nome \texttt{TM900} ci si assicura di poterlo indirizzare univocamente nelle successive chiamate di spawn o nei nodi ROS2 che interagiranno con esso. Alla conclusione della procedura, il TM5-900 è dunque presente nella scena di Gazebo e pronto per essere controllato e validato tramite i controller ROS2 e i plugin di interfaccia.
 
 Durante il processo di sviluppo del modello URDF del robot TM900, è stato riscontrato un problema relativo alla visualizzazione delle mesh in Gazebo. Il problema e la soluzione adottata è documentata alla sezione \ref{sec:Problemi_visualizzazione_Gazebo}.
 
 \section{Camera}
 \label{sec:camera}
-\textit{Questo capitolo descrive il task riguardante la camera e la soluzione ottenuta. Il problema consisteva nell’acquisizione e nella trasmissione in tempo reale delle immagini della scena virtuale (sia RGB sia di profondità) da Unity al framework ROS2. L’obiettivo è duplice: da un lato, permettere a ROS2 di ricevere flussi video ad alta frequenza per eventuali elaborazioni e algoritmi di visione artificiale; dall’altro, garantire una struttura modulare, facilmente estendibile e conforme alle best practice di comunicazione offerta da ROS2. Successivamente, grazie a questo task è possibile integrare nel nella realtà la camera Realsense D455, che fornisce flussi video RGB e di profondità. In particolare, saranno descritti i passaggi per la preparazione del RenderTexture e la spiegazione del codice C\# per l’acquisizione delle immagini. Infine, verranno presentati sia il codice Publisher di Unity che il Subscriber di ROS2.}
+\textit{Questo capitolo descrive il task riguardante la camera e la soluzione ottenuta. Il problema consisteva nell’acquisizione e nella trasmissione in tempo reale delle immagini della scena virtuale (sia RGB sia di profondità) da Unity al framework ROS2. L’obiettivo è duplice: da un lato, permettere a ROS2 di ricevere flussi video ad alta frequenza per eventuali elaborazioni e algoritmi di visione artificiale; dall’altro, garantire una struttura modulare, facilmente estendibile e conforme alle best practice di comunicazione offerte da ROS2. Successivamente, grazie a questo task è possibile integrare nella realtà la camera Realsense D435i, che fornisce flussi video RGB e di profondità. In particolare, saranno descritti i passaggi per la preparazione del RenderTexture e la spiegazione del codice C\# per l’acquisizione delle immagini. Infine, verranno presentati sia il codice Publisher di Unity che il Subscriber di ROS2.}
 
-La soluzione adottata per rispondere a questa esigenza, è la RenderTexture di Unity, utilizzata come fonte di acquisizione dei frame. Sono stati sviluppati due componenti software distinti:
+La soluzione adottata per rispondere a questa esigenza, è la RenderTexture di Unity, utilizzata come fonte di acquisizione dei frame. Per ovviare a questo problema, sono stati sviluppati due componenti software distinti:
 \begin{itemize}
     \item \textbf{Publisher Unity} uno script in C\# che cattura ad intervalli regolari le texture della scena virtuale, estrae separatamente i dati RGB e quelli di profondità e li pubblica su due topic ROS2 distinti.
 
-    \item \textbf{Subscriber ROS2} un nodo Python che si iscrive ai due topic, riceve i pacchetti di dati, li converte in immagini tramite OpenCV e infine li salva come video nel workspace di lavoro.
+    \item \textbf{Subscriber ROS2} nodo python che si iscrive ai due topic, riceve i pacchetti di dati, li converte in immagini tramite OpenCV e infine li salva come video nel workspace di lavoro.
 \end{itemize}
 
 Inoltre è stato implementata una soluzione iniziale interamente in Unity che permette di esportare i dati RGB sia in formato .png che in .csv, in modo da avere un file di testo con le coordinate RGB di ogni pixel. Questo è stato utile per testare la funzionalità del Publisher e per verificare la veridicità dei dati.
 
 \subsection{Setup della Camera Virtuale}
-Prima di procedere con la scrittura del codice, è necessario configurare correttamente la scena in Unity. In particolare, è necessario creare un oggetto Camera che simuli il funzionamento della Realsense D455. Per fare ciò, seguire i seguenti passaggi:
+Prima di procedere con la scrittura del codice, è necessario configurare correttamente la scena in Unity. In particolare, è necessario creare un oggetto Camera che simuli il funzionamento della Realsense D435i. Per fare ciò, seguire i seguenti passaggi:
 
 \begin{itemize}
 \item Eliminare l'oggetto \texttt{mainCamera} predefinito
@@ -1091,7 +1091,7 @@ public class RealSenseSimulator : MonoBehaviour
 Attraverso l'utilizzo di una camera virtuale e quindi di una RenderTexture, il sistema acquisisce i dati visivi della scena e li converte in texture gestibili tramite Texture2D.
 Ogni n frame, i dati RGB vengono esportati in formato .png e salvati anche in un file .csv, consentendo un'analisi dettagliata dei singoli pixel. Contestualmente, viene generata una mappa di profondità simulata mediante una funzione sinusoidale che varia nel tempo, permettendo una rappresentazione dinamica della distanza. Una sezione specifica dello script è inoltre dedicata alla simulazione di variazioni visive e di profondità localizzate, al fine di testare la sensibilità del sistema nel rilevare modifiche. L’architettura del codice è orientata all’efficienza e alla modularità, risultando adatta a scenari di test e sviluppo per sistemi di visione artificiale basati su dati RGB-D.
 La simulazione della profondità è stata realizzata tramite una funzione periodica per garantire un controllo preciso e dinamico dei valori di profondità, senza la necessità di un sensore fisico. Questo approccio consente di testare il comportamento del sistema in modo riproducibile. Inoltre, permette di verificare l’integrazione e la sincronizzazione tra il flusso visivo e quello di profondità in un contesto completamente simulato.
-Il metodo GenerateDepthData() simula una mappa di profondità generando valori di intensità in scala di grigi per ogni pixel, utilizzando una funzione sinusoidale che varia nel tempo. Questo crea un effetto ondulato e dinamico, utile per testare il comportamento di sistemi basati su dati di profondità senza l’uso di un sensore fisico.
+Il metodo \texttt{GenerateDepthData()} simula una mappa di profondità generando valori di intensità in scala di grigi per ogni pixel, utilizzando una funzione sinusoidale che varia nel tempo. Questo crea un effetto ondulato e dinamico, utile per testare il comportamento di sistemi basati su dati di profondità senza l’uso di un sensore fisico.
 
 \begin{figure}[H]
    \centering
@@ -1104,7 +1104,7 @@ Il metodo GenerateDepthData() simula una mappa di profondità generando valori d
 Di seguito, è riportato il codice del Publisher di Unity, che si occupa di pubblicare i dati RGB e Depth su due topic separati. Il codice è stato sviluppato in C\# con le seguenti caratteristiche:
 \begin{itemize}
 \item Pubblicazione su due topic separati (RGB e Depth)
-\item Frequenza: 10Hz (0.1 secondi)
+\item Frequenza di 10Hz (0.1 secondi)
 \item Utilizzo del pacchetto Unity-Robotics-ROSTCPConnector
 \item Formato messaggi ROS standard
 \end{itemize}
@@ -1228,7 +1228,7 @@ Lo script \texttt{RealSenseSimulator.cs}, scritto in C\#, è progettato per simu
 Lo script è associato ad un oggetto Unity contenente una \texttt{Camera}, il cui output visivo viene catturato e trasformato in messaggi \texttt{sensor\_msgs/Image} compatibili con ROS2. Il comportamento dello script è articolato nei seguenti punti principali:
 
 \begin{itemize}
-  \item \textbf{Inizializzazione:} Nella funzione \texttt{Start()}, viene creato un \texttt{RenderTexture} con risoluzione 1280$\times$720 e formato ARGB32. Questo buffer viene assegnato come output della telecamera per la cattura dei frame a colori. Inoltre, viene abilitato il \texttt{DepthTextureMode.Depth} per permettere la generazione automatica della mappa di profondità. Vengono quindi inizializzate due texture 2D: una per il colore (\texttt{RGB24}) e una per la profondità (\texttt{R8}).
+  \item \textbf{Inizializzazione:} Nella funzione \texttt{Start()}, viene creato un \texttt{RenderTexture} con risoluzione 1280$\times$720 e formato (\texttt{ARGB32}). Questo buffer viene assegnato come output della telecamera per la cattura dei frame a colori. Inoltre, viene abilitato il \texttt{DepthTextureMode.Depth} per permettere la generazione automatica della mappa di profondità. Vengono quindi inizializzate due texture 2D: una per il colore (\texttt{RGB24}) e una per la profondità (\texttt{R8}).
   
   \item \textbf{Integrazione con ROS 2:} Viene ottenuta l’istanza di \texttt{ROSConnection}, alla quale sono registrati due publisher per i topic \texttt{/camera/color/image\_raw} e \texttt{/camera/depth/image\_raw}, entrambi configurati per inviare messaggi di tipo \texttt{ImageMsg}.
 \end{itemize}
@@ -1246,7 +1246,7 @@ La funzione \texttt{CaptureDepth()} è una coroutine che utilizza un \texttt{Ren
 \newline
 La profondità viene letta in una texture temporanea in formato \texttt{RGBAFloat}. Per ciascun pixel, il canale alfa rappresenta la profondità normalizzata, che viene poi convertita in un'immagine a canale singolo scrivendo il valore nel canale rosso della \texttt{depthTexture2D}. La texture risultante viene infine utilizzata per la pubblicazione ROS.
 \newline
-Va notato che la conversione della profondità pixel-per-pixel e la distruzione dinamica delle texture temporanee possono introdurre un overhead computazionale significativo, specialmente in scenari ad alta frequenza di pubblicazione. In contesti più esigenti, si potrebbe considerare l'ottimizzazione attraverso l'elaborazione GPU-side o tecniche di bufferizzazione.
+Va evidenziato che la conversione della profondità pixel-per-pixel e la distruzione dinamica delle texture temporanee possono introdurre un overhead computazionale significativo, specialmente in scenari ad alta frequenza di pubblicazione. In contesti più esigenti, si potrebbe considerare l'ottimizzazione attraverso l'elaborazione GPU-side o tecniche di bufferizzazione.
 
 % In sintesi, lo script \texttt{RealSenseSimulator} fornisce un'integrazione completa tra Unity e ROS~2 per la simulazione di sensori RGB-D. Esso consente lo sviluppo e la validazione di sistemi robotici in ambienti virtuali realistici, mantenendo una struttura modulare e compatibile con l'infrastruttura ROS.
 
@@ -1339,10 +1339,17 @@ if __name__ == '__main__':
     main()
 \end{lstlisting}
 \vspace{1em} % aggiunge spazio tra caption e codice
-Il nodo \texttt{RGBDSubscriber} in ambiente ROS2 ha il compito di ricevere i dati RGB e di profondità inviati su due topic differenti dal Publisher e di trasformarli in formato video. Il nodo è implementato in Python e fa uso delle librerie \texttt{rclpy} per la comunicazione con ROS~2, \texttt{sensor\_msgs.msg.Image} per la gestione dei messaggi di immagine, \texttt{cv\_bridge} per la conversione tra formati ROS e strutture compatibili con OpenCV, e \texttt{opencv-python} per l’elaborazione e visualizzazione delle immagini.
-\newline
+Il nodo \texttt{RGBDSubscriber} in ambiente ROS2 ha il compito di ricevere i dati RGB e di profondità inviati su due topic differenti dal Publisher e di trasformarli in formato video. Il nodo è implementato in Python e fa uso delle seguenti librerie:
+\begin{itemize}
+  \item \texttt{rclpy} per la comunicazione con ROS~2
+  \item \texttt{sensor\_msgs.msg.Image} per la gestione dei messaggi di immagine
+  \item \texttt{cv\_bridge} per la conversione tra formati ROS e strutture compatibili con OpenCV
+  \item \texttt{opencv-python} per l’elaborazione e visualizzazione delle immagini
+\end{itemize}
+
+
 Nel costruttore della classe \texttt{RGBDSubscriber}, viene inizializzato un oggetto \texttt{CvBridge} per la conversione tra messaggi ROS e immagini OpenCV. Successivamente, vengono creati due oggetti \texttt{cv2.VideoWriter} per la registrazione dei video RGB e di profondità, utilizzando il codec \texttt{XVID}, una risoluzione di 1280$\times$720 pixel e una frequenza di 10~fps, in linea con la frequenza di pubblicazione del simulatore Unity.
-\newline
+
 Il nodo si sottoscrive ai seguenti topic:
 \begin{itemize}
   \item \texttt{/camera/color/image\_raw} per le immagini RGB;
@@ -1366,7 +1373,7 @@ Trascorsi 60 secondi, il metodo \texttt{shutdown\_callback} viene eseguito autom
 
 La funzione \texttt{main()} inizializza l'ambiente ROS2, crea un’istanza del nodo e mantiene attiva l’elaborazione degli eventi attraverso \texttt{rclpy.spin()}, fino alla terminazione del nodo stesso.
 
-Tramite quindi il Publisher di Unity e il Subscriber ROS2, è possibile acquisire e visualizzare i dati RGB e di profondità in tempo reale. I video risultanti possono essere utilizzati per analisi successive o per l'addestramento di modelli di visione artificiale.
+Pertanto, tramite il Publisher di Unity e il Subscriber ROS2, è possibile acquisire e visualizzare i dati RGB e di profondità in tempo reale. I video risultanti possono essere utilizzati per analisi successive o per l'addestramento di modelli di visione artificiale.
 % \subsection{Output ROS2}
 % \begin{itemize}
 % \item Flusso video RGB funzionante
@@ -1415,11 +1422,11 @@ Nel contesto del progetto, l’integrazione tra Unity e ROS2 rappresenta una sfi
     \item \textbf{Ambiente di Esecuzione e Simulazione}: La perfetta integrazione tra il motore fisico di Unity e il middleware ROS2 richiede una sincronizzazione accurata dei tempi di esecuzione, in modo da garantire una simulazione fluida e reattiva. Eventuali incompatibilità possono compromettere le performance e l’efficacia dei test simulativi.
 \end{itemize}
 
-Durante le fasi iniziali di sviluppo, il gruppo ha scelto di utilizzare ROS2 Jazzy, una distribuzione che, è supportata fino a maggio 2029, e rappresentava una versione più nuova e all’avanguardia. Tuttavia, in fase di integrazione con Unity sono emerse alcune criticità, in particolare durante i test si sono riscontrate carenze funzionali nelle librerie e nei tool di ROS2 Jazzy. Queste mancanze evidenziavano dei limiti, in particolare per quanto riguarda la robustezza delle comunicazioni e la gestione dei messaggi in ambienti complessi.
+Durante le fasi iniziali di sviluppo, il gruppo ha scelto di utilizzare ROS2 Jazzy, una distribuzione che è supportata fino a maggio 2029, e rappresentava una versione più nuova e all’avanguardia. Tuttavia, in fase di integrazione con Unity sono emerse alcune criticità, in particolare durante i test si sono riscontrate carenze funzionali nelle librerie e nei tool di ROS2 Jazzy. Queste mancanze evidenziavano dei limiti, in particolare per quanto riguarda la robustezza delle comunicazioni e la gestione dei messaggi in ambienti complessi.
 \newline
 La migrazione verso ROS2 Humble è stata dettata dalla necessità di disporre di una versione più consolidata e con una maggiore compatibilità con gli strumenti attuali di Unity. ROS2 Humble, supportato fino a maggio 2027, ha offerto miglioramenti in termini di performance, stabilità e aggiornamenti, garantendo una maggiore robustezza nelle comunicazioni e nella gestione delle dipendenze. \cite{Supporto-versioni-ROS}
 \newline
-Chiaramente, con la scelta di passare a ROS2-Humble anche gli altri software utilizzati sono stati aggiornati, in particolare Gazebo è stato aggiornato alla versione Fortress, che ha mostrato una maggiore stabilità e compatibilità con ROS2 Humble. \cite{Gazebo-ROS2}
+Chiaramente, con la scelta di passare a ROS2-Humble anche gli altri software utilizzati sono stati aggiornati. In particolare, Gazebo è stato aggiornato alla versione Fortress, che ha mostrato una maggiore stabilità e compatibilità con ROS2 Humble. \cite{Gazebo-ROS2}
 \newline
 Con l’evolversi del progetto e l’avvicinarsi della scadenza del supporto per Humble, si dovrà valutare attentamente una futura migrazione verso ROS2 Jazzy. Passare a Jazzy in un secondo momento potrebbe permettere di sfruttare i miglioramenti continui offerti dalla nuova distribuzione, garantendo così una maggiore longevità e integrazione degli aggiornamenti nell’ecosistema software del progetto.
 \section{Compatibilità dei File 3D con Unity e Gazebo}
@@ -1433,7 +1440,7 @@ Il formato \textbf{.obj} è stato testato con successo sia in Unity che in Gazeb
     \label{fig:cloth_error}
 \end{figure}
 
-Per risolvere questo problema, l'oggetto è stato importato nel software Blender, dove è stato utilizzato il modificatore Decimate per ridurre il numero di poligoni della mesh. Diminuendo il parametro "Ratio" a un valore che ha portato la mesh a circa 5000 poligoni, è stato possibile reimportare l'oggetto in Unity e applicare correttamente il componente Cloth, ottenendo una simulazione più realistica.
+Per risolvere questo problema, l'oggetto è stato importato nel software Blender, dove è stato utilizzato il modificatore \textit{Decimate} per ridurre il numero di poligoni della mesh. Diminuendo il parametro \textit{Ratio} a un valore che ha portato la mesh a circa 5000 poligoni, è stato possibile reimportare l'oggetto in Unity e applicare correttamente il componente Cloth, ottenendo una simulazione più realistica.
 
 \begin{figure}[H]
     \centering
@@ -1442,25 +1449,25 @@ Per risolvere questo problema, l'oggetto è stato importato nel software Blender
     \label{fig:blender_ratio}
 \end{figure}
 
-Il formato \textbf{.fbx} non è supportato da Gazebo; tuttavia, è compatibile con Unity e può essere convertito in altri formati, come .obj o .dae (Collada), utilizzando Blender. Seguendo lo stesso procedimento adottato per il file .obj, quindi riducendo il numero di poligoni delle mesh tramite il modificatore Decimate in Blender, la simulazione in Unity è stata eseguita correttamente.
+Il formato \textbf{.fbx} non è supportato da Gazebo; tuttavia, è compatibile con Unity e può essere convertito in altri formati, come .obj o .dae (Collada), utilizzando Blender. Seguendo lo stesso procedimento adottato per il file .obj, quindi riducendo il numero di poligoni delle mesh tramite il modificatore \textit{Decimate} in Blender, la simulazione in Unity è stata eseguita correttamente.
 
 Il formato  \textbf{.dae} (Collada) è supportato da Gazebo e risulta essere ampiamente utilizzato in questo contesto. Importando i file .obj della t-shirt e della scarpa, nonché il file .fbx della t-shirt in Blender, è stato possibile esportarli nel formato .dae. Questa operazione ha permesso di caricare correttamente i vari modelli in Gazebo, facilitando la simulazione degli indumenti nel simulatore.
 
-In sintesi, l'utilizzo combinato di Blender per l'ottimizzazione delle mesh e la conversione dei formati, insieme all'applicazione del componente Cloth in Unity, ha consentito di ottenere simulazioni più realistiche del comportamento dei tessuti, migliorando l'interazione tra il robot e gli indumenti nel contesto del progetto.
+In sintesi, l'utilizzo combinato di Blender per l'ottimizzazione delle mesh e la conversione dei formati, insieme all'applicazione del componente \texttt{Cloth} in Unity, ha consentito di ottenere simulazioni più realistiche del comportamento dei tessuti, migliorando l'interazione tra il robot e gli indumenti nel contesto del progetto.
 
 \subsection{Componente Cloth e collisioni con altri materiali}
-Il Cloth di Unity oltre a realizzare una buona fisica per la maglietta è in grado di creare delle collisioni con altri materiali. In particolare, come è stato descritto nel capitolo precedente, si può inserire un oggetto Capsule o Sphere nel Cloth e quindi specificare alla maglietta quali e quanti oggetti dovranno avere un'interazione fisica opportuna durante la collisione. Tuttavia non è possibile far si che l'oggetto a cui è applicato il Cloth (in questo caso la maglietta) collida con un qualunque oggetto di qualunque forma geometrica. Infatti come anticipato è possibile utilizzare solo due tipi di oggetti 3D Unity: Capsule e Sphere. Questa restrizione rappresenta una problematica nel caso in cui il tessuto debba interagire con superfici piatte, angoli o forme geometriche più complesse, come un tavolo, una scatola o una struttura irregolare. Nel caso del progetto un'applicazione utile sarebbe quella di poter far interagire la maglietta con l'end effector del robot che poi riesca ad appoggiarla su una superficie piana come un tavolo. Poiché non è possibile definire direttamente colliders di tipo Mesh o Box per il Cloth, è necessario trovare soluzioni alternative per ottenere un comportamento realistico nelle simulazioni.
+Il Cloth di Unity, oltre a realizzare una buona fisica per la maglietta, è in grado di creare delle collisioni con altri materiali. In particolare, come è stato descritto nel capitolo precedente, si può inserire un oggetto di tipo Capsule o Sphere all'interno del sistema Cloth e indicare alla maglietta quali oggetti, e in che quantità, dovranno interagire fisicamente in modo corretto durante la collisione. Tuttavia, non è possibile fare in modo che l’oggetto a cui è applicato il Cloth (in questo caso, la maglietta) interagisca in collisione con oggetti di qualsiasi forma geometrica. Infatti, come anticipato, è possibile utilizzare solo due tipi di oggetti 3D Unity: \texttt{Capsule} e \texttt{Sphere}. Questa restrizione rappresenta una problematica nel caso in cui il tessuto debba interagire con superfici piatte, angoli o forme geometriche più complesse, come un tavolo, una scatola o una struttura irregolare. Nel caso del progetto un'applicazione utile sarebbe quella di poter far interagire la maglietta con l'end effector del robot che poi riesca ad appoggiarla su una superficie piana come un tavolo. Poiché non è possibile definire direttamente colliders di tipo \texttt{Mesh} o \texttt{Box} per il \texttt{Cloth}, è necessario trovare soluzioni alternative per ottenere un comportamento realistico nelle simulazioni.
 \newline
-Una soluzione consiste nel posizionare una griglia di piccole Sphere Colliders sulla superficie con cui il tessuto deve interagire. In questo modo, il tessuto percepirà la presenza di una superficie continua, pur utilizzando solo colliders sferici. Per implementare questa soluzione:
+Una soluzione consiste nel posizionare una griglia di piccole \texttt{Sphere Colliders} sulla superficie con cui il tessuto deve interagire. In questo modo, il tessuto percepirà la presenza di una superficie continua, pur utilizzando solo colliders sferici. Per implementare questa soluzione bisogna:
 \begin{itemize}
-    \item Creare uno script che generi automaticamente una matrice di sfere sulla superficie desiderata.
-    \item Assicurarsi che le sfere vengano generate prima che il Cloth venga configurato, in modo che possano essere assegnate correttamente ai "Sphere Colliders" della maglietta.
+    \item Creare uno script che generi automaticamente una matrice di sfere sulla superficie desiderata;
+    \item Assicurarsi che le sfere vengano generate prima che il Cloth venga configurato, in modo che possano essere assegnate correttamente ai \texttt{Sphere Colliders} della maglietta;
     \item Ottimizzare il numero e la dimensione delle sfere per ottenere una buona resa senza sovraccaricare il motore fisico.
 \end{itemize}
 
 \section{Problemi di importazione del URDF del robot in Unity}
 \label{sec:Problemi_importazione_URDF}
-Un altro problema riscontrato durante la fase di sviluppo del progetto, è nato durante la fase di importazione del file URDF del robot TM5-900 in Unity tramite lo strumento URDF-Importer. Come spiegato nella sezione \ref{sec:urdf_importer}, tramite questo package è possibile importare il robot in Unity con le varie meshes sia di visual che di collision in pochi e semplici click. Tuttavia è importante far notare un problema che è stato riscontrato durante l'importazione del file URDF del robot TM5-900. Infatti, una volta che il robot è stato importato per la prima volta, Unity creata automaticamente dei file .prefab all'interno della cartella "assets" e quindi sia dentro la cartella "visual" che "collision". In figura \ref{fig:visual_prefab} e \ref{fig:collision_prefab} vediamo rispettivamente le cartelle "visual" e "collision" una volta che il robot è stato importato, i file di colore rosa sono appunto i file che Unity genera automaticamente (.prefab).
+Un'ulteriore difficoltà emersa durante lo sviluppo del progetto si è verificata nella fase di importazione del file URDF del robot TM5-900 in Unity, utilizzando lo strumento \texttt{URDF Importer}. Come spiegato nella sezione \ref{sec:urdf_importer}, tramite questo package è possibile importare il robot in Unity con le varie meshes sia di visual che di collision in pochi e semplici click. Tuttavia, è importante far notare un problema che è stato riscontrato durante l'importazione del file URDF del robot TM5-900. Infatti, una volta che il robot è stato importato per la prima volta, Unity crea automaticamente dei file .prefab all'interno della cartella \texttt{assets} e quindi sia dentro la cartella \texttt{visual} che \texttt{collision}. Le figure 3.3 e 3.4 mostrano rispettivamente le cartelle "visual" e "collision" dopo l'importazione del robot; i file evidenziati in rosa corrispondono ai prefab che Unity genera automaticamente.
 
 \begin{figure} [H]
     \centering
@@ -1474,9 +1481,11 @@ Un altro problema riscontrato durante la fase di sviluppo del progetto, è nato 
     \includegraphics[width=0.8\textwidth]{images/prefab_collision.PNG}
     \caption{Cartella "collision" con i file .prefab generati automaticamente da Unity}
     \label{fig:collision_prefab}
-\end{figure}
+\end{figure} 
 
-Tuttavia, una volta che il robot veniva cancellato dalla scena e quindi lo si voleva reimportare questi file .prefab venivano sovrascritti e il robot non veniva più visualizzato correttamente. In particolare, in fase di importazione l'errore che si otteneva era il seguente:
+Tuttavia, una volta rimosso il robot dalla scena e successivamente reimportato, i file .prefab venivano sovrascritti, impedendo la corretta visualizzazione del robot. In particolare, in fase di importazione l'errore che si otteneva era il seguente:
+
+
 
 \begin{figure} [H]
     \centering
@@ -1485,7 +1494,7 @@ Tuttavia, una volta che il robot veniva cancellato dalla scena e quindi lo si vo
     \label{fig:errore_prefab}
 \end{figure}
 
-Questo problema è stato risolto semplicemente eliminando i vari file .prefab all'interno della cartella "meshes" (sia in "visual" che in "collision").
+Questo problema è stato risolto semplicemente eliminando i vari file .prefab all'interno della cartella \texttt{meshes} (sia in \texttt{visual} che in \texttt{collision}).
 
 
 \section{Problemi di visualizzazione delle meshes in Gazebo e Unity}
@@ -1497,7 +1506,7 @@ Quella che segue è una soluzione pratica a un problema avvenuto durante l'impor
 \label{sec:Problemi_visualizzazione_Gazebo}
 Come già proposto nella sezione \ref{sec:Importazione_TM5-900_Gazebo}, è possibile importare il robot TM5-900 utilizzando il file URDF. Tuttavia, durante il caricamento del file in Gazebo, si è riscontrato un errore di visualizzazione delle meshes, che non venivano caricate correttamente. Questo problema è stato causato da un errore nei percorsi delle meshes all'interno del file URDF. In particolare, i percorsi delle meshes erano stati definiti in questo modo:
 
-\begin{verbatim}
+\begin{lstlisting}[language=xml, breaklines=true]
     <link name="base_link">
     <visual>
       <geometry>
@@ -1518,10 +1527,11 @@ Come già proposto nella sezione \ref{sec:Importazione_TM5-900_Gazebo}, è possi
       <inertia ixx="0.00110833289" ixy="0.0" ixz="0.0" iyy="0.00110833289" iyz="0.0" izz="0.0018"/>
     </inertial>
   </link>
-\end{verbatim}
+\end{lstlisting}
 
-tuttavia Gazebo non riusciva a riconoscere il path, così la soluzione è stata quella di inserire il path completo a partire dalla cartella "home" di Linux, come mostrato di seguito:
-\begin{verbatim}
+Tuttavia, Gazebo non riusciva a riconoscere il path, così la soluzione è stata quella di inserire il path completo a partire dalla cartella "home" di Linux, come mostrato di seguito:
+
+\begin{lstlisting}[language=xml, breaklines=true]
     <link name="base_link">
     <visual>
       <geometry>
@@ -1542,11 +1552,11 @@ tuttavia Gazebo non riusciva a riconoscere il path, così la soluzione è stata 
       <inertia ixx="0.00110833289" ixy="0.0" ixz="0.0" iyy="0.00110833289" iyz="0.0" izz="0.0018"/>
     </inertial>
   </link>
-\end{verbatim}
+\end{lstlisting}
 \subsection{Problemi di visualizzazione delle meshes in Unity}
 Analogamente si è riscontrato un problema di visualizzazione delle meshes in Unity, dove il robot non veniva caricato correttamente. Anche in questo caso, il problema era dovuto a un errore nei percorsi delle meshes all'interno del file URDF. La soluzione è stata quella di modificare i percorsi delle meshes nel file URDF come mostrato di seguito:
 
-\begin{verbatim}
+\begin{lstlisting}[language=xml, breaklines=true]
     <link name="base_link">
     <visual>
       <geometry>
@@ -1567,13 +1577,13 @@ Analogamente si è riscontrato un problema di visualizzazione delle meshes in Un
       <inertia ixx="0.00110833289" ixy="0.0" ixz="0.0" iyy="0.00110833289" iyz="0.0" izz="0.0018"/>
     </inertial>
   </link>
-\end{verbatim}
+\end{lstlisting}
 
-facendo attenzione a inserire nella cartella Assets di Unity la prima cartella definita dopo "package://", in questo caso "meshes". In questo modo Unity riesce a riconoscere il path e caricare correttamente le meshes del robot.
+Ciò è stato eseguito, facendo attenzione a inserire nella cartella Assets di Unity la prima cartella definita dopo \texttt{package://}, in questo caso \texttt{meshes}. In questo modo Unity riesce a riconoscere il path e caricare correttamente le meshes del robot.
 
 \section{Problemi con l'acquisizione della profondità tramite la camera virtuale}
 \label{sec:Problemi_camera_virtuale}
-Durante lo sviluppo del task della camera virtuale \ref{sec:camera}, sono stati riscontrati problemi significativi nella rappresentazione della profondità. In particolare, la mappa di profondità generata non forniva informazioni dettagliate e realistiche sulla scena, risultando piatta e priva di variazioni significative, come vediamo in figura \ref{fig:depth}. 
+Durante lo sviluppo del task della camera virtuale \ref{sec:camera}, sono stati riscontrati problemi significativi nella rappresentazione della profondità. In particolare, la mappa di profondità generata non forniva informazioni dettagliate e realistiche sulla scena, risultando piatta e priva di variazioni significative, come si può vedere in figura \ref{fig:depth}. 
 
 \begin{figure} [H]
     \centering
@@ -1582,7 +1592,7 @@ Durante lo sviluppo del task della camera virtuale \ref{sec:camera}, sono stati 
     \label{fig:depth}
 \end{figure}
 
-Questo problema crediamo sia causato dalla scelta del formato di acquisizione della profondità e dalla configurazione della camera virtuale in Unity. Inoltre è possibile che l'elaborazione dei dati di profondità eseguita nel codice Subscriber non fosse sufficientemente robusta per gestire le variazioni di profondità in modo accurato. Tuttavia, purtroppo, per mancanza di tempo non è stato possibile approfondire ulteriormente il problema e trovare una soluzione definitiva. 
+Si pensa che questo problema sia causato dalla scelta del formato di acquisizione della profondità e dalla configurazione della camera virtuale in Unity. Inoltre, è possibile che l'elaborazione dei dati di profondità eseguita nel codice Subscriber non fosse sufficientemente robusta per gestire le variazioni di profondità in modo accurato. Tuttavia, purtroppo, per mancanza di tempo non è stato possibile approfondire ulteriormente il problema e trovare una soluzione definitiva. 
 
 \chapter{Struttura del workspace ROS2}
 \textit{In questo capitolo viene presentata la struttura del workspace ROS2, con particolare attenzione alla disposizione dei pacchetti e dei file necessari per l'integrazione con Unity e la simulazione del robot. Come sotto riportato, i package sono evidenziati in rosso mentre i file Python sono evidenziati in blu.}
@@ -1627,28 +1637,28 @@ Dynamics/
 
 \newpage
 
-Nel diagramma sono state riportate solo le cartelle e i file considerati più rilevanti per la comprensione dell'architettura del workspace; la repository completa è disponibile a \cite{Repository_ROS2}.
+Nel diagramma sono state riportate solo le cartelle e i file considerati più rilevanti per la comprensione dell'architettura del workspace. La repository completa è disponibile a \cite{Repository_ROS2}.
 
 Si segnala, inoltre, che il package \textcolor{red}{\texttt{tm\_moveit\_config}} non è stato ulteriormente implementato, in quanto è stato creato automaticamente tramite il MoveIt Setup Assistant e presenta la stessa struttura di \textcolor{red}{\texttt{moveit\_config\_tm5\_900}}, spiegata nel dettaglio alla sezione \ref{sec:moveit}.
 
-Questi due package influenzano direttamente il funzionamento del robot e sono stati creati per gestire la cinematica e la dinamica del braccio robotico. Tramite il comando 
+Questi due package influenzano direttamente il funzionamento del robot e sono stati creati per gestire la cinematica e la dinamica del braccio robotico. Tramite il seguente comando 
 \begin{verbatim}
     ros2 launch moveit_config_tm5_900 setup_assistant.launch.py
 \end{verbatim}
-oppure
+oppure tramite 
 \begin{verbatim}
     ros2 launch tm_moveit_config setup_assistant.launch.py
 \end{verbatim} 
-per i due package, si avvierà il Moveit Setup Assistant con il quale è possibile variare le pose del robot, le traiettorie e i giunti influenzati da esse. Il file \textcolor{blue}{\texttt{demo.launch.py}} permette di avviare il MoveIt2 demo, che consente di testare le funzionalità del robot in un ambiente simulato (approfondimento alla sezione \ref{sec:moveit}). Il file \textcolor{blue}{\texttt{move\_group.launch.py}} è il nodo principale che gestisce la comunicazione tra ROS2 e MoveIt2, mentre il file \textcolor{blue}{\texttt{setup\_assistant.launch.py}}, come già accenato, è utilizzato per configurare il robot e le sue proprietà cinematiche.
+per i due package, si avvierà il \texttt{Moveit Setup Assistant} con il quale è possibile variare le pose del robot, le traiettorie e i giunti influenzati da esse. Il file {\texttt{demo.launch.py}} permette di avviare il MoveIt2 demo, che consente di testare le funzionalità del robot in un ambiente simulato (approfondimento alla sezione \ref{sec:moveit}). Il file {\texttt{move\_group.launch.py}} è il nodo principale che gestisce la comunicazione tra ROS2 e MoveIt2, mentre il file {\texttt{setup\_assistant.launch.py}}, come già accenato, è utilizzato per configurare il robot e le sue proprietà cinematiche.
 \newline
-La cartella \textcolor{red}{\texttt{my\_ros2\_package}} contiene gli script Python che, una volta stabilita la connessione e avviati i controllori di Moveit, inviano i comandi da ROS2 a Unity, in particolare il file \textcolor{red}{\texttt{moveit\_controller.py}} che si occupa di simulare la movimentazione del robot TM5-900 in Unity dalla posa di "Home" a quella di "Work" definite nel Moveit Setup Assistant. Questo file è fondamentale per l'integrazione tra ROS2 e Unity, in quanto consente di controllare il robot direttamente dall'interfaccia grafica di Unity, facilitando la simulazione e il test delle traiettorie.
+La cartella \textcolor{red}{\texttt{my\_ros2\_package}} contiene gli script Python che, dopo aver stabilito la connessione e avviato i controller di Moveit, inviano i comandi da ROS2 a Unity. In particolare, lo script {\texttt{moveit\_controller.py}} ha il compito di simulare in Unity il movimento del robot TM5-900, passando dalla posizione \texttt{Home} alla posizione \texttt{Work}, entrambe definite tramite il \texttt{Moveit Setup Assistant}. Questo file è fondamentale per l'integrazione tra ROS2 e Unity, in quanto consente di controllare il robot direttamente dall'interfaccia grafica di Unity, facilitando la simulazione e il test delle traiettorie.
 \newline
 La cartella \textcolor{red}{\texttt{tm\_description}} contiene i file URDF e i modelli 3D necessari per rappresentare il robot in Gazebo e Unity. In questo package è importante che siano presenti le meshes all'interno della cartella \texttt{meshes}, sia di visualizzazione che di collisione, e il file URDF all'interno della cartella \texttt{urdf}.
-In particolare il file URDF è possibile generarlo a partire dal file xacro tramite il comando:
+In particolare è possibile generare il file URDF a partire dal file xacro tramite il comando:
 \begin{verbatim}
-    ros2 run xacro xacro nome_file.xacro > nome_file.urdf
+    ros2 run xacro xacro NOME_FILE.xacro > NOME_FILE.urdf
 \end{verbatim}
-Il file URDF è fondamentale per la rappresentazione del robot in Gazebo e Unity, in quanto definisce la struttura e le proprietà fisiche del robot, inclusi i link, i giunti e le collisioni. Inoltre, il file URDF deve essere correttamente configurato per garantire che il robot venga visualizzato e simulato correttamente in entrambi gli ambienti e quindi che i path relativi alle meshes siano corretti (problematiche riguardo ai path delle meshes nei vari software alla sezione \ref{sec:visualizzazione_meshes}).
+Il file URDF è fondamentale per la rappresentazione del robot in Gazebo e Unity, in quanto definisce la struttura e le proprietà fisiche del robot, inclusi i link, i giunti e le collisioni. Inoltre, il file URDF deve essere correttamente configurato per garantire che il robot venga visualizzato e simulato nel modo giusto in entrambi gli ambienti ovvero in modo che i path relativi alle meshes siano corretti (problematiche riguardo ai path delle meshes nei vari software alla sezione \ref{sec:visualizzazione_meshes}).
 
 \chapter{Test Effettuati e Risultati Ottenuti}
 \label{cap:Test}
@@ -1658,7 +1668,7 @@ Scaricando la repository di ROS2 \cite{Repository_ROS2} e installando i pacchett
 
 \section{Test di simulazione del movimento del robot in Unity}
 \label{sec:Test_simulazione}    
-In questa sezione si vogliono illustrare i comandi e i passaggi da eseguire per lanciare lo script python di ROS2 che esegue il movimento del robot TM5-900 in Unity, tramite Moveit2. 
+In questa sezione si vogliono illustrare i comandi e i passaggi da eseguire per lanciare lo script python di ROS2 che esegue il movimento del robot TM5-900 in Unity, tramite \texttt{Moveit2}. 
 \newline
 Per prima cosa, dal terminale di Ubuntu, è necessario lanciare i seguenti comandi per trovarsi nella cartella del workspace di ROS2 ed eseguire il build:
 
@@ -1668,12 +1678,12 @@ Per prima cosa, dal terminale di Ubuntu, è necessario lanciare i seguenti coman
     colcon build 
 \end{verbatim}
 
-Dopo aver eseguito il build, si deve avviare il \textit{move\_group} di Moveit2, che permette di controllare il robot TM5-900. Per farlo, è necessario lanciare il seguente comando:
+Dopo aver eseguito il build, si deve avviare il \textit{move\_group} di \texttt{Moveit2}, che permette di controllare il robot TM5-900. Per farlo, è necessario lanciare il seguente comando:
 \begin{verbatim}
     ros2 launch moveit_config_tm5_900 move_group.launch.py
 \end{verbatim}
 
-In figura \ref{fig:move_group} è possibile vedere il terminale con il \textit{move\_group} di Moveit2 avviato. 
+In figura \ref{fig:move_group} è possibile vedere il terminale con il \textit{move\_group} di \texttt{Moveit2} avviato. 
 
 \begin{figure} [H]
     \centering
@@ -1682,13 +1692,13 @@ In figura \ref{fig:move_group} è possibile vedere il terminale con il \textit{m
     \label{fig:move_group}
 \end{figure}
 
-Successivamente, è necessario avviare due nodi separati che collaborano tra loro:
+Successivamente, si deve avviare due nodi separati, che sono:
 \begin{itemize}
-    \item \textbf{joint\_state\_publisher}: questo nodo pubblica sul topic /joint\_states i valori correnti di tutte le giunture del robot, consentendo a Unity di ricevere le informazioni necessarie per visualizzare il movimento del robot in modo corretto.
-    \item \textbf{robot\_state\_publisher}: questo nodo carica il modello URDF (attraverso il parametro robot\_description), si sottoscrive al topic /joint\_states, infine calcola e pubblica sui topic TF (/tf e /tf\_static) tutte le trasformazioni tra i link del robot, in tempo reale.
+    \item \textbf{joint\_state\_publisher}: questo nodo pubblica sul topic \texttt{/joint\_states} i valori correnti di tutte le giunture del robot, consentendo a Unity di ricevere le informazioni necessarie per visualizzare il movimento del robot in modo corretto.
+    \item \textbf{robot\_state\_publisher}: questo nodo carica il modello URDF (attraverso il parametro robot\_description), si sottoscrive al topic \texttt{/joint\_states}, infine calcola e pubblica sui topic TF \texttt{(/tf e /tf\_static)} tutte le trasformazioni tra i link del robot, in tempo reale.
 \end{itemize}
 
-Per farlo eseguiamo i seguenti comandi:
+Per farlo si devono eseguire i seguenti comandi:
 
 \begin{verbatim}
     ros2 launch tm_description robot_state_publisher.launch.py
@@ -1706,12 +1716,12 @@ Per farlo eseguiamo i seguenti comandi:
     ros2 run joint_state_publisher joint_state_publisher
 \end{verbatim}
 
-A questo punto, rimane da avviare il progetto Unity e avviare la scena, poi lanciare il seguente comando per stabilire la connessione tra ROS2 e Unity:
+A questo punto, è necessario avviare il progetto Unity e caricare la scena, quindi eseguire il comando seguente per stabilire la connessione tra ROS2 e Unity.
 \begin{verbatim}
     ros2 run ros_tcp_endpoint default_server_endpoint --ros-args -p ROS_IP:=... 
 \end{verbatim}
 
-Infine, una volta che la connessione è stabilita correttamente, tramite il seguente comando è possibile vedere il movimento del robot TM5-900 in Unity dalla posizione "home" a quella di "work" configurate tramite il Moveit Setup Assistant:
+Infine, una volta che la connessione è stabilita correttamente, tramite il seguente comando è possibile vedere il movimento del robot TM5-900 in Unity dalla posizione \texttt{home} a quella di \texttt{work} configurate tramite il \texttt{Moveit Setup Assistant}:
 
 \begin{verbatim}
     ros2 run my_ros2_package moveit_controller
@@ -1720,7 +1730,7 @@ Infine, una volta che la connessione è stabilita correttamente, tramite il segu
 
 \section{Test di integrazione della camera}
 \label{sec:Test_camera} 
-Per testare l'integrazione della camera virtuale, è necessario prima di tutto configurarla correttamente come spiegato alla sezione \ref{sec:camera}. Infine rimane solamente da eseguire il comando per avviare il nodo ROS2 che si occupa di ricevere i dati rgb e di profondità dalla scena simulata pubblicati dal Publisher di Unity e di trasformarli in video. Per farlo, è possibile utilizzare il seguente comando:
+Per testare l'integrazione della camera virtuale, è necessario prima di tutto configurarla correttamente come spiegato alla sezione \ref{sec:camera}. Infine rimane solamente da eseguire il comando per avviare il nodo ROS2 che si occupa di ricevere i dati RGB e di profondità dalla scena simulata pubblicati dal Publisher di Unity e di trasformarli in video. Per farlo, è possibile utilizzare il seguente comando:
 
 \begin{verbatim}
     ros2 run my_ros2_package virtual_camera_subscriber
