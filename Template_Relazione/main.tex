@@ -1249,41 +1249,38 @@ La profondità viene letta in una texture temporanea in formato \texttt{RGBAFloa
 Va evidenziato che la conversione della profondità pixel-per-pixel e la distruzione dinamica delle texture temporanee possono introdurre un overhead computazionale significativo, specialmente in scenari ad alta frequenza di pubblicazione. In contesti più esigenti, si potrebbe considerare l'ottimizzazione attraverso l'elaborazione GPU-side o tecniche di bufferizzazione.
 
 % In sintesi, lo script \texttt{RealSenseSimulator} fornisce un'integrazione completa tra Unity e ROS~2 per la simulazione di sensori RGB-D. Esso consente lo sviluppo e la validazione di sistemi robotici in ambienti virtuali realistici, mantenendo una struttura modulare e compatibile con l'infrastruttura ROS.
+\usepackage{booktabs}
+\usepackage{float} % <-- nel preambolo
 
 \subsubsection{Gestione delle dipendenze con \texttt{requirements.txt}}
 
 Per semplificare l'installazione dei pacchetti necessari, questo progetto utilizza un file \texttt{requirements.txt} che elenca tutte le dipendenze Python richieste:
 
-\begin{table}[h!]
+\begin{table}[H]
 \centering
 \begin{tabular}{|c|c|}
 \hline
-\textbf{Package} & \textbf{Version} \\
+\textbf{Pacchetto} & \textbf{Versione} \\
 \hline
 opencv-python & 4.8.1 \\
 rclpy & 3.3.9 \\
-sensor msgs & 4.4.0 \\
-cv bridge & 3.2.1 \\
+sensor\_msgs & 4.4.0 \\
+cv\_bridge & 3.2.1 \\
 numpy & 1.24.3 \\
 \hline
 \end{tabular}
-\caption{Python dependencies and their versions}
+\caption{Dipendenze Python e relative versioni}
 \end{table}
-
-
-\paragraph{Descrizione delle dipendenze}
 
 \begin{center}
 \begin{tabular}{@{}ll@{}}
-\toprule
 \textbf{Pacchetto}      & \textbf{Descrizione} \\
 \midrule
-\texttt{opencv-python}  & Elaborazione di immagini e visione artificiale. \\
-\texttt{rclpy}          & Client library Python per ROS 2. \\
-\texttt{sensor\_msgs}   & Messaggi standard per sensori in ROS 2. \\
-\texttt{cv\_bridge}     & Conversione tra immagini OpenCV e ROS. \\
-\texttt{numpy}          & Libreria per il calcolo scientifico. \\
-
+\texttt{opencv-python}  & Elaborazione di immagini e visione artificiale \\
+\texttt{rclpy}          & Libreria client Python per ROS 2 \\
+\texttt{sensor\_msgs}   & Messaggi standard per sensori in ROS 2 \\
+\texttt{cv\_bridge}     & Conversione tra immagini OpenCV e ROS \\
+\texttt{numpy}          & Libreria per il calcolo scientifico \\
 \end{tabular}
 \end{center}
 
@@ -1292,15 +1289,12 @@ numpy & 1.24.3 \\
 Si consiglia l'uso di un ambiente virtuale per isolare le dipendenze. Ecco i comandi consigliati:
 
 \begin{lstlisting}[language=bash]
-
 python3 -m venv venv
 source venv/bin/activate    # Su Windows: venv\Scripts\activate
 pip install -r requirements.txt
 \end{lstlisting}
 
-
 \noindent Dopo l’installazione, tutte le librerie saranno disponibili localmente per l’utilizzo nel progetto.
-
 
 
 
