@@ -23,7 +23,9 @@
 \usepackage{url}
 \usepackage{hyperref}
 \usepackage{fancyvrb}
-
+% In sintesi, lo script \texttt{RealSenseSimulator} fornisce un'integrazione completa tra Unity e ROS~2 per la simulazione di sensori RGB-D. Esso consente lo sviluppo e la validazione di sistemi robotici in ambienti virtuali realistici, mantenendo una struttura modulare e compatibile con l'infrastruttura ROS.
+\usepackage{booktabs}
+\usepackage{float} % <-- nel preambolo
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \definecolor{custom_green}{rgb}{0,0.6,0}
@@ -298,7 +300,7 @@ Per lo sviluppo del progetto è stato utilizzato il sistema operativo \textbf{Ub
 L’installazione di Ubuntu è avvenuta tramite WSL (Windows Subsystem for Linux), una funzionalità disponibile su Windows 10 e 11 che consente di eseguire nativamente un ambiente GNU/Linux all’interno di Windows, senza dover ricorrere a una macchina virtuale o a un sistema dual boot.
 In particolare, è stata utilizzata la versione WSL2, che offre prestazioni migliorate rispetto a WSL1 grazie all’integrazione di un vero e proprio kernel Linux. Questa soluzione permette di combinare la potenza e la flessibilità di Ubuntu con la praticità degli strumenti di sviluppo offerti dall’ambiente Windows.
 
-\textbf{Di seguito, i principali passaggi eseguiti per l’installazione:} \cite{Ubuntu-install}
+\textbf{Di seguito, i principali passaggi eseguiti per l’installazione: \cite{Ubuntu-install}} 
 
 \begin{enumerate}
     \item Abilitazione delle funzionalità WSL e Virtual Machine Platform:
@@ -511,7 +513,7 @@ Infine una descrizione delle principali proprietà del componente Cloth e di com
 
 Per la parte robotica e di simulazione, è stato scelto di adottare \textbf{Ubuntu 22.04} installato tramite una macchina virtuale WSL2, in quanto offre un ambiente stabile e supportato ufficialmente per lo sviluppo con \textbf{ROS2 Humble} e \textbf{MoveIt2}. ROS2 Humble è stato selezionato per la sua affidabilità e le migliorate capacità di integrazione, che hanno risolto i problemi riscontrati con precedenti versioni (come Jazzy).\textbf{Gazebo Fortress}, la cui scelta della versione è dovuta alla compatibilità con ROS2\cite{Gazebo-ROS2}, garantisce simulazioni avanzate e un'elevata accuratezza nella riproduzione delle dinamiche robotiche, tuttavia non ha un ruolo centrale nel progetto in quanto non è possibile applicare la fisica ai tessuti come in Unity.
 
-Parallelamente, per lo sviluppo dell'ambiente 3D e della visualizzazione in tempo reale, si è mantenuto \textbf{Unity 6} su Windows, supportato da \textbf{Unity Hub} che permette una gestione semplificata dei vari progetti Unity. La scelta di utilizzare Windows come sistema operativo per Unity è motivata dalla sua eccellente compatibilità con gli strumenti grafici e i driver necessari per un'interfaccia utente fluida e performante, in quanto Unity è un software nativo Windows. La comunicazione tra l'ambiente robotico gestito tramite Ubuntu e quello grafico su Windows è resa possibile attraverso il ROS-TCP Connector, che funge da ponte tra le due piattaforme, garantendo lo scambio efficiente dei dati.
+Parallelamente, per lo sviluppo dell'ambiente 3D e della visualizzazione in tempo reale, si è mantenuto \textbf{Unity 6} (versione 6000.0.26f1)su Windows, supportato da \textbf{Unity Hub} (versione 3.10.0) che permette una gestione semplificata dei vari progetti Unity. La scelta di utilizzare Windows come sistema operativo per Unity è motivata dalla sua eccellente compatibilità con gli strumenti grafici e i driver necessari per un'interfaccia utente fluida e performante, in quanto Unity è un software nativo Windows. La comunicazione tra l'ambiente robotico gestito tramite Ubuntu e quello grafico su Windows è resa possibile attraverso il ROS-TCP Connector, che funge da ponte tra le due piattaforme, garantendo lo scambio efficiente dei dati.
 
 Questa configurazione ibrida, che sfrutta al massimo le potenzialità di ogni sistema operativo e software specifico, consente di ottimizzare sia le prestazioni delle simulazioni che l'interattività dell'interfaccia grafica, contribuendo a rendere il progetto complessivamente robusto e flessibile.
 \section{Interfacciamento ROS2-Unity}
@@ -937,9 +939,9 @@ Durante il processo di sviluppo del modello URDF del robot TM900, è stato risco
 
 La soluzione adottata per rispondere a questa esigenza, è la RenderTexture di Unity, utilizzata come fonte di acquisizione dei frame. Per ovviare a questo problema, sono stati sviluppati due componenti software distinti:
 \begin{itemize}
-    \item \textbf{Publisher Unity} uno script in C\# che cattura ad intervalli regolari le texture della scena virtuale, estrae separatamente i dati RGB e quelli di profondità e li pubblica su due topic ROS2 distinti.
+    \item \textbf{Publisher Unity}: script in C\# che cattura ad intervalli regolari le texture della scena virtuale, estrae separatamente i dati RGB e quelli di profondità e li pubblica su due topic ROS2 distinti.
 
-    \item \textbf{Subscriber ROS2} nodo python che si iscrive ai due topic, riceve i pacchetti di dati, li converte in immagini tramite OpenCV e infine li salva come video nel workspace di lavoro.
+    \item \textbf{Subscriber ROS2}: nodo python che si iscrive ai due topic, riceve i pacchetti di dati, li converte in immagini tramite OpenCV e infine li salva come video nel workspace di lavoro.
 \end{itemize}
 
 Inoltre è stato implementata una soluzione iniziale interamente in Unity che permette di esportare i dati RGB sia in formato .png che in .csv, in modo da avere un file di testo con le coordinate RGB di ogni pixel. Questo è stato utile per testare la funzionalità del Publisher e per verificare la veridicità dei dati.
@@ -983,7 +985,7 @@ A questo punto, è possibile procedere con la creazione della scena. Per testare
 % \end{figure}
 
 \subsection{Implementazione codice per l'acquisizione delle immagini}
-\begin{lstlisting}[caption=Script base di acquisizione immagini, label=lst:base, lineskip=0.3em]
+\begin{lstlisting}[caption=Script base di acquisizione immagini in C\#, label=lst:base, lineskip=0.3em]
 using UnityEngine;
 using System.IO;
 
@@ -1089,7 +1091,7 @@ public class RealSenseSimulator : MonoBehaviour
 \end{lstlisting}
 \vspace{1em} % aggiunge spazio tra caption e codice
 Attraverso l'utilizzo di una camera virtuale e quindi di una RenderTexture, il sistema acquisisce i dati visivi della scena e li converte in texture gestibili tramite Texture2D.
-Ogni n frame, i dati RGB vengono esportati in formato .png e salvati anche in un file .csv, consentendo un'analisi dettagliata dei singoli pixel. Contestualmente, viene generata una mappa di profondità simulata mediante una funzione sinusoidale che varia nel tempo, permettendo una rappresentazione dinamica della distanza.
+Ogni \texttt{n} frame, i dati RGB vengono esportati in formato .png e salvati anche in un file .csv, consentendo un'analisi dettagliata dei singoli pixel. Contestualmente, viene generata una mappa di profondità simulata mediante una funzione sinusoidale che varia nel tempo, permettendo una rappresentazione dinamica della distanza.
 Essa viene adottata al fine di generare una mappa di profondità controllata, continua e ripetibile. La natura periodica della sinusoide consente di modellare variazioni regolari e progressive nei valori di intensità, simulando efficacemente superfici ondulate, che introducono variazioni continue e non lineari nei dati di profondità, senza l’ausilio di un sensore fisico. Questa scelta permette di verificare con precisione la sensibilità del sistema a variazioni spaziali e temporali della profondità, oltre a garantire la coerenza e la sincronizzazione tra il flusso RGB e quello di profondità. Inoltre, la semplicità computazionale della funzione ne consente l’integrazione in tempo reale, rendendola particolarmente adatta per scenari di test iterativi e riproducibili.
 
 Una sezione specifica dello script è inoltre dedicata alla simulazione di variazioni visive e di profondità localizzate, al fine di testare la sensibilità del sistema nel rilevare modifiche. L’architettura del codice è orientata all’efficienza e alla modularità, risultando adatta a scenari di test e sviluppo per sistemi di visione artificiale basati su dati RGB-D.
@@ -1112,7 +1114,7 @@ Di seguito, è riportato il codice del Publisher di Unity, che si occupa di pubb
 \item Formato messaggi ROS standard
 \end{itemize}
 \vspace{-1em} % rimuove spazio tra caption e codice
-\begin{lstlisting}[caption=Publisher di Unity, label=lst:base, lineskip=0.3em]
+\begin{lstlisting}[caption=Publisher di Unity in C\#, label=lst:base, lineskip=0.3em]
 using UnityEngine;
 using System.IO;
 using System.Collections;
@@ -1231,7 +1233,7 @@ Lo script \texttt{RealSenseSimulator.cs}, scritto in C\#, è progettato per simu
 Lo script è associato ad un oggetto Unity contenente una \texttt{Camera}, il cui output visivo viene catturato e trasformato in messaggi \texttt{sensor\_msgs/Image} compatibili con ROS2. Il comportamento dello script è articolato nei seguenti punti principali:
 
 \begin{itemize}
-  \item \textbf{Inizializzazione:} Nella funzione \texttt{Start()}, viene creato un \texttt{RenderTexture} con risoluzione 1280$\times$720 e formato (\texttt{ARGB32}). Questo buffer viene assegnato come output della telecamera per la cattura dei frame a colori. Inoltre, viene abilitato il \texttt{DepthTextureMode.Depth} per permettere la generazione automatica della mappa di profondità. Vengono quindi inizializzate due texture 2D: una per il colore (\texttt{RGB24}) e una per la profondità (\texttt{R8}).
+  \item \textbf{Inizializzazione:} Nella funzione \texttt{Start()}, viene creato un \texttt{RenderTexture} con risoluzione 1280$\times$720 e formato \texttt{ARGB32}. Questo buffer viene assegnato come output della telecamera per la cattura dei frame a colori. Inoltre, viene abilitato il \texttt{DepthTextureMode.Depth} per permettere la generazione automatica della mappa di profondità. Vengono quindi inizializzate due texture 2D: una per il colore (\texttt{RGB24}) e una per la profondità (\texttt{R8}).
   
   \item \textbf{Integrazione con ROS 2:} Viene ottenuta l’istanza di \texttt{ROSConnection}, alla quale sono registrati due publisher per i topic \texttt{/camera/color/image\_raw} e \texttt{/camera/depth/image\_raw}, entrambi configurati per inviare messaggi di tipo \texttt{ImageMsg}.
 \end{itemize}
@@ -1251,9 +1253,7 @@ La profondità viene letta in una texture temporanea in formato \texttt{RGBAFloa
 \newline
 Va evidenziato che la conversione della profondità pixel-per-pixel e la distruzione dinamica delle texture temporanee possono introdurre un overhead computazionale significativo, specialmente in scenari ad alta frequenza di pubblicazione. In contesti più esigenti, si potrebbe considerare l'ottimizzazione attraverso l'elaborazione GPU-side o tecniche di bufferizzazione.
 
-% In sintesi, lo script \texttt{RealSenseSimulator} fornisce un'integrazione completa tra Unity e ROS~2 per la simulazione di sensori RGB-D. Esso consente lo sviluppo e la validazione di sistemi robotici in ambienti virtuali realistici, mantenendo una struttura modulare e compatibile con l'infrastruttura ROS.
-\usepackage{booktabs}
-\usepackage{float} % <-- nel preambolo
+
 
 \subsubsection{Gestione delle dipendenze con \texttt{requirements.txt}}
 
@@ -1707,7 +1707,7 @@ La cartella \textcolor{red}{\texttt{my\_ros2\_package}} contiene gli script Pyth
 La cartella \textcolor{red}{\texttt{tm\_description}} contiene i file URDF e i modelli 3D necessari per rappresentare il robot in Gazebo e Unity. In questo package è importante che siano presenti le meshes all'interno della cartella \texttt{meshes}, sia di visualizzazione che di collisione, e il file URDF all'interno della cartella \texttt{urdf}.
 In particolare è possibile generare il file URDF a partire dal file xacro tramite il comando:
 \begin{verbatim}
-    ros2 run xacro xacro NOME_FILE.xacro > NOME_FILE.urdf
+    ros2 run xacro xacro {NOME_FILE}.xacro > {NOME_FILE}.urdf
 \end{verbatim}
 Il file URDF è fondamentale per la rappresentazione del robot in Gazebo e Unity, in quanto definisce la struttura e le proprietà fisiche del robot, inclusi i link, i giunti e le collisioni. Inoltre, il file URDF deve essere correttamente configurato per garantire che il robot venga visualizzato e simulato nel modo giusto in entrambi gli ambienti ovvero in modo che i path relativi alle meshes siano corretti (problematiche riguardo ai path delle meshes nei vari software alla sezione \ref{sec:visualizzazione_meshes}).
 
@@ -1746,7 +1746,7 @@ In figura \ref{fig:move_group} è possibile vedere il terminale con il \textit{m
 Successivamente, si deve avviare due nodi separati, che sono:
 \begin{itemize}
     \item \textbf{joint\_state\_publisher}: questo nodo pubblica sul topic \texttt{/joint\_states} i valori correnti di tutte le giunture del robot, consentendo a Unity di ricevere le informazioni necessarie per visualizzare il movimento del robot in modo corretto.
-    \item \textbf{robot\_state\_publisher}: questo nodo carica il modello URDF (attraverso il parametro robot\_description), si sottoscrive al topic \texttt{/joint\_states}, infine calcola e pubblica sui topic TF \texttt{(/tf e /tf\_static)} tutte le trasformazioni tra i link del robot, in tempo reale.
+    \item \textbf{robot\_state\_publisher}: questo nodo carica il modello URDF (attraverso il parametro robot\_description), si sottoscrive al topic \texttt{/joint\_states} e infine calcola e pubblica sui topic TF \texttt{(/tf e /tf\_static)} tutte le trasformazioni tra i link del robot, in tempo reale.
 \end{itemize}
 
 Per farlo si devono eseguire i seguenti comandi:
@@ -1769,7 +1769,7 @@ Per farlo si devono eseguire i seguenti comandi:
 
 A questo punto, è necessario avviare il progetto Unity e caricare la scena, quindi eseguire il comando seguente per stabilire la connessione tra ROS2 e Unity.
 \begin{verbatim}
-    ros2 run ros_tcp_endpoint default_server_endpoint --ros-args -p ROS_IP:=... 
+    ros2 run ros_tcp_endpoint default_server_endpoint --ros-args -p ROS_IP:={IL_TUO_IP}
 \end{verbatim}
 
 Infine, una volta che la connessione è stabilita correttamente, tramite il seguente comando è possibile vedere il movimento del robot TM5-900 in Unity dalla posizione \texttt{home} a quella di \texttt{work} configurate tramite il \texttt{Moveit Setup Assistant}:
