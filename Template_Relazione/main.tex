@@ -1843,6 +1843,12 @@ Di seguito alcuni frame del video RGB ricavato dalla camera virtuale, in cui è 
 \chapter{Conclusioni}
 \label{cap:Conclusioni}
 
+Nel corso di questo progetto è stato realizzato un ambiente integrato in cui un robot manipolatore, gestito tramite ROS 2, interagisce con un mondo virtuale in Unity attraverso il bridge \texttt{ROS-TCP-Endpoint}. Sono stati configurati i topic e i servizi necessari per la trasmissione della traiettoria generata da MoveIt verso il controller di Unity, che riproduce in tempo reale i movimenti del braccio robotico. È stata predisposta una camera virtuale in Unity per monitorare dall’interno della scena sia il robot sia l’oggetto di prova (una maglietta), e si è validato il flusso di dati bidirezionale tra ROS 2 e Unity.
+\newline
+Durante lo sviluppo si sono acquisite numerose competenze tecniche e operative: l’uso della shell Bash in ambiente Ubuntu per la gestione dei pacchetti ROS 2 e la creazione di script di avvio; la scrittura di nodi in Python per l’interazione con MoveIt2; l’implementazione di componenti C\# in Unity per la ricezione dei comandi di traiettoria e il controllo della camera virtuale; la configurazione del plugin \texttt{ROS-TCP-Endpoint} per garantire la comunicazione senza interruzioni; la personalizzazione di scenari in Gazebo e la modellazione di elementi grafici in Unity; infine, la calibrazione e il allineamento della vista della camera virtuale rispetto al sistema robotico.
+\newline
+Questo progetto può essere impiegato come piattaforma di test per molteplici applicazioni: modulando le pose del robot, si possono esplorare task diversi come il pick‐and‐place, la saldatura o l’ispezione visiva; integrando algoritmi di computer vision, si potrà abilitare il riconoscimento di oggetti e la guida basata su feedback visivo; grazie al sistema fisico \texttt{Cloth} di Unity per le deformazioni si potrà far reagire realisticamente la maglietta quando il robot la tocca, aprendo la strada a esperimenti di manipolazione di materiali deformabili. Grazie alla flessibilità di ROS 2 e alla potenza grafica di Unity, questa architettura rappresenta un solido punto di partenza per lo sviluppo di scenari sempre più complessi e interattivi.
+
 % Nell'introduzione al capitolo specificate anche la versione dell'STM32CubeIDE e dell'STM32CubeMX che avete usato (se avete cambiato versione nel corso del progetto mettete l'ultima, quella su cui è sviluppato il codice che consegnate).
 
 % \section{Diagramma di flusso}
