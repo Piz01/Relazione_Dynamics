@@ -44,5 +44,5 @@
 \contentsline {chapter}{\numberline {4}Struttura del workspace ROS2}{52}{chapter.4}%
 \contentsline {chapter}{\numberline {5}Test Effettuati e Risultati Ottenuti}{54}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Test di simulazione del movimento del robot in Unity}{54}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Test di integrazione della camera}{56}{section.5.2}%
-\contentsline {chapter}{\numberline {6}Conclusioni}{59}{chapter.6}%
+\contentsline {section}{\numberline {5.2}Test di integrazione della camera}{57}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Conclusioni}{61}{chapter.6}%
